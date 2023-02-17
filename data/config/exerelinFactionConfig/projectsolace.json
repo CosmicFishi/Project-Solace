@@ -1,0 +1,113 @@
+{
+    "playableFaction":true,
+    "corvusCompatible":true,
+	"ngcTooltip":"Peace be with you when Project Solace on your side",
+    "rebelFleetSuffix":"Rebels",
+    
+	"asteroidMiningFleetName":"Mining Fleet",
+    "gasMiningFleetName":"Fueling Fleet",
+    "invasionFleetName":"Invasion Force",
+    "responseFleetName":"Relief Fleet",
+    "invasionSupportFleetName":"Support Fleet",
+    "defenceFleetName":"Defensive Fleet",
+	"suppressionFleetName":"Pacifier Group",
+	"noSyncRelations":false,
+	"noStartingContact":true,
+    "marketSpawnWeight":1,
+	"invasionFleetSizeMod":0.1,
+	"responseFleetSizeMod":0.3,
+	"invasionPointMult":1,
+	"vengeanceFleetSizeMult":1.5, #no bullying
+	"factionIdForHqResponse":"orks",
+	"freeMarket":true,
+	"specialForcesMaxFleets":4,
+	"specialForcesPointMult":1.5,
+	"specialForcesSizeMult":2,
+	"stabilizeCommodities":["supplies"],
+	
+	"morality":"good",
+	
+    "startRelationships":{ 
+	    # Vanilla Factions		 
+		"hegemony": -0.8,                                #I HATE HEG I HATE HEG I HATE HEG
+		"persean": -0.3,                                 #
+		"pirates": -0.8,                                 #
+		"sindrian_diktat": -0.5,                         #
+        "lions_guard": -0.5,		                     #NO TYRANT
+		"independent": 0.8,                              #friend
+		"tritachyon": -1,                                #No AI abusing
+		"luddic_church":0,                               #
+		"luddic_path":-0.8,                              #NO BOMBING.
+        "remnant":-0.4,                                  #Poor creatures
+		
+		# Mod factions
+
+
+		},
+	
+    "maxRelationships":{
+		# Vanilla Factions
+			"hegemony": 0,
+
+		},
+
+	
+    "alignments":{
+		"corporate":-0.5,
+        "technocratic":1,
+        "hierarchial":0,
+        "militarist":1.0,
+        "diplomatic":1.0,
+        "ideological":0.25,
+    },
+	
+	"diplomacyTraits":["stalwart", "lowprofile"],
+	
+    "groundBattleSettings":{
+		"attackMult":0.5,
+		"damageTakenMult":0.9,
+        "moraleDamageTakenMult":1.25, #we just want peace :(
+    },
+	
+    # chance of the faction being picked to send a colony expedition. Default 0 (disabled)
+    "colonyExpeditionChance":0.4,	# baseline expansion behaviour
+    "colonyTargetValuator":"exerelin.campaign.colony.IndustrialColonyTargetValuator",
+
+    "startShipsSolo":[
+		["ps_taliabu_attack"],
+	],
+
+    #"startShipsCombatSmall":[],
+
+	#"startShipsCombatLarge":[],
+	
+    #"startShipsCarrierSmall":[],
+
+    #"startShipsCarrierLarge":[],
+	
+	#"startShipsTradeSmall":[],
+	
+    #"startShipsTradeLarge":[],
+	
+    #"startShipsSuper":[],
+
+    #"startShipsGrandFleet":[],
+	
+    #"startSpecialItems":[[["ork_project_package", ""]],],
+    
+    "defenceStations":[
+        {"ids":["orbitalstation", "battlestation", "starfortress"]}, #These are the low tier versions already.
+    ],
+    
+    "industrySeeds":[
+		{"id":"militarybase", "mult":1.5},
+        {"id":"orbitalworks", "mult":1},
+        {"id":"fuelprod", "mult":0.1},
+        {"id":"lightindustry", "mult":0.1},
+    ],
+    
+    "bonusSeeds":[
+        {"id":"population_upsize", "count":1},
+        {"id":"nanoforge_corrupted", "count":1},
+    ],
+}

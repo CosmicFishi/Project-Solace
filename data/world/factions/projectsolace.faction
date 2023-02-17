@@ -1,0 +1,244 @@
+{
+    id:"projectsolace",
+
+    "color":[230,40,240,255],
+    "baseUIColor":[145,28,177,200],
+    "darkUIColor":[34,51,95,175],
+    "gridUIColor":[34,51,95,75],
+
+    #"secondaryUIColor":[34,51,95,255],
+    #"secondarySegments":4,
+
+    "displayName":"Project Solace",
+    "displayNameWithArticle":"The Solace Association",
+
+    "displayNameLong":"Project Solace Association",
+    "displayNameLongWithArticle":"the Project Solace Association",
+    "personNamePrefixAOrAn":"a",
+    "displayNameIsOrAre":"is",
+
+    "logo":"graphics/factions/psflag.png",
+    "crest":"graphics/factions/pscrest.png",
+	
+    "shipNamePrefix":"PrS",
+	
+    "shipNameSources":{
+        "diableavionics":1,
+    },	
+    "names":{
+        "modern":1,
+    },
+
+    # variantOverrides restricts hulls to listed variants and adjusts their probability
+    #"variantOverrides":{
+        #"diableavionics_versant_assault":30,
+    #},
+
+    # multiplier for how often hulls show up in the faction's fleets
+    "hullFrequency":{
+        "tags":{"ps_ship_bp":1,
+        },
+        "hulls":{
+
+        },
+    },
+
+    # ships the faction gets access to when importing S&W out-of-faction
+    "shipsWhenImporting":{
+        "tags":["base_bp","ps_ship_bp"],
+        "hulls":[
+
+
+        ],
+    },
+
+    "knownShips":{
+        "tags":["ps_ship_bp"],
+        "hulls":[
+
+        ],
+    },
+
+    # listing ships here will make the faction mostly use them even if other hulls become available
+    "priorityShips":{
+        "tags":["ps_ship_bp"],
+        "hulls":[
+
+        ],
+    },
+
+    "knownFighters":{
+        "tags":[
+            "ps_ship_bp",
+            "hightech_bp",
+            ],
+        "fighters":[
+
+        ],
+    },
+
+    "priorityFighters":{
+        "tags":[
+            "ps_ship_bp",
+        ],
+        "fighters":[
+
+        ],
+    },
+
+    "knownWeapons":{
+        "tags":[
+            "base_bp",
+            "missile_bp",
+            "hightech_bp",
+            "midline_bp",
+            "lowtech_bp",
+            "rare_bp",
+            "ps_weapon_bp",
+            ],
+        "weapons":[
+
+        ],
+    },
+
+    "priorityWeapons":{
+        "tags":[
+            "ps_weapon_bp"],
+        "weapons":[
+
+        ],
+    },
+
+    "knownHullMods":{
+        "tags":["base_bp", "tritachyon", ps_hullmod_bp],
+        "hullMods":[
+            "converted_hangar",
+            "expanded_deck_crew",
+            "advancedshieldemitter",
+            "armoredweapons",
+            "augmentedengines",
+            "autorepair",
+            "auxiliarythrusters",
+            "blast_doors",
+            "eccm",
+            "magazines",
+            "missleracks",
+            "extendedshieldemitter",
+            "fluxcoil",
+            "fluxdistributor",
+            "hardenedshieldemitter",
+            "hardened_subsystems",
+            "heavyarmor",
+            "insulatedengine",
+            "pointdefenseai",
+            "targetingunit",
+            "adaptiveshields",
+            "reinforcedhull",
+            "fluxbreakers",
+            "stabilizedshieldemitter",
+            "unstable_injector",
+            "shielded_holds",
+            "recovery_shuttles",
+            "ecm",
+        ],
+    },
+
+    "factionDoctrine":{
+        "warships":4,
+        "carriers":1,
+        "phaseShips":2,
+
+        "officerQuality":2,
+        "shipQuality":3,
+        "numShips":4,
+
+        "shipSize":5,
+        "aggression":3,
+
+        "combatFreighterProbability":0.2,     				# instead of some portion of the freighters in a fleet
+        "combatFreighterCombatUseFraction":0.2,  				# as part of the normal combat lineup
+        "combatFreighterCombatUseFractionWhenPriority":0.33,# as part of normal combat lineup, when marked as priority ship
+        "autofitRandomizeProbability":0.1,
+
+        "commanderSkillsShuffleProbability":0.5,
+        "commanderSkills":[
+			"coordinated_maneuvers",
+			"crew_training",
+			"electronic_warfare",
+			"fighter_uplink",
+			"carrier_group",
+			"flux_regulation",
+        ],
+    },
+
+    "illegalCommodities":[
+    ],
+
+    #"music":{
+            #"theme":"diableavionics_market_interaction_neutral",
+            #"market_neutral":"diableavionics_market_interaction_neutral",
+            #"market_hostile":"diableavionics_market_interaction_hostile",
+            #"market_friendly":"diableavionics_market_interaction_friendly",
+            #"encounter_neutral":"diableavionics_market_interaction_neutral",
+            #"encounter_hostile":"diableavionics_market_interaction_hostile",
+            #"encounter_friendly":"diableavionics_market_interaction_friendly",
+    #},
+
+    #"tariffFraction":0.13,
+    #"tollFraction":0,
+    #"fineFraction":0.5,		
+
+    "portraits":{
+        "standard_male":[
+
+        ],
+        "standard_female":[
+
+        ],
+    },
+
+    "ranks":{
+            "ranks":{
+                    "spaceCommander":{"name":"Central Commander"},
+            },
+            "posts":{
+                    "patrolCommander":{"name":"Patrol Manager"},
+                    "fleetCommander":{"name":"Fleet Manager"},
+                    "baseCommander":{"name":"Base Manager"},
+            },
+    },
+
+    "custom":{
+        "offersCommissions":true,
+        "engagesInHostilities":true,
+        "buysAICores":true,
+        "AICoreValueMult":2,
+        "AICoreRepMult":5,
+        "buysSurveyData":false,
+        "hostilityImpactOnGrowth":true,
+	    "caresAboutAtrocities":true,
+        "punitiveExpeditionData":{
+            "vsCompetitors":true,
+            "vsFreePort":false,
+            "canBombard":true,
+            "territorial":true,
+        },
+    },
+
+    "fleetTypeNames":{
+        "trade":"Commerce Fleet",
+
+        "tradeLiner":"Transit Flight",
+        "tradeSmuggler":"Suspicious Convoy",
+        "smallTrader":"Resupply Convoy",
+
+        "patrolSmall":"Security Detachment",
+        "patrolMedium":"Defensive Recon",
+        "patrolLarge":"Strategic Task-force",
+
+        "inspectionFleet":"Inspector Detachment",
+        "taskForce":"Invasion Fleet",
+
+        "foodReliefFleet":"Relief Convoy",
+    },
+}

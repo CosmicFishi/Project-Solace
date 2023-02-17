@@ -1,0 +1,68 @@
+{
+  "hullName": "Taliabu",
+  "hullId": "ps_taliabu",
+  "hullSize": "FRIGATE",
+  "spriteName": "graphics/ships/ps_taliabu.png",
+  "style": "PROJECTSOLACE",
+  "height": 120,
+  "width": 100,
+  "center": [50, 59],
+  "collisionRadius": 66,
+  "shieldCenter": [0, -0],
+  "shieldRadius": 72.5,
+  "viewOffset": 0,
+  "builtInMods": [
+      "ps_solacecore"
+    ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 0,
+      "locations": [42, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 240,
+      "angle": -83.5,
+      "locations": [6, -18]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 240,
+      "angle": 83.5,
+      "locations": [6, 18]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-40, -0],
+      "length": 64,
+      "width": 24,
+      "angle": 180,
+      "contrailSize": 64,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    }
+  ],
+  "bounds": [
+    -36, 21,
+    -45.5, 30.5,
+    -5, 48,
+    26, 38,
+    44, -0,
+    26, -38,
+    -5, -48,
+    -45.5, -30.5,
+    -36, -21
+  ]
+}

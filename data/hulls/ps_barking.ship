@@ -1,0 +1,165 @@
+{
+  "hullName": "Barking",
+  "hullId": "ps_barking",
+  "hullSize": "CRUISER",
+  "spriteName": "graphics/ships/ps_barking.png",
+  "style": "PROJECTSOLACE",
+  "height": 250,
+  "width": 250,
+  "center": [125, 125],
+  "collisionRadius": 140.5,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 146,
+  "viewOffset": 0,
+  "builtInMods": [
+      "ps_solacecore"
+    ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "MISSILE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -45,
+      "locations": [89, -35]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 45,
+      "locations": [89, 35]
+    },
+    {
+      "id": "WS0003",
+      "size": "MEDIUM",
+      "type": "MISSILE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -45,
+      "locations": [65, -60]
+    },
+    {
+      "id": "WS0004",
+      "size": "MEDIUM",
+      "type": "MISSILE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 45,
+      "locations": [65, 60]
+    },
+    {
+      "id": "WS0005",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 240,
+      "angle": 0,
+      "locations": [63, -0]
+    },
+    {
+      "id": "WS0006",
+      "size": "MEDIUM",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": -28.5,
+      "locations": [10, -35]
+    },
+    {
+      "id": "WS0007",
+      "size": "MEDIUM",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": 28.5,
+      "locations": [10, 35]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 150,
+      "angle": -38.5,
+      "locations": [37, -42]
+    },
+    {
+      "id": "WS0009",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 150,
+      "angle": 38.5,
+      "locations": [37, 42]
+    },
+    {
+      "id": "WS0010",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": -97,
+      "locations": [-19, -47]
+    },
+    {
+      "id": "WS0011",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": 97,
+      "locations": [-19, 47]
+    },
+    {
+      "id": "WS0012",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 110,
+      "angle": -150,
+      "locations": [-72, -25]
+    },
+    {
+      "id": "WS0013",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 110,
+      "angle": 150,
+      "locations": [-72, 25]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-62, -0],
+      "length": 120,
+      "width": 25,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    }
+  ],
+  "bounds": [
+    -61, 13,
+    -99, 16,
+    -67.5, 51,
+    -114, 73.5,
+    -68, 87.5,
+    -64, 113.5,
+    42, 73,
+    102, 12.5,
+    102, -12.5,
+    42, -73,
+    -64, -113.5,
+    -68, -87.5,
+    -114, -73.5,
+    -67.5, -51,
+    -99, -16,
+    -61, -13
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "designTypeColors":{
+    "Project Solace":[230,40,240,255],
+  },
+  "plugins":{
+
+  },
+  "graphics":{
+    "blueprint_packages":{
+
+    },
+    "campaignEntities":{
+
+    },
+    "hab_glows":{
+
+    },
+    "systems":{
+
+    },
+    "fx":{
+
+
+    },
+    "illustrations":{
+
+
+    },
+    "characters":{
+
+    },
+    "icons":{
+
+    }
+  }
+}

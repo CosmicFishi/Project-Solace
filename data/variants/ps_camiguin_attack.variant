@@ -1,0 +1,78 @@
+{
+  "variantId": "ps_camiguin_attack",
+  "hullId": "ps_camiguin",
+  "displayName": "Attack",
+  "goalVariant": true,
+  "fluxCapacitors": 0,
+  "fluxVents": 44,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "targetingunit",
+    "hardenedshieldemitter"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "hephag",
+        "WS0002": "tachyonlance",
+        "WS0004": "squall",
+        "WS0005": "hveldriver",
+        "WS0006": "hveldriver",
+        "WS0015": "vulcan",
+        "WS0016": "vulcan",
+        "WS0017": "pdburst_fighter",
+        "WS0018": "pdburst"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0003": "hurricane"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0007": "heavyburst",
+        "WS0008": "heavyburst",
+        "WS0009": "flak",
+        "WS0010": "flak"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0011": "pdlaser",
+        "WS0012": "pdlaser",
+        "WS0013": "vulcan",
+        "WS0014": "vulcan"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0019": "pilum",
+        "WS0020": "pilum"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

@@ -1,0 +1,28 @@
+{
+    "id":"pigeonpun_projectsolace", # For the convenience of troubleshooters, include your name and the mod name, not just an acronym.
+	"name":"Project Solace", # Displayed to the player
+	"author":"PigeonPun",
+    "utility":"false",
+	"version":"0.1.0",
+	"description":"High tech faction lead by scientists that despite exploitations",
+    "gameVersion": "0.95.1a-RC6", 
+  	"jars":["jars/Template.jar"],
+  	"modPlugin":"pigeonpun.projectsolace.scripts.ProjectSolacePlugin",
+	  	"dependencies": [
+        {
+            "id": "lw_lazylib",
+            "name": "LazyLib",
+        #    #"version": "2.7b"
+        },
+        {
+            "id": "MagicLib",
+            "name": "MagicLib",
+        #    #"version": "0.34"
+        },
+        {
+            "id": "shaderLib",
+            "name": "GraphicsLib",
+        #    #"version": "1.5.1"
+        }
+    ],
+}

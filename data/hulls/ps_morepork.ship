@@ -1,0 +1,135 @@
+{
+  "hullName": "Morepork",
+  "hullId": "ps_morepork",
+  "hullSize": "DESTROYER",
+  "spriteName": "graphics/ships/ps_morepork.png",
+  "style": "PROJECTSOLACE",
+  "height": 230,
+  "width": 180,
+  "center": [90, 115],
+  "collisionRadius": 118.5,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 110,
+  "viewOffset": 0,
+  "builtInMods": [
+      "ps_solacecore"
+    ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "LARGE",
+      "type": "ENERGY",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 0,
+      "locations": [55, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "HARDPOINT",
+      "arc": 30,
+      "angle": 1.5,
+      "locations": [85, 25]
+    },
+    {
+      "id": "WS0003",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "HARDPOINT",
+      "arc": 30,
+      "angle": -1.5,
+      "locations": [85, -25]
+    },
+    {
+      "id": "WS0004",
+      "size": "MEDIUM",
+      "type": "MISSILE",
+      "mount": "TURRET",
+      "arc": 60,
+      "angle": -45,
+      "locations": [-3, -27]
+    },
+    {
+      "id": "WS0005",
+      "size": "MEDIUM",
+      "type": "MISSILE",
+      "mount": "TURRET",
+      "arc": 60,
+      "angle": 45,
+      "locations": [-3, 27]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 220,
+      "angle": -48,
+      "locations": [39, -24]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 220,
+      "angle": 48,
+      "locations": [39, 24]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": -130.5,
+      "locations": [-30, -25]
+    },
+    {
+      "id": "WS0009",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": 130.5,
+      "locations": [-30, 25]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-60.5, -36],
+      "length": 90,
+      "width": 20,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-60.5, 36],
+      "length": 90,
+      "width": 20,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    }
+  ],
+  "bounds": [
+    -60, 24,
+    -64, 51.5,
+    -18, 77,
+    29, 60,
+    46, 67.5,
+    85, 16,
+    85, -16,
+    50.5, -65.5,
+    29, -58.5,
+    -18, -77,
+    -64, -51.5,
+    -60, -24,
+    -99, -0
+  ]
+}
