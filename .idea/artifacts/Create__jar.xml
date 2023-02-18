@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="jar" build-on-make="true" name="Create .jar">
     <output-path>$PROJECT_DIR$/jars</output-path>
-    <root id="archive" name="Template.jar">
+    <root id="archive" name="projectsolace.jar">
       <element id="module-output" name="starsector-intellij-template" />
     </root>
   </artifact>

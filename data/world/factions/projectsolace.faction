@@ -55,7 +55,13 @@
     "knownShips":{
         "tags":["ps_ship_bp"],
         "hulls":[
-
+            buffalo,
+            colossus,
+            atlas,
+            dram,
+            phaeton,
+            prometheus,
+            crig,
         ],
     },
 
@@ -103,7 +109,9 @@
 
     "priorityWeapons":{
         "tags":[
-            "ps_weapon_bp"],
+            "ps_weapon_bp",
+            "rare_bp",
+        ],
         "weapons":[
 
         ],
