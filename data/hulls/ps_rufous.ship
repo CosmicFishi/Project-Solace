@@ -12,8 +12,8 @@
   "shieldRadius": 133.5,
   "viewOffset": 0,
   "builtInMods": [
-      "ps_solacecore"
-    ],
+    "ps_solacecore"
+  ],
   "weaponSlots": [
     {
       "id": "WS0001",
@@ -45,7 +45,7 @@
     {
       "id": "WS0004",
       "size": "MEDIUM",
-      "type": "BALLISTIC",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 120,
       "angle": 17.5,
@@ -54,7 +54,7 @@
     {
       "id": "WS0005",
       "size": "MEDIUM",
-      "type": "BALLISTIC",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 120,
       "angle": -17.5,

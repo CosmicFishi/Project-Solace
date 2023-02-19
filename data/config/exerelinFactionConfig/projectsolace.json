@@ -18,7 +18,7 @@
 	"responseFleetSizeMod":0.3,
 	"invasionPointMult":1,
 	"vengeanceFleetSizeMult":1.5, #no bullying
-	"factionIdForHqResponse":"orks",
+	"factionIdForHqResponse":"projectsolace",
 	"freeMarket":true,
 	"specialForcesMaxFleets":4,
 	"specialForcesPointMult":1.5,
@@ -61,7 +61,7 @@
         "ideological":0.25,
     },
 	
-	"diplomacyTraits":["stalwart", "lowprofile"],
+	"diplomacyTraits":["stalwart", "lowprofile", "helps_allies"],
 	
     "groundBattleSettings":{
 		"attackMult":0.5,

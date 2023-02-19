@@ -12,13 +12,13 @@
   "shieldRadius": 67,
   "viewOffset": 0,
   "builtInMods": [
-      "ps_solacecore"
-    ],
+    "ps_solacecore"
+  ],
   "weaponSlots": [
     {
       "id": "WS0001",
       "size": "SMALL",
-      "type": "SYNERGY",
+      "type": "MISSILE",
       "mount": "HARDPOINT",
       "arc": 30,
       "angle": 14.5,
@@ -27,7 +27,7 @@
     {
       "id": "WS0002",
       "size": "SMALL",
-      "type": "SYNERGY",
+      "type": "MISSILE",
       "mount": "HARDPOINT",
       "arc": 30,
       "angle": -14.5,
@@ -54,7 +54,7 @@
     {
       "id": "WS0005",
       "size": "SMALL",
-      "type": "BALLISTIC",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 120,
       "angle": 16,
@@ -63,7 +63,7 @@
     {
       "id": "WS0006",
       "size": "SMALL",
-      "type": "BALLISTIC",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 120,
       "angle": -16,

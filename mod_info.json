@@ -6,8 +6,8 @@
 	"version":"0.1.0",
 	"description":"High tech faction lead by scientists that despite exploitations",
     "gameVersion": "0.95.1a-RC6", 
-  	"jars":["jars/Template.jar"],
-  	"modPlugin":"pigeonpun.projectsolace.scripts.ProjectSolacePlugin",
+  	"jars":["jars/projectsolace.jar"],
+  	"modPlugin":"pigeonpun.projectsolace.scripts.projectsolaceplugin",
 	  	"dependencies": [
         {
             "id": "lw_lazylib",

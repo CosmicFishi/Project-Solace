@@ -6,21 +6,26 @@
 	},
 	"combatSmall":{
             "ps_taliabu_attack": 1,
+			"ps_taliabu_defense": 1,
 			"ps_salawesi_attack": 1,
     },
 	"combatMedium":{
 		"ps_morepork_attack": 1,
-		"ps_ashy_defend": 1,
+		"ps_morepork_destroy": 1,
+		"ps_ashy_defense": 1,
 		"ps_ashy_attack": 1,
+		"ps_ashy_disabler": 1
 	},
 	"combatLarge":{
 		"ps_barking_attack": 1,
-		"ps_barking_defend": 1,
+		"ps_barking_defense": 1,
 		"ps_rufous_destroy": 1,
 		"ps_rufous_attack": 1,
+		"ps_rufous_defense": 1,
 	},
 	"combatCapital":{
-		"ps_camiguin_attack": 1,
+		"ps_camiguin_attack": 2,
+		"ps_camiguin_defense": 1
 	},
 	
 	

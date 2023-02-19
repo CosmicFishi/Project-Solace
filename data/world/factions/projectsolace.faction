@@ -13,7 +13,7 @@
     "displayNameWithArticle":"The Solace Association",
 
     "displayNameLong":"Project Solace Association",
-    "displayNameLongWithArticle":"the Project Solace Association",
+    "displayNameLongWithArticle":"Project Solace Association",
     "personNamePrefixAOrAn":"a",
     "displayNameIsOrAre":"is",
 
@@ -157,16 +157,16 @@
         "phaseShips":2,
 
         "officerQuality":2,
-        "shipQuality":3,
+        "shipQuality":1,
         "numShips":4,
 
-        "shipSize":5,
+        "shipSize":4,
         "aggression":3,
 
-        "combatFreighterProbability":0.2,     				# instead of some portion of the freighters in a fleet
-        "combatFreighterCombatUseFraction":0.2,  				# as part of the normal combat lineup
-        "combatFreighterCombatUseFractionWhenPriority":0.33,# as part of normal combat lineup, when marked as priority ship
-        "autofitRandomizeProbability":0.1,
+        "combatFreighterProbability":0,     				# instead of some portion of the freighters in a fleet
+        "combatFreighterCombatUseFraction":0,  				# as part of the normal combat lineup
+        "combatFreighterCombatUseFractionWhenPriority":0,# as part of normal combat lineup, when marked as priority ship
+        "autofitRandomizeProbability":0.25,
 
         "commanderSkillsShuffleProbability":0.5,
         "commanderSkills":[
@@ -197,12 +197,12 @@
     #"fineFraction":0.5,		
 
     "portraits":{
-        "standard_male":[
+        #"standard_male":[
 
-        ],
-        "standard_female":[
+        #],
+        #"standard_female":[
 
-        ],
+        #],
     },
 
     "ranks":{

@@ -1,9 +1,9 @@
 {
-  "variantId": "ps_taliabu_attack",
+  "variantId": "ps_taliabu_defense",
   "hullId": "ps_taliabu",
-  "displayName": "Attack",
+  "displayName": "Defense",
   "goalVariant": true,
-  "fluxCapacitors": 0,
+  "fluxCapacitors": 1,
   "fluxVents": 2,
   "quality": 1,
   "permaMods": [],
@@ -16,16 +16,15 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "pulselaser"
+        "WS0001": "heavymortar",
+        "WS0002": "lightdualmg",
+        "WS0003": "lightdualmg"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0002": "vulcan",
-        "WS0003": "vulcan"
-      }
+      "weapons": {}
     }
   ],
   "modules": [],

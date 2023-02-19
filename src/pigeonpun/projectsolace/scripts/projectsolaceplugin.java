@@ -2,8 +2,10 @@ package pigeonpun.projectsolace.scripts;
 
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
+import exerelin.campaign.SectorManager;
+import pigeonpun.projectsolace.world.ps_gen;
 
-public class ProjectSolacePlugin extends BaseModPlugin {
+public class projectsolaceplugin extends BaseModPlugin {
 
     public static boolean blackrockExists = false;
     public static boolean borkenExists = false;
@@ -61,11 +63,11 @@ public class ProjectSolacePlugin extends BaseModPlugin {
         super.onNewGame();
 
         // The code below requires that Nexerelin is added as a library (not a dependency, it's only needed to compile the mod).
-//        boolean isNexerelinEnabled = Global.getSettings().getModManager().isModEnabled("nexerelin");
+        boolean isNexerelinEnabled = Global.getSettings().getModManager().isModEnabled("nexerelin");
 
-//        if (!isNexerelinEnabled || SectorManager.getManager().isCorvusMode()) {
-//                    new MySectorGen().generate(Global.getSector());
-            // Add code that creates a new star system (will only run if Nexerelin's Random (corvus) mode is disabled).
-//        }
+        if (!isNexerelinEnabled || SectorManager.getManager().isCorvusMode()) {
+                    new ps_gen().generate(Global.getSector());
+//             Add code that creates a new star system (will only run if Nexerelin's Random (corvus) mode is disabled).
+        }
     }
 }

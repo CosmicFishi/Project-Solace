@@ -9,7 +9,7 @@ import com.fs.starfarer.api.mission.FleetSide;
 import com.fs.starfarer.api.mission.MissionDefinitionAPI;
 import com.fs.starfarer.api.mission.MissionDefinitionPlugin;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
-import pigeonpun.projectsolace.scripts.ProjectSolacePlugin;
+import pigeonpun.projectsolace.scripts.projectsolaceplugin;
 import data.missions.PS_FleetGenerator.*;
 
 import java.util.List;
@@ -208,62 +208,62 @@ public class PS_BaseRandomBattle implements MissionDefinitionPlugin {
         FACTIONS.add("domain", 0.25f);
         FACTIONS.add("sector", 0.25f);
         FACTIONS.add("everything", 0.25f);
-        if (ProjectSolacePlugin.hasUnderworld) {
+        if (projectsolaceplugin.hasUnderworld) {
             FACTIONS.add("cabal", 0.25f);
         }
-        if (ProjectSolacePlugin.imperiumExists) {
+        if (projectsolaceplugin.imperiumExists) {
             FACTIONS.add("interstellarimperium", 1f);
         }
-        if (ProjectSolacePlugin.blackrockExists) {
+        if (projectsolaceplugin.blackrockExists) {
             FACTIONS.add("blackrock_driveyards", 0.75f);
             FACTIONS.add("br_consortium", 0.25f);
         }
-        if (ProjectSolacePlugin.exigencyExists) {
+        if (projectsolaceplugin.exigencyExists) {
             FACTIONS.add("exipirated", 0.5f);
             FACTIONS.add("exigency", 0.75f);
         }
-        if (ProjectSolacePlugin.templarsExists) {
+        if (projectsolaceplugin.templarsExists) {
             FACTIONS.add("templars", 0.25f);
         }
-        if (ProjectSolacePlugin.shadowyardsExists) {
+        if (projectsolaceplugin.shadowyardsExists) {
             FACTIONS.add("shadow_industry", 1f);
         }
-        if (ProjectSolacePlugin.junkPiratesExists) {
+        if (projectsolaceplugin.junkPiratesExists) {
             FACTIONS.add("junk_pirates", 0.75f);
             FACTIONS.add("pack", 0.75f);
             FACTIONS.add("syndicate_asp", 0.5f);
         }
-        if (ProjectSolacePlugin.scyExists) {
+        if (projectsolaceplugin.scyExists) {
             FACTIONS.add("SCY", 1f);
         }
-        if (ProjectSolacePlugin.tiandongExists) {
+        if (projectsolaceplugin.tiandongExists) {
             FACTIONS.add("tiandong", 1f);
         }
-        if (ProjectSolacePlugin.diableExists) {
+        if (projectsolaceplugin.diableExists) {
             FACTIONS.add("diableavionics", 1f);
         }
-        if (ProjectSolacePlugin.oraExists) {
+        if (projectsolaceplugin.oraExists) {
             FACTIONS.add("ORA", 1f);
         }
-        if (ProjectSolacePlugin.tyradorExists) {
+        if (projectsolaceplugin.tyradorExists) {
             FACTIONS.add("Coalition", 1f);
         }
-        if (ProjectSolacePlugin.iceExists) {
+        if (projectsolaceplugin.iceExists) {
             FACTIONS.add("sun_ice", 0.75f);
         }
-        if (ProjectSolacePlugin.borkenExists) {
+        if (projectsolaceplugin.borkenExists) {
             FACTIONS.add("fob", 0.5f);
         }
-        if (ProjectSolacePlugin.scalarTechExists) {
+        if (projectsolaceplugin.scalarTechExists) {
             FACTIONS.add("scalartech", 0.5f);
             FACTIONS.add("scalartech_elite", 0.25f);
         }
-        if (ProjectSolacePlugin.dmeExists) {
+        if (projectsolaceplugin.dmeExists) {
             FACTIONS.add("dassault_mikoyan", 0.75f);
             FACTIONS.add("6eme_bureau", 0.25f);
             FACTIONS.add("blade_breakers", 0.25f);
         }
-        if (ProjectSolacePlugin.arkgneisisExists) {
+        if (projectsolaceplugin.arkgneisisExists) {
             FACTIONS.add("al_ars", 1f);
         }
         FACTIONS.add("projectsolace", 0.25f);

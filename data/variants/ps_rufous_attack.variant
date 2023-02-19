@@ -4,23 +4,23 @@
   "displayName": "Attack",
   "goalVariant": true,
   "fluxCapacitors": 0,
-  "fluxVents": 0,
+  "fluxVents": 18,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "targetingunit",
-    "auxiliarythrusters"
+    "hardenedshieldemitter"
   ],
   "weaponGroups": [
     {
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "tachyonlance",
-        "WS0002": "gravitonbeam",
-        "WS0003": "gravitonbeam",
-        "WS0004": "heavymauler",
-        "WS0005": "heavymauler"
+        "WS0001": "hil",
+        "WS0002": "ionpulser",
+        "WS0003": "ionpulser",
+        "WS0004": "gravitonbeam",
+        "WS0005": "gravitonbeam"
       }
     },
     {

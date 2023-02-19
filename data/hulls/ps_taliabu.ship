@@ -12,13 +12,13 @@
   "shieldRadius": 72.5,
   "viewOffset": 0,
   "builtInMods": [
-      "ps_solacecore"
-    ],
+    "ps_solacecore"
+  ],
   "weaponSlots": [
     {
       "id": "WS0001",
       "size": "MEDIUM",
-      "type": "ENERGY",
+      "type": "HYBRID",
       "mount": "HARDPOINT",
       "arc": 0,
       "angle": 0,
