@@ -15,7 +15,7 @@
 	"noStartingContact":true,
     "marketSpawnWeight":1,
 	"invasionFleetSizeMod":0.1,
-	"responseFleetSizeMod":0.3,
+	"responseFleetSizeMod":0.15,
 	"invasionPointMult":1,
 	"vengeanceFleetSizeMult":1.5, #no bullying
 	"factionIdForHqResponse":"projectsolace",
@@ -24,31 +24,41 @@
 	"specialForcesPointMult":1.5,
 	"specialForcesSizeMult":2,
 	"stabilizeCommodities":["supplies"],
+
+    "vengeanceLevelNames":["Assassination", "Carnage", "Extermination"],
+    "vengeanceFleetNames":["Zealots", "Slayers", "Crusade"],
+    "vengeanceFleetNamesSingle":["Zealots", "Slayer", "a Crusade Fleet"],
 	
 	"morality":"good",
 	
     "startRelationships":{ 
 	    # Vanilla Factions		 
-		"hegemony": -0.8,                                #I HATE HEG I HATE HEG I HATE HEG
-		"persean": -0.3,                                 #
-		"pirates": -0.8,                                 #
-		"sindrian_diktat": -0.5,                         #
+		"hegemony": 0.2,                                 #Fight for justice, we like that
+		"persean": -1.0,                                 #Exploit people, big no no
+		"pirates": -1.0,                                 #Raid, bad
+		"sindrian_diktat": -0.5,                         #Dictatorship, very bad
         "lions_guard": -0.5,		                     #NO TYRANT
 		"independent": 0.8,                              #friend
 		"tritachyon": -1,                                #No AI abusing
-		"luddic_church":0,                               #
-		"luddic_path":-0.8,                              #NO BOMBING.
-        "remnant":-0.4,                                  #Poor creatures
+		"luddic_church":0,                               #,Cult, ugh,
+        "luddic_path":-0.2,                              #,Can be better but we dont want people to go doing ram ship with a lot of fuels
+        "remnant":-0.5,                                  #Poor creatures
 		
 		# Mod factions
-
+        "orks": 1.0                                      #Helped us, we will forever remember
 
 		},
-	
+
+    "minRelationships":{
+        # Vanilla Factions
+
+        # Mod factions
+        "orks": 0.5                                      #Helped us, we will forever remember
+        },
     "maxRelationships":{
 		# Vanilla Factions
-			"hegemony": 0,
-
+			"tritachyon": -1,
+            "persean": -1,
 		},
 
 	
@@ -61,7 +71,7 @@
         "ideological":0.25,
     },
 	
-	"diplomacyTraits":["stalwart", "lowprofile", "helps_allies"],
+	"diplomacyTraits":["stalwart", "lowprofile", "helps_allies", "temperamental"],
 	
     "groundBattleSettings":{
 		"attackMult":0.5,
@@ -102,6 +112,7 @@
     "industrySeeds":[
 		{"id":"militarybase", "mult":1.5},
         {"id":"orbitalworks", "mult":1},
+        {"id":"farming", "mult":1},
         {"id":"fuelprod", "mult":0.1},
         {"id":"lightindustry", "mult":0.1},
     ],

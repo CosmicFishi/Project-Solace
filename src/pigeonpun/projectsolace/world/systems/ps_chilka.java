@@ -4,9 +4,11 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.*;
+import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor;
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.terrain.AsteroidFieldTerrainPlugin;
+import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.RingSystemTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
 import org.lazywizard.lazylib.MathUtils;
@@ -165,12 +167,13 @@ public class ps_chilka {
                 ChilkaStar,
                 "Tjikko",
                 "lava_minor",
-                -340f,
+                10f,
                 320f,
                 5000f,
                 200f);
         //Tjikko.setCustomDescriptionId("vic_phlegethon"); //reference descriptions.csv
-
+        system.addRingBand(Tjikko, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 500, 200f);
+        system.addRingBand(Tjikko, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 800, 200f);
         system.addAsteroidBelt(Tjikko, 200, 1000, 100, 250, 400, Terrain.ASTEROID_BELT, "Inner Band");
 
         MarketAPI Tjikko_market = ps_gen.addMarketplace(
@@ -224,7 +227,7 @@ public class ps_chilka {
                 ChilkaStar,
                 "Stara Maslina",
                 "barren_venuslike",
-                -220f,
+                220f,
                 300f,
                 3800f,
                 200f);
@@ -300,7 +303,7 @@ public class ps_chilka {
                         8f, // min asteroid radius
                         16f, // max asteroid radius
                         "Big Asteroids Field")); // null for default name
-        ChilkaAF3.setCircularOrbit(ChilkaStar, MathUtils.getRandomNumberInRange(0,180), 4000, 200);
+        ChilkaAF3.setCircularOrbit(ChilkaStar, MathUtils.getRandomNumberInRange(50,180), 4000, 200);
 
         SectorEntityToken ChilkaAF1 = system.addTerrain(Terrain.ASTEROID_FIELD,
                 new AsteroidFieldTerrainPlugin.AsteroidFieldParams(
@@ -311,7 +314,18 @@ public class ps_chilka {
                         8f, // min asteroid radius
                         16f, // max asteroid radius
                         "Asteroids Field")); // null for default name
-        ChilkaAF1.setCircularOrbit(ChilkaStar, MathUtils.getRandomNumberInRange(180,360), 3000, 200);
+        ChilkaAF1.setCircularOrbit(ChilkaStar, MathUtils.getRandomNumberInRange(240,360), 3000, 200);
+
+        SectorEntityToken ChilkaAF2 = system.addTerrain(Terrain.ASTEROID_FIELD,
+                new AsteroidFieldTerrainPlugin.AsteroidFieldParams(
+                        800f, // min radius
+                        200f, // max radius
+                        24, // min asteroid count
+                        48, // max asteroid count
+                        8f, // min asteroid radius
+                        16f, // max asteroid radius
+                        "Asteroids Field")); // null for default name
+        ChilkaAF2.setCircularOrbit(ChilkaStar, MathUtils.getRandomNumberInRange(240,300), 3000, 200);
 
         //add Comm relay
         SectorEntityToken MakeshiftRelay = system.addCustomEntity("ps_comm_relay_makeshift", // unique id
@@ -332,7 +346,7 @@ public class ps_chilka {
                 "Chilka Sensor Relay", // name - if null, defaultName from custom_entities.json will be used
                 "sensor_array", // type of object, defined in custom_entities.json
                 "projectsolace"); // faction
-        SensorRelay.setCircularOrbitPointingDown(ChilkaStar, 70f, 8000f, 280f);
+        SensorRelay.setCircularOrbitPointingDown(ChilkaStar, 100f, 8000f, 280f);
 
         //Jump point
         JumpPointAPI jumpPoint1 = Global.getFactory().createJumpPoint(
@@ -360,5 +374,16 @@ public class ps_chilka {
         system.addEntity(jumpPoint2);
 
         system.autogenerateHyperspaceJumpPoints(true, false);
+        cleanup(system);
+    }
+
+    void cleanup(StarSystemAPI system) {
+        HyperspaceTerrainPlugin plugin = (HyperspaceTerrainPlugin) Misc.getHyperspaceTerrain().getPlugin();
+        NebulaEditor editor = new NebulaEditor(plugin);
+        float minRadius = plugin.getTileSize() * 2f;
+
+        float radius = system.getMaxRadiusInHyperspace();
+        editor.clearArc(system.getLocation().x, system.getLocation().y, 0, radius + minRadius * 0.5f, 0, 360f);
+        editor.clearArc(system.getLocation().x, system.getLocation().y, 0, radius + minRadius, 0, 360f, 0.25f);
     }
 }

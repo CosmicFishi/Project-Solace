@@ -7,6 +7,7 @@ import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.SectorGeneratorPlugin;
 import com.fs.starfarer.api.campaign.econ.EconomyAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.shared.SharedData;
 import pigeonpun.projectsolace.world.systems.ps_chilka;
 
@@ -79,16 +80,19 @@ public class ps_gen implements SectorGeneratorPlugin {
 
         SharedData.getData().getPersonBountyEventData().addParticipatingFaction("projectsolace");
 
-        //set relationship
-//        vic.setRelationship(Factions.LUDDIC_CHURCH, -1f);
-//        vic.setRelationship(Factions.LUDDIC_PATH, -1f);
-//        vic.setRelationship(Factions.TRITACHYON, -0.7f);
-//        vic.setRelationship(Factions.PERSEAN, 0.3f);
-//        vic.setRelationship(Factions.PIRATES, 0f);
-//        vic.setRelationship(Factions.INDEPENDENT, -0.2f);
-//        vic.setRelationship(Factions.DIKTAT, -0.1f);
-//        vic.setRelationship(Factions.LIONS_GUARD, -0.1f);
-//        vic.setRelationship(Factions.HEGEMONY, 0.6f);
-//        vic.setRelationship(Factions.REMNANTS, -1f);
+        //vanilla factions
+        ps.setRelationship(Factions.LUDDIC_CHURCH, 0f);
+        ps.setRelationship(Factions.LUDDIC_PATH, -0.2f);
+        ps.setRelationship(Factions.TRITACHYON, -1f);
+        ps.setRelationship(Factions.PERSEAN, -1f);
+        ps.setRelationship(Factions.PIRATES, -1f);
+        ps.setRelationship(Factions.INDEPENDENT, 1f);
+        ps.setRelationship(Factions.DIKTAT, -0.5f);
+        ps.setRelationship(Factions.LIONS_GUARD, -0.5f);
+        ps.setRelationship(Factions.HEGEMONY, 0.2f);
+        ps.setRelationship(Factions.REMNANTS, -0.5f);
+        //modded factions
+        ps.setRelationship("orks", 1.0f);
+        ps.setRelationship("scalartech", 0.4f);
     }
 }
