@@ -20,13 +20,13 @@ import java.awt.*;
 
 public class ps_solacecore extends BaseHullMod {
 
-    public float EMP_DAMAGE = 15f;
+    public float EMP_DAMAGE = 10f;
     public static float
             ENERGY_RANGE_FRIGATE = 100f,
             ENERGY_RANGE_DESTROYER = 150f,
             ENERGY_RANGE_CRUISER = 200f;
     public float ENERGY_FLUX_COST = 30f;
-    public float BALLISTIC_ROF = 20f;
+    public float BALLISTIC_ROF = 40f;
     //Hybrid slot bonus
     public float BONUS_BALLISTIC = 5f;
     public float BONUS_ENERGY = 5f;
@@ -42,6 +42,7 @@ public class ps_solacecore extends BaseHullMod {
     }
 
     public void advanceInCombat(ShipAPI ship, float amount) {
+        super.advanceInCombat(ship, amount);
         CombatEngineAPI engine = Global.getCombatEngine();
         if (engine.isPaused()) {
             return;
@@ -122,7 +123,7 @@ public class ps_solacecore extends BaseHullMod {
         label = tooltip.addPara("Decrease %s by %s", opad, h,
                 "EMP damage taken" ,"" + Math.round(EMP_DAMAGE) + "%");
         label.setHighlight("EMP damage taken","" + Math.round(EMP_DAMAGE) + "%");
-        label.setHighlightColors(h, good);
+        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, good);
 
         //Increase none-beam energy weapon's base range by
         label = tooltip.addPara("Increase %s's %s by %s/%s/%s for frigate, destroyer and cruiser.", opad, h,
@@ -130,31 +131,31 @@ public class ps_solacecore extends BaseHullMod {
                 "" + Math.round(ENERGY_RANGE_DESTROYER) + "u", "" + Math.round(ENERGY_RANGE_CRUISER) + "u");
         label.setHighlight("projectile energy weapon", "base range" ,"" + Math.round(ENERGY_RANGE_FRIGATE) + "u",
                 "" + Math.round(ENERGY_RANGE_DESTROYER) + "u", "" + Math.round(ENERGY_RANGE_CRUISER) + "u");
-        label.setHighlightColors(Misc.MOUNT_ENERGY, h, good, good, good);
+        label.setHighlightColors(Misc.MOUNT_ENERGY, ps_misc.PROJECT_SOLACE_LIGHT, good, good, good);
 
         //Time dilation
         label = tooltip.addPara("Increase %s up to %s, proportion to the ship flux, effect max out at %s flux", opad, h,
                 "time flow", "" + Math.round(TIME_DAL_BONUS) + "%" ,"" + Math.round(MAX_FLUX_LEVEL_TIME_DAL_BONUS* 100f) + "%");
         label.setHighlight("time flow", "" + Math.round(TIME_DAL_BONUS) + "%" ,"" + Math.round(MAX_FLUX_LEVEL_TIME_DAL_BONUS * 100f) + "%");
-        label.setHighlightColors(h, good, h);
+        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, good, ps_misc.PROJECT_SOLACE_LIGHT);
 
         //Increase flux cost for none-beam energy weapons
         label = tooltip.addPara("Increase %s for %s by %s.", opad, h,
                 "flux cost", "energy weapons" ,"" + Math.round(ENERGY_FLUX_COST) + "%");
         label.setHighlight("flux cost", "energy weapons" ,"" + Math.round(ENERGY_FLUX_COST) + "%");
-        label.setHighlightColors(h, Misc.MOUNT_ENERGY, bad);
+        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, Misc.MOUNT_ENERGY, bad);
 
         //Decrease fire rate for basllistic weapon by %s.d
         label = tooltip.addPara("Decrease %s for %s by %s", opad, h,
                 "fire rate", "basllistic weapon" ,"" + Math.round(BALLISTIC_ROF) + "%");
         label.setHighlight("fire rate", "basllistic weapon" ,"" + Math.round(BALLISTIC_ROF) + "%");
-        label.setHighlightColors(h, Misc.MOUNT_BALLISTIC, bad);
+        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, Misc.MOUNT_BALLISTIC, bad);
 
         //Maintain
         label = tooltip.addPara("Increase %s by %s", opad, h,
                 "supplies per month", "" + Math.round(SUPPLIES_REQUIRED) + "%");
         label.setHighlight("supplies per month", "" + Math.round(SUPPLIES_REQUIRED) + "%");
-        label.setHighlightColors(h, bad);
+        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, bad);
 
         //Hybrid
         tooltip.addSectionHeading("Hybrid slots", Alignment.MID, opad);
@@ -163,13 +164,13 @@ public class ps_solacecore extends BaseHullMod {
         label = tooltip.addPara("Increase %s by %s for each %s on hybrid mount", opad, h,
                 "ship hull" ,"" + Math.round(BONUS_BALLISTIC) + "%", "ballistic weapon");
         label.setHighlight("ship hull" ,"" + Math.round(BONUS_BALLISTIC) + "%", "ballistic weapon");
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE, good, Misc.MOUNT_BALLISTIC);
+        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, good, Misc.MOUNT_BALLISTIC);
 
         //Increase flux capacitor by %s for each energy weapon on hybrid mount
         label = tooltip.addPara("Increase %s by %s for each %s on hybrid mount", opad, h,
                 "flux capacitor" ,"" + Math.round(BONUS_ENERGY) + "%", "energy weapon");
         label.setHighlight("flux capacitor" ,"" + Math.round(BONUS_ENERGY) + "%", "energy weapon");
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE, good, Misc.MOUNT_ENERGY);
+        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, good, Misc.MOUNT_ENERGY);
 
         //bonus
         tooltip.addSectionHeading("Current Hybrid slots Bonuses", Alignment.MID, opad);
@@ -234,19 +235,6 @@ public class ps_solacecore extends BaseHullMod {
         if(ship.getHullSize() != HullSize.CAPITAL_SHIP) {
             ship.addListener(new SolaceCoreRangeMod());
         }
-//        TOTAL_BONUS_ENERGY_CAPACITOR = 0;
-//        TOTAL_BONUS_BALLISTIC_HULL = 0;
-//        for (WeaponAPI weapon: ship.getAllWeapons()) {
-//            if (weapon.isDecorative() ) continue;
-//            if(weapon.getSlot().getWeaponType() == WeaponAPI.WeaponType.HYBRID) {
-//                if(weapon.getType() == WeaponAPI.WeaponType.ENERGY) {
-//                    TOTAL_BONUS_ENERGY_CAPACITOR += BONUS_ENERGY;
-//                }
-//                if(weapon.getType() == WeaponAPI.WeaponType.BALLISTIC) {
-//                    TOTAL_BONUS_BALLISTIC_HULL += BONUS_BALLISTIC;
-//                }
-//            }
-//        }
     }
 
     public static class SolaceCoreRangeMod implements WeaponBaseRangeModifier {
@@ -261,7 +249,6 @@ public class ps_solacecore extends BaseHullMod {
         public float getWeaponBaseRangeFlatMod(ShipAPI ship, WeaponAPI weapon) {
 
             if (!weapon.isBeam() && weapon.getType() == WeaponAPI.WeaponType.ENERGY) {
-                float range = weapon.getSpec().getMaxRange();
                 switch (ship.getHullSize()) {
                     case FRIGATE:
                         return ENERGY_RANGE_FRIGATE;

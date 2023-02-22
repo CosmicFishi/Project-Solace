@@ -12,7 +12,8 @@
   "shieldRadius": 146,
   "viewOffset": 0,
   "builtInMods": [
-    "ps_solacecore"
+    "ps_solacecore",
+    "ps_missilesfiend"
   ],
   "weaponSlots": [
     {

@@ -4,28 +4,38 @@ import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.plugins.ShipSystemStatsScript;
+import pigeonpun.projectsolace.com.ps_misc;
+
+import java.awt.*;
 
 public class ps_swiftrushstats extends BaseShipSystemScript {
 
-    public static final float MAX_SPEED_BONUS = 1.5f;
-    public static final float MAX_ACCELERATION_BONUS = 1.5f;
-    public static final float MAX_FLUX_LEVEL = 0.5f;
+    public static  final float SPEED_BONUS = 50f;
+    public static  final float ACCELERATION_BONUS = 50f;
+    public static final float MAX_SPEED_BONUS = 70f;
+    public static final float MAX_ACCELERATION_BONUS = 70f;
+    public static final float MAX_FLUX_LEVEL = 70f;
 
     public void apply(MutableShipStatsAPI stats, String id, State state, float effectLevel) {
+        ShipAPI ship = (ShipAPI) stats.getEntity();
         if (state == ShipSystemStatsScript.State.OUT) {
             stats.getMaxSpeed().unmodify(id); // to slow down ship to its regular top speed while powering drive down
         } else {
-            ShipAPI ship = (ShipAPI) stats.getEntity();
-            float speed_bonus = (ship.getFluxLevel() / MAX_FLUX_LEVEL) * MAX_SPEED_BONUS;
-            if(speed_bonus > MAX_SPEED_BONUS) {
-                speed_bonus = MAX_SPEED_BONUS;
+            if(ship != null) {
+                float speed_bonus = (ship.getFluxLevel() / MAX_FLUX_LEVEL) * MAX_SPEED_BONUS + SPEED_BONUS;
+                if(speed_bonus > MAX_SPEED_BONUS + SPEED_BONUS) {
+                    speed_bonus = MAX_SPEED_BONUS + SPEED_BONUS;
+                }
+                float acceleration_bonus = (ship.getFluxLevel() / MAX_FLUX_LEVEL) * MAX_ACCELERATION_BONUS + ACCELERATION_BONUS;
+                if(acceleration_bonus > MAX_ACCELERATION_BONUS + ACCELERATION_BONUS) {
+                    acceleration_bonus = MAX_ACCELERATION_BONUS + ACCELERATION_BONUS;
+                }
+                stats.getMaxSpeed().modifyPercent(id, speed_bonus);
+                stats.getAcceleration().modifyPercent(id, acceleration_bonus);
+                //fx
+                ship.getEngineController().fadeToOtherColor(this, ps_misc.PROJECT_SOLACE_LIGHT, null, 1f, 1f);
+                ship.getEngineController().extendFlame(this, 0.2f, 0.2f, 0.2f);
             }
-            float acceleration_bonus = (ship.getFluxLevel() / MAX_FLUX_LEVEL) * MAX_ACCELERATION_BONUS;
-            if(acceleration_bonus > MAX_ACCELERATION_BONUS) {
-                acceleration_bonus = MAX_ACCELERATION_BONUS;
-            }
-            stats.getMaxSpeed().modifyPercent(id, speed_bonus);
-            stats.getAcceleration().modifyPercent(id, acceleration_bonus);
         }
     }
     public void unapply(MutableShipStatsAPI stats, String id) {
