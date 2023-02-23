@@ -5,9 +5,11 @@
             "ps_taliabu_attack": 1,
 	},
 	"combatSmall":{
-            "ps_taliabu_attack": 1,
-			"ps_taliabu_defense": 1,
-			"ps_salawesi_attack": 1,
+		"ps_taliabu_attack": 1,
+		"ps_taliabu_defense": 1,
+		"ps_salawesi_attack": 1,
+		"ps_tanimbar_attack": 1.2,
+		"ps_tanimbar_destroy": 1.2,
     },
 	"combatMedium":{
 		"ps_morepork_attack": 1,

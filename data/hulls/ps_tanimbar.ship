@@ -1,0 +1,69 @@
+{
+  "hullName": "Tanimbar",
+  "hullId": "ps_tanimbar",
+  "hullSize": "FRIGATE",
+  "spriteName": "graphics/ships/ps_tanimbar.png",
+  "style": "PROJECTSOLACE",
+  "height": 120,
+  "width": 100,
+  "center": [50, 60],
+  "collisionRadius": 56,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 60.5,
+  "viewOffset": 0,
+  "builtInMods": [
+    "ps_solacecore"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 30,
+      "angle": -0,
+      "locations": [34, -15]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 30,
+      "angle": 0,
+      "locations": [34, 15]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 270,
+      "angle": -0,
+      "locations": [16, -0]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-45, -0],
+      "length": 80,
+      "width": 30,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    }
+  ],
+  "bounds": [
+    -44, 8.5,
+    -3, 41.5,
+    33.5, 33,
+    39.5, 25,
+    27.5, 8.5,
+    27.5, -8.5,
+    39.5, -25,
+    33.5, -33,
+    -3, -41.5,
+    -44, -8.5
+  ]
+}

@@ -22,6 +22,7 @@ ps_camiguin,SHIP,"“One of a kind”, that is the nickname of the Camiguin capi
 ,,,,,,
 #Ship Systems,,,,,,
 ps_swiftrush,SHIP_SYSTEM,"Boost ship maneuverability, depend on the ship flux level that can boost max speed and acceleration up to 120%. Effect max out at 70% flux.",,,,
+ps_hyperframe,SHIP_SYSTEM,"Improve the ship overall performance, increase max speed, acceleration by 100%, ammo regeneration by 100% and flux dissipation by 150%.",,,,
 ,,,,,,
 #Weapons,,,,,,
 ,,,,,,
