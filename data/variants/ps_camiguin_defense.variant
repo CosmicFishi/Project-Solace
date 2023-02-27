@@ -3,25 +3,25 @@
   "hullId": "ps_camiguin",
   "displayName": "Defense",
   "goalVariant": true,
-  "fluxCapacitors": 0,
-  "fluxVents": 44,
+  "fluxCapacitors": 5,
+  "fluxVents": 50,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "targetingunit",
-    "hardenedshieldemitter"
+    "armoredweapons"
   ],
   "weaponGroups": [
     {
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "hellbore",
-        "WS0002": "mjolnir",
-        "WS0003": "hurricane",
-        "WS0004": "squall",
-        "WS0005": "ionbeam",
-        "WS0006": "ionbeam",
+        "WS0001": "squall",
+        "WS0002": "hurricane",
+        "WS0003": "mjolnir",
+        "WS0004": "hephag",
+        "WS0005": "hveldriver",
+        "WS0006": "hveldriver",
         "WS0015": "vulcan",
         "WS0016": "vulcan",
         "WS0017": "pdburst_fighter",

@@ -18,7 +18,7 @@
     {
       "id": "WS0001",
       "size": "LARGE",
-      "type": "BALLISTIC",
+      "type": "MISSILE",
       "mount": "TURRET",
       "arc": 90,
       "angle": 0,
@@ -27,7 +27,7 @@
     {
       "id": "WS0002",
       "size": "LARGE",
-      "type": "HYBRID",
+      "type": "MISSILE",
       "mount": "TURRET",
       "arc": 90,
       "angle": 0,
@@ -36,7 +36,7 @@
     {
       "id": "WS0003",
       "size": "LARGE",
-      "type": "MISSILE",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 60,
       "angle": 0,
@@ -45,7 +45,7 @@
     {
       "id": "WS0004",
       "size": "LARGE",
-      "type": "MISSILE",
+      "type": "BALLISTIC",
       "mount": "TURRET",
       "arc": 60,
       "angle": -0,

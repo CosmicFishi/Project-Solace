@@ -10,37 +10,32 @@ import java.awt.*;
 
 public class ps_swiftrushstats extends BaseShipSystemScript {
 
-    public static  final float SPEED_BONUS = 50f;
-    public static  final float ACCELERATION_BONUS = 50f;
-    public static final float MAX_SPEED_BONUS = 70f;
-    public static final float MAX_ACCELERATION_BONUS = 70f;
-    public static final float MAX_FLUX_LEVEL = 70f;
+    public static  final float SPEED_BONUS = 400f;
 
     public void apply(MutableShipStatsAPI stats, String id, State state, float effectLevel) {
         ShipAPI ship = (ShipAPI) stats.getEntity();
         if (state == ShipSystemStatsScript.State.OUT) {
             stats.getMaxSpeed().unmodify(id); // to slow down ship to its regular top speed while powering drive down
+            stats.getMaxTurnRate().unmodify(id);
         } else {
             if(ship != null) {
-                float speed_bonus = (ship.getFluxLevel() / MAX_FLUX_LEVEL) * MAX_SPEED_BONUS + SPEED_BONUS;
-                if(speed_bonus > MAX_SPEED_BONUS + SPEED_BONUS) {
-                    speed_bonus = MAX_SPEED_BONUS + SPEED_BONUS;
-                }
-                float acceleration_bonus = (ship.getFluxLevel() / MAX_FLUX_LEVEL) * MAX_ACCELERATION_BONUS + ACCELERATION_BONUS;
-                if(acceleration_bonus > MAX_ACCELERATION_BONUS + ACCELERATION_BONUS) {
-                    acceleration_bonus = MAX_ACCELERATION_BONUS + ACCELERATION_BONUS;
-                }
-                stats.getMaxSpeed().modifyPercent(id, speed_bonus);
-                stats.getAcceleration().modifyPercent(id, acceleration_bonus);
+                stats.getMaxSpeed().modifyFlat(id, SPEED_BONUS);
+                stats.getAcceleration().modifyPercent(id, SPEED_BONUS * 10f);
+                stats.getDeceleration().modifyPercent(id, SPEED_BONUS * 10f);
+                stats.getTurnAcceleration().modifyFlat(id, 0);
+                stats.getTurnAcceleration().modifyPercent(id, 0);
                 //fx
-                ship.getEngineController().fadeToOtherColor(this, ps_misc.PROJECT_SOLACE_LIGHT, null, 1f, 1f);
-                ship.getEngineController().extendFlame(this, 0.2f, 0.2f, 0.2f);
+                ship.getEngineController().fadeToOtherColor(this, ps_misc.PROJECT_SOLACE_LIGHT, null, effectLevel, 0.7f);
+                ship.getEngineController().extendFlame(this, 2f * effectLevel, 0.2f, 0.2f);
             }
         }
     }
     public void unapply(MutableShipStatsAPI stats, String id) {
         stats.getMaxSpeed().unmodify(id);
+        stats.getMaxTurnRate().unmodify(id);
+        stats.getTurnAcceleration().unmodify(id);
         stats.getAcceleration().unmodify(id);
+        stats.getDeceleration().unmodify(id);
     }
 
     public StatusData getStatusData(int index, State state, float effectLevel) {

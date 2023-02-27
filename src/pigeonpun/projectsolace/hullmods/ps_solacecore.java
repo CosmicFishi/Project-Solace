@@ -20,7 +20,6 @@ import java.awt.*;
 
 public class ps_solacecore extends BaseHullMod {
 
-    public float EMP_DAMAGE = 10f;
     public static float
             ENERGY_RANGE_FRIGATE = 100f,
             ENERGY_RANGE_DESTROYER = 150f,
@@ -37,6 +36,7 @@ public class ps_solacecore extends BaseHullMod {
     public float SUPPLIES_REQUIRED = 25f;
     private final IntervalUtil spawnNebulaInterval = new IntervalUtil(0.8f, 0.8f);
 
+    //todo: Split Hyrbid slot into another hullmod
     public String getDescriptionParam(int index, HullSize hullSize) {
         return null;
     }
@@ -119,12 +119,6 @@ public class ps_solacecore extends BaseHullMod {
         //bonus
         tooltip.addSectionHeading("Effects", Alignment.MID, opad);
 
-        //Decrease EMP damage taken by
-        label = tooltip.addPara("Decrease %s by %s", opad, h,
-                "EMP damage taken" ,"" + Math.round(EMP_DAMAGE) + "%");
-        label.setHighlight("EMP damage taken","" + Math.round(EMP_DAMAGE) + "%");
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, good);
-
         //Increase none-beam energy weapon's base range by
         label = tooltip.addPara("Increase %s's %s by %s/%s/%s for frigate, destroyer and cruiser.", opad, h,
                 "projectile energy weapon", "base range" ,"" + Math.round(ENERGY_RANGE_FRIGATE) + "u",
@@ -205,7 +199,6 @@ public class ps_solacecore extends BaseHullMod {
     }
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
-        stats.getEmpDamageTakenMult().modifyPercent(id, EMP_DAMAGE);
         stats.getBallisticRoFMult().modifyPercent(id, -BALLISTIC_ROF);
         stats.getEnergyWeaponFluxCostMod().modifyPercent(id, ENERGY_FLUX_COST);
         stats.getSuppliesPerMonth().modifyPercent(id, SUPPLIES_REQUIRED);

@@ -111,8 +111,8 @@ public class ps_chilka {
                 "terran-eccentric",
                 80f,
                 180f,
-                7500f,
-                140f);
+                8000f,
+                400f);
         //Methuselah.setCustomDescriptionId("vic_phlegethon"); //reference descriptions.csv
 
         system.addRingBand(Methuselah, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 500, 200f);
@@ -170,7 +170,7 @@ public class ps_chilka {
                 10f,
                 320f,
                 5000f,
-                200f);
+                300f);
         //Tjikko.setCustomDescriptionId("vic_phlegethon"); //reference descriptions.csv
         system.addRingBand(Tjikko, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 500, 200f);
         system.addRingBand(Tjikko, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 800, 200f);
@@ -230,7 +230,7 @@ public class ps_chilka {
                 220f,
                 300f,
                 3800f,
-                200f);
+                120f);
         //Tjikko.setCustomDescriptionId("vic_phlegethon"); //reference descriptions.csv
 
         MarketAPI Stara_Maslina_market = ps_gen.addMarketplace(
