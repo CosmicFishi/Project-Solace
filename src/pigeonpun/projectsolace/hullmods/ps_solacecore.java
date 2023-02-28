@@ -11,6 +11,7 @@ import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.util.MagicIncompatibleHullmods;
 import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector;
 import org.lwjgl.util.vector.Vector2f;
@@ -21,19 +22,19 @@ import java.awt.*;
 public class ps_solacecore extends BaseHullMod {
 
     public static float
-            ENERGY_RANGE_FRIGATE = 100f,
-            ENERGY_RANGE_DESTROYER = 150f,
-            ENERGY_RANGE_CRUISER = 200f;
-    public float ENERGY_FLUX_COST = 30f;
-    public float BALLISTIC_ROF = 40f;
+            ENERGY_RANGE_FRIGATE_DESTROYER = 100f,
+            ENERGY_RANGE_CRUISER_CAPITAL = 200f;
+    public float ENERGY_FLUX_COST = 20f;
+//    public float BALLISTIC_ROF = 40f;
     //Hybrid slot bonus
-    public float BONUS_BALLISTIC = 5f;
-    public float BONUS_ENERGY = 5f;
-    public float TOTAL_BONUS_ENERGY_CAPACITOR = 0f;
-    public float TOTAL_BONUS_BALLISTIC_HULL = 0f;
-    public float TIME_DAL_BONUS = 20f;
+//    public float BONUS_BALLISTIC = 5f;
+//    public float BONUS_ENERGY = 5f;
+//    public float TOTAL_BONUS_ENERGY_CAPACITOR = 0f;
+//    public float TOTAL_BONUS_BALLISTIC_HULL = 0f;
+    public float TIME_DAL_BONUS = 10f;
     public float MAX_FLUX_LEVEL_TIME_DAL_BONUS = 0.8f;
-    public float SUPPLIES_REQUIRED = 25f;
+//    public float SUPPLIES_REQUIRED = 25f;
+    public static final float MAX_RANGE_WEAPON = 750f;
     private final IntervalUtil spawnNebulaInterval = new IntervalUtil(0.8f, 0.8f);
 
     //todo: Split Hyrbid slot into another hullmod
@@ -115,17 +116,18 @@ public class ps_solacecore extends BaseHullMod {
                 "Solace");
         label.setHighlight("Solace");
         label.setHighlightColors(ps_misc.PROJECT_SOLACE);
+        label = tooltip.addPara("However, due to the enormous amount of damage which occurred from an incident involving an experiment with the core, the Solace Association deemed that any act or movement to modify or to tamper with the core will be considered unlawful and therefore, prohibited.", opad);
 
         //bonus
         tooltip.addSectionHeading("Effects", Alignment.MID, opad);
 
         //Increase none-beam energy weapon's base range by
-        label = tooltip.addPara("Increase %s's %s by %s/%s/%s for frigate, destroyer and cruiser.", opad, h,
-                "projectile energy weapon", "base range" ,"" + Math.round(ENERGY_RANGE_FRIGATE) + "u",
-                "" + Math.round(ENERGY_RANGE_DESTROYER) + "u", "" + Math.round(ENERGY_RANGE_CRUISER) + "u");
-        label.setHighlight("projectile energy weapon", "base range" ,"" + Math.round(ENERGY_RANGE_FRIGATE) + "u",
-                "" + Math.round(ENERGY_RANGE_DESTROYER) + "u", "" + Math.round(ENERGY_RANGE_CRUISER) + "u");
-        label.setHighlightColors(Misc.MOUNT_ENERGY, ps_misc.PROJECT_SOLACE_LIGHT, good, good, good);
+        label = tooltip.addPara("Increase %s's %s by %s/%s for frigate and destroyer/cruiser and capital.", opad, h,
+                "projectile energy weapon", "base range" ,"" + Math.round(ENERGY_RANGE_FRIGATE_DESTROYER) + "u",
+                "" + Math.round(ENERGY_RANGE_CRUISER_CAPITAL) + "u");
+        label.setHighlight("projectile energy weapon", "base range" ,"" + Math.round(ENERGY_RANGE_FRIGATE_DESTROYER) + "u",
+                "" + Math.round(ENERGY_RANGE_CRUISER_CAPITAL) + "u");
+        label.setHighlightColors(Misc.MOUNT_ENERGY, ps_misc.PROJECT_SOLACE_LIGHT, good, good);
 
         //Time dilation
         label = tooltip.addPara("Increase %s up to %s, proportion to the ship flux, effect max out at %s flux", opad, h,
@@ -139,94 +141,101 @@ public class ps_solacecore extends BaseHullMod {
         label.setHighlight("flux cost", "energy weapons" ,"" + Math.round(ENERGY_FLUX_COST) + "%");
         label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, Misc.MOUNT_ENERGY, bad);
 
-        //Decrease fire rate for basllistic weapon by %s.d
-        label = tooltip.addPara("Decrease %s for %s by %s", opad, h,
-                "fire rate", "basllistic weapon" ,"" + Math.round(BALLISTIC_ROF) + "%");
-        label.setHighlight("fire rate", "basllistic weapon" ,"" + Math.round(BALLISTIC_ROF) + "%");
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, Misc.MOUNT_BALLISTIC, bad);
+        //Decrease fire rate for basllistic weapon by %s
+//        label = tooltip.addPara("Decrease %s for %s by %s", opad, h,
+//                "fire rate", "basllistic weapon" ,"" + Math.round(BALLISTIC_ROF) + "%");
+//        label.setHighlight("fire rate", "basllistic weapon" ,"" + Math.round(BALLISTIC_ROF) + "%");
+//        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, Misc.MOUNT_BALLISTIC, bad);
 
         //Maintain
-        label = tooltip.addPara("Increase %s by %s", opad, h,
-                "supplies per month", "" + Math.round(SUPPLIES_REQUIRED) + "%");
-        label.setHighlight("supplies per month", "" + Math.round(SUPPLIES_REQUIRED) + "%");
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, bad);
+//        label = tooltip.addPara("Increase %s by %s", opad, h,
+//                "supplies per month", "" + Math.round(SUPPLIES_REQUIRED) + "%");
+//        label.setHighlight("supplies per month", "" + Math.round(SUPPLIES_REQUIRED) + "%");
+//        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, bad);
 
         //Hybrid
-        tooltip.addSectionHeading("Hybrid slots", Alignment.MID, opad);
+//        tooltip.addSectionHeading("Hybrid slots", Alignment.MID, opad);
 
         //Increase shield efficiency by %s for each ballistic weapon on hybrid mount
-        label = tooltip.addPara("Increase %s by %s for each %s on hybrid mount", opad, h,
-                "ship hull" ,"" + Math.round(BONUS_BALLISTIC) + "%", "ballistic weapon");
-        label.setHighlight("ship hull" ,"" + Math.round(BONUS_BALLISTIC) + "%", "ballistic weapon");
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, good, Misc.MOUNT_BALLISTIC);
-
-        //Increase flux capacitor by %s for each energy weapon on hybrid mount
-        label = tooltip.addPara("Increase %s by %s for each %s on hybrid mount", opad, h,
-                "flux capacitor" ,"" + Math.round(BONUS_ENERGY) + "%", "energy weapon");
-        label.setHighlight("flux capacitor" ,"" + Math.round(BONUS_ENERGY) + "%", "energy weapon");
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, good, Misc.MOUNT_ENERGY);
+//        label = tooltip.addPara("Increase %s by %s for each %s on hybrid mount", opad, h,
+//                "ship hull" ,"" + Math.round(BONUS_BALLISTIC) + "%", "ballistic weapon");
+//        label.setHighlight("ship hull" ,"" + Math.round(BONUS_BALLISTIC) + "%", "ballistic weapon");
+//        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, good, Misc.MOUNT_BALLISTIC);
+//
+//        //Increase flux capacitor by %s for each energy weapon on hybrid mount
+//        label = tooltip.addPara("Increase %s by %s for each %s on hybrid mount", opad, h,
+//                "flux capacitor" ,"" + Math.round(BONUS_ENERGY) + "%", "energy weapon");
+//        label.setHighlight("flux capacitor" ,"" + Math.round(BONUS_ENERGY) + "%", "energy weapon");
+//        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, good, Misc.MOUNT_ENERGY);
 
         //bonus
-        tooltip.addSectionHeading("Current Hybrid slots Bonuses", Alignment.MID, opad);
+//        tooltip.addSectionHeading("Current Hybrid slots Bonuses", Alignment.MID, opad);
+//
+//        float total_bonus_capacitor = 0;
+//        float total_bonus_hull = 0;
+//        for (WeaponAPI weapon: ship.getAllWeapons()) {
+//            if (weapon.isDecorative() ) continue;
+//            if(weapon.getSlot().getWeaponType() == WeaponAPI.WeaponType.HYBRID) {
+//                if(weapon.getType() == WeaponAPI.WeaponType.ENERGY) {
+//                    total_bonus_capacitor += BONUS_ENERGY;
+//                }
+//                if(weapon.getType() == WeaponAPI.WeaponType.BALLISTIC) {
+//                    total_bonus_hull += BONUS_BALLISTIC;
+//                }
+//            }
+//        }
 
-        float total_bonus_capacitor = 0;
-        float total_bonus_hull = 0;
-        for (WeaponAPI weapon: ship.getAllWeapons()) {
-            if (weapon.isDecorative() ) continue;
-            if(weapon.getSlot().getWeaponType() == WeaponAPI.WeaponType.HYBRID) {
-                if(weapon.getType() == WeaponAPI.WeaponType.ENERGY) {
-                    total_bonus_capacitor += BONUS_ENERGY;
-                }
-                if(weapon.getType() == WeaponAPI.WeaponType.BALLISTIC) {
-                    total_bonus_hull += BONUS_BALLISTIC;
-                }
-            }
-        }
-
-        label = tooltip.addPara("Ship hull: %s", opad, h,
-                "" + Math.round(total_bonus_hull) + "%");
-        label.setHighlight("" + Math.round(total_bonus_hull) + "%");
-        label.setHighlightColors(h);
-
-        label = tooltip.addPara("Flux Capacitor: %s", opad, h,
-                "" + Math.round(total_bonus_capacitor) + "%");
-        label.setHighlight("" + Math.round(total_bonus_capacitor) + "%");
-        label.setHighlightColors(h);
-
+//        label = tooltip.addPara("Ship hull: %s", opad, h,
+//                "" + Math.round(total_bonus_hull) + "%");
+//        label.setHighlight("" + Math.round(total_bonus_hull) + "%");
+//        label.setHighlightColors(h);
+//
+//        label = tooltip.addPara("Flux Capacitor: %s", opad, h,
+//                "" + Math.round(total_bonus_capacitor) + "%");
+//        label.setHighlight("" + Math.round(total_bonus_capacitor) + "%");
+//        label.setHighlightColors(h);
+//
         tooltip.addSectionHeading("Interactions with other modifiers", Alignment.MID, opad);
         tooltip.addPara("Since the base range is increased, this modifier"
                 + "is affected by percentage modifiers from other hullmods and skills.", opad);
+
+        //incompatible
+        tooltip.addSectionHeading("Incompatible hullmods", Alignment.MID, opad);
+        label = tooltip.addPara("- %s", opad, h,
+                "Safety Overrides");
+        label.setHighlight("Safety Overrides");
+        label.setHighlightColors(bad);
     }
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
-        stats.getBallisticRoFMult().modifyPercent(id, -BALLISTIC_ROF);
+//        stats.getBallisticRoFMult().modifyPercent(id, -BALLISTIC_ROF);
         stats.getEnergyWeaponFluxCostMod().modifyPercent(id, ENERGY_FLUX_COST);
-        stats.getSuppliesPerMonth().modifyPercent(id, SUPPLIES_REQUIRED);
+//        stats.getSuppliesPerMonth().modifyPercent(id, SUPPLIES_REQUIRED);
 
-        TOTAL_BONUS_ENERGY_CAPACITOR = 0;
-        TOTAL_BONUS_BALLISTIC_HULL = 0;
-        for (String weaponSlot : stats.getVariant().getFittedWeaponSlots()) {
-            WeaponSpecAPI weapon = stats.getVariant().getWeaponSpec(weaponSlot);
-            if(stats.getVariant().getSlot(weaponSlot).getWeaponType() == WeaponAPI.WeaponType.HYBRID) {
-                if(weapon.getType() == WeaponAPI.WeaponType.ENERGY) {
-                    TOTAL_BONUS_ENERGY_CAPACITOR += BONUS_ENERGY;
-                }
-                if(weapon.getType() == WeaponAPI.WeaponType.BALLISTIC) {
-                    TOTAL_BONUS_BALLISTIC_HULL += BONUS_BALLISTIC;
-                }
-            }
-        }
-        stats.getHullBonus().modifyPercent(id, TOTAL_BONUS_BALLISTIC_HULL);
-        stats.getFluxCapacity().modifyPercent(id, TOTAL_BONUS_ENERGY_CAPACITOR);
+//        TOTAL_BONUS_ENERGY_CAPACITOR = 0;
+//        TOTAL_BONUS_BALLISTIC_HULL = 0;
+//        for (String weaponSlot : stats.getVariant().getFittedWeaponSlots()) {
+//            WeaponSpecAPI weapon = stats.getVariant().getWeaponSpec(weaponSlot);
+//            if(stats.getVariant().getSlot(weaponSlot).getWeaponType() == WeaponAPI.WeaponType.HYBRID) {
+//                if(weapon.getType() == WeaponAPI.WeaponType.ENERGY) {
+//                    TOTAL_BONUS_ENERGY_CAPACITOR += BONUS_ENERGY;
+//                }
+//                if(weapon.getType() == WeaponAPI.WeaponType.BALLISTIC) {
+//                    TOTAL_BONUS_BALLISTIC_HULL += BONUS_BALLISTIC;
+//                }
+//            }
+//        }
+//        stats.getHullBonus().modifyPercent(id, TOTAL_BONUS_BALLISTIC_HULL);
+//        stats.getFluxCapacity().modifyPercent(id, TOTAL_BONUS_ENERGY_CAPACITOR);
 
     }
 
     @Override
     public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
         MutableShipStatsAPI stats = ship.getMutableStats();
-
-        if(ship.getHullSize() != HullSize.CAPITAL_SHIP) {
-            ship.addListener(new SolaceCoreRangeMod());
+        ship.addListener(new SolaceCoreRangeMod());
+        if (ship.getVariant().getHullMods().contains("safetyoverrides")) {
+            MagicIncompatibleHullmods.removeHullmodWithWarning(ship.getVariant(),"safetyoverrides","ps_solacecore");
         }
     }
 
@@ -240,15 +249,15 @@ public class ps_solacecore extends BaseHullMod {
             return 1f;
         }
         public float getWeaponBaseRangeFlatMod(ShipAPI ship, WeaponAPI weapon) {
-
+            if(weapon.getSpec().getMaxRange() < MAX_RANGE_WEAPON) return 0f;
             if (!weapon.isBeam() && weapon.getType() == WeaponAPI.WeaponType.ENERGY) {
                 switch (ship.getHullSize()) {
-                    case FRIGATE:
-                        return ENERGY_RANGE_FRIGATE;
                     case DESTROYER:
-                        return ENERGY_RANGE_DESTROYER;
+                    case FRIGATE:
+                        return ENERGY_RANGE_FRIGATE_DESTROYER;
                     case CRUISER:
-                        return ENERGY_RANGE_CRUISER;
+                    case CAPITAL_SHIP:
+                        return ENERGY_RANGE_CRUISER_CAPITAL;
                     case DEFAULT:
                         return 0;
                 }
