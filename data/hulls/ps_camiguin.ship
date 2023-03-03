@@ -14,6 +14,9 @@
   "builtInMods": [
     "ps_solacecore"
   ],
+  "builtInWeapons": {
+    "ps_crystal": "ps_core_crystal"
+  },
   "weaponSlots": [
     {
       "id": "WS0001",
@@ -74,8 +77,8 @@
       "size": "MEDIUM",
       "type": "ENERGY",
       "mount": "TURRET",
-      "arc": 110,
-      "angle": 130,
+      "arc": 130,
+      "angle": 80.5,
       "locations": [-36, 155]
     },
     {
@@ -83,8 +86,8 @@
       "size": "MEDIUM",
       "type": "ENERGY",
       "mount": "TURRET",
-      "arc": 110,
-      "angle": -130,
+      "arc": 130,
+      "angle": -80.5,
       "locations": [-36, -155]
     },
     {
@@ -194,6 +197,15 @@
       "arc": 30,
       "angle": 45,
       "locations": [24, 134]
+    },
+    {
+      "id": "ps_crystal",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-58.5, -0]
     }
   ],
   "engineSlots": [
