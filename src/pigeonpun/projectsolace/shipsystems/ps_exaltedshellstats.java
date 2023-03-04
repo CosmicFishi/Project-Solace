@@ -21,7 +21,7 @@ public class ps_exaltedshellstats extends BaseShipSystemScript {
     public static final float ROF_BASE_BONUS = 1f;
     public static final float ROF_FLUX_BONUS = 1f;
     public static final float FLUX_LEVEL_MAX_BONUS = 0.8f;
-    private static final float FLUX_CONSUME = 0.4f;
+    private static final float FLUX_CONSUME = 0.2f;
     public float ACTUAL_SHIELD_EFF_FLUX_BONUS = 0;
     public float ACTUAL_ROF_FLUX_BONUS = 0;
     private float SHIP_FLUX_LEVEL_BEFORE_ACTIVATED = 0;
