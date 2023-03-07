@@ -1,0 +1,151 @@
+{
+  "hullName": "Papuan",
+  "hullId": "ps_papuan",
+  "hullSize": "DESTROYER",
+  "spriteName": "graphics/ships/ps_papuan.png",
+  "style": "PROJECTSOLACE",
+  "height": 180,
+  "width": 200,
+  "center": [100, 90],
+  "collisionRadius": 100,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 110.5,
+  "viewOffset": 0,
+  "builtInMods": [
+    "ps_solacecore"
+  ],
+  "builtInWeapons": {
+    "ps_cystal": "ps_core_crystal"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 0,
+      "locations": [64, -25]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 30,
+      "angle": -0,
+      "locations": [64, 25]
+    },
+    {
+      "id": "ps_cystal",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-6, -0]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 240,
+      "angle": -56.5,
+      "locations": [29, -29]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 220,
+      "angle": 180,
+      "locations": [-52, -0]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 240,
+      "angle": 56.5,
+      "locations": [29, 29]
+    },
+    {
+      "id": "LB 1",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -19.5, 51.5,
+        -34, 68,
+        -37, 45
+      ]
+    },
+    {
+      "id": "LB 2",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -19.5, -51.5,
+        -38, -45.5,
+        -31.5, -68
+      ]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-70, -12],
+      "length": 80,
+      "width": 20,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-70, 12],
+      "length": 80,
+      "width": 20,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-56, -29],
+      "length": 50,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-56, 29],
+      "length": 50,
+      "width": 10,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    }
+  ],
+  "bounds": [
+    -18.5, 85,
+    29, 93.5,
+    63, 47.5,
+    57, -0,
+    63, -47.5,
+    37.5, -88.5,
+    -18, -84,
+    -74.5, -0,
+    -41.5, 39
+  ]
+}

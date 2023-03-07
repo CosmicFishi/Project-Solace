@@ -10,9 +10,9 @@
 		"fighterChipIconColor":[250,200,240,255],
 		"weaponDisabledExplosionColor":[230,40,240,255],
 		"shieldRingColor":[255,255,255,255],
-		"shieldInnerColor":[230,40,240,255],
-		"fluxVentCoreColor":[255,255,255,255],
-		"fluxVentFringeColor":[230,40,240,255],
+		"shieldInnerColor":[255,100,200,155],
+		"fluxVentCoreColor":[230,100,240,255],
+		"fluxVentFringeColor":[255,200,255,255],
 		"fluxVentTextureSheet":"graphics/fx/nebula_colorless.png", # optional, this is the default value
 		"fluxVentRadialTexture":"graphics/fx/radial_fx.png", # optional, this is the default value
 		"engineLoopSet":"engine_loop", 					# id of entry in sounds.json

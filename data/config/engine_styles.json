@@ -1,7 +1,7 @@
 {
 	
 	"PS_ENGINE":{
-		"engineColor":[230,40,240,155],
+		"engineColor":[230,40,240,255],
 		"contrailWidthAddedFractionAtEnd":-3,
 		"contrailParticleSizeMult":1,
 		"contrailMinSeg":5,
@@ -10,7 +10,7 @@
 		"contrailWidthMult":1,
 		"contrailMaxSpeedMult":0,
 		"contrailAngularVelocityMult":0,
-		"contrailColor":[130,40,240,255],
+		"contrailColor":[130,40,240,155],
 		"contrailCampaignColor":[230,40,240,255],
 		#"glowAlternateColor":[255,2,20,235],
 		"type":"SMOKE"

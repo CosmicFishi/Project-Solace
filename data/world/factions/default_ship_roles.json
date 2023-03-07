@@ -48,10 +48,12 @@
 
 	# carriers
 	"carrierSmall":{
-
+		"ps_papuan_attack": 2,
+		"ps_papuan_defend": 1,
 	},
-	"carrierMedium":{	
-
+	"carrierMedium":{
+		"ps_papuan_attack": 2,
+		"ps_papuan_defend": 1,
 	},
 	"carrierLarge":{
 
