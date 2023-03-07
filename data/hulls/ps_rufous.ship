@@ -65,9 +65,9 @@
     },
     {
       "id": "WS0006",
-      "size": "MEDIUM",
+      "size": "SMALL",
       "type": "MISSILE",
-      "mount": "TURRET",
+      "mount": "HARDPOINT",
       "arc": 0,
       "angle": -0,
       "locations": [42, -80]

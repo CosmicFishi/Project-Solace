@@ -1,18 +1,18 @@
 package pigeonpun.projectsolace.shipsystems;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.CombatEngineAPI;
-import com.fs.starfarer.api.combat.MutableShipStatsAPI;
-import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.IntervalUtil;
 import org.lazywizard.lazylib.MathUtils;
+import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.entities.SimpleEntity;
 import org.lwjgl.util.vector.Vector2f;
 import pigeonpun.projectsolace.com.ps_misc;
 
 import java.awt.*;
+import java.util.Objects;
 
 public class ps_exaltedshellstats extends BaseShipSystemScript {
 
@@ -26,6 +26,7 @@ public class ps_exaltedshellstats extends BaseShipSystemScript {
     public float ACTUAL_ROF_FLUX_BONUS = 0;
     private float SHIP_FLUX_LEVEL_BEFORE_ACTIVATED = 0;
     private boolean activateOnce = false;
+    private IntervalUtil spawnEMPInterval = new IntervalUtil(0.2f, 0.5f);
 
     public void apply(MutableShipStatsAPI stats, String id, State state, float effectLevel) {
         ShipAPI ship = (ShipAPI) stats.getEntity();
@@ -52,6 +53,33 @@ public class ps_exaltedshellstats extends BaseShipSystemScript {
             stats.getBallisticRoFMult().modifyMult(id, ACTUAL_ROF_FLUX_BONUS);
 
             //fx
+            Vector2f crystalLocation = null;
+            for (WeaponAPI weapon : ship.getAllWeapons()) {
+                if (weapon.isDecorative() && Objects.equals(weapon.getId(), ps_misc.SOLACE_CORE_DECORATIVE_MOUNT_ID)) {
+                    crystalLocation = weapon.getLocation();
+                }
+            }
+            spawnEMPInterval.advance(Global.getCombatEngine().getElapsedInLastFrame());
+            if(crystalLocation != null && spawnEMPInterval.intervalElapsed()) {
+                float startArcArea = (float) (ship.getCollisionRadius() + Math.random() * MathUtils.getRandomNumberInRange(10f, 60f));
+                float angle = (float) (Math.random() * 360);
+                Vector2f endArcPoint = MathUtils.getPointOnCircumference(crystalLocation, startArcArea * 0.5f , angle);
+                engine.spawnEmpArc(
+                        ship,
+                        crystalLocation,
+                        new SimpleEntity(crystalLocation),
+                        new SimpleEntity(endArcPoint),
+                        DamageType.ENERGY,
+                        0,
+                        0,
+                        10000,
+                        null,
+                        MathUtils.getRandomNumberInRange(1f, 2f),
+                        new Color(0,255,200,155),
+                        new Color(255, 255,255, 255)
+                );
+            }
+
             ship.getEngineController().fadeToOtherColor(this, ps_misc.PROJECT_SOLACE_LIGHT, new Color(0,0,0,0), 1f, 0.67f);
             ship.getShield().setRingColor(ps_misc.PROJECT_SOLACE_LIGHT);
         }

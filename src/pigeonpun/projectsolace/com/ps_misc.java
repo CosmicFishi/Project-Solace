@@ -20,4 +20,5 @@ public class ps_misc {
         PROJECT_SOLACE_NEBULA_COLORs.add(PROJECT_SOLACE_NEBULA_COLOR_2);
         PROJECT_SOLACE_NEBULA_COLORs.add(PROJECT_SOLACE_NEBULA_COLOR_3);
     }
+    public static final String SOLACE_CORE_DECORATIVE_MOUNT_ID = "ps_core_crystal";
 }

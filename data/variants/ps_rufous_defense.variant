@@ -4,7 +4,7 @@
   "displayName": "Defense",
   "goalVariant": true,
   "fluxCapacitors": 0,
-  "fluxVents": 26,
+  "fluxVents": 22,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
@@ -16,11 +16,13 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "hil",
+        "WS0001": "autopulse",
         "WS0002": "pilum",
         "WS0003": "pilum",
-        "WS0004": "gravitonbeam",
-        "WS0005": "gravitonbeam"
+        "WS0004": "ionpulser",
+        "WS0005": "ionpulser",
+        "WS0006": "sabot",
+        "WS0007": "sabot"
       }
     },
     {
@@ -36,10 +38,7 @@
     {
       "autofire": false,
       "mode": "LINKED",
-      "weapons": {
-        "WS0006": "harpoon",
-        "WS0007": "harpoon"
-      }
+      "weapons": {}
     },
     {
       "autofire": true,
