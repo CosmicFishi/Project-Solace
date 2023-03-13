@@ -3,7 +3,7 @@
   "hullId": "ps_nadhmor",
   "displayName": "Attack",
   "goalVariant": true,
-  "fluxCapacitors": 17,
+  "fluxCapacitors": 19,
   "fluxVents": 50,
   "quality": 1,
   "permaMods": [],
@@ -17,6 +17,7 @@
       "mode": "LINKED",
       "weapons": {
         "WS0001": "autopulse",
+        "WS0003": "guardian",
         "WS0004": "heavymauler",
         "WS0005": "hveldriver",
         "WS0006": "hveldriver",
@@ -48,9 +49,7 @@
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0003": "devastator"
-      }
+      "weapons": {}
     },
     {
       "autofire": true,

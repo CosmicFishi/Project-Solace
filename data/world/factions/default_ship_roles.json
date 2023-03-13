@@ -9,7 +9,7 @@
 		"ps_taliabu_defense": 2,
 		"ps_salawesi_attack": 5,
 		"ps_tanimbar_attack": 3,
-		"ps_tanimbar_destroy": 4,
+		"ps_tanimbar_destroy": 6,
     },
 	"combatMedium":{
 		"ps_morepork_attack": 1,
@@ -20,16 +20,16 @@
 	},
 	"combatLarge":{
 		"ps_barking_attack": 6,
-		"ps_barking_defense": 2,
+		"ps_barking_defense": 4,
 		"ps_rufous_destroy": 5,
 		"ps_rufous_attack": 3,
 		"ps_rufous_defense": 1,
 	},
 	"combatCapital":{
 		"ps_nadhmor_attack": 8,
-		"ps_nadhmor_defend": 2,
-		"ps_camiguin_attack": 0,
-		"ps_camiguin_defense": 0,
+		"ps_nadhmor_defend": 1,
+		"ps_camiguin_attack": 5,
+		"ps_camiguin_defense": 3,
 	},
 	
 	
