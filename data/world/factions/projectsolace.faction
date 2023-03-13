@@ -66,11 +66,8 @@
 
     # listing ships here will make the faction mostly use them even if other hulls become available
     "priorityShips":{
-        "tags":[],
+        "tags":["ps_ship_bp"],
         "hulls":[
-            ps_barking,
-            ps_rufous,
-            ps_camiguin
         ],
     },
 
