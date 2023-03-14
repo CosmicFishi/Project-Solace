@@ -1,0 +1,34 @@
+{
+	"id":"ps_tragopo",  # this id must match what's in the spreadsheet
+	"specClass":"projectile",
+	"type":"ENERGY",
+	"size":"LARGE",
+	"displayArcRadius":450,
+	"turretSprite":"graphics/weapons/ps_tragopo_turret_base.png",
+	"turretGunSprite":"graphics/weapons/ps_tragopo_turret_recoil.png",
+	"turretGlowSprite":"graphics/weapons/ps_tragopo_turret_glow.png",
+	"hardpointSprite":"graphics/weapons/ps_tragopo_hardpoint_base.png",
+	"hardpointGunSprite":"graphics/weapons/ps_tragopo_hardpoint_recoil.png",
+	"hardpointGlowSprite":"graphics/weapons/ps_tragopo_hardpoint_glow.png",
+	"glowColor":[100,200,255,255],
+	"turretOffsets":[0, 0],
+	"turretAngleOffsets":[0],
+	"hardpointOffsets":[0, 0],
+	"hardpointAngleOffsets":[0],
+	"visualRecoil": 6,
+    "renderHints": [
+       RENDER_BARREL_BELOW
+    ],
+	"barrelMode":"ALTERNATING", # or LINKED.  whether barrels fire at the same time or alternate.
+	"animationType":"GLOW_AND_FLASH",
+	"muzzleFlashSpec":{"length":33.0,   # only used if animationType = MUZZLE_FLASH
+					   "spread":15.0,
+					   "particleSizeMin":10.0,
+					   "particleSizeRange":12.0,
+					   "particleDuration":0.12,
+					   "particleCount":17,
+					   "particleColor":[100,200,255,255]},	
+	"autocharge":true,  # whether the weapon will continue charging and fire if the LMB is tapped instead of held
+	"projectileSpecId":"ps_tragopo_shot",  # projectile that will be fired
+	"fireSoundTwo":"ps_tragopo_fire",
+}

@@ -1,0 +1,6 @@
+trail,projectile,sprite,minLength,fadeIn,duration,fadeOut,sizeIn,sizeOut,colorIn,colorOut,opacity,textLength,textScroll,distance,dispersion,drift,fadeOnFadeOut,angleAdjustment,additive,velocityIn,velocityOut,randomVelocity,angle,rotationIn,rotationOut,randomRotation,renderBelowExplosions
+ps_trapogo_trail1,ps_tragopo_shot,base_trail_smooth,10,0.1,0.1,0.3,8,4,"[219,74,134]","[175,38,118]",0.8,300,500,0,30,1,TRUE,FALSE,TRUE,80,40,0.15,0,60,60,TRUE,FALSE
+ps_trapogo_trail2,ps_tragopo_shot,base_trail_zap,10,0.1,0.15,0.4,20,16,"[255,190,90]","[255,255,200]",0.6,300,500,0,0,1,TRUE,FALSE,TRUE,80,40,0.15,0,60,60,TRUE,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,

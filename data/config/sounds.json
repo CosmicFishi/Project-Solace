@@ -1,5 +1,10 @@
 {
-
+  "ps_tragopo_fire":[
+    {"file": "sounds/weapons/ps_tragopo_fire.ogg", "pitch": 0.9, "volume": 0.95},
+    {"file": "sounds/weapons/ps_tragopo_fire.ogg", "pitch": 0.95, "volume": 0.95},
+    {"file": "sounds/weapons/ps_tragopo_fire.ogg", "pitch": 1, "volume": 0.95},
+    {"file": "sounds/weapons/ps_tragopo_fire.ogg", "pitch": 1.1, "volume": 0.95}
+  ]
 }
 
 
