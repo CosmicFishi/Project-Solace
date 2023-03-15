@@ -70,7 +70,8 @@ public class ps_chilka {
                                 Conditions.HABITABLE,
                                 Conditions.MILD_CLIMATE,
                                 Conditions.LARGE_REFUGEE_POPULATION,
-                                Conditions.LOW_GRAVITY
+                                Conditions.LOW_GRAVITY,
+                                Conditions.REGIONAL_CAPITAL
                         )
                 ),
 
@@ -129,8 +130,10 @@ public class ps_chilka {
                                 Conditions.POPULATION_5,
                                 Conditions.VOLATILES_PLENTIFUL,
                                 Conditions.RARE_ORE_RICH,
-                                Conditions.ORGANICS_PLENTIFUL,
-                                Conditions.HABITABLE
+                                Conditions.ORGANICS_ABUNDANT,
+                                Conditions.HABITABLE,
+                                Conditions.RUINS_SCATTERED,
+                                Conditions.HOT
                         )
                 ),
 
@@ -189,7 +192,8 @@ public class ps_chilka {
                                 Conditions.ORE_ULTRARICH,
                                 Conditions.RARE_ORE_SPARSE,
                                 Conditions.NO_ATMOSPHERE,
-                                Conditions.HOT
+                                Conditions.VERY_HOT,
+                                Conditions.TECTONIC_ACTIVITY
                         )
                 ),
 
