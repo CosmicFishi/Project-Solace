@@ -185,7 +185,7 @@ public class ps_missilefiend extends BaseHullMod {
             if (w.getType() != WeaponAPI.WeaponType.MISSILE) continue;
 
             if (w.getMaxAmmo() > 1) {
-                w.setMaxAmmo((int) (w.getAmmo() * MISSILE_AMMO_DECREASE / 100));
+                w.setMaxAmmo((int) (w.getAmmo() * (100 - MISSILE_AMMO_DECREASE) / 100));
             }
         }
     }
