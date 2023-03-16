@@ -69,7 +69,7 @@ public class ps_missilefiend extends BaseHullMod {
 
                 if (w.usesAmmo() && w.getAmmo() < w.getMaxAmmo()) {
 
-                    int reload_amount = (int) Math.round(w.getAmmo() * RELOAD_SIZE);
+                    int reload_amount = (int) Math.round(w.getAmmo() * RELOAD_SIZE / 100);
                     if(reload_amount < 1) {
                         reload_amount = 1;
                     }

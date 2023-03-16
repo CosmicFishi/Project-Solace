@@ -3,8 +3,8 @@
   "hullId": "ps_barking",
   "displayName": "defense",
   "goalVariant": true,
-  "fluxCapacitors": 4,
-  "fluxVents": 30,
+  "fluxCapacitors": 30,
+  "fluxVents": 8,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
@@ -18,21 +18,23 @@
         "WS0001": "pilum",
         "WS0002": "pilum",
         "WS0003": "pilum",
-        "WS0004": "pilum",
-        "WS0005": "pulselaser",
-        "WS0006": "ionbeam",
-        "WS0007": "ionbeam"
+        "WS0004": "pilum"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {}
+      "weapons": {
+        "WS0005": "dualflak"
+      }
     },
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {}
+      "weapons": {
+        "WS0006": "gravitonbeam",
+        "WS0007": "gravitonbeam"
+      }
     },
     {
       "autofire": true,
