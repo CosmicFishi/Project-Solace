@@ -7,9 +7,9 @@
   "height": 140,
   "width": 140,
   "center": [70, 71],
-  "collisionRadius": 72,
+  "collisionRadius": 67.5,
   "shieldCenter": [0, -0],
-  "shieldRadius": 67,
+  "shieldRadius": 76.5,
   "viewOffset": 0,
   "builtInMods": [
     "ps_solacecore"
@@ -19,109 +19,126 @@
   },
   "weaponSlots": [
     {
-      "id": "WS0001",
-      "size": "SMALL",
-      "type": "MISSILE",
-      "mount": "HARDPOINT",
-      "arc": 30,
-      "angle": 14.5,
-      "locations": [18, -44]
-    },
-    {
-      "id": "WS0002",
-      "size": "SMALL",
-      "type": "MISSILE",
-      "mount": "HARDPOINT",
-      "arc": 30,
-      "angle": -14.5,
-      "locations": [18, 44]
-    },
-    {
-      "id": "WS0003",
-      "size": "SMALL",
-      "type": "MISSILE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -135,
-      "locations": [-19, -52]
-    },
-    {
-      "id": "WS0004",
-      "size": "SMALL",
-      "type": "MISSILE",
-      "mount": "HARDPOINT",
-      "arc": 0,
-      "angle": 135,
-      "locations": [-19, 52]
-    },
-    {
-      "id": "WS0005",
-      "size": "SMALL",
-      "type": "HYBRID",
-      "mount": "TURRET",
-      "arc": 120,
-      "angle": 16,
-      "locations": [4, -28]
-    },
-    {
-      "id": "WS0006",
-      "size": "SMALL",
-      "type": "HYBRID",
-      "mount": "TURRET",
-      "arc": 120,
-      "angle": -16,
-      "locations": [4, 28]
-    },
-    {
-      "id": "WS0007",
-      "size": "SMALL",
-      "type": "ENERGY",
-      "mount": "TURRET",
-      "arc": 220,
-      "angle": -115.5,
-      "locations": [-11, -40]
-    },
-    {
-      "id": "WS0008",
-      "size": "SMALL",
-      "type": "ENERGY",
-      "mount": "TURRET",
-      "arc": 220,
-      "angle": 115.5,
-      "locations": [-11, 40]
-    },
-    {
       "id": "ps_crystal",
       "size": "SMALL",
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 0,
       "angle": 0,
-      "locations": [-11, -0]
+      "locations": [-15, -0]
+    },
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 0,
+      "locations": [44, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": -90,
+      "locations": [15, -47]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 90,
+      "locations": [15, 47]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": -45,
+      "locations": [28, -17]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "HARDPOINT",
+      "arc": 140,
+      "angle": 45,
+      "locations": [28, 17]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 150,
+      "angle": -125,
+      "locations": [-4, -23]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 150,
+      "angle": 125,
+      "locations": [-4, 23]
     }
   ],
   "engineSlots": [
     {
-      "location": [-37, -0],
-      "length": 60,
-      "width": 20,
+      "location": [-38, 27.5],
+      "length": 40,
+      "width": 10,
       "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-38, -27.5],
+      "length": 40,
+      "width": 10,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-37, 16],
+      "length": 50,
+      "width": 15,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-37, -16],
+      "length": 50,
+      "width": 15,
+      "angle": -180,
       "contrailSize": 30,
       "style": "CUSTOM",
       "styleId": "PS_ENGINE"
     }
   ],
   "bounds": [
-    -35, 8,
-    -52, 18.5,
-    -10.5, 55,
-    5, 55.5,
-    37, 24.5,
-    47, -0,
-    37, -24.5,
-    5, -55.5,
-    -10.5, -55,
-    -52, -18.5,
-    -35, -8
+    -52, 3,
+    -35, 9.5,
+    -16.5, 44,
+    6.5, 48,
+    42, 22,
+    42, -22,
+    6.5, -48,
+    -16.5, -44,
+    -35, -9.5,
+    -52, -3
   ]
 }

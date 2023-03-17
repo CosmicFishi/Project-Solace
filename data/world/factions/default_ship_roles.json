@@ -12,18 +12,18 @@
 		"ps_tanimbar_destroy": 6,
     },
 	"combatMedium":{
-		"ps_morepork_attack": 1,
+		"ps_morepork_attack": 4,
 		"ps_morepork_destroy": 3,
 		"ps_ashy_defense": 5,
 		"ps_ashy_attack": 1,
-		"ps_ashy_disabler": 1,
+		"ps_ashy_disabler": 3,
 	},
 	"combatLarge":{
 		"ps_barking_attack": 6,
 		"ps_barking_defense": 4,
 		"ps_rufous_destroy": 5,
 		"ps_rufous_attack": 3,
-		"ps_rufous_defense": 1,
+		"ps_rufous_defense": 3,
 	},
 	"combatCapital":{
 		"ps_nadhmor_attack": 8,

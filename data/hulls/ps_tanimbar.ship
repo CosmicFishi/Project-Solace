@@ -14,6 +14,9 @@
   "builtInMods": [
     "ps_solacecore"
   ],
+  "builtInWings": [
+    "wasp_wing"
+  ],
   "builtInWeapons": {
     "ps_crystal": "ps_core_crystal"
   },

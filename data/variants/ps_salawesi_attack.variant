@@ -4,7 +4,7 @@
   "displayName": "Attack",
   "goalVariant": true,
   "fluxCapacitors": 0,
-  "fluxVents": 6,
+  "fluxVents": 4,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
@@ -15,12 +15,13 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "sabot",
+        "WS0001": "typhoon",
         "WS0002": "sabot",
-        "WS0003": "harpoon",
-        "WS0004": "harpoon",
+        "WS0003": "sabot",
+        "WS0004": "lightdualac",
         "WS0005": "lightag",
-        "WS0006": "lightdualac"
+        "WS0006": "pdlaser",
+        "WS0007": "pdlaser"
       }
     },
     {
@@ -31,10 +32,7 @@
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0007": "pdlaser",
-        "WS0008": "pdlaser"
-      }
+      "weapons": {}
     }
   ],
   "modules": [],
