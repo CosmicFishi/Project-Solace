@@ -10,6 +10,10 @@
     {"file": "sounds/weapons/ps_carthami_fire.ogg", "pitch": 0.95, "volume": 1.1},
     {"file": "sounds/weapons/ps_carthami_fire.ogg", "pitch": 1, "volume": 1.1},
     {"file": "sounds/weapons/ps_carthami_fire.ogg", "pitch": 1.1, "volume": 1.1}
+  ],
+  "ps_destruenlaunch": [
+    {"file": "sounds/shipsystems/ps_destruenslaunch.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/shipsystems/ps_destruenslaunch.ogg", "pitch": 0.95, "volume": 1}
   ]
 }
 

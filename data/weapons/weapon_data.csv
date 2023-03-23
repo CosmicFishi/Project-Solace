@@ -1,9 +1,13 @@
 name,id,tier,rarity,base value,range,damage/second,damage/shot,emp,impact,turn rate,OPs,ammo,ammo/sec,reload size,type,energy/shot,energy/second,chargeup,chargedown,burst size,burst delay,min spread,max spread,spread/shot,spread decay/sec,beam speed,proj speed,launch speed,flight time,proj hitpoints,autofireAccBonus,extraArcForAI,hints,tags,groupTag,tech/manufacturer,for weapon tooltip>>,primaryRoleStr,speedStr,trackingStr,turnRateStr,accuracyStr,customPrimary,customPrimaryHL,customAncillary,customAncillaryHL,noDPSInTooltip,number
 # DECOS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,ps_core_crystal,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,0
+,ps_javanica_armor_btm_right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,0.1
+,ps_javanica_armor_btm_left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,0.2
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 # WEAPONS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Tragopo Hyper Cannon,ps_tragopo,2,0.4,7000,800,,450,150,10,25,24,12,0.5,6,ENERGY,475,,0,0.5,3,0.3,0,5,1,10,,1200,,,75,,,,"ps_weapon_bp, energy20, he20, kinetic20, rare_bp, merc",,Project Solace,,Strike,,,,,,,,,,1
 Carthami Cannon,ps_carthami,1,,8000,900,,400,,20,10,25,,,,HIGH_EXPLOSIVE,420,,0.2,2,3,0.4,0,8,2,5,,900,,,120,,,,"ps_weapon_bp, he20, merc",,Project Solace,,Anti Armor,,,,,,,,,,2
 Porri Pod,ps_porri,1,,1200,1500,,700,250,15,10,10,15,,,ENERGY,0,,0,5,3,0.1,0,0,0,,,600,50,20,400,,,"STRIKE, DO_NOT_AIM, CONSERVE_5","ps_weapon_bp, missile13, rare_bp, merc",,Project Solace,,General,Medium,Good,,,,,,,TRUE,3
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+# BUILT IN,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,ps_destruenslauncher,,,,1500,,50,200,,,,,0,,KINETIC,0,,0,1,6,0.1,15,50,20,5,,500,200,10,200,,,SYSTEM,,,,,,,,,,,,,,,4

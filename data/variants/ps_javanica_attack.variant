@@ -1,0 +1,51 @@
+{
+  "variantId": "ps_javanica_attack",
+  "hullId": "ps_javanica",
+  "displayName": "Attack",
+  "goalVariant": false,
+  "fluxCapacitors": 3,
+  "fluxVents": 30,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "targetingunit",
+    "armoredweapons"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "ps_carthami",
+        "WS0002": "hveldriver",
+        "WS0003": "hveldriver"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0004": "heavyburst",
+        "WS0005": "heavyburst",
+        "WS0006": "vulcan",
+        "WS0007": "vulcan",
+        "WS0010": "pdlaser"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0008": "harpoon",
+        "WS0009": "harpoon"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

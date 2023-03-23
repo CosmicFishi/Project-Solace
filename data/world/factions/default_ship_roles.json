@@ -24,6 +24,9 @@
 		"ps_rufous_destroy": 5,
 		"ps_rufous_attack": 3,
 		"ps_rufous_defense": 3,
+		"ps_javanica_attack": 5,
+		"ps_javanica_destroyer": 8,
+		"ps_javanica_beamer": 7,
 	},
 	"combatCapital":{
 		"ps_nadhmor_attack": 8,

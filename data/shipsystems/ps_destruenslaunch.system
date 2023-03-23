@@ -1,0 +1,9 @@
+{
+	"id":"ps_destruenslaunch",
+	"type":"WEAPON",
+	"weaponDataId":"ps_destruenslauncher",
+	"aiType":"CUSTOM",
+    "aiScript":"pigeonpun.projectsolace.shipsystems.ai.ps_destruenslaunchstats_ai",
+
+	"outOfUsesSound":"gun_out_of_ammo",
+}

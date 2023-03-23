@@ -1,0 +1,240 @@
+{
+  "hullName": "Javanica",
+  "hullId": "ps_javanica",
+  "hullSize": "CRUISER",
+  "spriteName": "graphics/ships/ps_javanica.png",
+  "style": "PROJECTSOLACE",
+  "height": 240,
+  "width": 220,
+  "center": [110, 121],
+  "collisionRadius": 128.5,
+  "shieldCenter": [0, -0],
+  "shieldRadius": 140,
+  "viewOffset": 0,
+  "builtInMods": [
+    "ps_solacecore"
+  ],
+  "builtInWeapons": {
+    "BTM_ARMOR_LEFT": "ps_javanica_armor_btm_left",
+    "BTM_ARMOR_RIGHT": "ps_javanica_armor_btm_right",
+    "ps_crystal": "ps_core_crystal"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "LARGE",
+      "type": "UNIVERSAL",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 0,
+      "locations": [56, 0]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 79,
+      "angle": 0,
+      "locations": [39, -38]
+    },
+    {
+      "id": "WS0003",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 70,
+      "angle": 0,
+      "locations": [39, 38]
+    },
+    {
+      "id": "WS0004",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": -59,
+      "locations": [10, -50]
+    },
+    {
+      "id": "WS0005",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": 59,
+      "locations": [10, 50]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 230,
+      "angle": -69.5,
+      "locations": [16, -25]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 230,
+      "angle": 69.5,
+      "locations": [16, 25]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "COMPOSITE",
+      "mount": "TURRET",
+      "arc": 100,
+      "angle": -115.5,
+      "locations": [-35, -30]
+    },
+    {
+      "id": "WS0009",
+      "size": "SMALL",
+      "type": "COMPOSITE",
+      "mount": "TURRET",
+      "arc": 100,
+      "angle": 115.5,
+      "locations": [-35, 30]
+    },
+    {
+      "id": "WS0012",
+      "size": "MEDIUM",
+      "type": "SYSTEM",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 126.5,
+      "locations": [-88.5, 15.5]
+    },
+    {
+      "id": "WS0013",
+      "size": "MEDIUM",
+      "type": "SYSTEM",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -126.5,
+      "locations": [-88.5, -15.5]
+    },
+    {
+      "id": "WS0010",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 230,
+      "angle": 180,
+      "locations": [-76, 0]
+    },
+    {
+      "id": "BTM_ARMOR_LEFT",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-99, 12.5]
+    },
+    {
+      "id": "BTM_ARMOR_RIGHT",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-99, -12.5]
+    },
+    {
+      "id": "ps_crystal",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-25, 0]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-65, 53],
+      "length": 60,
+      "width": 15,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-65, -53],
+      "length": 60,
+      "width": 15,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-56, 36],
+      "length": 50,
+      "width": 8,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-56, -36],
+      "length": 50,
+      "width": 8,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-61, 44.5],
+      "length": 30,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-61, -44.5],
+      "length": 30,
+      "width": 10,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    }
+  ],
+  "bounds": [
+    -86.5, 26.5,
+    -51, 27,
+    -63.5, 62.5,
+    -37, 78,
+    -10.5, 79,
+    -14, 97.5,
+    42.5, 82.5,
+    40, 64,
+    106.5, 25,
+    101, 11.5,
+    50.5, 14,
+    50.5, -14,
+    101, -11.5,
+    106.5, -25,
+    40, -64,
+    42.5, -82.5,
+    -14, -97.5,
+    -10.5, -79,
+    -37, -78,
+    -63.5, -62.5,
+    -51, -27,
+    -86.5, -26.5,
+    -111.5, 0
+  ]
+}
