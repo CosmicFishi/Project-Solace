@@ -106,9 +106,7 @@
     },
 
     "priorityWeapons":{
-        "tags":[
-            "ps_weapon_bp",
-        ],
+        "tags":[],
         "weapons":[
 
         ],
