@@ -25,8 +25,8 @@
       "type": "MISSILE",
       "mount": "HARDPOINT",
       "arc": 0,
-      "angle": -45,
-      "locations": [92, -38]
+      "angle": -90,
+      "locations": [-33, -29]
     },
     {
       "id": "WS0002",
@@ -34,8 +34,8 @@
       "type": "MISSILE",
       "mount": "HARDPOINT",
       "arc": 0,
-      "angle": 45,
-      "locations": [92, 38]
+      "angle": 90,
+      "locations": [-32, 29]
     },
     {
       "id": "WS0003",
@@ -43,8 +43,8 @@
       "type": "MISSILE",
       "mount": "HARDPOINT",
       "arc": 0,
-      "angle": -45,
-      "locations": [68, -63]
+      "angle": -90,
+      "locations": [-53, -21]
     },
     {
       "id": "WS0004",
@@ -52,8 +52,8 @@
       "type": "MISSILE",
       "mount": "HARDPOINT",
       "arc": 0,
-      "angle": 45,
-      "locations": [68, 63]
+      "angle": 90,
+      "locations": [-52, 21]
     },
     {
       "id": "WS0005",
@@ -71,7 +71,7 @@
       "mount": "TURRET",
       "arc": 120,
       "angle": -28.5,
-      "locations": [10, -35]
+      "locations": [23, -35]
     },
     {
       "id": "WS0007",
@@ -80,7 +80,7 @@
       "mount": "TURRET",
       "arc": 120,
       "angle": 28.5,
-      "locations": [10, 35]
+      "locations": [23, 35]
     },
     {
       "id": "WS0008",
@@ -89,7 +89,7 @@
       "mount": "TURRET",
       "arc": 150,
       "angle": -38.5,
-      "locations": [37, -42]
+      "locations": [52, -42]
     },
     {
       "id": "WS0009",
@@ -98,7 +98,7 @@
       "mount": "TURRET",
       "arc": 150,
       "angle": 38.5,
-      "locations": [37, 42]
+      "locations": [52, 42]
     },
     {
       "id": "WS0010",
@@ -107,7 +107,7 @@
       "mount": "TURRET",
       "arc": 140,
       "angle": -97,
-      "locations": [-19, -47]
+      "locations": [25, -73]
     },
     {
       "id": "WS0011",
@@ -116,25 +116,25 @@
       "mount": "TURRET",
       "arc": 140,
       "angle": 97,
-      "locations": [-19, 47]
+      "locations": [25, 73]
     },
     {
       "id": "WS0012",
       "size": "SMALL",
       "type": "ENERGY",
       "mount": "TURRET",
-      "arc": 110,
-      "angle": -150,
-      "locations": [-72, -25]
+      "arc": 300,
+      "angle": 180,
+      "locations": [-74, -0]
     },
     {
       "id": "WS0013",
       "size": "SMALL",
       "type": "ENERGY",
       "mount": "TURRET",
-      "arc": 110,
-      "angle": 150,
-      "locations": [-72, 25]
+      "arc": 230,
+      "angle": 0,
+      "locations": [36, -0]
     },
     {
       "id": "ps_crystal",
@@ -148,31 +148,85 @@
   ],
   "engineSlots": [
     {
-      "location": [-62, -0],
-      "length": 120,
-      "width": 25,
+      "location": [-14, -73],
+      "length": 100,
+      "width": 20,
       "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-14, 73],
+      "length": 100,
+      "width": 20,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-8, -56],
+      "length": 40,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-8, 56],
+      "length": 40,
+      "width": 10,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-9, -45],
+      "length": 70,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-9, 45],
+      "length": 70,
+      "width": 10,
+      "angle": -180,
       "contrailSize": 30,
       "style": "CUSTOM",
       "styleId": "PS_ENGINE"
     }
   ],
   "bounds": [
-    -61, 13,
-    -99, 16,
-    -67.5, 51,
-    -114, 73.5,
-    -68, 87.5,
-    -64, 113.5,
-    42, 73,
-    102, 12.5,
-    102, -12.5,
-    42, -73,
-    -64, -113.5,
-    -68, -87.5,
-    -114, -73.5,
-    -67.5, -51,
-    -99, -16,
-    -61, -13
+    -75.5, 31,
+    -70, 19.5,
+    -45.5, 11.5,
+    -8, 41.5,
+    -12.5, 82.5,
+    -41.5, 93.5,
+    -28.5, 108,
+    22, 111.5,
+    48.5, 81.5,
+    82, 81,
+    80.5, 62.5,
+    96.5, 41.5,
+    96.5, -41.5,
+    80.5, -62.5,
+    82, -81,
+    48.5, -81.5,
+    22, -111.5,
+    -28.5, -108,
+    -41.5, -93.5,
+    -12.5, -82.5,
+    -8, -41.5,
+    -45.5, -11.5,
+    -70, -19.5,
+    -75.5, -31,
+    -119, -0
   ]
 }

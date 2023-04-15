@@ -3,8 +3,8 @@
   "hullId": "ps_rufous",
   "displayName": "Destroy",
   "goalVariant": true,
-  "fluxCapacitors": 0,
-  "fluxVents": 8,
+  "fluxCapacitors": 8,
+  "fluxVents": 30,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
@@ -16,24 +16,23 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "autopulse",
-        "WS0002": "typhoon",
-        "WS0003": "typhoon",
-        "WS0004": "heavyneedler",
-        "WS0005": "heavyneedler",
-        "WS0006": "sabot",
-        "WS0007": "sabot"
+        "WS0001": "devastator"
       }
     },
     {
-      "autofire": true,
+      "autofire": false,
       "mode": "LINKED",
-      "weapons": {}
+      "weapons": {
+        "WS0002": "plasma"
+      }
     },
     {
-      "autofire": true,
+      "autofire": false,
       "mode": "LINKED",
-      "weapons": {}
+      "weapons": {
+        "WS0004": "harpoonpod",
+        "WS0005": "harpoonpod"
+      }
     },
     {
       "autofire": false,
@@ -44,6 +43,8 @@
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
+        "WS0006": "pdlaser",
+        "WS0007": "pdlaser",
         "WS0008": "vulcan",
         "WS0009": "vulcan",
         "WS0010": "vulcan",
