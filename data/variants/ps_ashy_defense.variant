@@ -3,7 +3,7 @@
   "hullId": "ps_ashy",
   "displayName": "Defense",
   "goalVariant": true,
-  "fluxCapacitors": 0,
+  "fluxCapacitors": 10,
   "fluxVents": 10,
   "quality": 1,
   "permaMods": [],
@@ -16,32 +16,32 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "pulselaser",
-        "WS0002": "pulselaser",
-        "WS0003": "ionbeam",
-        "WS0004": "ionbeam",
-        "WS0006": "harpoon",
-        "WS0011": "pdlaser"
-      }
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {}
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0005": "harpoon",
-        "WS0007": "harpoon",
-        "WS0008": "harpoon"
+        "WS0001": "pilum",
+        "WS0002": "pilum"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
+        "WS0003": "heavymauler",
+        "WS0004": "heavymauler"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0005": "sabot",
+        "WS0006": "sabot"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0007": "vulcan",
+        "WS0008": "vulcan",
         "WS0009": "vulcan",
         "WS0010": "vulcan"
       }

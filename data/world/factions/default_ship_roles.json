@@ -14,8 +14,8 @@
 	"combatMedium":{
 		"ps_morepork_attack": 4,
 		"ps_morepork_destroy": 3,
-		"ps_ashy_defense": 5,
-		"ps_ashy_attack": 1,
+		"ps_ashy_defense": 4,
+		"ps_ashy_attack": 4,
 		"ps_ashy_disabler": 3,
 	},
 	"combatLarge":{
