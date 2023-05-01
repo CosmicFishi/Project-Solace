@@ -7,12 +7,13 @@
   "height": 120,
   "width": 100,
   "center": [50, 60],
-  "collisionRadius": 56,
+  "collisionRadius": 82,
   "shieldCenter": [0, 0],
   "shieldRadius": 67.5,
   "viewOffset": 0,
   "builtInMods": [
-    "ps_solacecore"
+    "ps_solacecore",
+    "ps_incensemanufactured"
   ],
   "builtInWings": [
     "wasp_wing"

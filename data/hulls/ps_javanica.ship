@@ -6,13 +6,14 @@
   "style": "PROJECTSOLACE",
   "height": 240,
   "width": 220,
-  "center": [110, 121],
-  "collisionRadius": 128.5,
-  "shieldCenter": [0, -0],
-  "shieldRadius": 140,
+  "center": [110, 96],
+  "collisionRadius": 160.5,
+  "shieldCenter": [28, -0],
+  "shieldRadius": 124.5,
   "viewOffset": 0,
   "builtInMods": [
-    "ps_solacecore"
+    "ps_solacecore",
+    "ps_incensemanufactured"
   ],
   "builtInWeapons": {
     "BTM_ARMOR_LEFT": "ps_javanica_armor_btm_left",
@@ -27,7 +28,7 @@
       "mount": "HARDPOINT",
       "arc": 0,
       "angle": 0,
-      "locations": [56, 0]
+      "locations": [81, 0]
     },
     {
       "id": "WS0002",
@@ -36,7 +37,7 @@
       "mount": "TURRET",
       "arc": 79,
       "angle": 0,
-      "locations": [39, -38]
+      "locations": [64, -38]
     },
     {
       "id": "WS0003",
@@ -45,7 +46,7 @@
       "mount": "TURRET",
       "arc": 70,
       "angle": 0,
-      "locations": [39, 38]
+      "locations": [64, 38]
     },
     {
       "id": "WS0004",
@@ -54,7 +55,7 @@
       "mount": "TURRET",
       "arc": 140,
       "angle": -59,
-      "locations": [10, -50]
+      "locations": [35, -50]
     },
     {
       "id": "WS0005",
@@ -63,7 +64,7 @@
       "mount": "TURRET",
       "arc": 140,
       "angle": 59,
-      "locations": [10, 50]
+      "locations": [35, 50]
     },
     {
       "id": "WS0006",
@@ -72,7 +73,7 @@
       "mount": "TURRET",
       "arc": 230,
       "angle": -69.5,
-      "locations": [16, -25]
+      "locations": [41, -25]
     },
     {
       "id": "WS0007",
@@ -81,7 +82,7 @@
       "mount": "TURRET",
       "arc": 230,
       "angle": 69.5,
-      "locations": [16, 25]
+      "locations": [41, 25]
     },
     {
       "id": "WS0008",
@@ -90,7 +91,7 @@
       "mount": "TURRET",
       "arc": 100,
       "angle": -115.5,
-      "locations": [-35, -30]
+      "locations": [-10, -30]
     },
     {
       "id": "WS0009",
@@ -99,7 +100,7 @@
       "mount": "TURRET",
       "arc": 100,
       "angle": 115.5,
-      "locations": [-35, 30]
+      "locations": [-10, 30]
     },
     {
       "id": "WS0012",
@@ -108,7 +109,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 126.5,
-      "locations": [-88.5, 15.5]
+      "locations": [-63.5, 15.5]
     },
     {
       "id": "WS0013",
@@ -117,7 +118,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": -126.5,
-      "locations": [-88.5, -15.5]
+      "locations": [-63.5, -15.5]
     },
     {
       "id": "WS0010",
@@ -126,7 +127,7 @@
       "mount": "TURRET",
       "arc": 230,
       "angle": 180,
-      "locations": [-76, 0]
+      "locations": [-51, 0]
     },
     {
       "id": "BTM_ARMOR_LEFT",
@@ -135,7 +136,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 0,
-      "locations": [-99, 12.5]
+      "locations": [-74, 12.5]
     },
     {
       "id": "BTM_ARMOR_RIGHT",
@@ -144,7 +145,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": -0,
-      "locations": [-99, -12.5]
+      "locations": [-74, -12.5]
     },
     {
       "id": "ps_crystal",
@@ -153,12 +154,12 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 0,
-      "locations": [-25, 0]
+      "locations": [0, 0]
     }
   ],
   "engineSlots": [
     {
-      "location": [-65, 53],
+      "location": [-40, 53],
       "length": 60,
       "width": 15,
       "angle": 180,
@@ -167,7 +168,7 @@
       "styleId": "PS_ENGINE"
     },
     {
-      "location": [-65, -53],
+      "location": [-40, -53],
       "length": 60,
       "width": 15,
       "angle": -180,
@@ -176,7 +177,7 @@
       "styleId": "PS_ENGINE"
     },
     {
-      "location": [-56, 36],
+      "location": [-31, 36],
       "length": 50,
       "width": 8,
       "angle": 180,
@@ -185,7 +186,7 @@
       "styleId": "PS_ENGINE"
     },
     {
-      "location": [-56, -36],
+      "location": [-31, -36],
       "length": 50,
       "width": 8,
       "angle": -180,
@@ -194,7 +195,7 @@
       "styleId": "PS_ENGINE"
     },
     {
-      "location": [-61, 44.5],
+      "location": [-36, 44.5],
       "length": 30,
       "width": 10,
       "angle": 180,
@@ -203,7 +204,7 @@
       "styleId": "PS_ENGINE"
     },
     {
-      "location": [-61, -44.5],
+      "location": [-36, -44.5],
       "length": 30,
       "width": 10,
       "angle": -180,
@@ -213,28 +214,28 @@
     }
   ],
   "bounds": [
-    -86.5, 26.5,
-    -51, 27,
-    -63.5, 62.5,
-    -37, 78,
-    -10.5, 79,
-    -14, 97.5,
-    42.5, 82.5,
-    40, 64,
-    106.5, 25,
-    101, 11.5,
-    50.5, 14,
-    50.5, -14,
-    101, -11.5,
-    106.5, -25,
-    40, -64,
-    42.5, -82.5,
-    -14, -97.5,
-    -10.5, -79,
-    -37, -78,
-    -63.5, -62.5,
-    -51, -27,
-    -86.5, -26.5,
-    -111.5, 0
+    -61.5, 26.5,
+    -26, 27,
+    -38.5, 62.5,
+    -12, 78,
+    14.5, 79,
+    11, 97.5,
+    67.5, 82.5,
+    65, 64,
+    131.5, 25,
+    126, 11.5,
+    75.5, 14,
+    75.5, -14,
+    126, -11.5,
+    131.5, -25,
+    65, -64,
+    67.5, -82.5,
+    11, -97.5,
+    14.5, -79,
+    -12, -78,
+    -38.5, -62.5,
+    -26, -27,
+    -61.5, -26.5,
+    -86.5, 0
   ]
 }

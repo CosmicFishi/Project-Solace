@@ -10,7 +10,7 @@
 		"contrailWidthMult":1,
 		"contrailMaxSpeedMult":0,
 		"contrailAngularVelocityMult":0,
-		"contrailColor":[130,40,240,155],
+		"contrailColor":[130,40,240,55],
 		"contrailCampaignColor":[230,40,240,255],
 		#"glowAlternateColor":[255,2,20,235],
 		"type":"SMOKE"

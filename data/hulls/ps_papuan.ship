@@ -7,12 +7,13 @@
   "height": 180,
   "width": 200,
   "center": [100, 90],
-  "collisionRadius": 100,
+  "collisionRadius": 139,
   "shieldCenter": [0, 0],
   "shieldRadius": 110.5,
   "viewOffset": 0,
   "builtInMods": [
-    "ps_solacecore"
+    "ps_solacecore",
+    "ps_incensemanufactured"
   ],
   "builtInWeapons": {
     "ps_cystal": "ps_core_crystal"

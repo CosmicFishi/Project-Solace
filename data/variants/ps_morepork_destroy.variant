@@ -3,7 +3,7 @@
   "hullId": "ps_morepork",
   "displayName": "Destroy",
   "goalVariant": false,
-  "fluxCapacitors": 3,
+  "fluxCapacitors": 13,
   "fluxVents": 20,
   "quality": 1,
   "permaMods": [],
@@ -17,8 +17,14 @@
       "mode": "LINKED",
       "weapons": {
         "WS0001": "mjolnir",
-        "WS0002": "ionpulser",
-        "WS0003": "ionpulser"
+        "WS0002": "vulcan",
+        "WS0003": "vulcan",
+        "WS0006": "pdlaser",
+        "WS0007": "pdlaser",
+        "WS0008": "reaper",
+        "WS0009": "reaper",
+        "WS0010": "pdlaser",
+        "WS0011": "pdlaser"
       }
     },
     {
@@ -37,12 +43,7 @@
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0006": "vulcan",
-        "WS0007": "vulcan",
-        "WS0008": "pdlaser",
-        "WS0009": "pdlaser"
-      }
+      "weapons": {}
     }
   ],
   "modules": [],

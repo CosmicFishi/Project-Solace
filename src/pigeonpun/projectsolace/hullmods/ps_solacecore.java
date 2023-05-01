@@ -35,67 +35,65 @@ public class ps_solacecore extends BaseHullMod {
     public float MAX_FLUX_LEVEL_TIME_DAL_BONUS = 0.8f;
 //    public float SUPPLIES_REQUIRED = 25f;
     public static final float MAX_RANGE_WEAPON = 750f;
-    private final IntervalUtil spawnNebulaInterval = new IntervalUtil(0.8f, 0.8f);
-
-    //todo: Split Hyrbid slot into another hullmod
+//    private final IntervalUtil spawnNebulaInterval = new IntervalUtil(0.8f, 0.8f);
     public String getDescriptionParam(int index, HullSize hullSize) {
         return null;
     }
 
     public void advanceInCombat(ShipAPI ship, float amount) {
-        super.advanceInCombat(ship, amount);
-        CombatEngineAPI engine = Global.getCombatEngine();
-        if (engine.isPaused()) {
-            return;
-        }
-        if (!ship.isAlive()) {
-            return;
-        }
-        MutableShipStatsAPI stats = ship.getMutableStats();
-        float time_bonus_apply = ship.getFluxLevel() / MAX_FLUX_LEVEL_TIME_DAL_BONUS * TIME_DAL_BONUS;
-        if(time_bonus_apply > TIME_DAL_BONUS) {
-            time_bonus_apply = TIME_DAL_BONUS;
-        }
-        stats.getTimeMult().modifyPercent(ship.getId(), time_bonus_apply);
-
-        //FX
-        float spawnRadius = ship.getCollisionRadius() * 1.2f;
-        float spawnAngle = (float) (Math.random() * 360f);
-        Vector2f spawnLocation = MathUtils.getPointOnCircumference(ship.getLocation(), spawnRadius, spawnAngle);
-        if(ship.getFluxLevel() > 0.5f) {
-            spawnNebulaInterval.advance(Global.getCombatEngine().getElapsedInLastFrame());
-            if(spawnNebulaInterval.intervalElapsed()) {
-                engine.addSwirlyNebulaParticle(
-                        spawnLocation,
-                        new Vector2f(0, 0),
-                        ship.getFluxLevel() * 70f,
-                        1f,0.1f,0.2f,
-                        0.9f,
-                        ps_misc.PROJECT_SOLACE_LIGHT,
-                        true
-                );
-                engine.addNebulaParticle(
-                        spawnLocation,
-                        new Vector2f(0, 0),
-                        ship.getFluxLevel() * 30f,
-                        1f,0.1f,0.2f,
-                        0.7f,
-                        ps_misc.PROJECT_SOLACE,
-                        true
-                );
-            }
-        }
-        float jitterLevel = ship.getFluxLevel();
-        float jitterRangeBonus = 0;
-        float maxRangeBonus = 10f * ship.getFluxLevel();
-
-        ship.setJitter(this, ps_misc.PROJECT_SOLACE_JITTER, jitterLevel, 3, 0, 0 + jitterRangeBonus);
-        ship.setJitterUnder(this, ps_misc.PROJECT_SOLACE_JITTER_UNDER, jitterLevel, 25, 0f, 7f + jitterRangeBonus);
-
-
-        if (ship == Global.getCombatEngine().getPlayerShip()) {
-            Global.getCombatEngine().maintainStatusForPlayerShip("ps_solacecore_timedal", "graphics/icons/hullsys/temporal_shell.png", "Time Dilation", Math.round(time_bonus_apply) + "%", false);
-        }
+//        super.advanceInCombat(ship, amount);
+//        CombatEngineAPI engine = Global.getCombatEngine();
+//        if (engine.isPaused()) {
+//            return;
+//        }
+//        if (!ship.isAlive()) {
+//            return;
+//        }
+//        MutableShipStatsAPI stats = ship.getMutableStats();
+//        float time_bonus_apply = ship.getFluxLevel() / MAX_FLUX_LEVEL_TIME_DAL_BONUS * TIME_DAL_BONUS;
+//        if(time_bonus_apply > TIME_DAL_BONUS) {
+//            time_bonus_apply = TIME_DAL_BONUS;
+//        }
+//        stats.getTimeMult().modifyPercent(ship.getId(), time_bonus_apply);
+//
+//        //FX
+//        float spawnRadius = ship.getCollisionRadius() * 1.2f;
+//        float spawnAngle = (float) (Math.random() * 360f);
+//        Vector2f spawnLocation = MathUtils.getPointOnCircumference(ship.getLocation(), spawnRadius, spawnAngle);
+//        if(ship.getFluxLevel() > 0.5f) {
+//            spawnNebulaInterval.advance(Global.getCombatEngine().getElapsedInLastFrame());
+//            if(spawnNebulaInterval.intervalElapsed()) {
+//                engine.addSwirlyNebulaParticle(
+//                        spawnLocation,
+//                        new Vector2f(0, 0),
+//                        ship.getFluxLevel() * 70f,
+//                        1f,0.1f,0.2f,
+//                        0.9f,
+//                        ps_misc.PROJECT_SOLACE_LIGHT,
+//                        true
+//                );
+//                engine.addNebulaParticle(
+//                        spawnLocation,
+//                        new Vector2f(0, 0),
+//                        ship.getFluxLevel() * 30f,
+//                        1f,0.1f,0.2f,
+//                        0.7f,
+//                        ps_misc.PROJECT_SOLACE,
+//                        true
+//                );
+//            }
+//        }
+//        float jitterLevel = ship.getFluxLevel();
+//        float jitterRangeBonus = 0;
+//        float maxRangeBonus = 10f * ship.getFluxLevel();
+//
+//        ship.setJitter(this, ps_misc.PROJECT_SOLACE_JITTER, jitterLevel, 3, 0, 0 + jitterRangeBonus);
+//        ship.setJitterUnder(this, ps_misc.PROJECT_SOLACE_JITTER_UNDER, jitterLevel, 25, 0f, 7f + jitterRangeBonus);
+//
+//
+//        if (ship == Global.getCombatEngine().getPlayerShip()) {
+//            Global.getCombatEngine().maintainStatusForPlayerShip("ps_solacecore_timedal", "graphics/icons/hullsys/temporal_shell.png", "Time Dilation", Math.round(time_bonus_apply) + "%", false);
+//        }
     }
 
     @Override
