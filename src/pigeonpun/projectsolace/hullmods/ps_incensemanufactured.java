@@ -13,12 +13,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.lazywizard.lazylib.MathUtils;
+import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lazywizard.lazylib.combat.entities.SimpleEntity;
 import org.lwjgl.util.vector.Vector2f;
 import pigeonpun.projectsolace.com.ps_misc;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -47,6 +49,10 @@ public class ps_incensemanufactured extends BaseHullMod {
         return null;
     }
     private final IntervalUtil spawnFlaresInterval = new IntervalUtil(1f, 3f);
+    private final float EMP_RANGE = 100f;
+    private final float EMP_DAMAGE = 200f;
+    private final Color EMP_COLOR = new Color(241, 245, 40, 255);
+    private final IntervalUtil spawnEMPInterval = new IntervalUtil(0.2f, 0.5f);
     //UP = Unsolidified Procedure
     private final float UP_HITPOINTS_START = 0.6f;
     private final float UP_ROF_BONUS = 3f;
@@ -61,7 +67,7 @@ public class ps_incensemanufactured extends BaseHullMod {
     //Credit to PureTilt cuz I took reference from VIC
     //todo: test out to see if its balance or not, thinking may be add another bonus
     //todo: description + hullmod sprite (may be some particle with a fire like object in the center)
-
+    //todo: sound for after charge
     public void advanceInCombat(ShipAPI ship, float amount) {
         CombatEngineAPI engine = Global.getCombatEngine();
         if (engine.isPaused()) {
@@ -70,7 +76,9 @@ public class ps_incensemanufactured extends BaseHullMod {
         if (!ship.isAlive()) {
             return;
         }
+        /////////////////
         //INCENSE
+        /////////////////
         float incenseLevel = 0f;
         float incenseCap = ship.getMutableStats().getFluxDissipation().modified * INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION;
 
@@ -109,14 +117,18 @@ public class ps_incensemanufactured extends BaseHullMod {
                 (int) incenseLevel
         );
 
+        ///////////////////
         //stats incense
+        ///////////////////
         float time_bonus_apply = (incenseLevel/incenseCap) / MAX_INCENSE_LEVEL_TIME_DAL_BONUS * TIME_DAL_BONUS;
         if(time_bonus_apply > TIME_DAL_BONUS) {
             time_bonus_apply = TIME_DAL_BONUS;
         }
         stats.getTimeMult().modifyPercent(ship.getId(), time_bonus_apply);
 
+        ////////////////
         //FX INCENSE
+        ////////////////
         float jitterLevel = incenseLevel/incenseCap;
         float jitterRangeBonus = 0;
 
@@ -127,49 +139,28 @@ public class ps_incensemanufactured extends BaseHullMod {
             Global.getCombatEngine().maintainStatusForPlayerShip("ps_solacecore_timedal", "graphics/icons/hullsys/temporal_shell.png", "Time Dilation", Math.round(time_bonus_apply) + "%", false);
         }
         if(ship.getShield() != null) {
-            ship.getShield().setInnerColor(new Color(255,(Math.round((incenseLevel/incenseCap * 50) + 170)),(Math.round((incenseLevel/incenseCap * 55) + 170)),(Math.round((incenseLevel/incenseCap * 100) + 35))));
+            ship.getShield().setInnerColor(
+                new Color(255,
+                    MathUtils.clamp(Math.round((incenseLevel/incenseCap * 50) + 170), 0, 255),
+                    MathUtils.clamp(Math.round((incenseLevel/incenseCap * 55) + 170), 0, 255),
+                    MathUtils.clamp(Math.round((incenseLevel/incenseCap * 100) + 35), 0, 255))
+            );
         }
 
 //        Global.getCombatEngine().addFloatingText(ship.getLocation(), String.valueOf((Math.round((incenseLevel/incenseCap * 15) + 240))), 60, Color.WHITE, ship, 0.25f, 0.25f);
-
-        //flares hull hitpoints
-        spawnFlaresInterval.advance(Global.getCombatEngine().getElapsedInLastFrame());
-        if(spawnFlaresInterval.intervalElapsed() && ship.getHitpoints() < ship.getMaxHitpoints() * 0.6f) {
-            Vector2f spawnLocation = MathUtils.getRandomPointInCircle(
-                    ship.getLocation(),
-                    ship.getCollisionRadius()
-            );
-            MagicLensFlare.createSharpFlare(
-                Global.getCombatEngine(),
-                ship,
-                spawnLocation,
-                incenseLevel/incenseCap * 4,
-                300,
-                0,
-                ps_misc.PROJECT_SOLACE_LIGHT,
-                new Color(200,200,255)
-            );
-            Global.getCombatEngine().addSwirlyNebulaParticle(
-                spawnLocation,
-                new Vector2f(0, 0),
-                incenseLevel/incenseCap * 70f,
-                1f,0.1f,0.2f,
-                0.9f,
-                ps_misc.PROJECT_SOLACE,
-                true
-            );
-        }
 
         MathUtils.clamp(incenseLevel, 0, incenseCap);
         customCombatData.put("ps_incenselevel" + id, incenseLevel);
 
         //UNSOLIDIFIED PROCEDURE
-        //lower shield, reduce EMP damage by 50%
+        //lower shield, reduce EMP damage by 50%, discharge out EMP from time to time
         // triple fire rate, lower weapon flux cost, refill all missile for a certain amount of time,
-        // repair all weapon after the charge
+        // repair all weapon + engine after the charge
         //Stand still for a couple of second for the activation
         if(ship.getHitpoints() < ship.getMaxHitpoints() * UP_HITPOINTS_START) {
+            ////////////////
             //standstill
+            ////////////////
             if(!UP_STANDSTILL_ACTIVATED) {
                 float standstillTimer = 0f;
                 if (customCombatData.get("ps_standstilltimer" + id) instanceof Float)
@@ -227,11 +218,99 @@ public class ps_incensemanufactured extends BaseHullMod {
 
             }
             if(UP_STANDSTILL_ACTIVATED) {
+                //////////////////////////
                 //Finish standstill
                 //Move to berserk state
+                //////////////////////////
                 if(ship.getShield() != null) ship.getShield().toggleOff();
                 ship.setJitter(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 1.2f, 1, 3, 10f);
                 ship.getEngineController().getFlameColorShifter().shift(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 0.2f, 1f, 1f);
+
+                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_rof", "graphics/icons/hullsys/ammo_feeder.png", "Unsolidified RoF bonus", String.valueOf(UP_ROF_BONUS * 100) + "%", false);
+                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_weapon_flux", "", "Unsolidified weapon flux reduction", String.valueOf(UP_WEAPON_FLUX_BONUS * 100) + "%", false);
+                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp", "", "Unsolidified EMP damage taken reduction", String.valueOf(UP_EMP_NEGATE_BONUS * 100) + "%", false);
+
+                ////////////////////
+                //FX EMP + flares
+                ////////////////////
+                spawnFlaresInterval.advance(Global.getCombatEngine().getElapsedInLastFrame());
+                if(spawnFlaresInterval.intervalElapsed()) {
+                    Vector2f spawnLocation = MathUtils.getRandomPointInCircle(
+                            ship.getLocation(),
+                            ship.getCollisionRadius()
+                    );
+                    SimpleEntity simpleE = new SimpleEntity(spawnLocation);
+                    MagicLensFlare.createSharpFlare(
+                            Global.getCombatEngine(),
+                            ship,
+                            spawnLocation,
+                            incenseLevel/incenseCap * 4,
+                            300,
+                            0,
+                            ps_misc.PROJECT_SOLACE_LIGHT,
+                            new Color(200,200,255)
+                    );
+                    Global.getCombatEngine().addSwirlyNebulaParticle(
+                            spawnLocation,
+                            new Vector2f(0, 0),
+                            incenseLevel/incenseCap * 70f,
+                            1f,0.1f,0.2f,
+                            0.9f,
+                            ps_misc.PROJECT_SOLACE,
+                            true
+                    );
+                    /////////////////////
+                    //discharging EMP
+                    /////////////////////
+                    List<CombatEntityAPI> targetNearby = CombatUtils.getEntitiesWithinRange(spawnLocation, EMP_RANGE);
+                    HashSet<CombatEntityAPI> listTargets = new HashSet<>();
+                    for (CombatEntityAPI entity: targetNearby) {
+                        if(entity instanceof MissileAPI || entity instanceof FighterWingAPI) {
+                            //projectile is on player team => damage enemy
+                            //projectile is from enemy => damage player + allies ships
+                            if(ship.getOwner() != entity.getOwner()) {
+                                listTargets.add(entity);
+                            }
+                        }
+                    }
+                    //spawn EMP arc
+                    spawnEMPInterval.advance(amount);
+                    if(spawnEMPInterval.intervalElapsed()) {
+                        if(!listTargets.isEmpty()) {
+                            for (CombatEntityAPI entity: listTargets) {
+                                engine.spawnEmpArc(
+                                        ship,
+                                        spawnLocation,
+                                        simpleE,
+                                        entity,
+                                        DamageType.ENERGY,
+                                        EMP_DAMAGE,
+                                        0,
+                                        10000,
+                                        null,
+                                        MathUtils.getRandomNumberInRange(5f,10f),
+                                        EMP_COLOR,
+                                        new Color(255, 255,255, 255)
+                                );
+                            }
+                        }
+
+                    } else {
+                        float angle = (float) (Math.random() * 360);
+                        Vector2f endArcPoint = MathUtils.getPointOnCircumference(spawnLocation, 50f, angle);
+
+                        engine.spawnEmpArcVisual(
+                                spawnLocation,
+                                ship,
+                                endArcPoint,
+                                new SimpleEntity(endArcPoint),
+                                MathUtils.getRandomNumberInRange(5f,10f),
+                                EMP_COLOR,
+                                new Color(255, 255,255, 255)
+                        );
+                    };
+                }
+
                 if(!UP_ACTIVATE_BONUS) {
                     stats.getBallisticRoFMult().modifyMult(id, UP_ROF_BONUS);
                     stats.getBallisticWeaponFluxCostMod().modifyMult(id, UP_WEAPON_FLUX_BONUS);
@@ -243,6 +322,7 @@ public class ps_incensemanufactured extends BaseHullMod {
                             weapon.setAmmo(weapon.getMaxAmmo());
                         }
                     }
+                    stats.getCombatEngineRepairTimeMult().modifyMult(id, 1f);
                     ship.getCaptain().setPersonality(Personalities.RECKLESS     );
                     UP_ACTIVATE_BONUS = true;
                 }
