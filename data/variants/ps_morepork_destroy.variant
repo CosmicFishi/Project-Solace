@@ -2,7 +2,7 @@
   "variantId": "ps_morepork_destroy",
   "hullId": "ps_morepork",
   "displayName": "Destroy",
-  "goalVariant": false,
+  "goalVariant": true,
   "fluxCapacitors": 13,
   "fluxVents": 20,
   "quality": 1,

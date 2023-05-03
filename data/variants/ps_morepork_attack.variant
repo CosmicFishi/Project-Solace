@@ -2,7 +2,7 @@
   "variantId": "ps_morepork_attack",
   "hullId": "ps_morepork",
   "displayName": "Attack",
-  "goalVariant": false,
+  "goalVariant": true,
   "fluxCapacitors": 19,
   "fluxVents": 10,
   "quality": 1,
