@@ -59,7 +59,7 @@ public class ps_incensemanufactured extends BaseHullMod {
     private final float UP_ROF_BONUS = 3f;
     private final float UP_WEAPON_FLUX_BONUS = 0.5f;
     private final float UP_EMP_NEGATE_BONUS = 0.5f;
-    private final float UP_ARMOR_REPAIR = 0.5f;
+    private final float UP_ARMOR_REPAIR = 0.4f;
     private static final float
             UP_BONUS_DAMAGE_FRIGATE = 0.5f,
             UP_BONUS_DAMAGE_DESTROYER = 0.4f,
@@ -87,6 +87,7 @@ public class ps_incensemanufactured extends BaseHullMod {
 
         boolean up_activate_bonus = false;
         boolean up_standstill_activated = false;
+        boolean up_standstill_bonus_removed = false;
 //        boolean up_standstill_popup = false;
 
         Map<String, Object> customCombatData = Global.getCombatEngine().getCustomData();
@@ -96,10 +97,12 @@ public class ps_incensemanufactured extends BaseHullMod {
 
         if (customCombatData.get("ps_incenselevel" + id) instanceof Float)
             incenseLevel = (float) customCombatData.get("ps_incenselevel" + id);
-        if (customCombatData.get("up_activate_bonus" + id) instanceof Float)
+        if (customCombatData.get("up_activate_bonus" + id) instanceof Boolean)
             up_activate_bonus = (boolean) customCombatData.get("up_activate_bonus" + id);
-        if (customCombatData.get("up_standstill_activated" + id) instanceof Float)
+        if (customCombatData.get("up_standstill_activated" + id) instanceof Boolean)
             up_standstill_activated = (boolean) customCombatData.get("up_standstill_activated" + id);
+        if (customCombatData.get("up_standstill_bonus_removed" + id) instanceof Boolean)
+            up_standstill_bonus_removed = (boolean) customCombatData.get("up_standstill_bonus_removed" + id);
 //        if (customCombatData.get("up_standstill_popup" + id) instanceof Float)
 //            up_standstill_popup = (boolean) customCombatData.get("up_standstill_popup" + id);
 
@@ -205,6 +208,7 @@ public class ps_incensemanufactured extends BaseHullMod {
                     //FX
                     ship.setJitterUnder(this, ps_misc.PROJECT_SOLACE_UP_STANDSTILL, standstillTimer/UP_STANDSTILL_DURATION, 25, 0f, 7f + (standstillTimer/UP_STANDSTILL_DURATION * 10f));
                     ship.setCircularJitter(true);
+                    Global.getSoundPlayer().playLoop("ps_up_charging", ship, 1f,1f, ship.getLocation(), new Vector2f(0, 0));
 
                     //repair armor
                     ArmorGridAPI grid = ship.getArmorGrid();
@@ -225,18 +229,23 @@ public class ps_incensemanufactured extends BaseHullMod {
                         }
                     }
                 } else {
-                    stats.getAcceleration().unmodify(id);
-                    stats.getDeceleration().unmodify(id);
-                    stats.getHullDamageTakenMult().unmodify(id);
-                    stats.getArmorDamageTakenMult().unmodify(id);
-                    Global.getCombatEngine().getTimeMult().unmodify(id);
-                    up_standstill_activated = true;
-                    for(WeaponAPI weapon: ship.getAllWeapons()) {
-                        weapon.repair();
+                    if(!up_standstill_bonus_removed) {
+                        stats.getAcceleration().unmodify(id);
+                        stats.getDeceleration().unmodify(id);
+                        stats.getHullDamageTakenMult().unmodify(id);
+                        stats.getArmorDamageTakenMult().unmodify(id);
+                        Global.getCombatEngine().getTimeMult().unmodify(id);
+                        up_standstill_activated = true;
+                        for(WeaponAPI weapon: ship.getAllWeapons()) {
+                            weapon.repair();
+                        }
+                        Global.getCombatEngine().addFloatingText(ship.getLocation(), up_standstill_bonus_removed + "...", 60, ps_misc.PROJECT_SOLACE_LIGHT, ship, 0.25f, 0.25f);
+
+                        Global.getSoundPlayer().playSound("ps_up_activate", 1, 1f, ship.getLocation(), new Vector2f(0, 0));
+                        up_standstill_bonus_removed = true;
                     }
                 }
                 customCombatData.put("ps_standstilltimer" + id, standstillTimer);
-
             }
             if(up_standstill_activated) {
                 //////////////////////////
@@ -400,6 +409,7 @@ public class ps_incensemanufactured extends BaseHullMod {
         }
         customCombatData.put("up_activate_bonus" + id, up_activate_bonus);
         customCombatData.put("up_standstill_activated" + id, up_standstill_activated);
+        customCombatData.put("up_standstill_bonus_removed" + id, up_standstill_bonus_removed);
 //        customCombatData.put("up_standstill_popup" + id, up_standstill_popup);
     }
 
