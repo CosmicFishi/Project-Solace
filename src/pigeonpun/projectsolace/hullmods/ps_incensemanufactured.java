@@ -7,8 +7,11 @@ import com.fs.starfarer.api.impl.campaign.ids.HullMods;
 import com.fs.starfarer.api.impl.campaign.ids.Personalities;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.hullmods.DoNotBackOff;
+import com.fs.starfarer.api.ui.Alignment;
+import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
+import com.fs.starfarer.api.util.Misc;
 import data.scripts.util.MagicLensFlare;
 import data.scripts.util.MagicUI;
 import org.json.JSONArray;
@@ -26,28 +29,28 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-//- deal damage to reduce the Incense level,
-// + 10% of projectile damage will be applied when hit hull or 1, whichever is higher
-// + 8% of the damage will be applied when hit shield or 1, whichever is higher.
-//- Incense cap will be 100% ship flux dissipation stats
-//- Incense regeneration stat will scale with ship flux capacitor, base will be 5/10/15/20 for each class plus
-//1% of ship's flux capacitor stats
 public class ps_incensemanufactured extends BaseHullMod {
 
     private static final String INCENSE_TEXT = "Incense";
     private static final float INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION = 1f;
-    private static final float INCENSE_LEVEL_BONUS_FROM_DISSIPATION = 0.01f;
-    private static final float INCENSE_CAP_BONUS_FROM_CAPACITOR = 0.01f;
+    //private static final float INCENSE_LEVEL_BONUS_FROM_DISSIPATION = 0.05f;
+    private static final float INCENSE_BONUS_FROM_CAPACITOR = 0.01f;
     private static final float
             INCENSE_REGENERATION_BASE_FRIGATE = 5f,
             INCENSE_REGENERATION_BASE_DESTROYER = 10f,
-            INCENSE_REGENERATION_BASE_CRUISER = 15f,
-            INCENSE_REGENERATION_BASE_CAPITAL = 20f;
+            INCENSE_REGENERATION_BASE_CRUISER = 20f,
+            INCENSE_REGENERATION_BASE_CAPITAL = 40f;
+
+    private static final float
+            INCENSE_REGENERATION_CAP_FRIGATE = 30f,
+            INCENSE_REGENERATION_CAP_DESTROYER = 60f,
+            INCENSE_REGENERATION_CAP_CRUISER = 120f,
+            INCENSE_REGENERATION_CAP_CAPITAL = 240f;
 
     public float TIME_DAL_BONUS = 10f;
     public float MAX_INCENSE_LEVEL_TIME_DAL_BONUS = 1f;
-    private static final float ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_HULL = 0.1f;
-    private static final float ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_SHIELD = 0.15f;
+    private static final float ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_HULL_ARMOR = 0.4f;
+    private static final float ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_SHIELD = 0.2f;
     private final float EMP_RANGE = 500f;
     private final float EMP_DAMAGE = 50f;
     private final Color EMP_COLOR = new Color(241, 245, 40, 255);
@@ -56,8 +59,8 @@ public class ps_incensemanufactured extends BaseHullMod {
     private final IntervalUtil spawnEMPStartUP = new IntervalUtil(0.2f, 0.8f);
     //UP = Unsolidified Procedure
     private final float UP_HITPOINTS_START = 0.6f;
-    private final float UP_ROF_BONUS = 3f;
-    private final float UP_WEAPON_FLUX_BONUS = 0.5f;
+    private final float UP_ROF_BONUS = 2f;
+    private final float UP_WEAPON_FLUX_BONUS = 0.6f;
     private final float UP_EMP_NEGATE_BONUS = 0.5f;
     private final float UP_ARMOR_REPAIR = 0.4f;
     private static final float
@@ -68,9 +71,7 @@ public class ps_incensemanufactured extends BaseHullMod {
     private final float UP_STANDSTILL_DURATION = 5f; //x second
 
     //Credit to PureTilt cuz I took reference from VIC
-    //todo: test out to see if its balance or not, thinking may be add another bonus
     //todo: description + hullmod sprite (may be some particle with a fire like object in the center)
-    //todo: sound for after charge
     public void advanceInCombat(ShipAPI ship, float amount) {
         CombatEngineAPI engine = Global.getCombatEngine();
         if (engine.isPaused()) {
@@ -83,7 +84,7 @@ public class ps_incensemanufactured extends BaseHullMod {
         //INCENSE
         /////////////////
         float incenseLevel = 0f;
-        float incenseCap = (ship.getMutableStats().getFluxDissipation().modified * INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION) + (ship.getMutableStats().getFluxDissipation().modified * INCENSE_CAP_BONUS_FROM_CAPACITOR);
+        float incenseCap = getIncenseCap(ship);
 
         boolean up_activate_bonus = false;
         boolean up_standstill_activated = false;
@@ -106,22 +107,12 @@ public class ps_incensemanufactured extends BaseHullMod {
 //        if (customCombatData.get("up_standstill_popup" + id) instanceof Float)
 //            up_standstill_popup = (boolean) customCombatData.get("up_standstill_popup" + id);
 
-        float actualRegenerationBase = 0;
+        float incenseRegen = getIncenseRegen(ship);
         if(incenseLevel < incenseCap) {
-            switch (ship.getHullSize()) {
-                case FRIGATE:
-                    actualRegenerationBase = INCENSE_REGENERATION_BASE_FRIGATE;
-                case DESTROYER:
-                    actualRegenerationBase = INCENSE_REGENERATION_BASE_DESTROYER;
-                case CRUISER:
-                    actualRegenerationBase = INCENSE_REGENERATION_BASE_CRUISER;
-                case CAPITAL_SHIP:
-                    actualRegenerationBase = INCENSE_REGENERATION_BASE_CAPITAL;
-            }
-            if((incenseLevel + actualRegenerationBase) > incenseCap) {
+            if((incenseLevel + incenseRegen * amount) > incenseCap) {
                 incenseLevel = incenseCap;
             } else {
-                incenseLevel += (actualRegenerationBase + (ship.getMutableStats().getFluxCapacity().modified * INCENSE_LEVEL_BONUS_FROM_DISSIPATION))* amount;
+                incenseLevel += incenseRegen * amount;
             }
         }
         MagicUI.drawInterfaceStatusBar(
@@ -177,7 +168,7 @@ public class ps_incensemanufactured extends BaseHullMod {
         // triple fire rate,
         // refill all missile,
         // emp will start sparking around the ship hitting any missile or fighter,
-        // repair armor to the original amount
+        // repair armor to certain amount of original
         // deal 50/40/30/20% more damage to cruiser and capital depend on ship class.
         if(ship.getHitpoints() < ship.getMaxHitpoints() * UP_HITPOINTS_START) {
             ////////////////
@@ -263,17 +254,21 @@ public class ps_incensemanufactured extends BaseHullMod {
                     case FRIGATE:
                         damageToCruiser = UP_BONUS_DAMAGE_FRIGATE;
                         damageToCapital = UP_BONUS_DAMAGE_FRIGATE;
+                        break;
                     case DESTROYER:
                         damageToCruiser = UP_BONUS_DAMAGE_DESTROYER;
                         damageToCapital = UP_BONUS_DAMAGE_DESTROYER;
+                        break;
                     case CRUISER:
                         damageToCruiser = UP_BONUS_DAMAGE_CRUISER;
                         damageToCapital = UP_BONUS_DAMAGE_CRUISER;
+                        break;
                     case CAPITAL_SHIP:
                         damageToCruiser = UP_BONUS_DAMAGE_CAPITAL;
                         damageToCapital = UP_BONUS_DAMAGE_CAPITAL;
+                        break;
                 }
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_shield_down", "", "Shield down", "", true);
+                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_shield_down", "", "Shield", "Disabled", true);
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp_emit", "graphics/icons/hullsys/emp_emitter", "Discharging EMP", "", false);
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_rof", "graphics/icons/hullsys/ammo_feeder.png", "RoF bonus", "+" + String.valueOf(UP_ROF_BONUS * 100) + "%", false);
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_weapon_flux", "", "Weapon flux reduction", String.valueOf(UP_WEAPON_FLUX_BONUS * 100) + "%", false);
@@ -413,6 +408,45 @@ public class ps_incensemanufactured extends BaseHullMod {
 //        customCombatData.put("up_standstill_popup" + id, up_standstill_popup);
     }
 
+    private float getIncenseCap(ShipAPI ship) {
+        if(ship != null) {
+            float incenseCap = (ship.getMutableStats().getFluxDissipation().modified * INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION);
+            return incenseCap;
+        }
+        return 0f;
+    }
+    private float getIncenseRegen(ShipAPI ship) {
+        if(ship != null) {
+            float actualRegenerationBase = 0;
+            float regen = 0f;
+            float regenCap = 0f;
+            switch (ship.getHullSize()) {
+                case FRIGATE:
+                    actualRegenerationBase = INCENSE_REGENERATION_BASE_FRIGATE;
+                    regenCap = INCENSE_REGENERATION_CAP_FRIGATE;
+                    break;
+                case DESTROYER:
+                    actualRegenerationBase = INCENSE_REGENERATION_BASE_DESTROYER;
+                    regenCap = INCENSE_REGENERATION_CAP_DESTROYER;
+                    break;
+                case CRUISER:
+                    actualRegenerationBase = INCENSE_REGENERATION_BASE_CRUISER;
+                    regenCap = INCENSE_REGENERATION_CAP_CRUISER;
+                    break;
+                case CAPITAL_SHIP:
+                    actualRegenerationBase = INCENSE_REGENERATION_BASE_CAPITAL;
+                    regenCap = INCENSE_REGENERATION_CAP_CAPITAL;
+                    break;
+            }
+            System.out.println(regenCap);
+            regen = actualRegenerationBase + (ship.getMutableStats().getFluxCapacity().modified * INCENSE_BONUS_FROM_CAPACITOR);
+            if(regen >regenCap) {
+                return regenCap;
+            }
+            return regen;
+        }
+        return 0f;
+    }
     @Override
     public boolean shouldAddDescriptionToTooltip(ShipAPI.HullSize hullSize, ShipAPI ship, boolean isForModSpec) {
         return false;
@@ -420,6 +454,82 @@ public class ps_incensemanufactured extends BaseHullMod {
 
     @Override
     public void addPostDescriptionSection(TooltipMakerAPI tooltip, ShipAPI.HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
+        float pad = 3f;
+        float opad = 10f;
+        Color h = Misc.MOUNT_UNIVERSAL;
+        Color bad = Misc.getNegativeHighlightColor();
+        Color good = Misc.getPositiveHighlightColor();
+
+        //Incense
+        LabelAPI label = tooltip.addPara("A dust-like matter called Incense found by accident when a small piece of Solace crystal slipped off one of our scientist's hands and shattered on the ground. However, unlike other crystal dust, the area where the crystal shatters seems to be spreading out to fill up certain areas and within those areas, time seems to be moving differently. Further inspection and testing after this incident shows that the matter has some extraordinary quirks", opad, h, "");
+
+        //3 effects
+        //label = tooltip.addPara("First is the tendency to spread out to a large area, if the area is damaged by a moving projectile, the dust will disburse out then slowly form back to fill it up", opad, h, "");
+        //label = tooltip.addPara("The second unique feature is the ability to release a huge amount of energy when Incense’s covering surface has been damaged to a certain point, after the initial impact, the matter seems to be bonding the surface back to a certain stage, this feature alone is a breakthrough for the Solace ship composition.", opad, h, "");
+        //label = tooltip.addPara("The final specialty is the time manipulation, it seems that the object that Incense covers, depending on the density, can move slower or faster in time, this is also another key factor to Solace ship lineup.", opad, h, "");
+
+        //bonus
+        tooltip.addSectionHeading("Effects", Alignment.MID, opad);
+
+        //incense
+        //Time dal
+        label = tooltip.addPara("Incense can be recharged automatically. The higher the Incense level, the higher the ship's time dilation is, max out at %s time dilation at max Incense", opad, h,
+                "" + Math.round(TIME_DAL_BONUS) + "%");
+        label.setHighlight("" + Math.round(TIME_DAL_BONUS) + "%");
+        label.setHighlightColors(good);
+
+        label = tooltip.addPara("Incense capacitor is %s of the ship flux dissipation. Incense regeneration rate per second is %s for each ship class plus %s of the ship's flux capacitor. Regeneration caps out at %s for each ship class", opad, h,
+                "" + Math.round(INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION * 100) + "%",
+                Math.round(INCENSE_REGENERATION_BASE_FRIGATE) + "/" + Math.round(INCENSE_REGENERATION_BASE_DESTROYER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CRUISER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CAPITAL) + "",
+                "" + Math.round(INCENSE_BONUS_FROM_CAPACITOR * 100) + "%",
+                Math.round(INCENSE_REGENERATION_CAP_FRIGATE) + "/" + Math.round(INCENSE_REGENERATION_CAP_DESTROYER) + "/" + Math.round(INCENSE_REGENERATION_CAP_CRUISER) + "/" + Math.round(INCENSE_REGENERATION_CAP_CAPITAL) + ""
+        );
+        label.setHighlight("" + Math.round(INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION * 100) + "%",
+                Math.round(INCENSE_REGENERATION_BASE_FRIGATE) + "/" + Math.round(INCENSE_REGENERATION_BASE_DESTROYER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CRUISER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CAPITAL) + "",
+                "" + Math.round(INCENSE_BONUS_FROM_CAPACITOR * 100) + "%",
+                Math.round(INCENSE_REGENERATION_CAP_FRIGATE) + "/" + Math.round(INCENSE_REGENERATION_CAP_DESTROYER) + "/" + Math.round(INCENSE_REGENERATION_CAP_CRUISER) + "/" + Math.round(INCENSE_REGENERATION_CAP_CAPITAL) + ""
+        );
+        label.setHighlightColors(good, good, ps_misc.PROJECT_SOLACE_LIGHT, good);
+
+        label = tooltip.addPara("+ Current Incense capacitor: %s.", opad, h,
+                "" + Math.round(getIncenseCap(ship)));
+        label.setHighlight("" + Math.round(getIncenseCap(ship)));
+        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT);
+
+        label = tooltip.addPara("+ Current Incense regeneration: %s.", opad, h,
+                "" + Math.round(getIncenseRegen(ship)) + "/s");
+        label.setHighlight("" + Math.round(getIncenseRegen(ship)) + "/s");
+        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT);
+
+        //taking damage
+        label = tooltip.addPara("Hits on shield reduce Incense by %s of original damage. Hits on hull or armor reduce Incense by %s of the original damage. If the calculated damage on Incense is smaller than 1, 1 will be applied.", opad, h,
+                "" + Math.round(ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_SHIELD * 100) + "%", "" + Math.round(ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_HULL_ARMOR * 100) + "%");
+        label.setHighlight("" + Math.round(ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_SHIELD * 100) + "%", "" + Math.round(ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_HULL_ARMOR * 100) + "%");
+        label.setHighlightColors(bad, bad);
+
+        //Unsolidified Procedure
+        tooltip.addSectionHeading("Special", Alignment.MID, opad);
+
+        label = tooltip.addPara("If the ship hull fall below %s, activate %s - \"let the killing begins\"", opad, h,
+                "" + Math.round(UP_HITPOINTS_START * 100) + "%", "Unsolidified Procedure (UP)");
+        label.setHighlight("" + Math.round(UP_HITPOINTS_START * 100) + "%", "Unsolidified Procedure (UP)");
+        label.setHighlightColors(bad, ps_misc.PROJECT_SOLACE_LIGHT);
+
+        label = tooltip.addPara("%s: %s, %s fire rate, reduce weapon flux by %s, repair armor to %s of the original amount instantly, deal %s more damage to cruiser and capital, refill all missile and EMP sparking around the ship hitting any missiles or fighters", opad, h,
+                "UP",
+                "Disable shield",
+                "" + Math.round(UP_ROF_BONUS * 100) + "%",
+                "" + Math.round(UP_WEAPON_FLUX_BONUS * 100) + "%",
+                "" + Math.round(UP_ARMOR_REPAIR * 100) + "%",
+                "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%"
+        );
+        label.setHighlight("UP", "Disable shield",
+                "" + Math.round(UP_ROF_BONUS * 100) + "%",
+                "" + Math.round(UP_WEAPON_FLUX_BONUS * 100) + "%",
+                "" + Math.round(UP_ARMOR_REPAIR * 100) + "%",
+                "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%"
+        );
+        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, bad, good, good, good, good);
 
     }
 
@@ -447,15 +557,19 @@ public class ps_incensemanufactured extends BaseHullMod {
                 incenseLevel = (float) customCombatData.get("ps_incenselevel" + id);
 //            Global.getCombatEngine().addFloatingText(target.getLocation(), String.valueOf(incenseLevel), 60, Color.WHITE, target, 0.25f, 0.25f);
 
-            if (param instanceof DamagingProjectileAPI && incenseLevel > 0) {
+            if (incenseLevel > 0) {
                 float projectileDamage = 0;
                 if(shieldHit) {
-                    projectileDamage = (((DamagingProjectileAPI) param).getDamage().getDamage()) * ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_SHIELD;
+                    projectileDamage = damage.getDamage() * ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_SHIELD;
                 } else {
-                    projectileDamage = (((DamagingProjectileAPI) param).getDamage().getDamage()) * ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_HULL;
+                    projectileDamage = damage.getDamage() * ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_HULL_ARMOR;
                 }
                 if (projectileDamage < 1) projectileDamage = 1;
-                incenseLevel -= projectileDamage;
+                if(incenseLevel - projectileDamage > 0) {
+                    incenseLevel -= projectileDamage;
+                } else {
+                    incenseLevel = 0;
+                }
             }
 
             MathUtils.clamp(incenseLevel, 0, incenseCap);

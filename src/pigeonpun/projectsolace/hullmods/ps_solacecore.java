@@ -127,11 +127,11 @@ public class ps_solacecore extends BaseHullMod {
                 "" + Math.round(ENERGY_RANGE_CRUISER_CAPITAL) + "u");
         label.setHighlightColors(Misc.MOUNT_ENERGY, ps_misc.PROJECT_SOLACE_LIGHT, good, good);
 
-        //Time dilation
-        label = tooltip.addPara("Increase %s up to %s, proportion to the ship flux, effect max out at %s flux", opad, h,
-                "time flow", "" + Math.round(TIME_DAL_BONUS) + "%" ,"" + Math.round(MAX_FLUX_LEVEL_TIME_DAL_BONUS* 100f) + "%");
-        label.setHighlight("time flow", "" + Math.round(TIME_DAL_BONUS) + "%" ,"" + Math.round(MAX_FLUX_LEVEL_TIME_DAL_BONUS * 100f) + "%");
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, good, ps_misc.PROJECT_SOLACE_LIGHT);
+//        //Time dilation
+//        label = tooltip.addPara("Increase %s up to %s, proportion to the ship flux, effect max out at %s flux", opad, h,
+//                "time flow", "" + Math.round(TIME_DAL_BONUS) + "%" ,"" + Math.round(MAX_FLUX_LEVEL_TIME_DAL_BONUS* 100f) + "%");
+//        label.setHighlight("time flow", "" + Math.round(TIME_DAL_BONUS) + "%" ,"" + Math.round(MAX_FLUX_LEVEL_TIME_DAL_BONUS * 100f) + "%");
+//        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, good, ps_misc.PROJECT_SOLACE_LIGHT);
 
         //Increase flux cost for none-beam energy weapons
         label = tooltip.addPara("Increase %s for %s by %s.", opad, h,
