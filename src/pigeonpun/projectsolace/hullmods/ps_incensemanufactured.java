@@ -52,11 +52,14 @@ public class ps_incensemanufactured extends BaseHullMod {
     private static final float ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_HULL_ARMOR = 0.4f;
     private static final float ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_SHIELD = 0.2f;
     private final float EMP_RANGE = 500f;
-    private final float EMP_DAMAGE = 50f;
+    private final float EMP_DAMAGE = 200f;
     private final Color EMP_COLOR = new Color(241, 245, 40, 255);
     private final IntervalUtil spawnFlaresInterval = new IntervalUtil(0.5f, 1f);
     private final IntervalUtil spawnEMPInterval = new IntervalUtil(0.1f, 0.2f);
     private final IntervalUtil spawnEMPStartUP = new IntervalUtil(0.2f, 0.8f);
+    private final float spawnJitterTimerFrom = 0.2f;
+    private final float spawnJitterTimerTo = 0.5f;
+    private final float spawnJitterTimerWait = 0.1f;
     //UP = Unsolidified Procedure
     private final float UP_HITPOINTS_START = 0.6f;
     private final float UP_ROF_BONUS = 2f;
@@ -89,6 +92,7 @@ public class ps_incensemanufactured extends BaseHullMod {
         boolean up_activate_bonus = false;
         boolean up_standstill_activated = false;
         boolean up_standstill_bonus_removed = false;
+        float ps_spawnjitter_timer = 0;
 //        boolean up_standstill_popup = false;
 
         Map<String, Object> customCombatData = Global.getCombatEngine().getCustomData();
@@ -104,6 +108,8 @@ public class ps_incensemanufactured extends BaseHullMod {
             up_standstill_activated = (boolean) customCombatData.get("up_standstill_activated" + id);
         if (customCombatData.get("up_standstill_bonus_removed" + id) instanceof Boolean)
             up_standstill_bonus_removed = (boolean) customCombatData.get("up_standstill_bonus_removed" + id);
+        if (customCombatData.get("ps_spawnjitter_timer" + id) instanceof Float)
+            ps_spawnjitter_timer = (float) customCombatData.get("ps_spawnjitter_timer" + id);
 //        if (customCombatData.get("up_standstill_popup" + id) instanceof Float)
 //            up_standstill_popup = (boolean) customCombatData.get("up_standstill_popup" + id);
 
@@ -171,6 +177,8 @@ public class ps_incensemanufactured extends BaseHullMod {
         // repair armor to certain amount of original
         // deal 50/40/30/20% more damage to cruiser and capital depend on ship class.
         if(ship.getHitpoints() < ship.getMaxHitpoints() * UP_HITPOINTS_START) {
+            //DISABLE Shield
+            if(ship.getShield() != null) ship.getShield().toggleOff();
             ////////////////
             //standstill
             ////////////////
@@ -189,10 +197,11 @@ public class ps_incensemanufactured extends BaseHullMod {
                     stats.getDeceleration().modifyPercent(id, 0.0f);
                     stats.getHullDamageTakenMult().modifyMult(id, 0.0f);
                     stats.getArmorDamageTakenMult().modifyMult(id, 0.0f);
-                    if (ship == Global.getCombatEngine().getPlayerShip()) {
-                        Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
-                        Global.getCombatEngine().getTimeMult().modifyMult(id, 1f/(1f+standstillTimer));
-                    }
+//                    if (ship == Global.getCombatEngine().getPlayerShip()) {
+//                        Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
+//                        Global.getCombatEngine().getTimeMult().modifyMult(id, 1f/(1f+standstillTimer));
+//                    }
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
                     for(WeaponAPI weapon: ship.getAllWeapons()) {
                         weapon.disable();
                     }
@@ -230,7 +239,7 @@ public class ps_incensemanufactured extends BaseHullMod {
                         for(WeaponAPI weapon: ship.getAllWeapons()) {
                             weapon.repair();
                         }
-                        Global.getCombatEngine().addFloatingText(ship.getLocation(), up_standstill_bonus_removed + "...", 60, ps_misc.PROJECT_SOLACE_LIGHT, ship, 0.25f, 0.25f);
+//                        Global.getCombatEngine().addFloatingText(ship.getLocation(), up_standstill_bonus_removed + "...", 60, ps_misc.PROJECT_SOLACE_LIGHT, ship, 0.25f, 0.25f);
 
                         Global.getSoundPlayer().playSound("ps_up_activate", 1, 1f, ship.getLocation(), new Vector2f(0, 0));
                         up_standstill_bonus_removed = true;
@@ -243,8 +252,15 @@ public class ps_incensemanufactured extends BaseHullMod {
                 //Finish standstill
                 //Move to berserk state
                 //////////////////////////
-                if(ship.getShield() != null) ship.getShield().toggleOff();
-                ship.setJitter(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 1.5f, 1, 3, 10f);
+                ps_spawnjitter_timer += amount;
+                if(ps_spawnjitter_timer > spawnJitterTimerFrom && ps_spawnjitter_timer < spawnJitterTimerTo) {
+                    ship.setJitter(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 2f, 2, 7, 15f);
+                } else {
+                    if(ps_spawnjitter_timer > (spawnJitterTimerTo + spawnJitterTimerWait)) {
+                        ps_spawnjitter_timer = 0;
+                    }
+                }
+//                ship.setJitter(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 1f, 1, 7, 15f);
                 ship.getEngineController().getFlameColorShifter().shift(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 0.2f, 1f, 1f);
 
                 //damage boost
@@ -405,6 +421,7 @@ public class ps_incensemanufactured extends BaseHullMod {
         customCombatData.put("up_activate_bonus" + id, up_activate_bonus);
         customCombatData.put("up_standstill_activated" + id, up_standstill_activated);
         customCombatData.put("up_standstill_bonus_removed" + id, up_standstill_bonus_removed);
+        customCombatData.put("ps_spawnjitter_timer" + id, ps_spawnjitter_timer);
 //        customCombatData.put("up_standstill_popup" + id, up_standstill_popup);
     }
 
@@ -438,7 +455,6 @@ public class ps_incensemanufactured extends BaseHullMod {
                     regenCap = INCENSE_REGENERATION_CAP_CAPITAL;
                     break;
             }
-            System.out.println(regenCap);
             regen = actualRegenerationBase + (ship.getMutableStats().getFluxCapacity().modified * INCENSE_BONUS_FROM_CAPACITOR);
             if(regen >regenCap) {
                 return regenCap;

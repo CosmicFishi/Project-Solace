@@ -31,7 +31,8 @@
 	"combatCapital":{
 		"ps_nadhmor_attack": 8,
 		"ps_nadhmor_defend": 1,
-		"ps_camiguin_attack": 5,
+		"ps_camiguin_attack": 6,
+		"ps_camiguin_destruction": 5,
 		"ps_camiguin_defense": 3,
 	},
 	

@@ -4,7 +4,7 @@
   "displayName": "Defend",
   "goalVariant": true,
   "fluxCapacitors": 0,
-  "fluxVents": 47,
+  "fluxVents": 49,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
@@ -16,13 +16,37 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "plasma",
-        "WS0002": "hellbore",
-        "WS0004": "heavyac",
+        "WS0001": "plasma"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002": "hellbore"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
         "WS0005": "hveldriver",
-        "WS0006": "hveldriver",
+        "WS0006": "hveldriver"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
         "WS0007": "dualflak",
         "WS0008": "dualflak",
+        "WS0009": "vulcan"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
         "WS0010": "sabot",
         "WS0011": "sabot",
         "WS0012": "sabot",
@@ -30,32 +54,11 @@
       }
     },
     {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {}
-    },
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {}
-    },
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {}
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0003": "guardian"
-      }
-    },
-    {
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0009": "vulcan",
+        "WS0003": "guardian",
+        "WS0004": "flak",
         "WS0014": "pdlaser"
       }
     },

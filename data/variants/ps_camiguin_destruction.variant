@@ -1,9 +1,9 @@
 {
-  "variantId": "ps_camiguin_defense",
+  "variantId": "ps_camiguin_destruction",
   "hullId": "ps_camiguin",
-  "displayName": "Defense",
+  "displayName": "Destruction",
   "goalVariant": true,
-  "fluxCapacitors": 22,
+  "fluxCapacitors": 26,
   "fluxVents": 50,
   "quality": 1,
   "permaMods": [],
@@ -16,21 +16,21 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "locust"
+        "WS0001": "squall"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002": "autopulse"
       }
     },
     {
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0002": "hurricane"
-      }
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0003": "autopulse",
+        "WS0003": "tachyonlance",
         "WS0004": "hephag"
       }
     },
@@ -40,40 +40,39 @@
       "weapons": {
         "WS0005": "hveldriver",
         "WS0006": "hveldriver",
-        "WS0007": "ionpulser",
-        "WS0008": "ionpulser"
-      }
-    },
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0009": "sabotpod",
-        "WS0010": "sabotpod"
-      }
-    },
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0011": "flak",
-        "WS0012": "flak",
-        "WS0013": "vulcan",
-        "WS0014": "vulcan",
-        "WS0015": "pdlaser",
-        "WS0016": "pdlaser",
-        "WS0021": "pdlaser"
+        "WS0007": "heavymauler",
+        "WS0008": "heavymauler"
       }
     },
     {
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0017": "harpoon",
-        "WS0018": "harpoon",
-        "WS0019": "harpoon",
-        "WS0020": "harpoon"
+        "WS0009": "pilum",
+        "WS0010": "pilum",
+        "WS0011": "pilum",
+        "WS0012": "pilum"
       }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0013": "vulcan",
+        "WS0014": "vulcan",
+        "WS0015": "pdlaser",
+        "WS0016": "pdlaser",
+        "WS0017": "vulcan",
+        "WS0018": "vulcan",
+        "WS0019": "pdlaser",
+        "WS0020": "pdlaser",
+        "WS0021": "pdlaser"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
     }
   ],
   "modules": [],
