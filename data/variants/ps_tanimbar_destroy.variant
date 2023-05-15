@@ -3,7 +3,7 @@
   "hullId": "ps_tanimbar",
   "displayName": "Destroy",
   "goalVariant": true,
-  "fluxCapacitors": 6,
+  "fluxCapacitors": 2,
   "fluxVents": 10,
   "quality": 1,
   "permaMods": [],
@@ -17,7 +17,8 @@
       "mode": "LINKED",
       "weapons": {
         "WS0001": "pulselaser",
-        "WS0002": "pulselaser"
+        "WS0002": "pulselaser",
+        "WS0004": "vulcan"
       }
     },
     {
