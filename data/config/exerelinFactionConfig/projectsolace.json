@@ -35,11 +35,11 @@
 	    # Vanilla Factions		 
 		"hegemony": 0.2,                                 #Fight for justice, we like that
 		"persean": -1.0,                                 #Exploit people, big no no
-		"pirates": -1.0,                                 #Raid, bad
+		"pirates": -8.0,                                 #Raid, bad
 		"sindrian_diktat": -0.5,                         #Dictatorship, very bad
         "lions_guard": -0.5,		                     #NO TYRANT
 		"independent": 0.8,                              #friend
-		"tritachyon": -1,                                #No AI abusing
+		"tritachyon": -7,                                #No AI abusing
 		"luddic_church":0,                               #,Cult, ugh,
         "luddic_path":-0.2,                              #,Can be better but we dont want people to go doing ram ship with a lot of fuels
         "remnant":-0.5,                                  #Poor creatures
@@ -57,8 +57,8 @@
         },
     "maxRelationships":{
 		# Vanilla Factions
-			"tritachyon": -1,
-            "persean": -1,
+			"tritachyon": -4,
+            "persean": -5,
 		},
 
 	
@@ -84,12 +84,18 @@
     "colonyTargetValuator":"exerelin.campaign.colony.IndustrialColonyTargetValuator",
 
     "startShipsSolo":[
-		["ps_taliabu_attack"],
+		["ps_tanimbar_attack"],
 	],
 
-    #"startShipsCombatSmall":[],
+    "startShipsCombatSmall":[
+        ["ps_salawesi_attack", "ps_taliabu_attack", "ps_ashy_attack"],
+        ["ps_salawesi_attack", "ps_taliabu_defend", "ps_morepork_attack"],
+    ],
 
-	#"startShipsCombatLarge":[],
+	"startShipsCombatLarge":[
+        ["ps_javanica_attack", "ps_morepork_attack", "ps_ashy_defend", "ps_tanimbar_attack"],
+        ["ps_rufous_attack", "ps_ashy_defend", "ps_taliabu_attack", "ps_salawesi_attack"],
+    ],
 	
     #"startShipsCarrierSmall":[],
 
@@ -106,7 +112,7 @@
     #"startSpecialItems":[[["ork_project_package", ""]],],
     
     "defenceStations":[
-        {"ids":["orbitalstation", "battlestation", "starfortress"]}, #These are the low tier versions already.
+        {"ids":["orbitalstation_mid", "battlestation_mid", "starfortress_mid"]},
     ],
     
     "industrySeeds":[

@@ -6,7 +6,7 @@
 	},
 	"combatSmall":{
 		"ps_taliabu_attack": 5,
-		"ps_taliabu_defense": 2,
+		"ps_taliabu_defend": 2,
 		"ps_salawesi_attack": 5,
 		"ps_tanimbar_attack": 3,
 		"ps_tanimbar_destroy": 6,
@@ -14,7 +14,7 @@
 	"combatMedium":{
 		"ps_morepork_attack": 4,
 		"ps_morepork_destroy": 3,
-		"ps_ashy_defense": 4,
+		"ps_ashy_defend": 4,
 		"ps_ashy_attack": 4,
 		"ps_ashy_disabler": 3,
 	},
@@ -23,7 +23,7 @@
 		"ps_barking_defense": 4,
 		"ps_rufous_destroy": 5,
 		"ps_rufous_attack": 3,
-		"ps_rufous_defense": 3,
+		"ps_rufous_defend": 3,
 		"ps_javanica_attack": 5,
 		"ps_javanica_destroyer": 8,
 		"ps_javanica_beamer": 7,
