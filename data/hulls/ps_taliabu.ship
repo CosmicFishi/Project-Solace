@@ -20,31 +20,22 @@
   },
   "weaponSlots": [
     {
-      "id": "WS0001",
+      "id": "WS0002",
       "size": "MEDIUM",
       "type": "HYBRID",
-      "mount": "HARDPOINT",
-      "arc": 0,
-      "angle": 0,
-      "locations": [42, -0]
-    },
-    {
-      "id": "WS0002",
-      "size": "SMALL",
-      "type": "BALLISTIC",
       "mount": "TURRET",
       "arc": 240,
       "angle": -83.5,
-      "locations": [6, -18]
+      "locations": [4, -21]
     },
     {
-      "id": "WS0003",
-      "size": "SMALL",
-      "type": "BALLISTIC",
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 240,
       "angle": 83.5,
-      "locations": [6, 18]
+      "locations": [4, 21]
     },
     {
       "id": "ps_crystal",
@@ -53,29 +44,58 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 0,
-      "locations": [-8, -0]
+      "locations": [-20, -0]
+    },
+    {
+      "id": "LB 1",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        34, -10,
+        34.5, 10
+      ]
     }
   ],
   "engineSlots": [
     {
-      "location": [-40, -0],
+      "location": [-27.5, 29],
       "length": 64,
       "width": 24,
       "angle": 180,
       "contrailSize": 64,
       "style": "CUSTOM",
       "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-27.5, -29],
+      "length": 64,
+      "width": 24,
+      "angle": -180,
+      "contrailSize": 64,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
     }
   ],
   "bounds": [
-    -36, 21,
-    -45.5, 30.5,
-    -5, 48,
-    26, 38,
-    44, -0,
-    26, -38,
-    -5, -48,
-    -45.5, -30.5,
-    -36, -21
+    -52.5, 2.5,
+    -28, 22,
+    -28.5, 37,
+    10.5, 38,
+    10, 48.5,
+    48, 35,
+    48, 35,
+    37, 17,
+    43.5, 8,
+    43.5, -8,
+    37, -17,
+    47, -36.5,
+    10, -48.5,
+    10.5, -38,
+    -28.5, -37,
+    -28, -22,
+    -52.5, -2.5
   ]
 }

@@ -109,7 +109,7 @@
 
     #"startShipsGrandFleet":[],
 	
-    #"startSpecialItems":[[["ork_project_package", ""]],],
+    "startSpecialItems":[[["ps_hulls_t1_bp", ""]],[["ps_weapons_t1_bp", ""]]],
     
     "defenceStations":[
         {"ids":["orbitalstation_mid", "battlestation_mid", "starfortress_mid"]},

@@ -1,0 +1,8 @@
+name,id,tags,tech/manufacturer,rarity,base price,stack size,cargo space,baseRaidDanger,icon,sound id,sound id drop,plugin,plugin params,desc,order
+PS High Grade Hulls Blueprint Package,ps_hulls_t1_bp,package_bp,Project Solace,0.3,400000,1000,1,,graphics/icons/cargo/blueprint_basic.png,ui_chip_pickup,ui_bp_package_drop,com.fs.starfarer.api.campaign.impl.items.MultiBlueprintItemPlugin,ps_ship_bp,Enables heavy industry to construct high grade ship hulls designed by Project Solace.,214
+PS High Grade Weapons Blueprint Package,ps_weapons_t1_bp,package_bp,Project Solace,0.5,100000,1000,1,,graphics/icons/cargo/blueprint_basic.png,ui_chip_pickup,ui_bp_package_drop,com.fs.starfarer.api.campaign.impl.items.MultiBlueprintItemPlugin,ps_weapon_bp,Enables heavy industry to construct high grade weapons designed by Project Solace.,213
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
