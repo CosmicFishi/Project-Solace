@@ -62,10 +62,15 @@ public class ps_incensemanufactured extends BaseHullMod {
     private final float spawnJitterTimerWait = 0.1f;
     //UP = Unsolidified Procedure
     private final float UP_HITPOINTS_START = 0.3f;
-    private final float UP_ROF_BONUS = 3f;
+    private final float UP_ROF_BONUS = 2.5f;
     private final float UP_WEAPON_FLUX_BONUS = 0.6f;
     private final float UP_EMP_NEGATE_BONUS = 0.5f;
-    private final float UP_ARMOR_REPAIR = 0.7f;
+    private final float UP_ARMOR_REPAIR = 0.5f;
+    private final float
+            UP_ARMOR_REPAIR_FRIGATE = 1f,
+            UP_ARMOR_REPAIR_DESTROYER = 0.8f,
+            UP_ARMOR_REPAIR_CRUISER = 0.6f,
+            UP_ARMOR_REPAIR_CAPITAL = 0.4f;
     private static final float
             UP_BONUS_DAMAGE_FRIGATE = 0.5f,
             UP_BONUS_DAMAGE_DESTROYER = 0.4f,
@@ -212,13 +217,28 @@ public class ps_incensemanufactured extends BaseHullMod {
 
                     //repair armor
                     ArmorGridAPI grid = ship.getArmorGrid();
+                    float armorToRepair = 0f;
+                    switch (ship.getHullSize()) {
+                        case FRIGATE:
+                            armorToRepair = UP_ARMOR_REPAIR_FRIGATE;
+                            break;
+                        case DESTROYER:
+                            armorToRepair = UP_ARMOR_REPAIR_DESTROYER;
+                            break;
+                        case CRUISER:
+                            armorToRepair = UP_ARMOR_REPAIR_CRUISER;
+                            break;
+                        case CAPITAL_SHIP:
+                            armorToRepair = UP_ARMOR_REPAIR_CAPITAL;
+                            break;
+                    }
                     int gridHeight = grid.getGrid()[0].length;
                     int gridWidth = grid.getGrid().length;
 
                     for (int x = 0; x < gridWidth; x++) {
                         for (int y = 0; y < gridHeight; y++) {
                             float armorhp = grid.getArmorValue(x,y);
-                            float maxHPRepair = grid.getMaxArmorInCell() * UP_ARMOR_REPAIR;
+                            float maxHPRepair = grid.getMaxArmorInCell() * armorToRepair;
 
                             //float toadd = 5; // amount you want to add per-cell
                             if(armorhp < maxHPRepair) {
@@ -536,13 +556,13 @@ public class ps_incensemanufactured extends BaseHullMod {
                 "Disable shield",
                 "" + Math.round(UP_ROF_BONUS * 100) + "%",
                 "" + Math.round(UP_WEAPON_FLUX_BONUS * 100) + "%",
-                "" + Math.round(UP_ARMOR_REPAIR * 100) + "%",
+                "" + Math.round(UP_ARMOR_REPAIR_FRIGATE * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_DESTROYER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CRUISER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CAPITAL * 100) + "%",
                 "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%"
         );
         label.setHighlight("UP", "Disable shield",
                 "" + Math.round(UP_ROF_BONUS * 100) + "%",
                 "" + Math.round(UP_WEAPON_FLUX_BONUS * 100) + "%",
-                "" + Math.round(UP_ARMOR_REPAIR * 100) + "%",
+                "" + Math.round(UP_ARMOR_REPAIR_FRIGATE * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_DESTROYER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CRUISER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CAPITAL * 100) + "%",
                 "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%"
         );
         label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, bad, good, good, good, good);
