@@ -3,7 +3,7 @@
 v.0.1
 
 ## Description
-This is a starsector mod
+This is a Starsector mod
 
 ## Bug report / Suggestion
 Dm my discord PigeonPun#6449
@@ -11,14 +11,14 @@ Dm my discord PigeonPun#6449
 ## Credits
 
 Alex
-Wisp/Silkie - Mod template
-Tookpok4k3 - Numerous sprite, lore and sound help
-PureTilt - Many scripts <3
-Pogre: Emotional support
-DR - Random battle script from Ship/weapon pack
-Amazign - Incense bar script help
-RainNanoDesu#2923 - Camiguin resprite silhouette
-Tartiflette - Moving parts script (Scy) - MagicLib
-LazyWizard: LazyLib
-Alex, David, Ivaylo, StianStark: Starsector
-All of you from Unofficial Starsector discord for playing.
+Wisp/Silkie - Mod template <br>
+Tookpok4k3 - Numerous sprite, lore and sound help <br>
+PureTilt - Many scripts <3 <br>
+Pogre: Emotional support <br>
+DR - Random battle script from Ship/weapon pack <br>
+Amazign - Incense bar script help <br>
+RainNanoDesu#2923 - Camiguin resprite silhouette <br>
+Tartiflette - Moving parts script (Scy) - MagicLib <br>
+LazyWizard: LazyLib <br>
+Alex, David, Ivaylo, StianStark: Starsector <br>
+All of you from Unofficial Starsector discord for playing. <br>
