@@ -20,7 +20,7 @@
 	},
 	"combatLarge":{
 		"ps_barking_attack": 6,
-		"ps_barking_defense": 4,
+		"ps_barking_defend": 4,
 		"ps_rufous_destroy": 5,
 		"ps_rufous_attack": 3,
 		"ps_rufous_defend": 3,
@@ -33,7 +33,7 @@
 		"ps_nadhmor_defend": 1,
 		"ps_camiguin_attack": 6,
 		"ps_camiguin_destruction": 5,
-		"ps_camiguin_defense": 3,
+		"ps_camiguin_defend": 3,
 	},
 	
 	

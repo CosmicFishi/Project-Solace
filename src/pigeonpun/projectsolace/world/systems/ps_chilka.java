@@ -350,7 +350,7 @@ public class ps_chilka {
                 "Chilka Sensor Relay", // name - if null, defaultName from custom_entities.json will be used
                 "sensor_array", // type of object, defined in custom_entities.json
                 "projectsolace"); // faction
-        SensorRelay.setCircularOrbitPointingDown(ChilkaStar, 100f, 8000f, 280f);
+        SensorRelay.setCircularOrbitPointingDown(ChilkaStar, 100f, 9000f, 450f);
 
         //Jump point
         JumpPointAPI jumpPoint1 = Global.getFactory().createJumpPoint(

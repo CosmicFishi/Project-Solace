@@ -3,8 +3,8 @@
   "hullId": "ps_barking",
   "displayName": "Attack",
   "goalVariant": true,
-  "fluxCapacitors": 1,
-  "fluxVents": 14,
+  "fluxCapacitors": 0,
+  "fluxVents": 11,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
@@ -16,8 +16,12 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "harpoonpod",
-        "WS0002": "harpoonpod",
+        "WS0001": "dragon",
+        "WS0002": "dragon",
+        "WS0003": "gazerpod",
+        "WS0004": "gazerpod",
+        "WS0008": "sabot",
+        "WS0009": "sabot",
         "WS0010": "vulcan",
         "WS0011": "vulcan"
       }
@@ -25,18 +29,12 @@
     {
       "autofire": false,
       "mode": "LINKED",
-      "weapons": {
-        "WS0003": "sabotpod",
-        "WS0004": "sabotpod"
-      }
+      "weapons": {}
     },
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0008": "harpoon",
-        "WS0009": "harpoon"
-      }
+      "weapons": {}
     },
     {
       "autofire": true,

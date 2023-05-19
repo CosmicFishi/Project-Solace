@@ -12,8 +12,8 @@ import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
-import data.scripts.util.MagicLensFlare;
-import data.scripts.util.MagicUI;
+import org.magiclib.util.MagicLensFlare;
+import org.magiclib.util.MagicUI;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -501,7 +501,7 @@ public class ps_incensemanufactured extends BaseHullMod {
 
         //3 effects
         //label = tooltip.addPara("First is the tendency to spread out to a large area, if the area is damaged by a moving projectile, the dust will disburse out then slowly form back to fill it up", opad, h, "");
-        //label = tooltip.addPara("The second unique feature is the ability to release a huge amount of energy when Incense’s covering surface has been damaged to a certain point, after the initial impact, the matter seems to be bonding the surface back to a certain stage, this feature alone is a breakthrough for the Solace ship composition.", opad, h, "");
+        //label = tooltip.addPara("The second unique feature is the ability to release a huge amount of energy when Incense???s covering surface has been damaged to a certain point, after the initial impact, the matter seems to be bonding the surface back to a certain stage, this feature alone is a breakthrough for the Solace ship composition.", opad, h, "");
         //label = tooltip.addPara("The final specialty is the time manipulation, it seems that the object that Incense covers, depending on the density, can move slower or faster in time, this is also another key factor to Solace ship lineup.", opad, h, "");
 
         //bonus

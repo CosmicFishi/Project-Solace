@@ -11,7 +11,7 @@ import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
-import data.scripts.util.MagicIncompatibleHullmods;
+import org.magiclib.util.MagicIncompatibleHullmods;
 import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector;
 import org.lwjgl.util.vector.Vector2f;

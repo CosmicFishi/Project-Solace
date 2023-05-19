@@ -4,8 +4,8 @@
 	"author":"PigeonPun",
     "utility":"false",
 	"version":"0.1.0",
-	"description":"High tech faction lead by scientists that despite exploitations",
-    "gameVersion": "0.95.1a-RC6", 
+	"description":"A faction lead by scientists from all over the Sector",
+    "gameVersion": "0.96a-RC6",
   	"jars":["jars/projectsolace.jar"],
   	"modPlugin":"pigeonpun.projectsolace.scripts.projectsolaceplugin",
 	  	"dependencies": [
