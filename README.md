@@ -17,7 +17,7 @@ PureTilt - Many scripts <3 <br>
 Pogre: Emotional support <br>
 DR - Random battle script from Ship/weapon pack <br>
 Amazign - Incense bar script help <br>
-RainNanoDesu#2923 - Camiguin resprite silhouette <br>
+RainNanoDesu - Camiguin resprite silhouette <br>
 Tartiflette - Moving parts script (Scy) - MagicLib <br>
 LazyWizard: LazyLib <br>
 Alex, David, Ivaylo, StianStark: Starsector <br>
