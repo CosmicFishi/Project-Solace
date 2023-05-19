@@ -18,11 +18,6 @@
             "id": "MagicLib",
             "name": "MagicLib",
         #    #"version": "0.34"
-        },
-        {
-            "id": "shaderLib",
-            "name": "GraphicsLib",
-        #    #"version": "1.5.1"
         }
     ],
 }
