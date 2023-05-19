@@ -16,8 +16,8 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "pulselaser",
-        "WS0002": "pulselaser",
+        "WS0001": "sabotpod",
+        "WS0002": "phasebeam",
         "WS0004": "vulcan"
       }
     },

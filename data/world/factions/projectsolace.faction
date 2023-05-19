@@ -6,8 +6,8 @@
     "darkUIColor":[34,51,95,175],
     "gridUIColor":[34,51,95,75],
 
-    #"secondaryUIColor":[34,51,95,255],
-    #"secondarySegments":4,
+    "secondaryUIColor":[188,185,190,255],
+    "secondarySegments":6,
 
     "displayName":"Project Solace",
     "displayNameWithArticle":"The Solace Association",

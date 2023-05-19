@@ -26,7 +26,7 @@
     {
       "id": "WS0001",
       "size": "MEDIUM",
-      "type": "UNIVERSAL",
+      "type": "COMPOSITE",
       "mount": "TURRET",
       "arc": 30,
       "angle": -0,
@@ -35,7 +35,7 @@
     {
       "id": "WS0002",
       "size": "MEDIUM",
-      "type": "UNIVERSAL",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 30,
       "angle": 0,
