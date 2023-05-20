@@ -61,7 +61,7 @@ public class ps_incensemanufactured extends BaseHullMod {
     private final float spawnJitterTimerTo = 0.5f;
     private final float spawnJitterTimerWait = 0.1f;
     //UP = Unsolidified Procedure
-    private final float UP_HITPOINTS_START = 0.3f;
+    private final float UP_HITPOINTS_START = 0.6f;
     private final float UP_ROF_BONUS = 2.5f;
     private final float UP_WEAPON_FLUX_BONUS = 0.6f;
     private final float UP_EMP_NEGATE_BONUS = 0.5f;
