@@ -17,4 +17,5 @@ Javanica,ps_javanica,Heavy Cruiser,Project Solace,ps_destruenslaunch,14,10000,10
 #CAPITAL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Camiguin,ps_camiguin,Battleship,Project Solace,ps_swiftrush,26,12000,1200,20000,30000,1200,315,,50,20,15,10,10,2500,OMNI,,180,0.4,1,,,200,500,300,300,10,30,8,500000,3,15,600,0.25,45,45,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,7
 Nadhmòr,ps_nadhmor,Battlecruiser,Project Solace,ps_swiftrush,23,12500,1100,17500,30000,800,245,,65,32,20,16,15,2500,OMNI,,120,0.4,0.9,,,360,400,225,250,12,32,8,400000,3,15,600,0.25,40,40,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,10
+Albertine,ps_albertine,Battlecarrier,Project Solace,recalldevice,28,10000,1350,12000,12500,600,300,5,30,15,15,12,12,3500,FRONT,,180,0.5,0.8,,,500,1500,300,300,15,20,7,430000,3,12,720,0.25,50,50,,,,,,,"CARRIER, COMBAT, NO_AUTO_ESCORT","ps_ship_bp, rare_bp",,0.4,2,4,,12
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

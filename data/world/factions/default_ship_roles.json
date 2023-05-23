@@ -34,6 +34,8 @@
 		"ps_camiguin_attack": 6,
 		"ps_camiguin_destruction": 5,
 		"ps_camiguin_defend": 3,
+		"ps_albertine_attack": 7,
+		"ps_albertine_defend": 5,
 	},
 	
 	

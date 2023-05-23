@@ -1,0 +1,282 @@
+{
+  "hullName": "Albertine",
+  "hullId": "ps_albertine",
+  "hullSize": "CAPITAL_SHIP",
+  "spriteName": "graphics/ships/ps_albertine.png",
+  "style": "PROJECTSOLACE",
+  "height": 300,
+  "width": 300,
+  "center": [150, 149],
+  "collisionRadius": 200,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 171,
+  "viewOffset": 0,
+  "builtInMods": [
+    "ps_solacecore",
+    "ps_incensemanufactured",
+    "recovery_shuttles",
+    "operations_center"
+  ],
+  "builtInWings": [
+    "claw_wing"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "LARGE",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 160,
+      "angle": 30,
+      "locations": [47, 59]
+    },
+    {
+      "id": "WS0002",
+      "size": "LARGE",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 160,
+      "angle": -30,
+      "locations": [47, -59]
+    },
+    {
+      "id": "WS0005",
+      "size": "MEDIUM",
+      "type": "COMPOSITE",
+      "mount": "TURRET",
+      "arc": 190,
+      "angle": 86.5,
+      "locations": [24, 89]
+    },
+    {
+      "id": "WS0006",
+      "size": "MEDIUM",
+      "type": "COMPOSITE",
+      "mount": "TURRET",
+      "arc": 190,
+      "angle": -71,
+      "locations": [24, -89]
+    },
+    {
+      "id": "WS0003",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 160,
+      "angle": 20,
+      "locations": [78, 36]
+    },
+    {
+      "id": "WS0007",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 220,
+      "angle": -135,
+      "locations": [-59, -72]
+    },
+    {
+      "id": "WS0004",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 160,
+      "angle": -20,
+      "locations": [78, -36]
+    },
+    {
+      "id": "WS0013",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 156,
+      "angle": 82,
+      "locations": [-41, 90]
+    },
+    {
+      "id": "WS0014",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 156,
+      "angle": -82,
+      "locations": [-41, -90]
+    },
+    {
+      "id": "WS0011",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 100,
+      "angle": 24,
+      "locations": [71, 83]
+    },
+    {
+      "id": "WS0012",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 100,
+      "angle": -24,
+      "locations": [71, -83]
+    },
+    {
+      "id": "WS0009",
+      "size": "SMALL",
+      "type": "COMPOSITE",
+      "mount": "TURRET",
+      "arc": 160,
+      "angle": 39,
+      "locations": [103, 28]
+    },
+    {
+      "id": "WS0010",
+      "size": "SMALL",
+      "type": "COMPOSITE",
+      "mount": "TURRET",
+      "arc": 160,
+      "angle": -39,
+      "locations": [103, -28]
+    },
+    {
+      "id": "WS0008",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 220,
+      "angle": 135,
+      "locations": [-59, 72]
+    },
+    {
+      "id": "ps_crystal",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-19, -0]
+    },
+    {
+      "id": "LB 1",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        71.5, 12,
+        71, -11,
+        98, -11,
+        98, 11
+      ]
+    },
+    {
+      "id": "LB 2",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        6, 109,
+        0, 78,
+        -6, 92
+      ]
+    },
+    {
+      "id": "LB 3",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -5, -92,
+        6, -109,
+        0, -74
+      ]
+    },
+    {
+      "id": "LB 4",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -70, -25,
+        -102, -30,
+        -70, 25,
+        -102, 30,
+        -116, 4,
+        -116, -4
+      ]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-121, -93],
+      "length": 100,
+      "width": 24,
+      "angle": 180,
+      "contrailSize": 64,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-121, 93],
+      "length": 100,
+      "width": 24,
+      "angle": -180,
+      "contrailSize": 64,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-114, -77],
+      "length": 80,
+      "width": 20,
+      "angle": 180,
+      "contrailSize": 64,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-114, 77],
+      "length": 80,
+      "width": 20,
+      "angle": -180,
+      "contrailSize": 64,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    }
+  ],
+  "bounds": [
+    -133.5, 5.5,
+    -117.5, 32,
+    -128.5, 44.5,
+    -132.5, 69.5,
+    -113, 65,
+    -120, 109.5,
+    -29.5, 133,
+    -6, 124,
+    47.5, 132,
+    104, 115.5,
+    121.5, 56.5,
+    116.5, 25.5,
+    128.5, 13.5,
+    128.5, -13.5,
+    116.5, -25.5,
+    121.5, -56.5,
+    104, -115.5,
+    47.5, -132,
+    -6, -124,
+    -29.5, -133,
+    -120, -109.5,
+    -113, -65,
+    -132.5, -69.5,
+    -128.5, -44.5,
+    -117.5, -32,
+    -133.5, -5.5
+  ]
+}

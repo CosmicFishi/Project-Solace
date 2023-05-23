@@ -75,6 +75,8 @@
         "tags":[
             "ps_ship_bp",
             "hightech_bp",
+            "midline_bp",
+            "lowtech_bp",
             ],
         "fighters":[
 
@@ -83,7 +85,6 @@
 
     "priorityFighters":{
         "tags":[
-            "ps_ship_bp",
         ],
         "fighters":[
 
