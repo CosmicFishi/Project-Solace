@@ -18,7 +18,8 @@ Pogre: Emotional support <br>
 DR - Random battle script from Ship/weapon pack <br>
 Amazign - Incense bar script help <br>
 RainNanoDesu - Camiguin resprite silhouette <br>
+Big Bee - Albertine silhouette <br>
 Tartiflette - Moving parts script (Scy) - MagicLib <br>
 LazyWizard: LazyLib <br>
 Alex, David, Ivaylo, StianStark: Starsector <br>
-All of you from Unofficial Starsector discord for playing. <br>
+All of Unofficial Starsector discord and you for playing. <br>
