@@ -7,6 +7,7 @@ import com.fs.starfarer.api.impl.campaign.ids.HullMods;
 import com.fs.starfarer.api.impl.campaign.ids.Personalities;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.hullmods.DoNotBackOff;
+import com.fs.starfarer.api.loading.FighterWingSpecAPI;
 import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
@@ -76,6 +77,8 @@ public class ps_incensemanufactured extends BaseHullMod {
             UP_BONUS_DAMAGE_DESTROYER = 0.4f,
             UP_BONUS_DAMAGE_CRUISER = 0.3f,
             UP_BONUS_DAMAGE_CAPITAL = 0.2f;
+    private static final float UP_FIGHTER_RATE_DECREASE_MODIFIER = 30f;
+    private static final float UP_FIGHTER_RATE_INCREASE_MODIFIER = 50f;
     private final float UP_STANDSTILL_DURATION = 5f; //x second
 
     //Credit to PureTilt cuz I took reference from VIC
@@ -311,6 +314,10 @@ public class ps_incensemanufactured extends BaseHullMod {
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp", "", "EMP damage taken reduction", String.valueOf(UP_EMP_NEGATE_BONUS * 100) + "%", false);
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cruiser_dmg", "", "Cruiser damage bonus", "+" + String.valueOf(damageToCruiser * 100) + "%", false);
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cap_dmg", "", "Capital damage bonus", "+" + String.valueOf(damageToCapital * 100) + "%", false);
+                if(ship.getWing() != null) {
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_increase", "", "Fighter losses rate", "+" + String.valueOf(100 - UP_FIGHTER_RATE_INCREASE_MODIFIER) + "%", false);
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_decrease", "", "Fighter recover rate", "+" + String.valueOf(UP_FIGHTER_RATE_INCREASE_MODIFIER) + "%", false);
+                }
 
                 //Ship FX + EMP when go out of stand still
                 spawnEMPStartUP.advance(amount);
@@ -421,6 +428,12 @@ public class ps_incensemanufactured extends BaseHullMod {
                     stats.getEnergyRoFMult().modifyMult(id, UP_ROF_BONUS);
                     stats.getEnergyWeaponFluxCostMod().modifyMult(id, UP_WEAPON_FLUX_BONUS);
                     stats.getEmpDamageTakenMult().modifyMult(id, UP_EMP_NEGATE_BONUS);
+
+                    //fighter bonus
+                    if(ship.getWing() != null) {
+                        stats.getDynamic().getStat(Stats.REPLACEMENT_RATE_DECREASE_MULT).modifyMult(id, 1f - UP_FIGHTER_RATE_DECREASE_MODIFIER / 100f);
+                        stats.getDynamic().getStat(Stats.REPLACEMENT_RATE_INCREASE_MULT).modifyPercent(id, UP_FIGHTER_RATE_INCREASE_MODIFIER);
+                    }
 
                     //damage boost
                     stats.getDamageToCruisers().modifyMult(id, 1f+ damageToCruiser);
@@ -551,21 +564,25 @@ public class ps_incensemanufactured extends BaseHullMod {
         label.setHighlight("" + Math.round(UP_HITPOINTS_START * 100) + "%", "Unsolidified Procedure (UP)");
         label.setHighlightColors(bad, ps_misc.PROJECT_SOLACE_LIGHT);
 
-        label = tooltip.addPara("%s: %s, %s fire rate, reduce weapon flux by %s, repair armor to %s of the original amount instantly, deal %s more damage to cruiser and capital, refill all missile and EMP sparking around the ship hitting any missiles or fighters", opad, h,
+        label = tooltip.addPara("%s: %s, %s fire rate, reduce weapon flux by %s, repair armor to %s of the original amount instantly, deal %s more damage to cruiser and capital, refill all missile and EMP sparking around the ship hitting any missiles or fighters. If the ship have fighters, reduces the rate at which the fighter replacement rate decreases due to fighter losses by %s and increases the rate at which it recovers by %s.", opad, h,
                 "UP",
                 "Disable shield",
                 "" + Math.round(UP_ROF_BONUS * 100) + "%",
                 "" + Math.round(UP_WEAPON_FLUX_BONUS * 100) + "%",
                 "" + Math.round(UP_ARMOR_REPAIR_FRIGATE * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_DESTROYER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CRUISER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CAPITAL * 100) + "%",
-                "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%"
+                "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%",
+                "" + Math.round(UP_FIGHTER_RATE_DECREASE_MODIFIER * 100) + "%/",
+                "" + Math.round(UP_FIGHTER_RATE_INCREASE_MODIFIER * 100) + "%/"
         );
         label.setHighlight("UP", "Disable shield",
                 "" + Math.round(UP_ROF_BONUS * 100) + "%",
                 "" + Math.round(UP_WEAPON_FLUX_BONUS * 100) + "%",
                 "" + Math.round(UP_ARMOR_REPAIR_FRIGATE * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_DESTROYER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CRUISER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CAPITAL * 100) + "%",
-                "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%"
+                "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%",
+                "" + Math.round(UP_FIGHTER_RATE_DECREASE_MODIFIER * 100) + "%/",
+                "" + Math.round(UP_FIGHTER_RATE_INCREASE_MODIFIER * 100) + "%/"
         );
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, bad, good, good, good, good);
+        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, bad, good, good, good, good, good, good);
 
     }
 

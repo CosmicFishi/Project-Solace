@@ -13,10 +13,10 @@ Papuan,ps_papuan,Light Carrier,Project Solace,reservewing,10,4250,400,3000,2813,
 Barking,ps_barking,Cruiser,Project Solace,ps_swiftrush,15,8000,1200,11000,16000,450,135,,60,50,25,25,25,1800,OMNI,,220,0.5,0.8,,,80,200,150,90,3,30,8,150000,4,20,420,0.25,25,25,,,,,,,,ps_ship_bp,,0.6,2,3,,5
 Rufous,ps_rufous,Cruiser,Project Solace,ps_exaltedshell,17,10000,1100,10000,11000,600,170,,70,60,30,15,18,1500,OMNI,,180,0.4,0.8,,,100,300,150,150,4,38,8,200000,4,12,480,0.25,27,27,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,6
 Javanica,ps_javanica,Heavy Cruiser,Project Solace,ps_destruenslaunch,14,10000,1050,10000,11000,550,150,,80,40,30,15,23,1500,FRONT,,210,0.4,0.9,,,140,300,150,150,4,38,8,170000,4,12,480,0.25,23,23,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,11
-Aurantia,ps_aurantia,Heavy Carrier,Project Solace,reservewing,18,12000,1100,12000,11000,400,150,2,50,35,30,12,20,3000,OMNI,,180,0.4,0.6,,,180,500,120,90,3,30,8,170000,4,12,480,0.25,25,25,,,,,,,CARRIER,ps_ship_bp,,0.5,2,3,,13
+Aurantia,ps_aurantia,Heavy Carrier,Project Solace,recalldevice,18,12000,1100,12000,11000,400,150,2,50,35,30,12,20,3000,OMNI,,180,0.4,0.6,,,180,500,120,90,3,30,8,170000,4,12,480,0.25,25,25,,,,,,,CARRIER,ps_ship_bp,,0.5,2,3,,13
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #CAPITAL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Camiguin,ps_camiguin,Battleship,Project Solace,ps_swiftrush,26,12000,1200,20000,30000,1200,315,,50,20,15,10,10,2500,OMNI,,180,0.4,1,,,200,500,300,300,10,30,8,500000,3,15,600,0.25,45,45,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,7
 Nadhmòr,ps_nadhmor,Battlecruiser,Project Solace,ps_swiftrush,23,12500,1100,17500,30000,800,245,,65,32,20,16,15,2500,OMNI,,120,0.4,0.9,,,360,400,225,250,12,32,8,400000,3,15,600,0.25,40,40,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,10
-Albertine,ps_albertine,Battlecarrier,Project Solace,recalldevice,28,10000,1350,12000,12500,600,300,5,30,15,15,12,12,3500,FRONT,,180,0.5,0.8,,,500,1500,300,300,15,20,7,430000,3,12,720,0.25,50,50,,,,,,,"CARRIER, COMBAT, NO_AUTO_ESCORT","ps_ship_bp, rare_bp",,0.4,2,4,,12
+Albertine,ps_albertine,Battlecarrier,Project Solace,reservewing,28,10000,1350,12000,12500,600,290,5,30,15,15,12,12,3500,FRONT,,180,0.5,0.8,,,500,1500,300,300,15,20,7,430000,3,12,720,0.25,50,50,,,,,,,"CARRIER, COMBAT, NO_AUTO_ESCORT","ps_ship_bp, rare_bp",,0.4,2,4,,12
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
