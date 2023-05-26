@@ -3,12 +3,11 @@
   "hullId": "ps_taliabu",
   "displayName": "Defense",
   "goalVariant": true,
-  "fluxCapacitors": 4,
+  "fluxCapacitors": 6,
   "fluxVents": 0,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
-    "hardenedshieldemitter",
     "expanded_deck_crew"
   ],
   "weaponGroups": [
@@ -28,6 +27,6 @@
   ],
   "modules": [],
   "wings": [
-    "cobra_wing"
+    "dagger_wing"
   ]
 }
