@@ -17,8 +17,7 @@
 	"clampTurnRateAfter":true,
 	"clampMaxSpeedAfter":false,
 
-	"useSound":"system_maneuvering_jets",
-	"loopSound":"system_maneuvering_jets_loop",
+	"useSound":"ps_hyperframe",
 	"outOfUsesSound":"engine_disabled",
 	
 	"aiHints":{

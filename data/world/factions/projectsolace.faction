@@ -9,18 +9,18 @@
     "secondaryUIColor":[128,121,138,255],
     "secondarySegments":2,
 
-    "displayName":"Project Solace",
+    "displayName":"Solace Association",
     "displayNameWithArticle":"The Solace Association",
 
-    "displayNameLong":"Project Solace Association",
-    "displayNameLongWithArticle":"Project Solace Association",
+    "displayNameLong":"The Solace Association",
+    "displayNameLongWithArticle":"The Solace Association",
     "personNamePrefixAOrAn":"a",
     "displayNameIsOrAre":"is",
 
     "logo":"graphics/factions/psflag.png",
     "crest":"graphics/factions/pscrest.png",
 	
-    "shipNamePrefix":"PrS",
+    "shipNamePrefix":"SoA",
 
     "names":{
         "modern":1,

@@ -81,15 +81,15 @@ public class ps_gen implements SectorGeneratorPlugin {
         SharedData.getData().getPersonBountyEventData().addParticipatingFaction("projectsolace");
 
         //vanilla factions
-        ps.setRelationship(Factions.LUDDIC_CHURCH, 0f);
+        ps.setRelationship(Factions.LUDDIC_CHURCH, -0.1f);
         ps.setRelationship(Factions.LUDDIC_PATH, -0.5f);
-        ps.setRelationship(Factions.TRITACHYON, -0.6f);
-        ps.setRelationship(Factions.PERSEAN, -1f);
-        ps.setRelationship(Factions.PIRATES, -0.8f);
+        ps.setRelationship(Factions.TRITACHYON, -1f);
+        ps.setRelationship(Factions.PERSEAN, -0.2f);
+        ps.setRelationship(Factions.PIRATES, -0.5f);
         ps.setRelationship(Factions.INDEPENDENT, 0.7f);
-        ps.setRelationship(Factions.DIKTAT, -0.3f);
-        ps.setRelationship(Factions.LIONS_GUARD, -0.5f);
-        ps.setRelationship(Factions.HEGEMONY, 0.2f);
+        ps.setRelationship(Factions.DIKTAT, -0.1f);
+        ps.setRelationship(Factions.LIONS_GUARD, -0.1f);
+        ps.setRelationship(Factions.HEGEMONY, 0.1f);
         ps.setRelationship(Factions.REMNANTS, -0.5f);
         //modded factions
         ps.setRelationship("orks", 1.0f);
