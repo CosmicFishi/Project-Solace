@@ -17,7 +17,7 @@
     "hardened_subsystems"
   ],
   "builtInWings": [
-    "wasp_wing"
+    "ps_sooty_wing"
   ],
   "builtInWeapons": {
     "ps_crystal": "ps_core_crystal"
