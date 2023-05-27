@@ -86,7 +86,7 @@ public class ps_gen implements SectorGeneratorPlugin {
         ps.setRelationship(Factions.TRITACHYON, -1f);
         ps.setRelationship(Factions.PERSEAN, -0.2f);
         ps.setRelationship(Factions.PIRATES, -0.5f);
-        ps.setRelationship(Factions.INDEPENDENT, 0.7f);
+        ps.setRelationship(Factions.INDEPENDENT, 0.5f);
         ps.setRelationship(Factions.DIKTAT, -0.1f);
         ps.setRelationship(Factions.LIONS_GUARD, -0.1f);
         ps.setRelationship(Factions.HEGEMONY, 0.1f);
