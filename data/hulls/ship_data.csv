@@ -6,20 +6,24 @@ Sooty,ps_sooty,,Project Solace,,,100,10,500,,100,0,,325,500,450,180,360,10,FRONT
 Salawesi,ps_salawesi,Frigate,Project Solace,ps_swiftrush,5,2250,300,2800,2188,200,50,,120,110,90,70,80,300,OMNI,,180,0.3,0.8,,,10,25,50,25,1,25,10,14000,8,10,240,0.25,4,4,,,,,,,,ps_ship_bp,,0.4,2,2,,1
 Taliabu,ps_taliabu,Support Frigate,Project Solace,ps_intenseflow,6,1250,200,2500,2813,225,45,1,180,200,175,90,270,200,OMNI,,160,0.2,0.8,,,10,50,30,20,1,20,11,16000,10,20,180,0.25,8,8,,,,,,,CARRIER,ps_ship_bp,,0.5,2,2,,2
 Tanimbar,ps_tanimbar,Heavy Frigate,Project Solace,ps_hyperframe,7,1800,250,3000,,400,55,1,170,160,140,80,120,200,FRONT,,360,0.3,0.85,,,15,30,40,20,1,20,10,26000,8,20,240,0.25,9,9,,,,,,,"CARRIER, COMBAT","ps_ship_bp, rare_bp",0.75,0.5,2,2,,8
+Laevis,ps_laevis,Carrier Frigate,Enmity Strafer,reservewing,7,2000,150,3600,3125,300,40,1,140,180,120,60,120,250,OMNI,,120,0.1,0.6,,,20,70,40,20,1,20,9,20000,8,10,300,0.25,7,7,,,,,,,"CARRIER, COMBAT","ps_ship_bp_enmity, rare_bp",,0.4,2,2,,15
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #DESTROYER,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Morepork,ps_morepork,Destroyer,Project Solace,highenergyfocus,12,4000,250,7500,8333,500,125,,100,80,60,30,30,350,OMNI,,170,0.4,1,,,30,70,80,50,2,25,9,48000,5,15,300,0.25,12,12,,,,,,,,ps_ship_bp,,0.5,2,3,,3
 Ashy,ps_ashy,Destroyer,Project Solace,ps_intenseflow,9,5000,400,5000,4167,400,100,,90,60,40,30,60,400,FRONT,,270,0.4,0.9,,,40,100,100,60,2,30,9,40000,5,12,360,0.25,10,10,,,,,,,,ps_ship_bp,,0.5,2,3,,4
 Papuan,ps_papuan,Light Carrier,Project Solace,reservewing,10,4250,400,3000,2813,225,80,2,75,50,30,25,25,450,FRONT,,300,0.4,0.8,,,50,150,40,40,2,20,9,52000,5,15,360,0.25,15,15,,,,,,,CARRIER,ps_ship_bp,,0.5,2,3,,9
+Pricei,ps_pricei,Carrier Destroyer,Enmity Strafer,reservewing,10,5000,250,5000,4167,350,75,2,85,60,40,30,60,400,OMNI,,160,0.1,0.65,,,100,300,100,60,2,30,9,45000,5,12,360,0.25,13,13,,,,,,,"CARRIER, COMBAT","ps_ship_bp_enmity, rare_bp",,0.5,2,3,,16
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #CRUISER,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Barking,ps_barking,Cruiser,Project Solace,ps_swiftrush,15,8000,1200,11000,16000,450,135,,60,50,25,25,25,1800,OMNI,,220,0.5,0.8,,,80,200,150,90,3,30,8,150000,4,20,420,0.25,25,25,,,,,,,,ps_ship_bp,,0.6,2,3,,5
 Rufous,ps_rufous,Heavy Cruiser,Project Solace,ps_exaltedshell,17,10000,1100,10000,11000,600,170,,70,60,30,15,18,1500,OMNI,,180,0.4,0.8,,,100,300,150,150,4,38,8,200000,4,12,480,0.25,27,27,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,6
 Javanica,ps_javanica,Support Cruiser,Project Solace,ps_destruenslaunch,14,10000,1050,10000,11000,550,150,,80,40,30,15,23,1500,FRONT,,210,0.4,0.9,,,140,300,150,150,4,38,8,170000,4,12,480,0.25,23,23,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,11
 Aurantia,ps_aurantia,Hybrid Carrier,Project Solace,recalldevice,18,7000,800,12000,11000,400,150,2,50,35,30,12,20,2000,OMNI,,180,0.4,0.6,,,180,500,120,90,3,30,8,170000,4,12,480,0.25,25,25,,,,,,,"CARRIER, COMBAT",ps_ship_bp,,0.5,2,3,,13
+Merkeri,ps_merkeri,Fast Carrier Cruiser,Enmity Strafer,reservewing,13,9000,750,11000,8000,480,140,3,70,50,40,15,20,1800,OMNI,,120,0.1,0.7,,,240,500,100,120,4,30,9,150000,4,12,540,0.25,25,25,,,,,,,"CARRIER, COMBAT","ps_ship_bp_enmity, rare_bp",,0.5,2,4,,17
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #CAPITAL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Camiguin,ps_camiguin,Battleship,Project Solace,ps_swiftrush,26,12000,1200,20000,30000,1200,315,,50,20,15,10,10,3000,FRONT,,230,0.4,1,,,200,500,300,300,10,30,8,500000,3,15,600,0.25,45,45,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,7
 Nadhmòr,ps_nadhmor,Fast Battlecruiser,Project Solace,ps_swiftrush,23,12500,1100,17500,30000,800,245,,65,32,20,16,15,2500,OMNI,,120,0.4,0.9,,,360,400,225,250,12,32,8,400000,3,15,600,0.25,40,40,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,10
 Albertine,ps_albertine,Battlecarrier,Project Solace,reservewing,28,9000,1350,12000,12500,600,290,5,25,15,15,12,12,3500,FRONT,,180,0.5,0.8,,,500,1500,300,300,15,20,7,430000,3,12,720,0.25,50,50,,,,,,,"CARRIER, COMBAT, NO_AUTO_ESCORT","ps_ship_bp, rare_bp",,0.4,2,4,,12
+Ravus,ps_ravus,Fast Battlecarrier,Enmity Strafer,reservewing,30,20000,1100,25000,25000,1100,280,4,55,30,20,7,10,3500,OMNI,,200,0.1,0.75,,,700,2000,300,400,15,27,7,550000,3,12,720,0.25,45,45,,,,,,,"CARRIER, COMBAT, NO_AUTO_ESCORT","ps_ship_bp_enmity, rare_bp",,0.4,2,4,,18
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

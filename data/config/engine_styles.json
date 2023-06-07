@@ -15,6 +15,20 @@
 		#"glowAlternateColor":[255,2,20,235],
 		"type":"SMOKE"
 	},
-
+	"EnS_ENGINE":{
+		"engineColor":[219,234,234,255],
+		"contrailWidthAddedFractionAtEnd":-3,
+		"contrailParticleSizeMult":1.2,
+		"contrailMinSeg":7,
+		"contrailParticleDuration":2,
+		"contrailParticleFinalSizeMult":3,
+		"contrailWidthMult":1,
+		"contrailMaxSpeedMult":1,
+		"contrailAngularVelocityMult":0,
+		"contrailColor":[142,205,199,55],
+		"contrailCampaignColor":[219,234,234,255],
+		#"glowAlternateColor":[255,2,20,235],
+		"type":"SMOKE"
+	}
 }
 

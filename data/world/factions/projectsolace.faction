@@ -52,7 +52,7 @@
     },
 
     "knownShips":{
-        "tags":["ps_ship_bp"],
+        "tags":["ps_ship_bp", "ps_ship_bp_enmity"],
         "hulls":[
             buffalo,
             colossus,
