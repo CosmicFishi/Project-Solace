@@ -3,6 +3,7 @@
 	# for example, no Hyperions or fast beam-based kiting loadouts, or ships with damper field
 	"combatSmallForSmallFleet":{
             "ps_taliabu_attack": 1,
+			"ps_laevis_attack": 1,
 	},
 	"combatSmall":{
 		"ps_taliabu_attack": 5,
@@ -10,7 +11,8 @@
 		"ps_salawesi_attack": 5,
 		"ps_tanimbar_attack": 3,
 		"ps_tanimbar_destroy": 6,
-    },
+		"ps_laevis_attack": 4,
+},
 	"combatMedium":{
 		"ps_morepork_attack": 4,
 		"ps_morepork_destroy": 3,

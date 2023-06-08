@@ -1,0 +1,186 @@
+{
+  "hullName": "Pricei",
+  "hullId": "ps_pricei",
+  "hullSize": "DESTROYER",
+  "spriteName": "graphics/ships/enmity/ps_pricei.png",
+  "style": "ENMITY",
+  "height": 200,
+  "width": 200,
+  "center": [100, 100],
+  "collisionRadius": 121,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 95,
+  "viewOffset": 0,
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "SYNERGY",
+      "mount": "HARDPOINT",
+      "arc": 20,
+      "angle": 0,
+      "locations": [19, -49]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "SYNERGY",
+      "mount": "HARDPOINT",
+      "arc": 20,
+      "angle": -0,
+      "locations": [19, 49]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": -18.5,
+      "locations": [62, -18]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": 18.5,
+      "locations": [62, 18]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 150,
+      "angle": -50,
+      "locations": [26, -28]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 150,
+      "angle": 50,
+      "locations": [26, 28]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 220,
+      "angle": -139.5,
+      "locations": [-15, -38]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 220,
+      "angle": 139.5,
+      "locations": [-15, 38]
+    },
+    {
+      "id": "LB 1",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        37.5, -0,
+        32, 8,
+        32, -8
+      ]
+    },
+    {
+      "id": "LB 2",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        12, -0,
+        10.5, 9,
+        10, -9
+      ]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-64, 19],
+      "length": 80,
+      "width": 20,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "EnS_ENGINE"
+    },
+    {
+      "location": [-64, -19],
+      "length": 80,
+      "width": 20,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "EnS_ENGINE"
+    },
+    {
+      "location": [-57, 38],
+      "length": 60,
+      "width": 12,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "EnS_ENGINE"
+    },
+    {
+      "location": [-57, -38],
+      "length": 60,
+      "width": 12,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "EnS_ENGINE"
+    }
+  ],
+  "bounds": [
+    -70, 6,
+    -60.5, 14,
+    -62.5, 24,
+    -49.5, 26,
+    -53, 63,
+    -32.5, 58,
+    -6, 73.5,
+    5.5, 61.5,
+    25, 58,
+    27, 42,
+    36, 37,
+    52.5, 41,
+    60, 32,
+    70.5, 31.5,
+    77, 5,
+    50, 4.5,
+    50, -4.5,
+    77, -5,
+    70.5, -31.5,
+    60, -32,
+    52.5, -41,
+    36, -37,
+    27, -42,
+    25, -58,
+    5.5, -61.5,
+    -6, -73.5,
+    -32.5, -58,
+    -53, -63,
+    -49.5, -26,
+    -62.5, -24,
+    -60.5, -14,
+    -70, -6
+  ]
+}
