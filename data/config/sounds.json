@@ -27,6 +27,13 @@
   "ps_up_charging": [
     {"file": "sounds/hullmods/ps_up_charging.ogg", "pitch": 0.9, "volume": 1},
     {"file": "sounds/hullmods/ps_up_charging.ogg", "pitch": 0.95, "volume": 1}
+  ],
+  "ps_emp_shout": [
+    {"file": "sounds/hullmods/ps_emp_shout.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/hullmods/ps_emp_shout.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/hullmods/ps_emp_shout.ogg", "pitch": 1, "volume": 1},
+    {"file": "sounds/hullmods/ps_emp_shout.ogg", "pitch": 1.05, "volume": 1},
+    {"file": "sounds/hullmods/ps_emp_shout.ogg", "pitch": 1.1, "volume": 1}
   ]
 }
 

@@ -40,14 +40,17 @@ public class ps_beamconsonance extends BaseHullMod {
     private static final float RANGE_BASE_PROJECTILE_START_REDUCE = 500f;
     private static final float RANGE_BASE_PROJECTILE_REDUCE_BY_MULT = 0.5f;
     private static final float
-            EMP_DAMAGE_FRIGATE = 10f,
-            EMP_DAMAGE_DESTROYER = 20f,
-            EMP_DAMAGE_CRUISER = 40f,
-            EMP_DAMAGE_CAPITAL = 80f;
+            EMP_DAMAGE_FRIGATE = 100f,
+            EMP_DAMAGE_DESTROYER = 150f,
+            EMP_DAMAGE_CRUISER = 200f,
+            EMP_DAMAGE_CAPITAL = 250f;
     private static final float EMP_DAMAGE_BONUS_HARD_FLUX_CAP_AT = 0.8f;
     private static final float EMP_DAMAGE_MAX_BONUS_HARD_FLUX = 50f;
-    private static final IntervalUtil EMP_TIMER = new IntervalUtil(0.3f, 0.8f);
+    private static final IntervalUtil EMP_TIMER = new IntervalUtil(0.5f, 1.5f);
+    private static final float EMP_RANGE = 2000f;
+    private static final IntervalUtil HIT_PARTICLE_TIMER = new IntervalUtil(0.05f, 0.2f);
 
+    //todo: change it to do real high damage but long cool down
     public void advanceInCombat(ShipAPI ship, float amount) {
         CombatEngineAPI engine = Global.getCombatEngine();
         if (engine.isPaused()) {
@@ -58,24 +61,60 @@ public class ps_beamconsonance extends BaseHullMod {
 
         }
         if(ship.getShield() != null && ship.getShield().isOn()) {
-
-            Vector2f spawnShieldEMPStartLocation = MathUtils.getPointOnCircumference(ship.getLocation(), ship.getShield().getRadius(), ship.getShield().getFacing() - ship.getShield().getActiveArc() / 2);
-            Vector2f spawnShieldEMPEndLocation = MathUtils.getPointOnCircumference(ship.getLocation(), ship.getShield().getRadius(), ship.getShield().getFacing() + ship.getShield().getActiveArc() / 2);
-
-            engine.addHitParticle(spawnShieldEMPStartLocation, new Vector2f(0, 0), 10f, 1f, ps_misc.PROJECT_SOLACE_LIGHT);
-            engine.addHitParticle(spawnShieldEMPEndLocation, new Vector2f(1, 1), 10f, 1f, ps_misc.PROJECT_SOLACE_LIGHT);
-//            Global.getCombatEngine().spawnEmpArc(ship,
-//                    ship.getLocation(),
-//                    null,
-//                    missile,
-//                    DamageType.FRAGMENTATION,
-//                    ZapDamage * ship.getMutableStats().getDamageToMissiles().getModifiedValue() * ship.getMutableStats().getEnergyWeaponDamageMult().getModifiedValue(),
-//                    0,
-//                    3000,
-//                    null,
-//                    1,
-//                    new Color(0, 217, 255, 183),
-//                    new Color(21, 208, 255, 255));
+            EMP_TIMER.advance(amount);
+            HIT_PARTICLE_TIMER.advance(amount);
+            float startShieldAngle = ship.getShield().getFacing() - ship.getShield().getActiveArc() / 2;
+            float endShieldAngle = ship.getShield().getFacing() + ship.getShield().getActiveArc() / 2;
+            if(HIT_PARTICLE_TIMER.intervalElapsed()) {
+                Vector2f spawnHitParticlePoint = MathUtils.getPointOnCircumference(
+                        ship.getLocation(),
+                        MathUtils.getRandomNumberInRange(ship.getShield().getRadius() + 10f, ship.getShield().getRadius() + 50f),
+                        MathUtils.getRandomNumberInRange(startShieldAngle, endShieldAngle)
+                );
+                engine.addSmoothParticle(spawnHitParticlePoint, (Vector2f) VectorUtils.getDirectionalVector(spawnHitParticlePoint, ship.getLocation()).scale(15f), 7f, 1f, 2f, ps_misc.ENMITY_SHIELD_PARTICLE);
+            }
+            if(EMP_TIMER.intervalElapsed()) {
+                for (ShipAPI enemyShip: CombatUtils.getShipsWithinRange(ship.getLocation(), EMP_RANGE)) {
+                    if(enemyShip.isAlive() && ship.getOwner() != enemyShip.getOwner()) {
+                        Vector2f spawnEMPPoint = MathUtils.getPointOnCircumference(
+                                ship.getLocation(),
+                                ship.getShield().getRadius(),
+                                MathUtils.getRandomNumberInRange(startShieldAngle, endShieldAngle)
+                        );
+                        float enemyAngle = VectorUtils.getAngle(ship.getLocation(), enemyShip.getLocation());
+                        if(enemyAngle > startShieldAngle || enemyAngle < endShieldAngle) {
+                            float EMPdamage = 0;
+                            switch (ship.getHullSize()) {
+                                case FRIGATE:
+                                    EMPdamage = EMP_DAMAGE_FRIGATE;
+                                    break;
+                                case DESTROYER:
+                                    EMPdamage = EMP_DAMAGE_DESTROYER;
+                                    break;
+                                case CRUISER:
+                                    EMPdamage = EMP_DAMAGE_CRUISER;
+                                    break;
+                                case CAPITAL_SHIP:
+                                    EMPdamage = EMP_DAMAGE_CAPITAL;
+                                    break;
+                            }
+                            Global.getCombatEngine().spawnEmpArcPierceShields(ship,
+                                    spawnEMPPoint,
+                                    null,
+                                    enemyShip,
+                                    DamageType.FRAGMENTATION,
+                                    EMPdamage,
+                                    EMPdamage,
+                                    3000,
+                                    null,
+                                    1,
+                                    new Color(0, 217, 255, 183),
+                                    new Color(21, 208, 255, 255));
+                            Global.getSoundPlayer().playSound("ps_emp_shout", 1f, 1f, spawnEMPPoint, new Vector2f(0, 0));
+                        }
+                    }
+                };
+            }
         }
     }
 
