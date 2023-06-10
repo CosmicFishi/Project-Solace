@@ -30,13 +30,12 @@ import java.util.Map;
 
 public class ps_beamconsonance extends BaseHullMod {
 
-    //increase beam range + damage by certain amount
+    //increase damage by certain amount
     //convert all energy or ballistic projectile weapons to pd, reducing base range that is above 500 units by 50%
     //Shield on enable EMP sparking, the higher the hard flux, the more damage the EMP do
     //Speciality: increase flux cost - increase damage, increase flux eff - reduce max speed, Increase maneuver - reduce armor
     //Dire - Watchful - Zippy
-    private static final float RANGE_BEAM_BONUS = 20f;
-    private static final float DAMAGE_BEAM_BONUS = 20f;
+    private static final float DAMAGE_BEAM_BONUS = 40f;
     private static final float RANGE_BASE_PROJECTILE_START_REDUCE = 500f;
     private static final float RANGE_BASE_PROJECTILE_REDUCE_BY_MULT = 0.5f;
     private static final float
@@ -46,8 +45,8 @@ public class ps_beamconsonance extends BaseHullMod {
             EMP_DAMAGE_CAPITAL = 250f;
     private static final float EMP_DAMAGE_BONUS_HARD_FLUX_CAP_AT = 0.8f;
     private static final float EMP_DAMAGE_MAX_BONUS_HARD_FLUX = 50f;
-    private static final IntervalUtil EMP_TIMER = new IntervalUtil(0.5f, 1.5f);
-    private static final float EMP_RANGE = 2000f;
+    private static final IntervalUtil EMP_TIMER = new IntervalUtil(1f, 1.5f);
+    private static final float EMP_RANGE = 1500f;
     private static final IntervalUtil HIT_PARTICLE_TIMER = new IntervalUtil(0.05f, 0.2f);
 
     //todo: change it to do real high damage but long cool down
@@ -108,8 +107,8 @@ public class ps_beamconsonance extends BaseHullMod {
                                     3000,
                                     null,
                                     1,
-                                    new Color(0, 217, 255, 183),
-                                    new Color(21, 208, 255, 255));
+                                    ps_misc.ENMITY_SHIELD_EMP_FRINGE,
+                                    ps_misc.ENMITY_SHIELD_EMP_CORE);
                             Global.getSoundPlayer().playSound("ps_emp_shout", 1f, 1f, spawnEMPPoint, new Vector2f(0, 0));
                         }
                     }
@@ -148,7 +147,6 @@ public class ps_beamconsonance extends BaseHullMod {
 
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
         stats.getBeamWeaponDamageMult().modifyPercent(id, DAMAGE_BEAM_BONUS);
-        stats.getBeamWeaponRangeBonus().modifyPercent(id, RANGE_BEAM_BONUS);
     }
 
     @Override

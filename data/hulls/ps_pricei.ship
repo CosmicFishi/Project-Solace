@@ -11,6 +11,9 @@
   "shieldCenter": [0, 0],
   "shieldRadius": 95,
   "viewOffset": 0,
+  "builtInMods": [
+    "ps_beamconsonance"
+  ],
   "weaponSlots": [
     {
       "id": "WS0001",

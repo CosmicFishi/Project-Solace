@@ -2,7 +2,7 @@
     id:"enmity",
 
     "color":[110,165,152,255],
-    "baseUIColor":[145,28,177,200],
+    "baseUIColor":[182,201,199,200],
     "darkUIColor":[34,51,95,175],
     "gridUIColor":[34,51,95,75],
 
@@ -148,8 +148,8 @@
     },
 
     "factionDoctrine":{
-        "warships":2,
-        "carriers":5,
+        "warships":3,
+        "carriers":4,
         "phaseShips":1,
 
         "officerQuality":2,
@@ -157,7 +157,7 @@
         "numShips":4,
 
         "shipSize":5,
-        "aggression":4,
+        "aggression":2,
 
         "combatFreighterProbability":0,     				# instead of some portion of the freighters in a fleet
         "combatFreighterCombatUseFraction":0,  				# as part of the normal combat lineup

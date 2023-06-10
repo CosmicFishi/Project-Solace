@@ -1,0 +1,79 @@
+{
+  "variantId": "ps_ravus_attack",
+  "hullId": "ps_ravus",
+  "displayName": "Attack",
+  "goalVariant": false,
+  "fluxCapacitors": 10,
+  "fluxVents": 40,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "targetingunit",
+    "hardenedshieldemitter"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0003": "guardian",
+        "WS0004": "guardian",
+        "WS0005": "guardian"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0006": "ionbeam",
+        "WS0007": "ionbeam"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0008": "gravitonbeam",
+        "WS0009": "gravitonbeam"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0010": "heavyburst",
+        "WS0011": "heavyburst",
+        "WS0012": "pdlaser",
+        "WS0013": "pdlaser",
+        "WS0014": "lrpdlaser",
+        "WS0015": "lrpdlaser",
+        "WS0016": "lrpdlaser",
+        "WS0017": "lrpdlaser",
+        "WS0018": "lrpdlaser",
+        "WS0019": "lrpdlaser"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    }
+  ],
+  "modules": [],
+  "wings": [
+    "spark_wing",
+    "spark_wing",
+    "thunder_wing",
+    "broadsword_wing"
+  ]
+}

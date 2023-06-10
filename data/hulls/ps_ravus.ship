@@ -11,13 +11,21 @@
   "shieldCenter": [0, 0],
   "shieldRadius": 225.5,
   "viewOffset": 0,
+  "builtInMods": [
+    "ps_beamconsonance",
+    "advancedoptics"
+  ],
+  "builtInWeapons": {
+    "WS0001": "ps_proteolyticbeam",
+    "WS0002": "ps_proteolyticbeam"
+  },
   "weaponSlots": [
     {
       "id": "WS0001",
       "size": "LARGE",
       "type": "BUILT_IN",
       "mount": "HARDPOINT",
-      "arc": 30,
+      "arc": 0,
       "angle": 0,
       "locations": [176, 50]
     },
@@ -26,7 +34,7 @@
       "size": "LARGE",
       "type": "BUILT_IN",
       "mount": "HARDPOINT",
-      "arc": 30,
+      "arc": 0,
       "angle": -0,
       "locations": [176, -50]
     },

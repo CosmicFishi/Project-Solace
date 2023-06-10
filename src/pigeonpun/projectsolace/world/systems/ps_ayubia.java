@@ -34,7 +34,7 @@ public class ps_ayubia {
 
         PlanetAPI AyubiaStar = system.initStar("ps_star_ayubia", // unique id for this star
                 "star_red_giant", // id in planets.json
-                1000f,        // radius (in pixels at default zoom)
+                700f,        // radius (in pixels at default zoom)
                 500, // corona radius, from star edge
                 10f, // solar wind burn level
                 0.8f, // flare probability
@@ -55,11 +55,11 @@ public class ps_ayubia {
                 Kearsarge,
                 null,
                 "Kearsarge",
-                7,
+                6,
 
                 new ArrayList<>(
                         Arrays.asList(
-                                Conditions.POPULATION_7,
+                                Conditions.POPULATION_6,
                                 Conditions.ORGANICS_COMMON,
                                 Conditions.FARMLAND_BOUNTIFUL,
                                 Conditions.HABITABLE,
@@ -97,7 +97,11 @@ public class ps_ayubia {
                 //junk and chatter
                 true);
 
-        PlanetAPI Bowditch = system.addPlanet("ps_planet_Bowditch",
+        Kearsarge_market.getIndustry(Industries.STARFORTRESS_HIGH).setAICoreId(Commodities.ALPHA_CORE);
+        Kearsarge_market.getIndustry(Industries.HIGHCOMMAND).setAICoreId(Commodities.ALPHA_CORE);
+        Kearsarge_market.getIndustry(Industries.HEAVYBATTERIES).setSpecialItem(new SpecialItemData(Items.DRONE_REPLICATOR, null));
+
+        PlanetAPI Bowditch = system.addPlanet("ps_planet_bowditch",
                 AyubiaStar,
                 "Bowditch",
                 "desert",
@@ -109,14 +113,14 @@ public class ps_ayubia {
 
         MarketAPI Bowditch_market = ps_gen.addMarketplace(
                 "enmity",
-                Kearsarge,
+                Bowditch,
                 null,
                 "Bowditch",
-                5,
+                6,
 
                 new ArrayList<>(
                         Arrays.asList(
-                                Conditions.POPULATION_5,
+                                Conditions.POPULATION_6,
                                 Conditions.DESERT,
                                 Conditions.RARE_ORE_ULTRARICH,
                                 Conditions.MILD_CLIMATE,
@@ -127,6 +131,7 @@ public class ps_ayubia {
 
                 new ArrayList<>(
                         Arrays.asList(
+                                Submarkets.GENERIC_MILITARY,
                                 Submarkets.SUBMARKET_OPEN,
                                 Submarkets.SUBMARKET_STORAGE,
                                 Submarkets.SUBMARKET_BLACK
@@ -136,11 +141,12 @@ public class ps_ayubia {
                         Arrays.asList(
                                 Industries.POPULATION,
                                 Industries.HEAVYBATTERIES,
-                                Industries.FARMING,
+                                Industries.MINING,
                                 Industries.BATTLESTATION_HIGH,
                                 Industries.REFINING,
                                 Industries.ORBITALWORKS,
-                                Industries.MEGAPORT
+                                Industries.MEGAPORT,
+                                Industries.MILITARYBASE
                         )
                 ),
                 //tariffs
@@ -149,6 +155,61 @@ public class ps_ayubia {
                 true,
                 //junk and chatter
                 true);
+        Bowditch_market.getIndustry(Industries.ORBITALWORKS).setSpecialItem(new SpecialItemData(Items.CORRUPTED_NANOFORGE, null));
+        Bowditch_market.getIndustry(Industries.MILITARYBASE).setAICoreId(Commodities.ALPHA_CORE);
+
+        PlanetAPI Malleus = system.addPlanet("ps_planet_malleus",
+                AyubiaStar,
+                "Malleus",
+                "barren",
+                250f,
+                120f,
+                5300f,
+                250f);
+        //Elia Vouvon.setCustomDescriptionId("vic_phlegethon"); //reference descriptions.csv
+        system.addRingBand(Malleus, "misc", "rings_dust0", 256f, 1, Color.gray, 600f, 300f, 100);
+
+        MarketAPI Malleus_market = ps_gen.addMarketplace(
+                "hegemony",
+                Malleus,
+                null,
+                "Malleus",
+                5,
+
+                new ArrayList<>(
+                        Arrays.asList(
+                                Conditions.POPULATION_5,
+                                Conditions.THIN_ATMOSPHERE,
+                                Conditions.HIGH_GRAVITY,
+                                Conditions.ORE_RICH
+                        )
+                ),
+
+                new ArrayList<>(
+                        Arrays.asList(
+                                Submarkets.GENERIC_MILITARY,
+                                Submarkets.SUBMARKET_OPEN,
+                                Submarkets.SUBMARKET_STORAGE,
+                                Submarkets.SUBMARKET_BLACK
+                        )
+                ),
+                new ArrayList<>(
+                        Arrays.asList(
+                                Industries.POPULATION,
+                                Industries.HEAVYBATTERIES,
+                                Industries.MINING,
+                                Industries.BATTLESTATION,
+                                Industries.SPACEPORT,
+                                Industries.MILITARYBASE,
+                                Industries.COMMERCE
+                        )
+                ),
+                //tariffs
+                0.3f,
+                //freeport
+                false,
+                //junk and chatter
+                false);
 
         //Asteroid belt
         system.addAsteroidBelt(AyubiaStar, 400, 6000, 200, 250, 300, Terrain.ASTEROID_BELT, "Inner Band");
