@@ -27,6 +27,8 @@
 		"ps_javanica_attack": 5,
 		"ps_javanica_destroyer": 8,
 		"ps_javanica_beamer": 7,
+		"ps_aurantia_attack": 8,
+		"ps_aurantia_defend": 6,
 	},
 	"combatCapital":{
 		"ps_nadhmor_attack": 8,
@@ -34,6 +36,8 @@
 		"ps_camiguin_attack": 6,
 		"ps_camiguin_destruction": 5,
 		"ps_camiguin_defend": 3,
+		"ps_albertine_attack": 7,
+		"ps_albertine_defend": 5,
 	},
 	
 	

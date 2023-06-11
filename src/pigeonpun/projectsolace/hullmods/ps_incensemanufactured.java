@@ -7,6 +7,7 @@ import com.fs.starfarer.api.impl.campaign.ids.HullMods;
 import com.fs.starfarer.api.impl.campaign.ids.Personalities;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.hullmods.DoNotBackOff;
+import com.fs.starfarer.api.loading.FighterWingSpecAPI;
 import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
@@ -24,30 +25,28 @@ import org.lwjgl.util.vector.Vector2f;
 import pigeonpun.projectsolace.com.ps_misc;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 public class ps_incensemanufactured extends BaseHullMod {
 
     private static final String INCENSE_TEXT = "Incense";
     private static final float INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION = 1f;
     //private static final float INCENSE_LEVEL_BONUS_FROM_DISSIPATION = 0.05f;
-    private static final float INCENSE_BONUS_FROM_CAPACITOR = 0.01f;
+    private static final float INCENSE_BONUS_FROM_CAPACITOR = 0.05f;
     private static final float
-            INCENSE_REGENERATION_BASE_FRIGATE = 5f,
-            INCENSE_REGENERATION_BASE_DESTROYER = 10f,
-            INCENSE_REGENERATION_BASE_CRUISER = 20f,
-            INCENSE_REGENERATION_BASE_CAPITAL = 40f;
+            INCENSE_REGENERATION_BASE_FRIGATE = 20f,
+            INCENSE_REGENERATION_BASE_DESTROYER = 40f,
+            INCENSE_REGENERATION_BASE_CRUISER = 80f,
+            INCENSE_REGENERATION_BASE_CAPITAL = 160f;
 
-    private static final float
-            INCENSE_REGENERATION_CAP_FRIGATE = 30f,
-            INCENSE_REGENERATION_CAP_DESTROYER = 60f,
-            INCENSE_REGENERATION_CAP_CRUISER = 120f,
-            INCENSE_REGENERATION_CAP_CAPITAL = 240f;
+//    private static final float
+//            INCENSE_REGENERATION_CAP_FRIGATE = 30f,
+//            INCENSE_REGENERATION_CAP_DESTROYER = 60f,
+//            INCENSE_REGENERATION_CAP_CRUISER = 120f,
+//            INCENSE_REGENERATION_CAP_CAPITAL = 240f;
 
-    public float TIME_DAL_BONUS = 10f;
+    public float TIME_DAL_BONUS = 20f;
     public float MAX_INCENSE_LEVEL_TIME_DAL_BONUS = 1f;
     private static final float ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_HULL_ARMOR = 0.4f;
     private static final float ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_SHIELD = 0.2f;
@@ -61,7 +60,7 @@ public class ps_incensemanufactured extends BaseHullMod {
     private final float spawnJitterTimerTo = 0.5f;
     private final float spawnJitterTimerWait = 0.1f;
     //UP = Unsolidified Procedure
-    private final float UP_HITPOINTS_START = 0.3f;
+    private final float UP_HITPOINTS_START = 0.6f;
     private final float UP_ROF_BONUS = 2.5f;
     private final float UP_WEAPON_FLUX_BONUS = 0.6f;
     private final float UP_EMP_NEGATE_BONUS = 0.5f;
@@ -76,6 +75,8 @@ public class ps_incensemanufactured extends BaseHullMod {
             UP_BONUS_DAMAGE_DESTROYER = 0.4f,
             UP_BONUS_DAMAGE_CRUISER = 0.3f,
             UP_BONUS_DAMAGE_CAPITAL = 0.2f;
+    private static final float UP_FIGHTER_RATE_DECREASE_MODIFIER = 30f;
+    private static final float UP_FIGHTER_RATE_INCREASE_MODIFIER = 50f;
     private final float UP_STANDSTILL_DURATION = 5f; //x second
 
     //Credit to PureTilt cuz I took reference from VIC
@@ -202,18 +203,6 @@ public class ps_incensemanufactured extends BaseHullMod {
                     stats.getDeceleration().modifyPercent(id, 0.0f);
                     stats.getHullDamageTakenMult().modifyMult(id, 0.0f);
                     stats.getArmorDamageTakenMult().modifyMult(id, 0.0f);
-//                    if (ship == Global.getCombatEngine().getPlayerShip()) {
-//                        Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
-//                        Global.getCombatEngine().getTimeMult().modifyMult(id, 1f/(1f+standstillTimer));
-//                    }
-                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
-                    for(WeaponAPI weapon: ship.getAllWeapons()) {
-                        weapon.disable();
-                    }
-                    //FX
-                    ship.setJitterUnder(this, ps_misc.PROJECT_SOLACE_UP_STANDSTILL, standstillTimer/UP_STANDSTILL_DURATION, 25, 0f, 7f + (standstillTimer/UP_STANDSTILL_DURATION * 10f));
-                    ship.setCircularJitter(true);
-                    Global.getSoundPlayer().playLoop("ps_up_charging", ship, 1f,1f, ship.getLocation(), new Vector2f(0, 0));
 
                     //repair armor
                     ArmorGridAPI grid = ship.getArmorGrid();
@@ -248,6 +237,18 @@ public class ps_incensemanufactured extends BaseHullMod {
                             //grid.setArmorValue(x,y, maxHP * UP_ARMOR_REPAIR);
                         }
                     }
+//                    if (ship == Global.getCombatEngine().getPlayerShip()) {
+//                        Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
+//                        Global.getCombatEngine().getTimeMult().modifyMult(id, 1f/(1f+standstillTimer));
+//                    }
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
+                    for(WeaponAPI weapon: ship.getAllWeapons()) {
+                        weapon.disable();
+                    }
+                    //FX
+                    ship.setJitterUnder(this, ps_misc.PROJECT_SOLACE_UP_STANDSTILL, standstillTimer/UP_STANDSTILL_DURATION, 25, 0f, 7f + (standstillTimer/UP_STANDSTILL_DURATION * 10f));
+                    ship.setCircularJitter(true);
+                    Global.getSoundPlayer().playLoop("ps_up_charging", ship, 1f, MathUtils.clamp(standstillTimer, 0, 1), ship.getLocation(), new Vector2f(0, 0));
                 } else {
                     if(!up_standstill_bonus_removed) {
                         stats.getAcceleration().unmodify(id);
@@ -260,7 +261,6 @@ public class ps_incensemanufactured extends BaseHullMod {
                             weapon.repair();
                         }
 //                        Global.getCombatEngine().addFloatingText(ship.getLocation(), up_standstill_bonus_removed + "...", 60, ps_misc.PROJECT_SOLACE_LIGHT, ship, 0.25f, 0.25f);
-
                         Global.getSoundPlayer().playSound("ps_up_activate", 1, 1f, ship.getLocation(), new Vector2f(0, 0));
                         up_standstill_bonus_removed = true;
                     }
@@ -311,6 +311,10 @@ public class ps_incensemanufactured extends BaseHullMod {
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp", "", "EMP damage taken reduction", String.valueOf(UP_EMP_NEGATE_BONUS * 100) + "%", false);
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cruiser_dmg", "", "Cruiser damage bonus", "+" + String.valueOf(damageToCruiser * 100) + "%", false);
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cap_dmg", "", "Capital damage bonus", "+" + String.valueOf(damageToCapital * 100) + "%", false);
+                if(ship.getWing() != null) {
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_increase", "", "Fighter losses rate", "+" + String.valueOf(100 - UP_FIGHTER_RATE_INCREASE_MODIFIER) + "%", false);
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_decrease", "", "Fighter recover rate", "+" + String.valueOf(UP_FIGHTER_RATE_INCREASE_MODIFIER) + "%", false);
+                }
 
                 //Ship FX + EMP when go out of stand still
                 spawnEMPStartUP.advance(amount);
@@ -422,6 +426,12 @@ public class ps_incensemanufactured extends BaseHullMod {
                     stats.getEnergyWeaponFluxCostMod().modifyMult(id, UP_WEAPON_FLUX_BONUS);
                     stats.getEmpDamageTakenMult().modifyMult(id, UP_EMP_NEGATE_BONUS);
 
+                    //fighter bonus
+                    if(ship.getWing() != null) {
+                        stats.getDynamic().getStat(Stats.REPLACEMENT_RATE_DECREASE_MULT).modifyMult(id, 1f - UP_FIGHTER_RATE_DECREASE_MODIFIER / 100f);
+                        stats.getDynamic().getStat(Stats.REPLACEMENT_RATE_INCREASE_MULT).modifyPercent(id, UP_FIGHTER_RATE_INCREASE_MODIFIER);
+                    }
+
                     //damage boost
                     stats.getDamageToCruisers().modifyMult(id, 1f+ damageToCruiser);
                     stats.getDamageToCapital().modifyMult(id, 1f + damageToCapital);
@@ -447,7 +457,9 @@ public class ps_incensemanufactured extends BaseHullMod {
 
     private float getIncenseCap(ShipAPI ship) {
         if(ship != null) {
-            float incenseCap = (ship.getMutableStats().getFluxDissipation().modified * INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION);
+            float incenseCap =
+                    (ship.getMutableStats().getFluxDissipation().modified * INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION)
+                    + (ship.getMutableStats().getFluxCapacity().modified * INCENSE_BONUS_FROM_CAPACITOR);
             return incenseCap;
         }
         return 0f;
@@ -460,25 +472,26 @@ public class ps_incensemanufactured extends BaseHullMod {
             switch (ship.getHullSize()) {
                 case FRIGATE:
                     actualRegenerationBase = INCENSE_REGENERATION_BASE_FRIGATE;
-                    regenCap = INCENSE_REGENERATION_CAP_FRIGATE;
+                    //regenCap = INCENSE_REGENERATION_CAP_FRIGATE;
                     break;
                 case DESTROYER:
                     actualRegenerationBase = INCENSE_REGENERATION_BASE_DESTROYER;
-                    regenCap = INCENSE_REGENERATION_CAP_DESTROYER;
+                    //regenCap = INCENSE_REGENERATION_CAP_DESTROYER;
                     break;
                 case CRUISER:
                     actualRegenerationBase = INCENSE_REGENERATION_BASE_CRUISER;
-                    regenCap = INCENSE_REGENERATION_CAP_CRUISER;
+                    //regenCap = INCENSE_REGENERATION_CAP_CRUISER;
                     break;
                 case CAPITAL_SHIP:
                     actualRegenerationBase = INCENSE_REGENERATION_BASE_CAPITAL;
-                    regenCap = INCENSE_REGENERATION_CAP_CAPITAL;
+                    //regenCap = INCENSE_REGENERATION_CAP_CAPITAL;
                     break;
             }
-            regen = actualRegenerationBase + (ship.getMutableStats().getFluxCapacity().modified * INCENSE_BONUS_FROM_CAPACITOR);
-            if(regen >regenCap) {
-                return regenCap;
-            }
+//            regen = actualRegenerationBase + (ship.getMutableStats().getFluxCapacity().modified * INCENSE_BONUS_FROM_CAPACITOR);
+            regen = actualRegenerationBase;
+//            if(regen >regenCap) {
+//                return regenCap;
+//            }
             return regen;
         }
         return 0f;
@@ -514,16 +527,14 @@ public class ps_incensemanufactured extends BaseHullMod {
         label.setHighlight("" + Math.round(TIME_DAL_BONUS) + "%");
         label.setHighlightColors(good);
 
-        label = tooltip.addPara("Incense capacitor is %s of the ship flux dissipation. Incense regeneration rate per second is %s for each ship class plus %s of the ship's flux capacitor. Regeneration caps out at %s for each ship class", opad, h,
+        label = tooltip.addPara("Incense capacitor is %s of the ship flux dissipation plus %s of the ship's flux capacitor. Incense regeneration rate per second is %s for each ship class.", opad, h,
                 "" + Math.round(INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION * 100) + "%",
-                Math.round(INCENSE_REGENERATION_BASE_FRIGATE) + "/" + Math.round(INCENSE_REGENERATION_BASE_DESTROYER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CRUISER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CAPITAL) + "",
                 "" + Math.round(INCENSE_BONUS_FROM_CAPACITOR * 100) + "%",
-                Math.round(INCENSE_REGENERATION_CAP_FRIGATE) + "/" + Math.round(INCENSE_REGENERATION_CAP_DESTROYER) + "/" + Math.round(INCENSE_REGENERATION_CAP_CRUISER) + "/" + Math.round(INCENSE_REGENERATION_CAP_CAPITAL) + ""
+                Math.round(INCENSE_REGENERATION_BASE_FRIGATE) + "/" + Math.round(INCENSE_REGENERATION_BASE_DESTROYER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CRUISER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CAPITAL) + ""
         );
         label.setHighlight("" + Math.round(INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION * 100) + "%",
-                Math.round(INCENSE_REGENERATION_BASE_FRIGATE) + "/" + Math.round(INCENSE_REGENERATION_BASE_DESTROYER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CRUISER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CAPITAL) + "",
                 "" + Math.round(INCENSE_BONUS_FROM_CAPACITOR * 100) + "%",
-                Math.round(INCENSE_REGENERATION_CAP_FRIGATE) + "/" + Math.round(INCENSE_REGENERATION_CAP_DESTROYER) + "/" + Math.round(INCENSE_REGENERATION_CAP_CRUISER) + "/" + Math.round(INCENSE_REGENERATION_CAP_CAPITAL) + ""
+                Math.round(INCENSE_REGENERATION_BASE_FRIGATE) + "/" + Math.round(INCENSE_REGENERATION_BASE_DESTROYER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CRUISER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CAPITAL) + ""
         );
         label.setHighlightColors(good, good, ps_misc.PROJECT_SOLACE_LIGHT, good);
 
@@ -551,21 +562,25 @@ public class ps_incensemanufactured extends BaseHullMod {
         label.setHighlight("" + Math.round(UP_HITPOINTS_START * 100) + "%", "Unsolidified Procedure (UP)");
         label.setHighlightColors(bad, ps_misc.PROJECT_SOLACE_LIGHT);
 
-        label = tooltip.addPara("%s: %s, %s fire rate, reduce weapon flux by %s, repair armor to %s of the original amount instantly, deal %s more damage to cruiser and capital, refill all missile and EMP sparking around the ship hitting any missiles or fighters", opad, h,
+        label = tooltip.addPara("%s: %s, %s fire rate, reduce weapon flux by %s, repair armor to %s of the original amount instantly, deal %s more damage to cruiser and capital, refill all missile and EMP sparking around the ship hitting any missiles or fighters. If the ship have fighters, reduces the rate at which the fighter replacement rate decreases due to fighter losses by %s and increases the rate at which it recovers by %s.", opad, h,
                 "UP",
                 "Disable shield",
                 "" + Math.round(UP_ROF_BONUS * 100) + "%",
                 "" + Math.round(UP_WEAPON_FLUX_BONUS * 100) + "%",
                 "" + Math.round(UP_ARMOR_REPAIR_FRIGATE * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_DESTROYER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CRUISER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CAPITAL * 100) + "%",
-                "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%"
+                "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%",
+                "" + Math.round(UP_FIGHTER_RATE_DECREASE_MODIFIER) + "%",
+                "" + Math.round(UP_FIGHTER_RATE_INCREASE_MODIFIER) + "%"
         );
         label.setHighlight("UP", "Disable shield",
                 "" + Math.round(UP_ROF_BONUS * 100) + "%",
                 "" + Math.round(UP_WEAPON_FLUX_BONUS * 100) + "%",
                 "" + Math.round(UP_ARMOR_REPAIR_FRIGATE * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_DESTROYER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CRUISER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CAPITAL * 100) + "%",
-                "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%"
+                "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%",
+                "" + Math.round(UP_FIGHTER_RATE_DECREASE_MODIFIER) + "%",
+                "" + Math.round(UP_FIGHTER_RATE_INCREASE_MODIFIER) + "%"
         );
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, bad, good, good, good, good);
+        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, bad, good, good, good, good, good, good);
 
     }
 

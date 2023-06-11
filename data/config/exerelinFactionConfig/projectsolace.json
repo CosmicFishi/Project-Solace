@@ -33,16 +33,16 @@
 	
     "startRelationships":{ 
 	    # Vanilla Factions		 
-		"hegemony": 0.2,                                 #Fight for justice, we like that
-		"persean": -1.0,                                 #Exploit people, big no no
-		"pirates": -8.0,                                 #Raid, bad
-		"sindrian_diktat": -0.5,                         #Dictatorship, very bad
-        "lions_guard": -0.5,		                     #NO TYRANT
-		"independent": 0.8,                              #friend
-		"tritachyon": -7,                                #No AI abusing
-		"luddic_church":0,                               #,Cult, ugh,
-        "luddic_path":-0.2,                              #,Can be better but we dont want people to go doing ram ship with a lot of fuels
-        "remnant":-0.5,                                  #Poor creatures
+		"hegemony": 0.1,
+		"persean": -0.2,
+		"pirates": -0.5,
+		"sindrian_diktat": -0.1,
+        "lions_guard": -0.1,
+		"independent": 0.5,
+		"tritachyon": -1,
+		"luddic_church": -0.1,
+        "luddic_path": -1,
+        "remnant":-0.5,
 		
 		# Mod factions
         "orks": 1.0                                      #Helped us, we will forever remember
@@ -57,8 +57,6 @@
         },
     "maxRelationships":{
 		# Vanilla Factions
-			"tritachyon": -4,
-            "persean": -5,
 		},
 
 	

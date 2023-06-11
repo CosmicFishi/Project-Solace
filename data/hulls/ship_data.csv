@@ -1,20 +1,25 @@
 name,id,designation,tech/manufacturer,system id,fleet pts,hitpoints,armor rating,max flux,8/6/5/4%,flux dissipation,ordnance points,fighter bays,max speed,acceleration,deceleration,max turn rate,turn acceleration,mass,shield type,defense id,shield arc,shield upkeep,shield efficiency,phase cost,phase upkeep,min crew,max crew,cargo,fuel,fuel/ly,range,max burn,base value,cr %/day,CR to deploy,peak CR sec,CR loss/sec,supplies/rec,supplies/mo,c/s,c/f,f/s,f/f,crew/s,crew/f,hints,tags,rarity,breakProb,minPieces,maxPieces,travel drive,number
+#FIGHTER,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Sooty,ps_sooty,,Project Solace,,,100,10,500,,100,0,,325,500,450,180,360,10,FRONT,,,,,,,0,0,,,,,,,,,,,,,,,,,,,,,,0,,,,14
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #FRIGATE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Salawesi,ps_salawesi,Frigate,Project Solace,ps_swiftrush,5,2250,300,2800,2188,200,50,,120,110,90,70,80,300,OMNI,,180,0.3,0.8,,,10,25,50,25,1,25,10,14000,8,10,240,0.25,4,4,,,,,,,,ps_ship_bp,,0.4,2,2,,1
-Taliabu,ps_taliabu,Frigate,Project Solace,ps_intenseflow,6,1250,200,2500,2813,225,45,1,180,200,175,90,270,200,OMNI,,160,0.2,0.8,,,10,50,30,20,1,20,11,16000,10,20,180,0.25,8,8,,,,,,,CARRIER,ps_ship_bp,,0.5,2,2,,2
-Tanimbar,ps_tanimbar,Heavy Frigate,Project Solace,ps_hyperframe,7,1800,250,2500,,400,55,1,170,160,140,80,120,200,FRONT,,360,0.3,0.85,,,15,30,40,20,1,20,10,26000,8,20,240,0.25,9,9,,,,,,,,"ps_ship_bp, rare_bp",0.75,0.5,2,2,,8
+Taliabu,ps_taliabu,Support Frigate,Project Solace,ps_intenseflow,6,1250,200,2500,2813,225,45,1,180,200,175,90,270,200,OMNI,,160,0.2,0.8,,,10,50,30,20,1,20,11,16000,10,20,180,0.25,8,8,,,,,,,CARRIER,ps_ship_bp,,0.5,2,2,,2
+Tanimbar,ps_tanimbar,Heavy Frigate,Project Solace,ps_hyperframe,7,1800,250,3000,,400,55,1,170,160,140,80,120,200,FRONT,,360,0.3,0.85,,,15,30,40,20,1,20,10,26000,8,20,240,0.25,9,9,,,,,,,"CARRIER, COMBAT","ps_ship_bp, rare_bp",0.75,0.5,2,2,,8
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #DESTROYER,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Morepork,ps_morepork,Destroyer,Project Solace,highenergyfocus,12,4000,250,7500,8333,500,125,,100,80,60,30,30,350,OMNI,,170,0.4,1,,,30,70,80,50,2,25,9,48000,5,15,300,0.25,12,12,,,,,,,,ps_ship_bp,,0.5,2,3,,3
-Ashy,ps_ashy,Destroyer,Project Solace,ps_intenseflow,9,5000,400,5000,4167,400,100,,80,60,40,30,60,400,FRONT,,270,0.4,0.9,,,40,100,100,60,2,30,9,40000,5,12,360,0.25,10,10,,,,,,,,ps_ship_bp,,0.5,2,3,,4
+Ashy,ps_ashy,Destroyer,Project Solace,ps_intenseflow,9,5000,400,5000,4167,400,100,,90,60,40,30,60,400,FRONT,,270,0.4,0.9,,,40,100,100,60,2,30,9,40000,5,12,360,0.25,10,10,,,,,,,,ps_ship_bp,,0.5,2,3,,4
 Papuan,ps_papuan,Light Carrier,Project Solace,reservewing,10,4250,400,3000,2813,225,80,2,75,50,30,25,25,450,FRONT,,300,0.4,0.8,,,50,150,40,40,2,20,9,52000,5,15,360,0.25,15,15,,,,,,,CARRIER,ps_ship_bp,,0.5,2,3,,9
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #CRUISER,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Barking,ps_barking,Cruiser,Project Solace,ps_swiftrush,15,8000,1200,11000,16000,450,135,,60,50,25,25,25,1800,OMNI,,220,0.5,0.8,,,80,200,150,90,3,30,8,150000,4,20,420,0.25,25,25,,,,,,,,ps_ship_bp,,0.6,2,3,,5
-Rufous,ps_rufous,Cruiser,Project Solace,ps_exaltedshell,17,10000,1100,10000,11000,600,170,,70,60,30,15,18,1500,OMNI,,180,0.4,0.8,,,100,300,150,150,4,38,8,200000,4,12,480,0.25,27,27,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,6
-Javanica,ps_javanica,Heavy Cruiser,Project Solace,ps_destruenslaunch,14,10000,1050,10000,11000,550,150,,80,40,30,15,23,1500,FRONT,,210,0.4,0.9,,,140,300,150,150,4,38,8,170000,4,12,480,0.25,23,23,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,11
+Rufous,ps_rufous,Heavy Cruiser,Project Solace,ps_exaltedshell,17,10000,1100,10000,11000,600,170,,70,60,30,15,18,1500,OMNI,,180,0.4,0.8,,,100,300,150,150,4,38,8,200000,4,12,480,0.25,27,27,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,6
+Javanica,ps_javanica,Support Cruiser,Project Solace,ps_destruenslaunch,14,10000,1050,10000,11000,550,150,,80,40,30,15,23,1500,FRONT,,210,0.4,0.9,,,140,300,150,150,4,38,8,170000,4,12,480,0.25,23,23,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,11
+Aurantia,ps_aurantia,Hybrid Carrier,Project Solace,recalldevice,18,7000,800,12000,11000,400,150,2,50,35,30,12,20,2000,OMNI,,180,0.4,0.6,,,180,500,120,90,3,30,8,170000,4,12,480,0.25,25,25,,,,,,,"CARRIER, COMBAT",ps_ship_bp,,0.5,2,3,,13
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #CAPITAL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Camiguin,ps_camiguin,Battleship,Project Solace,ps_swiftrush,26,12000,1200,20000,30000,1200,315,,50,20,15,10,10,2500,OMNI,,180,0.4,1,,,200,500,300,300,10,30,8,500000,3,15,600,0.25,45,45,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,7
-Nadhmòr,ps_nadhmor,Battlecruiser,Project Solace,ps_swiftrush,23,12500,1100,17500,30000,800,245,,65,32,20,16,15,2500,OMNI,,120,0.4,0.9,,,360,400,225,250,12,32,8,400000,3,15,600,0.25,40,40,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,10
+Camiguin,ps_camiguin,Battleship,Project Solace,ps_swiftrush,26,12000,1200,20000,30000,1200,315,,50,20,15,10,10,3000,FRONT,,230,0.4,1,,,200,500,300,300,10,30,8,500000,3,15,600,0.25,45,45,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,7
+Nadhmòr,ps_nadhmor,Fast Battlecruiser,Project Solace,ps_swiftrush,23,12500,1100,17500,30000,800,245,,65,32,20,16,15,2500,OMNI,,120,0.4,0.9,,,360,400,225,250,12,32,8,400000,3,15,600,0.25,40,40,,,,,,,,"ps_ship_bp, rare_bp",,0.5,2,4,,10
+Albertine,ps_albertine,Battlecarrier,Project Solace,reservewing,28,9000,1350,12000,12500,600,290,5,25,15,15,12,12,3500,FRONT,,180,0.5,0.8,,,500,1500,300,300,15,20,7,430000,3,12,720,0.25,50,50,,,,,,,"CARRIER, COMBAT, NO_AUTO_ESCORT","ps_ship_bp, rare_bp",,0.4,2,4,,12
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
