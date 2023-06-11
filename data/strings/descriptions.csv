@@ -7,6 +7,7 @@ Nowadays, the faction welcomes people all over the Sector, as long as they contr
 ",,,,
 ,,,,,,
 #fighters,,,,,,
+ps_sooty,SHIP,"Constructed from the remains of a Terminator Drone, this prototype was developed by the Solace Association to aid the air support in large engagements. Rumors about the AI core within due to its complex movement still is a mystery to many officers.",,,,
 ,,,,,,
 #Ships,,,,,,
 #frigates,,,,,,
@@ -25,12 +26,16 @@ ps_rufous,SHIP,"Fearless and destructive, the Rufous class with a large turret m
 ps_javanica,SHIP,"The Javanica class is a fearful opponent for those who rely on missiles or fighters to deal blows. With its ship system, the ship fires multiple tracking rockets dealing damage to the projectile's surrounding area when traveling,  easily disabling most of the torpedoes or fighters heading toward the ship.
 However, the ship can't perform well on its own since the ship loadout is quite limited but in a team fight, Javanica can easily be the key ship to push the enemy back to their line.
 ",,,,
+ps_aurantia,SHIP,"When it comes to long range support, the aurantia class is the perfect ship that comes to mind for Solace’s officers. With one large missile mount strapped to the front of the ship, the Aurantia class utilized its fighters as the main source of damage and its ship system to do burst bombing drive by to nearby enemy. The Auratia class can be the key ship to disable the target for an easy kill or strike down heavily armored enemies. 
+However, due to it being a carrier, the ship is limited by its firepower and that can be quite a big downfall when the fighters are out.",,,,
 ,,,,,,
 #capitals,,,,,,
 ps_camiguin,SHIP,"“One of a kind”, that is the nickname of the Camiguin capital ship. As the first generation of Solace’s capital ship, the Camiguin class ‘armament can rival any opponent facing it with four large mounts. Despite its size, the ship can maneuver easily on the battlefield, plus having two large missiles, this capital can quickly finish the enemy before facing another one.",,,,
 ps_nadhmor,SHIP,"As a parting gift from the old alliance, the Nadhmore class blueprint was given to the Solace Association as a symbol of friendship. Upon analyzing the ship class, our brilliant scientists have discovered some major flaws as well as downgrades that keep the ship from its best performance. Realizing those mistakes, the ship class has been overhauled and pushed to its limit.
 Receiving the blessing from the Solace crystal, Nadhmor now becomes even deadlier. With its 2 large mounts, it can easily down any shield or wreck through any armor with the correct build. However, the ship has to replace some of its armor for more firepower focus, resulting in lower armor than the original form.
 ",,,,
+ps_albertine,SHIP,"A rather unique looking capital ship is what others say about the Albertine battlecarrier when they first see them. Without a doubt, this is the Solace’s fleet base of operation for the one that leads the squadron. Packed with more than enough fighter bay to support the frontline combined with the ship’s two large hybrid mounts, the Albertine carrier can act as a frontline support tank and simultaneously send out fighters deep into the enemy line. It is a fearsome foe to deal with and should be the number one priority when fighting. 
+However, with its encumbersome body, the ship can be quite slow to maneuver and with its fighter on refit, the ship can be an easy target for larger foes.",,,,
 ,,,,,,
 #Ship Systems,,,,,,
 ps_swiftrush,SHIP_SYSTEM,"Increase engine power, pushing the ship forward or backward for a short duration. Turning will be disabled during system activation.",,,,
