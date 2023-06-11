@@ -11,4 +11,4 @@ Porri Pod,ps_porri,1,,1200,1500,,700,250,15,10,10,15,,,ENERGY,0,,0,5,3,0.1,0,0,0
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 # BUILT IN,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,ps_destruenslauncher,,,,1500,,50,200,,,,,0,,KINETIC,0,,0,1,6,0.1,15,50,20,5,,500,200,10,200,,,SYSTEM,,,,,,,,,,,,,,,4
-Proteolytic Focus Beam,ps_proteolyticbeam,1,,20000,1200,2000,,,0,5,,,,,FRAGMENTATION,,850,0.1,0.1,,,,,,,5000,,,,,,,SYSTEM,,,,,Finisher,,,,,"Hit on shield/hull/armor trigger EMP arc dealing %s Energy damage equal to the original hit. Deal additional %s Energy damage equal to the original hit base on target's flux level, max out at %s flux level.",20% | 20% | 80%,,,,5
+Proteolytic Focus Beam,ps_proteolyticbeam,1,,20000,900,2000,,,0,5,,,,,FRAGMENTATION,,850,0.2,2,,,,,,,5000,,,,,,,SYSTEM,,,,,Finisher,,,,,"Hit on shield/hull/armor trigger EMP arc dealing %s Energy damage equal to the original hit. Deal additional %s Energy damage equal to the original hit base on target's flux level, max out at %s flux level.",20% | 20% | 80%,,,,5

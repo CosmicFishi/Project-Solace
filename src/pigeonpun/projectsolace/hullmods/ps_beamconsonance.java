@@ -32,8 +32,8 @@ public class ps_beamconsonance extends BaseHullMod {
 
     //increase damage by certain amount
     //convert all energy or ballistic projectile weapons to pd, reducing base range that is above 500 units by 50%
-    //Shield on enable EMP sparking, the higher the hard flux, the more damage the EMP do
-    //Speciality: increase flux cost - increase damage, increase flux eff - reduce max speed, Increase maneuver - reduce armor
+    //Shield on enable EMP sparking
+    //Speciality: increase flux cost - increase damage, fighter now have 10% time flow but lower replacement time by 20%, slight jitter around fighter, Increase maneuver - reduce armor
     //Dire - Watchful - Zippy
     private static final float DAMAGE_BEAM_BONUS = 40f;
     private static final float RANGE_BASE_PROJECTILE_START_REDUCE = 500f;
@@ -43,13 +43,9 @@ public class ps_beamconsonance extends BaseHullMod {
             EMP_DAMAGE_DESTROYER = 150f,
             EMP_DAMAGE_CRUISER = 200f,
             EMP_DAMAGE_CAPITAL = 250f;
-    private static final float EMP_DAMAGE_BONUS_HARD_FLUX_CAP_AT = 0.8f;
-    private static final float EMP_DAMAGE_MAX_BONUS_HARD_FLUX = 50f;
     private static final IntervalUtil EMP_TIMER = new IntervalUtil(1f, 1.5f);
     private static final float EMP_RANGE = 1500f;
     private static final IntervalUtil HIT_PARTICLE_TIMER = new IntervalUtil(0.05f, 0.2f);
-
-    //todo: change it to do real high damage but long cool down
     public void advanceInCombat(ShipAPI ship, float amount) {
         CombatEngineAPI engine = Global.getCombatEngine();
         if (engine.isPaused()) {
@@ -73,45 +69,47 @@ public class ps_beamconsonance extends BaseHullMod {
                 engine.addSmoothParticle(spawnHitParticlePoint, (Vector2f) VectorUtils.getDirectionalVector(spawnHitParticlePoint, ship.getLocation()).scale(15f), 7f, 1f, 2f, ps_misc.ENMITY_SHIELD_PARTICLE);
             }
             if(EMP_TIMER.intervalElapsed()) {
-                for (ShipAPI enemyShip: CombatUtils.getShipsWithinRange(ship.getLocation(), EMP_RANGE)) {
-                    if(enemyShip.isAlive() && ship.getOwner() != enemyShip.getOwner()) {
-                        Vector2f spawnEMPPoint = MathUtils.getPointOnCircumference(
-                                ship.getLocation(),
-                                ship.getShield().getRadius(),
-                                MathUtils.getRandomNumberInRange(startShieldAngle, endShieldAngle)
-                        );
-                        float enemyAngle = VectorUtils.getAngle(ship.getLocation(), enemyShip.getLocation());
-                        if(enemyAngle > startShieldAngle || enemyAngle < endShieldAngle) {
-                            float EMPdamage = 0;
-                            switch (ship.getHullSize()) {
-                                case FRIGATE:
-                                    EMPdamage = EMP_DAMAGE_FRIGATE;
-                                    break;
-                                case DESTROYER:
-                                    EMPdamage = EMP_DAMAGE_DESTROYER;
-                                    break;
-                                case CRUISER:
-                                    EMPdamage = EMP_DAMAGE_CRUISER;
-                                    break;
-                                case CAPITAL_SHIP:
-                                    EMPdamage = EMP_DAMAGE_CAPITAL;
-                                    break;
+                for (CombatEntityAPI entity: CombatUtils.getEntitiesWithinRange(ship.getLocation(), EMP_RANGE)) {
+                    if((entity instanceof ShipAPI && ((ShipAPI) entity).isFighter() && ((ShipAPI) entity).isAlive()) || (entity instanceof MissileAPI && !entity.isExpired())) {
+                        if(ship.getOwner() != entity.getOwner()) {
+                            Vector2f spawnEMPPoint = MathUtils.getPointOnCircumference(
+                                    ship.getLocation(),
+                                    ship.getShield().getRadius(),
+                                    MathUtils.getRandomNumberInRange(startShieldAngle, endShieldAngle)
+                            );
+                            float enemyAngle = VectorUtils.getAngle(ship.getLocation(), entity.getLocation());
+                            if(enemyAngle > startShieldAngle || enemyAngle < endShieldAngle) {
+                                float EMPdamage = 0;
+                                switch (ship.getHullSize()) {
+                                    case FRIGATE:
+                                        EMPdamage = EMP_DAMAGE_FRIGATE;
+                                        break;
+                                    case DESTROYER:
+                                        EMPdamage = EMP_DAMAGE_DESTROYER;
+                                        break;
+                                    case CRUISER:
+                                        EMPdamage = EMP_DAMAGE_CRUISER;
+                                        break;
+                                    case CAPITAL_SHIP:
+                                        EMPdamage = EMP_DAMAGE_CAPITAL;
+                                        break;
+                                }
+                                Global.getCombatEngine().spawnEmpArcPierceShields(ship,
+                                        spawnEMPPoint,
+                                        null,
+                                        entity,
+                                        DamageType.FRAGMENTATION,
+                                        EMPdamage,
+                                        0,
+                                        3000,
+                                        null,
+                                        1,
+                                        ps_misc.ENMITY_SHIELD_EMP_FRINGE,
+                                        ps_misc.ENMITY_SHIELD_EMP_CORE);
+                                Global.getSoundPlayer().playSound("ps_emp_shout", 1f, 1f, spawnEMPPoint, new Vector2f(0, 0));
                             }
-                            Global.getCombatEngine().spawnEmpArcPierceShields(ship,
-                                    spawnEMPPoint,
-                                    null,
-                                    enemyShip,
-                                    DamageType.FRAGMENTATION,
-                                    EMPdamage,
-                                    EMPdamage,
-                                    3000,
-                                    null,
-                                    1,
-                                    ps_misc.ENMITY_SHIELD_EMP_FRINGE,
-                                    ps_misc.ENMITY_SHIELD_EMP_CORE);
-                            Global.getSoundPlayer().playSound("ps_emp_shout", 1f, 1f, spawnEMPPoint, new Vector2f(0, 0));
                         }
-                    }
+                    };
                 };
             }
         }
