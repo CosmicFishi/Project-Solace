@@ -1,0 +1,30 @@
+{
+	"id":"ps_erraticboost",
+	"type":"STAT_MOD",
+    "aiType":"CUSTOM",
+    "aiScript":"pigeonpun.projectsolace.shipsystems.ai.ps_exaltedshellstats_ai",
+	
+	"statsScript":"pigeonpun.projectsolace.shipsystems.ps_erraticboost",
+	
+	#"engineGlowColor":[255,175,125,255],
+	#"engineGlowContrailColor":[100,165,255,25],
+	"engineGlowLengthMult":1,
+	"engineGlowWidthMult":1,
+	"engineGlowGlowMult":1,
+	#"weaponGlowColor":[0,255,200,155],
+    #"weaponTypes":[BALLISTIC, ENERGY],
+	
+	"flameoutOnImpactChance":0,
+
+	"clampTurnRateAfter":true,
+	"clampMaxSpeedAfter":false,
+
+	"useSound":"system_ammo_feeder",
+    "outOfUsesSound":"gun_out_of_ammo",
+	
+	"aiHints":{
+		"activeSpeedIncrease":50,
+		"burstMovementPotential":100,
+		"averageSpeedIncrease":25,
+	}
+}
