@@ -22,11 +22,11 @@ public class ps_erraticboost extends BaseShipSystemScript {
         CombatEngineAPI engine = Global.getCombatEngine();
 
         if(ship != null) {
-            ship.setJitterUnder(this, ps_misc.ENMITY_JITTER, effectLevel * 0.8f, 2, 2f, 8f);
+            ship.setJitterUnder(this, ps_misc.ENMITY_JITTER, effectLevel * 0.8f, 1, 2f, 8f);
             if(ship.getAllWings() != null) {
                 for (FighterWingAPI fighterWing: ship.getAllWings()) {
                     for(ShipAPI fighter: fighterWing.getWingMembers()) {
-                        fighter.setJitterUnder(fighter, ps_misc.ENMITY_JITTER, effectLevel * 0.5f, 2, 4f, 12f);
+                        fighter.setJitterUnder(fighter, ps_misc.ENMITY_JITTER, effectLevel * 0.8f, 2, 4f, 12f);
                         stats.getEnergyRoFMult().modifyPercent(fighter.getId(), FIGHTER_ROF_BONUS);
                         stats.getBallisticRoFMult().modifyPercent(fighter.getId(), FIGHTER_ROF_BONUS);
                     }

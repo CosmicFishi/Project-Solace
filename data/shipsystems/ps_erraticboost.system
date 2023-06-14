@@ -1,8 +1,8 @@
 {
 	"id":"ps_erraticboost",
 	"type":"STAT_MOD",
-    "aiType":"CUSTOM",
-    "aiScript":"pigeonpun.projectsolace.shipsystems.ai.ps_exaltedshellstats_ai",
+    "aiType":"WEAPON_BOOST",
+    #"aiScript":"pigeonpun.projectsolace.shipsystems.ai.ps_exaltedshellstats_ai",
 	
 	"statsScript":"pigeonpun.projectsolace.shipsystems.ps_erraticboost",
 	

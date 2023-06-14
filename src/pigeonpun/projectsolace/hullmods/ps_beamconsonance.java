@@ -32,9 +32,9 @@ public class ps_beamconsonance extends BaseHullMod {
 
     //increase damage by certain amount
     //convert all energy or ballistic projectile weapons to pd, reducing base range that is above 500 units by 50%
-    //Shield on enable EMP sparking
-    //Speciality: increase flux cost - increase damage, fighter now have 10% time flow but lower replacement time by 20%, slight jitter around fighter, Increase maneuver - reduce armor
-    //Dire - Watchful - Zippy
+    //Shield on enable EMP sparking to only fighter
+    //todo: Speciality: increase flux cost - increase damage, fighter now have 10% time flow but lower replacement time by 20%, slight jitter around fighter, Increase maneuver - reduce armor
+    //todo: Dire - Watchful - Zippy
     private static final float DAMAGE_BEAM_BONUS = 40f;
     private static final float RANGE_BASE_PROJECTILE_START_REDUCE = 500f;
     private static final float RANGE_BASE_PROJECTILE_REDUCE_BY_MULT = 0.5f;
@@ -70,7 +70,7 @@ public class ps_beamconsonance extends BaseHullMod {
             }
             if(EMP_TIMER.intervalElapsed()) {
                 for (CombatEntityAPI entity: CombatUtils.getEntitiesWithinRange(ship.getLocation(), EMP_RANGE)) {
-                    if((entity instanceof ShipAPI && ((ShipAPI) entity).isFighter() && ((ShipAPI) entity).isAlive()) || (entity instanceof MissileAPI && !entity.isExpired())) {
+                    if((entity instanceof ShipAPI && ((ShipAPI) entity).isFighter() && ((ShipAPI) entity).isAlive())) {
                         if(ship.getOwner() != entity.getOwner()) {
                             Vector2f spawnEMPPoint = MathUtils.getPointOnCircumference(
                                     ship.getLocation(),
