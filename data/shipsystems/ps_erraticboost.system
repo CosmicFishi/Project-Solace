@@ -4,7 +4,7 @@
     "aiType":"WEAPON_BOOST",
     #"aiScript":"pigeonpun.projectsolace.shipsystems.ai.ps_exaltedshellstats_ai",
 	
-	"statsScript":"pigeonpun.projectsolace.shipsystems.ps_erraticboost",
+	"statsScript":"pigeonpun.projectsolace.shipsystems.ps_erraticbooststats",
 	
 	#"engineGlowColor":[255,175,125,255],
 	#"engineGlowContrailColor":[100,165,255,25],

@@ -3,17 +3,9 @@ package pigeonpun.projectsolace.shipsystems;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
-import com.fs.starfarer.api.util.IntervalUtil;
-import org.lazywizard.lazylib.MathUtils;
-import org.lazywizard.lazylib.combat.entities.SimpleEntity;
-import org.lwjgl.util.vector.Vector2f;
-import org.magiclib.util.MagicAnim;
 import pigeonpun.projectsolace.com.ps_misc;
 
-import java.awt.*;
-import java.util.Objects;
-
-public class ps_erraticboost extends BaseShipSystemScript {
+public class ps_erraticbooststats extends BaseShipSystemScript {
 
     private final float FIGHTER_ROF_BONUS = 20f;
 
