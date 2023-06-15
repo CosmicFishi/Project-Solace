@@ -341,7 +341,7 @@ public class ps_incensemanufactured extends BaseHullMod {
                             }
                         }
                         if(!listTargets.isEmpty()) {
-                            for (CombatEntityAPI entity: listTargets) {
+                            for (CombatEntityAPI entity: new ArrayList<>(listTargets)) {
                                 engine.spawnEmpArc(
                                         ship,
                                         fromEntity.getLocation(),
