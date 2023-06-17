@@ -21,6 +21,7 @@ public class ps_misc {
     public static final Color ENMITY_SHIELD_EMP_CORE = new Color(250, 250, 0, 255);
     public static final Color ENMITY_SHIELD_EMP_FRINGE = new Color(255, 168, 35, 255);
     public static final Color ENMITY_JITTER = new Color(0, 181, 151, 250);
+    public static final Color ENMITY_MAIN = new Color(182,201,199,255);
     public static final List<Color> PROJECT_SOLACE_NEBULA_COLORs = new ArrayList<>();
     static {
         PROJECT_SOLACE_NEBULA_COLORs.add(PROJECT_SOLACE_NEBULA_COLOR_1);
