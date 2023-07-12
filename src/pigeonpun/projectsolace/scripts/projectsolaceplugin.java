@@ -2,6 +2,9 @@ package pigeonpun.projectsolace.scripts;
 
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.*;
+import com.fs.starfarer.api.impl.campaign.ids.Factions;
+import com.fs.starfarer.campaign.Faction;
 import exerelin.campaign.SectorManager;
 import pigeonpun.projectsolace.world.ps_gen;
 
@@ -29,6 +32,8 @@ public class projectsolaceplugin extends BaseModPlugin {
     public static boolean tyradorExists = false;
     public static boolean dmeExists = false;
     public static boolean arkgneisisExists = false;
+    public static final String enmity_ID = "enmity";
+    public static final String solace_ID = "projectsolace";
     @Override
     public void onApplicationLoad() throws Exception {
         super.onApplicationLoad();
@@ -68,6 +73,35 @@ public class projectsolaceplugin extends BaseModPlugin {
         if (!isNexerelinEnabled || SectorManager.getManager().isCorvusMode()) {
                     new ps_gen().generate(Global.getSector());
 //             Add code that creates a new star system (will only run if Nexerelin's Random (corvus) mode is disabled).
+        }
+    }
+
+    @Override
+    public void onGameLoad(boolean newGame) {
+        Global.getSector().addTransientListener(new allianceListener());
+    }
+
+    private static class allianceListener extends BaseCampaignEventListener {
+
+        public allianceListener() {
+            super(false);
+        }
+
+
+        @Override
+        public void reportPlayerReputationChange(String faction, float delta) {
+            super.reportPlayerReputationChange(faction, delta);
+            FactionAPI enmity = Global.getSector().getFaction(enmity_ID);
+            FactionAPI solace = Global.getSector().getFaction(solace_ID);
+
+            if(enmity_ID.equals(faction) || solace_ID.equals(faction)) {
+//                System.out.println("report relation change: " + Global.getSector().getFaction(faction).getRelToPlayer().getRel());
+                if(enmity.getRelToPlayer().getRel() < -0.5f) {
+                    solace.adjustRelationship(Factions.PLAYER, delta, RepLevel.HOSTILE);
+                } else if (solace.getRelToPlayer().getRel() < -0.5f) {
+                    enmity.adjustRelationship(Factions.PLAYER, delta, RepLevel.HOSTILE);
+                }
+            }
         }
     }
 }

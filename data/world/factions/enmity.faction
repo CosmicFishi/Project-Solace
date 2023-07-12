@@ -250,7 +250,7 @@
     },
 
     "custom":{
-        "offersCommissions":true,
+        "offersCommissions":false,
         "engagesInHostilities":true,
         "buysAICores":true,
         "AICoreValueMult":4,

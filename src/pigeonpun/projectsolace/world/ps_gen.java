@@ -9,6 +9,10 @@ import com.fs.starfarer.api.campaign.econ.EconomyAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.shared.SharedData;
+import exerelin.campaign.AllianceManager;
+import static pigeonpun.projectsolace.scripts.projectsolaceplugin.*;
+
+import exerelin.campaign.alliances.Alliance;
 import pigeonpun.projectsolace.world.systems.ps_ayubia;
 import pigeonpun.projectsolace.world.systems.ps_chilka;
 
@@ -83,6 +87,7 @@ public class ps_gen implements SectorGeneratorPlugin {
         new ps_ayubia().generate(sector);
 
         SharedData.getData().getPersonBountyEventData().addParticipatingFaction("projectsolace");
+        createSolaceEnmityAlliance(sector);
 
         //vanilla factions
         ps.setRelationship(Factions.LUDDIC_CHURCH, -0.1f);
@@ -109,5 +114,19 @@ public class ps_gen implements SectorGeneratorPlugin {
         //modded factions
         ps.setRelationship("orks", 1.0f);
 //        ps.setRelationship("scalartech", 0.4f);
+    }
+
+    public void createSolaceEnmityAlliance(SectorAPI sector) {
+        FactionAPI solace = sector.getFaction(solace_ID);
+        FactionAPI enmity = sector.getFaction(enmity_ID);
+
+        if(Global.getSettings().getBoolean("SolaceEnmityAlliance")) {
+            Alliance alliance = AllianceManager.createAlliance(enmity_ID, solace_ID, AllianceManager.getBestAlignment(enmity_ID, solace_ID));
+            alliance.setName(Global.getSettings().getString("ps_projectsolace", "ps_enmitysolacealliance"));
+            alliance.addPermaMember(solace_ID);
+            alliance.addPermaMember(enmity_ID);
+        }
+        enmity.setRelationship(solace_ID, 1f);
+        enmity.setRelationship(Factions.PLAYER, Global.getSector().getPlayerFaction().getRelationship(solace_ID));
     }
 }
