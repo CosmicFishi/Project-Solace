@@ -34,6 +34,13 @@
     {"file": "sounds/hullmods/ps_emp_shout.ogg", "pitch": 1, "volume": 1},
     {"file": "sounds/hullmods/ps_emp_shout.ogg", "pitch": 1.05, "volume": 1},
     {"file": "sounds/hullmods/ps_emp_shout.ogg", "pitch": 1.1, "volume": 1}
+  ],
+  "ps_proteolyticbeam_emp_impact": [
+    {"file": "sounds/weapons/ps_proteolyticbeam_emp_impact.ogg", "pitch": 1.1, "volume": 1},
+    {"file": "sounds/weapons/ps_proteolyticbeam_emp_impact.ogg", "pitch": 1.15, "volume": 1},
+    {"file": "sounds/weapons/ps_proteolyticbeam_emp_impact.ogg", "pitch": 1.2, "volume": 1},
+    {"file": "sounds/weapons/ps_proteolyticbeam_emp_impact.ogg", "pitch": 1.25, "volume": 1},
+    {"file": "sounds/weapons/ps_proteolyticbeam_emp_impact.ogg", "pitch": 1.3, "volume": 1}
   ]
 }
 

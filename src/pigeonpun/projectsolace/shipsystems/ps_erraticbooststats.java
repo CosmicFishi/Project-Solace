@@ -7,20 +7,21 @@ import pigeonpun.projectsolace.com.ps_misc;
 
 public class ps_erraticbooststats extends BaseShipSystemScript {
 
-    private final float FIGHTER_ROF_BONUS = 20f;
+    private final float FIGHTER_TIME_DAL_BONUS = 20f;
+    private final float SHIP_TIME_DAL_BONUS = 10f;
 
     public void apply(MutableShipStatsAPI stats, String id, State state, float effectLevel) {
         ShipAPI ship = (ShipAPI) stats.getEntity();
         CombatEngineAPI engine = Global.getCombatEngine();
 
         if(ship != null) {
+            stats.getTimeMult().modifyPercent(ship.getId(), SHIP_TIME_DAL_BONUS);
             ship.setJitterUnder(this, ps_misc.ENMITY_JITTER, effectLevel * 0.8f, 1, 2f, 8f);
             if(ship.getAllWings() != null) {
                 for (FighterWingAPI fighterWing: ship.getAllWings()) {
                     for(ShipAPI fighter: fighterWing.getWingMembers()) {
                         fighter.setJitterUnder(fighter, ps_misc.ENMITY_JITTER, effectLevel * 0.8f, 2, 4f, 12f);
-                        stats.getEnergyRoFMult().modifyPercent(fighter.getId(), FIGHTER_ROF_BONUS);
-                        stats.getBallisticRoFMult().modifyPercent(fighter.getId(), FIGHTER_ROF_BONUS);
+                        stats.getTimeMult().modifyPercent(fighter.getId(), FIGHTER_TIME_DAL_BONUS);
                     }
                 }
             }
@@ -29,10 +30,10 @@ public class ps_erraticbooststats extends BaseShipSystemScript {
     public void unapply(MutableShipStatsAPI stats, String id) {
         ShipAPI ship = (ShipAPI) stats.getEntity();
         if(ship != null && ship.getAllWings() != null) {
+            stats.getTimeMult().unmodify(id);
             for (FighterWingAPI fighterWing: ship.getAllWings()) {
                 for(ShipAPI fighter: fighterWing.getWingMembers()) {
-                    stats.getEnergyRoFMult().unmodify(fighter.getId());
-                    stats.getBallisticRoFMult().unmodify(fighter.getId());
+                    stats.getTimeMult().unmodify(fighter.getId());
                 }
             }
         }
