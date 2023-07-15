@@ -73,10 +73,7 @@
 
     "knownFighters":{
         "tags":[
-            "remnant",
-            "hightech_bp",
-            "midline_bp",
-            "lowtech_bp",
+            "ps_fighter_bp_enmity"
             ],
         "fighters":[
 

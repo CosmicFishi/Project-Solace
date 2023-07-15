@@ -1,0 +1,24 @@
+{
+  "variantId": "ps_viridis_fighter",
+  "hullId": "ps_viridis",
+  "displayName": "Brawler",
+  "goalVariant": false,
+  "fluxCapacitors": 0,
+  "fluxVents": 0,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "pulselaser",
+        "WS0002": "miningblaster",
+        "WS0003": "swarmer_fighter"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

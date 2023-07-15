@@ -1,0 +1,68 @@
+{
+  "hullName": "Riveti",
+  "hullId": "ps_riveti",
+  "hullSize": "FIGHTER",
+  "spriteName": "graphics/ships/fighters/ps_riveti.png",
+  "style": "ENMITY",
+  "height": 30,
+  "width": 40,
+  "center": [20, 15],
+  "collisionRadius": 18.5,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 15.5,
+  "viewOffset": 0,
+  "builtInMods": [
+    "no_weapon_flux"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [5, 10]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": -0,
+      "locations": [5, -10]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-9, 8.5],
+      "length": 25,
+      "width": 6,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "EnS_ENGINE"
+    },
+    {
+      "location": [-9, -8.5],
+      "length": 25,
+      "width": 6,
+      "angle": -180,
+      "contrailSize": 20,
+      "style": "CUSTOM",
+      "styleId": "EnS_ENGINE"
+    }
+  ],
+  "bounds": [
+    -10, 2,
+    -4, 13,
+    2, 13.5,
+    8.5, 7,
+    6, -0,
+    8.5, -7,
+    2, -13.5,
+    -4, -13,
+    -10, -2
+  ]
+}

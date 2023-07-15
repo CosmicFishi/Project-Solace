@@ -1,0 +1,77 @@
+{
+  "hullName": "Tigris",
+  "hullId": "ps_tigris",
+  "hullSize": "FIGHTER",
+  "spriteName": "graphics/ships/fighters/ps_tigris.png",
+  "style": "ENMITY",
+  "height": 30,
+  "width": 40,
+  "center": [20, 15],
+  "collisionRadius": 23.5,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 19,
+  "viewOffset": 0,
+  "builtInMods": [
+    "no_weapon_flux"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [8, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [8, 0]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 50,
+      "angle": 6,
+      "locations": [10, 11]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 50,
+      "angle": -6,
+      "locations": [10, -11]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-10.5, -0],
+      "length": 40,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "EnS_ENGINE"
+    }
+  ],
+  "bounds": [
+    -12, -6.5,
+    -8, -15,
+    9.5, -12.5,
+    13, -5.5,
+    7, 0,
+    13, 5.5,
+    9.5, 12.5,
+    -8, 15,
+    -12, 6.5
+  ]
+}

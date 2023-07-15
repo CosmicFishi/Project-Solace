@@ -1,0 +1,30 @@
+{
+  "variantId": "ps_dumerili_fighter",
+  "hullId": "ps_dumerili",
+  "displayName": "Brawler",
+  "goalVariant": false,
+  "fluxCapacitors": 0,
+  "fluxVents": 0,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "phasebeam"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002": "irpulse",
+        "WS0003": "irpulse"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

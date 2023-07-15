@@ -35,7 +35,7 @@ public class ps_proteolyticbeameffects implements BeamEffectPlugin {
                 float fluxLevel = ((ShipAPI) beam.getDamageTarget()).getFluxLevel();
                 float damage = (beam.getDamage().getDamage() * EMP_DAMAGE_TO_ORIGINAL / 100) +
                         (beam.getDamage().getDamage() * (fluxLevel / EMP_DAMAGE_FLUX_MAX_OUT * (MAX_EMP_DAMAGE_FLUX / 100)));
-                engine.spawnEmpArc(beam.getSource(), beamLocation, null, beam.getDamageTarget(), DamageType.ENERGY, damage, 0, 2000f, null, 5f, Color.red, Color.white);
+                engine.spawnEmpArc(beam.getSource(), beamLocation, null, beam.getDamageTarget(), DamageType.ENERGY, damage, 0, 2000f, "ps_proteolyticbeam_emp_impact", 5f, Color.red, Color.white);
             }
 //            //Erraticboost weapon change
 //            if(ship.getSystem().isActive()) {

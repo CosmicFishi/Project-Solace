@@ -47,7 +47,7 @@ public class ps_fightermanipulatorsstats extends BaseShipSystemScript {
                 if(spawnAfterImageInterval.intervalElapsed()) {
                     //Global.getCombatEngine().addFloatingText(friendly.getLocation(), "Charging...", 60, ps_misc.PROJECT_SOLACE_LIGHT, friendly, 0.25f, 0.25f);
                     friendly.addAfterimage(
-                            ps_misc.ENMITY_MAIN,
+                            ps_misc.ENMITY_MAIN_AFTER_IMG,
                             0f,
                             0f,
                             friendly.getVelocity().x * -1.1f,
