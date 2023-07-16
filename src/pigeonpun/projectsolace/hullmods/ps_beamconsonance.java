@@ -13,6 +13,7 @@ import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.api.util.WeightedRandomPicker;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
@@ -32,12 +33,13 @@ public class ps_beamconsonance extends BaseHullMod {
 
     //increase damage by certain amount
     //convert all energy or ballistic projectile weapons to pd, reducing base range that is above 500 units by 50%
-    //Shield on enable EMP sparking to only fighter
+    //Shield on enable EMP sparking to random 3 missiles
     //todo: Speciality: increase flux cost - increase damage, fighter now have 10% time flow but lower replacement time by 20%, slight jitter around fighter, Increase maneuver - reduce armor
     //todo: Dire - Watchful - Zippy
-    private static final float DAMAGE_BEAM_BONUS = 40f;
+    private static final float DAMAGE_BEAM_BONUS = 20f;
     private static final float RANGE_BASE_PROJECTILE_START_REDUCE = 500f;
     private static final float RANGE_BASE_PROJECTILE_REDUCE_BY_MULT = 0.5f;
+    private static final float EMP_SPARK_COUNT = 3;
     private static final float
             EMP_DAMAGE_FRIGATE = 100f,
             EMP_DAMAGE_DESTROYER = 150f,
@@ -69,48 +71,54 @@ public class ps_beamconsonance extends BaseHullMod {
                 engine.addSmoothParticle(spawnHitParticlePoint, (Vector2f) VectorUtils.getDirectionalVector(spawnHitParticlePoint, ship.getLocation()).scale(15f), 7f, 1f, 2f, ps_misc.ENMITY_SHIELD_PARTICLE);
             }
             if(EMP_TIMER.intervalElapsed()) {
-                for (CombatEntityAPI entity: CombatUtils.getEntitiesWithinRange(ship.getLocation(), EMP_RANGE)) {
-                    if((entity instanceof ShipAPI && ((ShipAPI) entity).isFighter() && ((ShipAPI) entity).isAlive())) {
-                        if(ship.getOwner() != entity.getOwner()) {
-                            Vector2f spawnEMPPoint = MathUtils.getPointOnCircumference(
-                                    ship.getLocation(),
-                                    ship.getShield().getRadius(),
-                                    MathUtils.getRandomNumberInRange(startShieldAngle, endShieldAngle)
-                            );
-                            float enemyAngle = VectorUtils.getAngle(ship.getLocation(), entity.getLocation());
-                            if(enemyAngle > startShieldAngle || enemyAngle < endShieldAngle) {
-                                float EMPdamage = 0;
-                                switch (ship.getHullSize()) {
-                                    case FRIGATE:
-                                        EMPdamage = EMP_DAMAGE_FRIGATE;
-                                        break;
-                                    case DESTROYER:
-                                        EMPdamage = EMP_DAMAGE_DESTROYER;
-                                        break;
-                                    case CRUISER:
-                                        EMPdamage = EMP_DAMAGE_CRUISER;
-                                        break;
-                                    case CAPITAL_SHIP:
-                                        EMPdamage = EMP_DAMAGE_CAPITAL;
-                                        break;
-                                }
-                                Global.getCombatEngine().spawnEmpArcPierceShields(ship,
-                                        spawnEMPPoint,
-                                        null,
-                                        entity,
-                                        DamageType.FRAGMENTATION,
-                                        EMPdamage,
-                                        0,
-                                        3000,
-                                        null,
-                                        1,
-                                        ps_misc.ENMITY_SHIELD_EMP_FRINGE,
-                                        ps_misc.ENMITY_SHIELD_EMP_CORE);
-                                Global.getSoundPlayer().playSound("ps_emp_shout", 1f, 1f, spawnEMPPoint, new Vector2f(0, 0));
-                            }
+                List<MissileAPI> listMissiles = CombatUtils.getMissilesWithinRange(ship.getLocation(), EMP_RANGE);
+                WeightedRandomPicker<MissileAPI> missilesToFire = new WeightedRandomPicker<>();
+                for (MissileAPI missile: listMissiles) {
+                    if(!missile.isFading() && !missile.isDecoyFlare() && (ship.getOwner() != missile.getOwner())) {
+                        missilesToFire.add(missile, MathUtils.getDistance(ship.getLocation(), missile.getLocation()));
+                    }
+                }
+                int i = 0;
+                while(!missilesToFire.isEmpty() && i < EMP_SPARK_COUNT) {
+                    MissileAPI missile = missilesToFire.pick();
+                    Vector2f spawnEMPPoint = MathUtils.getPointOnCircumference(
+                            ship.getLocation(),
+                            ship.getShield().getRadius(),
+                            MathUtils.getRandomNumberInRange(startShieldAngle, endShieldAngle)
+                    );
+                    float enemyAngle = VectorUtils.getAngle(ship.getLocation(), missile.getLocation());
+                    if(enemyAngle > startShieldAngle || enemyAngle < endShieldAngle) {
+                        float EMPdamage = 0;
+                        switch (ship.getHullSize()) {
+                            case FRIGATE:
+                                EMPdamage = EMP_DAMAGE_FRIGATE;
+                                break;
+                            case DESTROYER:
+                                EMPdamage = EMP_DAMAGE_DESTROYER;
+                                break;
+                            case CRUISER:
+                                EMPdamage = EMP_DAMAGE_CRUISER;
+                                break;
+                            case CAPITAL_SHIP:
+                                EMPdamage = EMP_DAMAGE_CAPITAL;
+                                break;
                         }
-                    };
-                };
+                        Global.getCombatEngine().spawnEmpArcPierceShields(ship,
+                                spawnEMPPoint,
+                                null,
+                                missile,
+                                DamageType.FRAGMENTATION,
+                                EMPdamage,
+                                0,
+                                3000,
+                                null,
+                                1,
+                                ps_misc.ENMITY_SHIELD_EMP_FRINGE,
+                                ps_misc.ENMITY_SHIELD_EMP_CORE);
+                        Global.getSoundPlayer().playSound("ps_emp_shout", 1f, 1f, spawnEMPPoint, new Vector2f(0, 0));
+                    }
+                    i++;
+                }
             }
         }
     }
@@ -129,7 +137,7 @@ public class ps_beamconsonance extends BaseHullMod {
         Color good = Misc.getPositiveHighlightColor();
 
         //Incense
-        LabelAPI label = tooltip.addPara("A dust-like matter called Incense found by accident when a small piece of Solace crystal slipped off one of our scientist's hands and shattered on the ground. However, unlike other crystal dust, the area where the crystal shatters seems to be spreading out to fill up certain areas and within those areas, time seems to be moving differently. Further inspection and testing after this incident shows that the matter has some extraordinary quirks", opad, h, "");
+        LabelAPI label = tooltip.addPara("<description here pls>", opad, h, "");
 
         //3 effects
         //label = tooltip.addPara("First is the tendency to spread out to a large area, if the area is damaged by a moving projectile, the dust will disburse out then slowly form back to fill it up", opad, h, "");
@@ -139,8 +147,6 @@ public class ps_beamconsonance extends BaseHullMod {
         //bonus
         tooltip.addSectionHeading("Effects", Alignment.MID, opad);
 
-        //incense
-        //Time dal
     }
 
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {

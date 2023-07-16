@@ -1,11 +1,11 @@
 name,id,designation,tech/manufacturer,system id,fleet pts,hitpoints,armor rating,max flux,8/6/5/4%,flux dissipation,ordnance points,fighter bays,max speed,acceleration,deceleration,max turn rate,turn acceleration,mass,shield type,defense id,shield arc,shield upkeep,shield efficiency,phase cost,phase upkeep,min crew,max crew,cargo,fuel,fuel/ly,range,max burn,base value,cr %/day,CR to deploy,peak CR sec,CR loss/sec,supplies/rec,supplies/mo,c/s,c/f,f/s,f/f,crew/s,crew/f,hints,tags,rarity,breakProb,minPieces,maxPieces,travel drive,number
 #FIGHTER,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Sooty,ps_sooty,,Project Solace,,,100,10,500,,100,0,,325,500,450,180,360,10,FRONT,,,,,,,0,0,,,,,,,,,,,,,,,,,,,,,,0,,,,14
-Riveti,ps_riveti,,Enmity Strafer,flarelauncher_fighter,,250,75,200,,30,0,,250,400,350,90,180,30,FRONT,,220,0,1,,,1,1,,,,,,,,,,,,,,,,,,,,,,0,,,,19
-Dumerili,ps_dumerili,,Enmity Strafer,,,500,120,350,,50,0,,150,230,125,30,90,50,FRONT,,120,0,1,,,2,2,,,,,,,,,,,,,,,,,,,,,,0,,,,20
-Vudii,ps_vudii,,Enmity Strafer,flarelauncher_fighter,,700,150,400,,80,0,,130,200,150,100,200,40,FRONT,,120,0,1,,,2,2,,,,,,,,,,,,,,,,,,,,,,0,,,,21
-Viridis,ps_viridis,,Enmity Strafer,,,300,60,300,,50,0,,270,500,400,90,270,15,FRONT,,160,0,1,,,1,1,,,,,,,,,,,,,,,,,,,,,,0,,,,22
-Tigris,ps_tigris,,Enmity Strafer,,,400,75,250,,50,0,,200,400,300,150,300,40,FRONT,,90,0,1,,,2,2,,,,,,,,,,,,,,,,,,,,,,0,,,,23
+Riveti,ps_riveti,,Enmity Strafer,flarelauncher_fighter,,250,50,150,,30,0,,250,400,350,90,180,30,FRONT,,160,0,1,,,1,1,,,,,,,,,,,,,,,,,,,,,,0,,,,19
+Dumerili,ps_dumerili,,Enmity Strafer,,,450,120,300,,50,0,,150,230,125,30,90,50,FRONT,,120,0,1,,,2,2,,,,,,,,,,,,,,,,,,,,,,0,,,,20
+Vudii,ps_vudii,,Enmity Strafer,flarelauncher_fighter,,650,150,400,,80,0,,130,200,150,100,200,60,FRONT,,120,0,1,,,2,2,,,,,,,,,,,,,,,,,,,,,,0,,,,21
+Viridis,ps_viridis,,Enmity Strafer,,,300,60,250,,50,0,,270,500,400,90,270,30,FRONT,,160,0,1,,,1,1,,,,,,,,,,,,,,,,,,,,,,0,,,,22
+Tigris,ps_tigris,,Enmity Strafer,,,400,75,330,,50,0,,200,400,300,150,300,40,FRONT,,90,0,1,,,2,2,,,,,,,,,,,,,,,,,,,,,,0,,,,23
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #FRIGATE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Salawesi,ps_salawesi,Frigate,Project Solace,ps_swiftrush,5,2250,300,2800,2188,200,50,,120,110,90,70,80,300,OMNI,,180,0.3,0.8,,,10,25,50,25,1,25,10,14000,8,10,240,0.25,4,4,,,,,,,,ps_ship_bp,,0.4,2,2,,1
