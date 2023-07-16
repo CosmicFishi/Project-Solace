@@ -30,7 +30,7 @@ public class ps_erraticbooststats extends BaseShipSystemScript {
     public void unapply(MutableShipStatsAPI stats, String id) {
         ShipAPI ship = (ShipAPI) stats.getEntity();
         if(ship != null && ship.getAllWings() != null) {
-            stats.getTimeMult().unmodify(id);
+            stats.getTimeMult().unmodify(ship.getId());
             for (FighterWingAPI fighterWing: ship.getAllWings()) {
                 for(ShipAPI fighter: fighterWing.getWingMembers()) {
                     stats.getTimeMult().unmodify(fighter.getId());

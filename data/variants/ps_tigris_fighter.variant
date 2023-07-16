@@ -13,16 +13,15 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "gravitonbeam"
+        "WS0001": "pulselaser",
+        "WS0003": "irpulse_fighter",
+        "WS0004": "irpulse_fighter"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0003": "pdlaser",
-        "WS0004": "pdlaser"
-      }
+      "weapons": {}
     },
     {
       "autofire": false,

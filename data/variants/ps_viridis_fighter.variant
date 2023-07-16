@@ -13,8 +13,14 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "pulselaser",
-        "WS0002": "miningblaster",
+        "WS0001": "irpulse",
+        "WS0002": "irpulse"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
         "WS0003": "swarmer_fighter"
       }
     }

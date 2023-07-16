@@ -13,15 +13,14 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "irpulse"
+        "WS0001": "taclaser",
+        "WS0002": "taclaser"
       }
     },
     {
       "autofire": false,
       "mode": "LINKED",
-      "weapons": {
-        "WS0002": "irpulse"
-      }
+      "weapons": {}
     }
   ],
   "modules": [],

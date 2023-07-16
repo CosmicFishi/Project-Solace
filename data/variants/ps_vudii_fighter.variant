@@ -15,13 +15,20 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "ionbeam",
-        "WS0002": "lrpdlaser",
-        "WS0003": "lrpdlaser"
+        "WS0001": "taclaser",
+        "WS0002": "miningblaster",
+        "WS0003": "miningblaster",
+        "WS0004": "swarmer_fighter",
+        "WS0005": "swarmer_fighter"
       }
     },
     {
-      "autofire": true,
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": false,
       "mode": "LINKED",
       "weapons": {}
     }

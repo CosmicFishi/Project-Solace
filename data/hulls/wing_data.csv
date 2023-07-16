@@ -1,10 +1,10 @@
 id,variant,tags,tier,rarity,fleet pts,op cost,formation,range,attackRunRange,attackPositionOffset,num,role,role desc,refit,base value,,,,,,,,,,,,,number
 ps_sooty_wing,ps_sooty_interceptor,"no_drop, no_sell",1,,5,5,CLAW,4000,200,700,3,INTERCEPTOR,Interceptor Drone,5,6000,,,,,,,,,,,,,7
-ps_riveti_wing,ps_riveti_fighter,"interceptor, fighter5, interceptor5, rare_bp, ps_fighter_bp_enmity",2,,4,8,V,4000,300,200,3,INTERCEPTOR,Interceptor/Fighter,8,8000,,,,,,,,,,,,,2
-ps_viridis_wing,ps_viridis_fighter,"fighter, fighter5, rare_bp, ps_fighter_bp_enmity",1,,8,16,CLAW,4000,300,500,2,FIGHTER,Heavy Fighter,10,12000,,,,,,,,,,,,,3
-ps_tigris_wing,ps_tigris_fighter,"fighter, fighter5, rare_bp, ps_fighter_bp_enmity",1,0.5,6,12,BOX,4000,400,300,3,FIGHTER,Beamer/Fighter,15,15000,,,,,,,,,,,,,4
-ps_dumerili_wing,ps_dumerili_fighter,"fighter, fighter5, rare_bp, ps_fighter_bp_enmity",3,0.4,7,14,CLAW,4000,400,500,2,FIGHTER,Heavy Brawler,15,20000,,,,,,,,,,,,,5
-ps_vudii_wing,ps_vudii_fighter,"fighter, fighter6, rare_bp, ps_fighter_bp_enmity",3,0.25,10,20,V,4000,500,600,1,FIGHTER,Supreme Fighter,20,23000,,,,,,,,,,,,,6
+ps_riveti_wing,ps_riveti_fighter,"interceptor, fighter5, interceptor5, rare_bp, ps_fighter_bp_enmity",2,,4,8,V,4000,600,200,4,INTERCEPTOR,Interceptor,8,8000,,,,,,,,,,,,,2
+ps_viridis_wing,ps_viridis_fighter,"fighter, fighter5, rare_bp, ps_fighter_bp_enmity",1,,5,10,BOX,4000,300,500,2,FIGHTER,Fighter,10,12000,,,,,,,,,,,,,3
+ps_tigris_wing,ps_tigris_fighter,"fighter, fighter5, rare_bp, ps_fighter_bp_enmity",1,0.5,6,12,CLAW,4000,400,300,3,FIGHTER,Beam Fighter,12,15000,,,,,,,,,,,,,4
+ps_dumerili_wing,ps_dumerili_fighter,"fighter, fighter5, rare_bp, ps_fighter_bp_enmity",3,0.4,7,14,CLAW,4000,400,500,2,FIGHTER,Heavy Fighter,15,20000,,,,,,,,,,,,,5
+ps_vudii_wing,ps_vudii_fighter,"fighter, fighter6, rare_bp, ps_fighter_bp_enmity",3,0.25,10,20,V,4000,500,600,1,FIGHTER,Heavy Assault Fighter,20,23000,,,,,,,,,,,,,6
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,

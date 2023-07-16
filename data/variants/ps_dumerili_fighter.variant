@@ -1,7 +1,7 @@
 {
   "variantId": "ps_dumerili_fighter",
   "hullId": "ps_dumerili",
-  "displayName": "Brawler",
+  "displayName": "Fighter",
   "goalVariant": false,
   "fluxCapacitors": 0,
   "fluxVents": 0,
@@ -17,11 +17,11 @@
       }
     },
     {
-      "autofire": false,
+      "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0002": "irpulse",
-        "WS0003": "irpulse"
+        "WS0002": "lrpdlaser",
+        "WS0003": "lrpdlaser"
       }
     }
   ],

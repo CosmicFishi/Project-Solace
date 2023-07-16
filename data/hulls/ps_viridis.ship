@@ -17,7 +17,7 @@
   "weaponSlots": [
     {
       "id": "WS0001",
-      "size": "MEDIUM",
+      "size": "SMALL",
       "type": "ENERGY",
       "mount": "HIDDEN",
       "arc": 0,
@@ -26,7 +26,7 @@
     },
     {
       "id": "WS0002",
-      "size": "MEDIUM",
+      "size": "SMALL",
       "type": "ENERGY",
       "mount": "HIDDEN",
       "arc": 0,

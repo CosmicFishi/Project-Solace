@@ -16,30 +16,12 @@
   ],
   "weaponSlots": [
     {
-      "id": "WS0001",
-      "size": "MEDIUM",
-      "type": "ENERGY",
-      "mount": "HIDDEN",
-      "arc": 0,
-      "angle": 0,
-      "locations": [8, -0]
-    },
-    {
-      "id": "WS0002",
-      "size": "MEDIUM",
-      "type": "ENERGY",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -0,
-      "locations": [8, 0]
-    },
-    {
       "id": "WS0003",
       "size": "SMALL",
       "type": "ENERGY",
       "mount": "HIDDEN",
-      "arc": 50,
-      "angle": 6,
+      "arc": 0,
+      "angle": 0,
       "locations": [10, 11]
     },
     {
@@ -47,16 +29,43 @@
       "size": "SMALL",
       "type": "ENERGY",
       "mount": "HIDDEN",
-      "arc": 50,
-      "angle": -6,
+      "arc": 0,
+      "angle": 0,
       "locations": [10, -11]
+    },
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [8, -0]
     }
   ],
   "engineSlots": [
     {
-      "location": [-10.5, -0],
+      "location": [-8.5, 12],
+      "length": 30,
+      "width": 8,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "EnS_ENGINE"
+    },
+    {
+      "location": [-8.5, -12],
+      "length": 30,
+      "width": 8,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "EnS_ENGINE"
+    },
+    {
+      "location": [-3, -0],
       "length": 40,
-      "width": 10,
+      "width": 6,
       "angle": 180,
       "contrailSize": 30,
       "style": "CUSTOM",
