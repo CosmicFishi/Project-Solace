@@ -24,39 +24,41 @@ public class ps_bulwarkbooststats extends BaseShipSystemScript {
             stats.getMaxSpeed().modifyPercent(id, MAX_SPEED_BONUS);
             stats.getArmorDamageTakenMult().modifyMult(id, ARMOR_DAMAGE_REDUCE_MULT);
         }
-        if (ship.getShield() != null) {
-            ship.getShield().toggleOff();
-        }
-
-        //FX jit
-        float jitterLevel = effectLevel;
-        float jitterRangeBonus = 0;
-        float maxRangeBonus = 10f;
-        if (state == State.IN) {
-            jitterLevel = effectLevel / (1f / ship.getSystem().getChargeUpDur());
-            if (jitterLevel > 1) {
-                jitterLevel = 1f;
+        if (ship != null) {
+            if (ship.getShield() != null) {
+                ship.getShield().toggleOff();
             }
-            jitterRangeBonus = jitterLevel * maxRangeBonus;
-        } else if (state == State.ACTIVE) {
-            jitterLevel = 1f;
-            jitterRangeBonus = maxRangeBonus;
-        } else if (state == State.OUT) {
-            jitterRangeBonus = jitterLevel * maxRangeBonus;
-        }
-        jitterLevel = (float) Math.sqrt(jitterLevel);
 
-        ship.setJitter(this, new Color(211, 110, 255, 200) , jitterLevel, 1, 0f, 7f + jitterRangeBonus);
-        ship.setJitterUnder(this, new Color(211, 110, 255, 255) , jitterLevel, 20, 0f, 7f + jitterRangeBonus);
-        ship.getEngineController().extendFlame(this, 2f, 1f, 1f);
-
-        if (stats.getEntity() instanceof ShipAPI) {
+            //FX jit
+            float jitterLevel = effectLevel;
+            float jitterRangeBonus = 0;
+            float maxRangeBonus = 10f;
             if (state == State.IN) {
-                if (effectLevel > 0.2f) {
-                    ship.getEngineController().getExtendLengthFraction().advance(1f);
-                    for (ShipEngineControllerAPI.ShipEngineAPI engine : ship.getEngineController().getShipEngines()) {
-                        if (engine.isSystemActivated()) {
-                            ship.getEngineController().setFlameLevel(engine.getEngineSlot(), 1f);
+                jitterLevel = effectLevel / (1f / ship.getSystem().getChargeUpDur());
+                if (jitterLevel > 1) {
+                    jitterLevel = 1f;
+                }
+                jitterRangeBonus = jitterLevel * maxRangeBonus;
+            } else if (state == State.ACTIVE) {
+                jitterLevel = 1f;
+                jitterRangeBonus = maxRangeBonus;
+            } else if (state == State.OUT) {
+                jitterRangeBonus = jitterLevel * maxRangeBonus;
+            }
+            jitterLevel = (float) Math.sqrt(jitterLevel);
+
+            ship.setJitter(this, new Color(211, 110, 255, 200) , jitterLevel, 1, 0f, 7f + jitterRangeBonus);
+            ship.setJitterUnder(this, new Color(211, 110, 255, 255) , jitterLevel, 20, 0f, 7f + jitterRangeBonus);
+            ship.getEngineController().extendFlame(this, 2f, 1f, 1f);
+
+            if (stats.getEntity() instanceof ShipAPI) {
+                if (state == State.IN) {
+                    if (effectLevel > 0.2f) {
+                        ship.getEngineController().getExtendLengthFraction().advance(1f);
+                        for (ShipEngineControllerAPI.ShipEngineAPI engine : ship.getEngineController().getShipEngines()) {
+                            if (engine.isSystemActivated()) {
+                                ship.getEngineController().setFlameLevel(engine.getEngineSlot(), 1f);
+                            }
                         }
                     }
                 }
