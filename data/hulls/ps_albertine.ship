@@ -17,9 +17,7 @@
     "recovery_shuttles",
     "operations_center"
   ],
-  "builtInWings": [
-    "claw_wing"
-  ],
+  "builtInWings": [],
   "weaponSlots": [
     {
       "id": "WS0001",

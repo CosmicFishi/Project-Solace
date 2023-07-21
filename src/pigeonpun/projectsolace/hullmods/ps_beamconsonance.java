@@ -132,19 +132,33 @@ public class ps_beamconsonance extends BaseHullMod {
         float opad = 10f;
         Color h = Misc.MOUNT_UNIVERSAL;
         Color bad = Misc.getNegativeHighlightColor();
-        Color good = Misc.getPositiveHighlightColor();
+        Color good = Misc.getHighlightColor();
 
-        //Incense
-        LabelAPI label = tooltip.addPara("<description here pls>", opad, h, "");
-
-        //3 effects
-        //label = tooltip.addPara("First is the tendency to spread out to a large area, if the area is damaged by a moving projectile, the dust will disburse out then slowly form back to fill it up", opad, h, "");
-        //label = tooltip.addPara("The second unique feature is the ability to release a huge amount of energy when Incense???s covering surface has been damaged to a certain point, after the initial impact, the matter seems to be bonding the surface back to a certain stage, this feature alone is a breakthrough for the Solace ship composition.", opad, h, "");
-        //label = tooltip.addPara("The final specialty is the time manipulation, it seems that the object that Incense covers, depending on the density, can move slower or faster in time, this is also another key factor to Solace ship lineup.", opad, h, "");
+        LabelAPI label = tooltip.addPara("Hardened and refined to the peak of innovation. By the technology found only at the Ayubia system, the Enmity have gained new knowledge about beam weapons that have never been seen before. Fueling the beam with minerals deep under the caves in Kearsarge resulted in the increment in the intensity of one can fire, making its piercing power stronger than ever before.", opad, h, "");
+        label = tooltip.addPara("But as with every alteration, it comes with a price. Due to the amount of flux required to push those beam weapons to full capacity, any energy or ballistic projectile weapon will be converted into point defense instead of the usual strike role and have their base range reduced.", opad, h);
+        label = tooltip.addPara("A side effect or some may say blessing from this upgrade is that the ship’s shield has the ability to knock down enemies’s missiles with its EMP arc, as a way to discharge some of the overwhelming power that the innovation provided. But it only appears whenever the shield is enabled.", opad, h, "");
 
         //bonus
         tooltip.addSectionHeading("Effects", Alignment.MID, opad);
+        label = tooltip.addPara("+ Increase beam weapon damage by: %s.", opad, h,
+                "" + Math.round(DAMAGE_BEAM_BONUS) + "%");
+        label.setHighlight("" + Math.round(DAMAGE_BEAM_BONUS) + "%");
+        label.setHighlightColors(good);
 
+        label = tooltip.addPara("+ Convert projectile energy or ballistic weapon to point defend, if they are above %s. reduce base range by %s", opad, h,
+                "" + Math.round(RANGE_BASE_PROJECTILE_START_REDUCE) + "u", "" + Math.round(RANGE_BASE_PROJECTILE_REDUCE_BY_MULT * 100) + "%");
+        label.setHighlight("" + Math.round(RANGE_BASE_PROJECTILE_START_REDUCE) + "u", "" + Math.round(RANGE_BASE_PROJECTILE_REDUCE_BY_MULT * 100) + "%");
+        label.setHighlightColors(bad, bad);
+
+        label = tooltip.addPara("+ EMP will periodically discharge when shield is up, dealing %s fragmentation damage to missiles", opad, h,
+                "" + Math.round(EMP_DAMAGE_FRIGATE) + "/" + Math.round(EMP_DAMAGE_DESTROYER) + "/" + Math.round(EMP_DAMAGE_CRUISER) + "/" + Math.round(EMP_DAMAGE_CAPITAL) + ""
+            );
+        label.setHighlight("" + Math.round(EMP_DAMAGE_FRIGATE) + "/" + Math.round(EMP_DAMAGE_DESTROYER) + "/" + Math.round(EMP_DAMAGE_CRUISER) + "/" + Math.round(EMP_DAMAGE_CAPITAL) + "");
+        label.setHighlightColors(h);
+
+        tooltip.addSectionHeading("Interactions with other modifiers", Alignment.MID, opad);
+        tooltip.addPara("Since the base range is increased, this modifier"
+                + "is affected by percentage modifiers from other hullmods and skills.", opad);
     }
 
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
