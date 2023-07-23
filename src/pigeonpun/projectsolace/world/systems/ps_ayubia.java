@@ -75,6 +75,7 @@ public class ps_ayubia {
                                 Submarkets.GENERIC_MILITARY,
                                 Submarkets.SUBMARKET_OPEN,
                                 Submarkets.SUBMARKET_STORAGE,
+                                "ps_sciencemarket",
                                 Submarkets.SUBMARKET_BLACK
                         )
                 ),
