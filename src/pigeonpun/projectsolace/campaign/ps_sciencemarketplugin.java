@@ -17,6 +17,7 @@ import com.fs.starfarer.api.loading.WeaponSpecAPI;
 import com.fs.starfarer.api.plugins.impl.CoreAutofitPlugin;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
+import pigeonpun.projectsolace.com.ps_misc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,7 +91,7 @@ public class ps_sciencemarketplugin extends BaseSubmarketPlugin {
         WeightedRandomPicker<String> factionPicker = new WeightedRandomPicker<String>(itemGenRandom);
         factionPicker.add(pickerFactionId);
 
-        List<String> hiddenWeapons = new ArrayList<>();
+        List<String> hiddenWeapons = ps_misc.ENMITY_SPECIAL_WEAPONS_LIST;
 
         for (int i = 0; i < factionPicker.getItems().size(); i++) {
             String factionId = factionPicker.getItems().get(i);

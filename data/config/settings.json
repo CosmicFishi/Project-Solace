@@ -6,6 +6,9 @@
   "plugins":{
 
   },
+  "ruleCommandPackages":[
+    "pigeonpun.projectsolace.campaign.rulecmd"
+  ],
   "graphics":{
     "blueprint_packages":{
 
