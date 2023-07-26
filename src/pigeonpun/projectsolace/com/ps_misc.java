@@ -31,7 +31,9 @@ public class ps_misc {
     }
     public static final String SOLACE_CORE_DECORATIVE_MOUNT_ID = "ps_core_crystal";
     public static final List<String> ENMITY_SPECIAL_WEAPONS_LIST = new ArrayList<>();
-    {
+    static {
         ENMITY_SPECIAL_WEAPONS_LIST.add("ps_carthami");
+        ENMITY_SPECIAL_WEAPONS_LIST.add("ps_tragopo");
+        ENMITY_SPECIAL_WEAPONS_LIST.add("ps_porri");
     }
 }

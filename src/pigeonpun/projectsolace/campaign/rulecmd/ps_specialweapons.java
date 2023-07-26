@@ -6,11 +6,9 @@ import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
-import com.fs.starfarer.api.combat.WeaponAPI;
-import com.fs.starfarer.api.impl.campaign.CoreReputationPlugin;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Ranks;
 import com.fs.starfarer.api.impl.campaign.ids.Strings;
-import com.fs.starfarer.api.impl.campaign.rulecmd.AddRemoveCommodity;
 import com.fs.starfarer.api.impl.campaign.rulecmd.BaseCommandPlugin;
 import com.fs.starfarer.api.impl.campaign.rulecmd.FireBest;
 import com.fs.starfarer.api.loading.WeaponSpecAPI;
@@ -20,10 +18,8 @@ import com.fs.starfarer.api.util.WeightedRandomPicker;
 import pigeonpun.projectsolace.com.ps_misc;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
 //modified version of Nex_BlueprintSwap
 public class ps_specialweapons extends BaseCommandPlugin {
@@ -83,9 +79,12 @@ public class ps_specialweapons extends BaseCommandPlugin {
         if (command.equals("selectWeapons")) {
             selectWeapons();
         } else if (command.equals("purchaseWeapons")) {
-            purchaseWeapons(memory);
+            purchaseWeapons();
+        } else if (command.equals("confirmPurchaseWeapons")) {
+            confirmPurchaseWeapons();
+        } else if (command.equals("checkIfCanSell")) {
+            checkIfCanSell();
         }
-
         return true;
     }
 
@@ -94,7 +93,7 @@ public class ps_specialweapons extends BaseCommandPlugin {
         for (WeaponPurchaseInfo weaponStock : getWeaponStock(market.getMemoryWithoutUpdate())) {
             WeaponSpecAPI spec = Global.getSettings().getWeaponSpec(weaponStock.id);
             if (spec != null) {
-                copy.addWeapons(weaponStock.id, weaponStock.count);
+                copy.addWeapons(weaponStock.id, weaponStock.getCount());
             }
         }
         copy.sort();
@@ -118,7 +117,7 @@ public class ps_specialweapons extends BaseCommandPlugin {
                         listWeaponToBuy.add(weaponToBuy);
                     }
                 }
-                memory.set(PURCHASE_INVENTORY_KEY, listWeaponToBuy,  0.5f);
+                memory.set(PURCHASE_INVENTORY_KEY, listWeaponToBuy,  0f);
                 cargo.sort();
 
                 FireBest.fire(null, dialog, memoryMap, "ps_purchaseSpecialWeapons");
@@ -130,11 +129,9 @@ public class ps_specialweapons extends BaseCommandPlugin {
             }
         });
     }
-    protected void purchaseWeapons(MemoryAPI memory) {
+    protected void purchaseWeapons() {
         //display the purchased weapon list with information about price - quantity
         //calculate the tax, total cost
-        //set the memory key TOTAL_PURCHASE_COST_KEY to the total cost
-        //todo: test that shit
         List<WeaponPurchaseInfo> purchasingInventory = (List<WeaponPurchaseInfo>) memory.get(PURCHASE_INVENTORY_KEY);
         TextPanelAPI text = dialog.getTextPanel();
 
@@ -151,20 +148,61 @@ public class ps_specialweapons extends BaseCommandPlugin {
         float totalPurchaseWithTax = 0;
         for (WeaponPurchaseInfo weapon : purchasingInventory) {
             int totalWeaponPrice = weapon.getTotalCountPrice();
-            totalTax += weapon.getTotalCountPrice() * PURCHASE_TAX;
+            totalTax += weapon.getTotalCountPrice() * PURCHASE_TAX / 100f;
             totalPurchaseWithTax += totalTax + weapon.getTotalCountPrice();
-            para += weapon.name + " " + Strings.X + " " + (int) weapon.count + " ="+ " " + totalWeaponPrice + "\n";
-            highlights.add(" " + totalWeaponPrice);
+            para += weapon.name + " " + Strings.X + " " + (int) weapon.getCount() + " = "+ Misc.getDGSCredits(totalWeaponPrice) + "\n";
+            highlights.add(Misc.getDGSCredits(totalWeaponPrice));
         }
         para = para.substring(0, para.length() - 1);
         text.addParagraph(para);
         text.highlightInLastPara(hl, highlights.toArray(new String[0]));
         text.addParagraph("-----------------------------------------------------------------------------");
-        text.addParagraph("Tariffs(" + PURCHASE_TAX + "%): " + totalTax );
-        text.addParagraph("Total: " + totalPurchaseWithTax);
-
-        memory.set(TOTAL_PURCHASE_COST_KEY, totalPurchaseWithTax);
+        text.addParagraph("Tariffs (" + PURCHASE_TAX + "%): " + Misc.getDGSCredits(totalTax)) ;
+        text.highlightFirstInLastPara("" + Misc.getDGSCredits(totalTax), hl);
+        text.addParagraph("Total: " + Misc.getDGSCredits(totalPurchaseWithTax));
+        text.highlightFirstInLastPara(Misc.getWithDGS(totalPurchaseWithTax), hl);
+        text.addParagraph("-----------------------------------------------------------------------------");
+        memory.set(TOTAL_PURCHASE_COST_KEY, totalPurchaseWithTax, 0);
+        if(playerCargo.getCredits().get() < totalPurchaseWithTax) {
+            text.addParagraph("It seems like you current do not have enough to purchase. How about we do some adjustment about your to-buy armament inventory ?");
+            dialog.getOptionPanel().setEnabled("ps_confirmPurchaseSpecialWeapons", false);
+        } else {
+            dialog.getOptionPanel().setEnabled("ps_confirmPurchaseSpecialWeapons", true);
+        }
     }
+    protected void confirmPurchaseWeapons() {
+        List<WeaponPurchaseInfo> purchasingInventory = (List<WeaponPurchaseInfo>) memory.get(PURCHASE_INVENTORY_KEY);
+        List<WeaponPurchaseInfo> stockInventory = getWeaponStock(market.getMemoryWithoutUpdate());
+        List<WeaponPurchaseInfo> toRemoveFromStock = new ArrayList<>();
+        float purchaseCost = (float) memory.get(TOTAL_PURCHASE_COST_KEY);
+        for (WeaponPurchaseInfo weaponPurchaseInfo: purchasingInventory) {
+            for(WeaponPurchaseInfo stockWeapon: stockInventory) {
+                if (Objects.equals(stockWeapon.id, weaponPurchaseInfo.id)) {
+                    if(stockWeapon.count == weaponPurchaseInfo.count) {
+                        toRemoveFromStock.add(stockWeapon);
+                    } else {
+                        stockWeapon.setCount(stockWeapon.count - weaponPurchaseInfo.count);
+                    }
+                }
+            }
+            playerCargo.addWeapons(weaponPurchaseInfo.id, weaponPurchaseInfo.getCount());
+        }
+        for (WeaponPurchaseInfo w: toRemoveFromStock) {
+            stockInventory.remove(w);
+        }
+//        setWeaponsStock(memory, newStockInventory, false);
+        setWeaponsStock(market.getMemoryWithoutUpdate(), stockInventory, false);
+        playerCargo.getCredits().set(playerCargo.getCredits().get() - purchaseCost);
+    }
+    protected boolean checkIfCanSell() {
+        if (person == null) return false;
+
+        return Ranks.POST_BASE_COMMANDER.equals(person.getPostId()) ||
+                Ranks.POST_STATION_COMMANDER.equals(person.getPostId()) ||
+                Ranks.POST_ADMINISTRATOR.equals(person.getPostId()) ||
+                Ranks.POST_OUTPOST_COMMANDER.equals(person.getPostId());
+    }
+    //get from market.getMemoryWithoutUpdate()
     protected List<WeaponPurchaseInfo> getWeaponStock(MemoryAPI memory) {
         if(memory.contains(STOCK_ARRAY_KEY)) {
            return (List<WeaponPurchaseInfo>) memory.get(STOCK_ARRAY_KEY);
@@ -173,6 +211,7 @@ public class ps_specialweapons extends BaseCommandPlugin {
         setWeaponsStock(memory, weapons, true);
         return weapons;
     }
+    //set from market.getMemoryWithoutUpdate()
     protected void setWeaponsStock(MemoryAPI memory, List<WeaponPurchaseInfo> weapons, boolean isRefreshing) {
         float time = STOCK_KEEP_DAYS;
         if(!isRefreshing && memory.contains(STOCK_ARRAY_KEY)) {
@@ -188,8 +227,7 @@ public class ps_specialweapons extends BaseCommandPlugin {
 
         for (String id : hiddenWeapons) {
             WeaponSpecAPI spec = Global.getSettings().getWeaponSpec(id);
-            float w = 2 * spec.getRarity();
-
+            float w = 2 * (spec.getRarity() != 0 ? spec.getRarity() : 1);
             float p = 1f; //
             p *= w;
             pickerSpecialWeapons.add(spec, p);
@@ -215,27 +253,27 @@ public class ps_specialweapons extends BaseCommandPlugin {
         return weapons;
     }
 
-    protected int calculateTotalAmount(List<WeaponPurchaseInfo> listWeapons) {
-        int totalCost = 0;
-        for (WeaponPurchaseInfo w: listWeapons) {
-
-        }
-        return totalCost;
-    }
-
     public static class WeaponPurchaseInfo {
         public String id;
-        public Integer count;
+        private Integer count;
         public String name;
         public int price;
         public WeaponPurchaseInfo(String id, int count, String name, int price) {
             this.id = id;
-            this.count = count;
+            this.setCount(count);
             this.name = name;
             this.price = price;
         }
         public int getTotalCountPrice() {
-            return (int) price * count;
+            return (int) price * getCount();
+        }
+
+        public Integer getCount() {
+            return count;
+        }
+
+        public void setCount(Integer count) {
+            this.count = count;
         }
     }
 }
