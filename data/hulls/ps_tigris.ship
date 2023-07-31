@@ -18,20 +18,20 @@
     {
       "id": "WS0003",
       "size": "SMALL",
-      "type": "ENERGY",
+      "type": "MISSILE",
       "mount": "HIDDEN",
       "arc": 0,
-      "angle": 0,
-      "locations": [10, 11]
+      "angle": 90,
+      "locations": [5, 9]
     },
     {
       "id": "WS0004",
       "size": "SMALL",
-      "type": "ENERGY",
+      "type": "MISSILE",
       "mount": "HIDDEN",
       "arc": 0,
-      "angle": 0,
-      "locations": [10, -11]
+      "angle": -90,
+      "locations": [5, -9]
     },
     {
       "id": "WS0001",

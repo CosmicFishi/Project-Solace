@@ -2,4 +2,4 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 Solace Core,ps_solacecore,,,Project Solace,,,,,TRUE,,0,0,0,0,pigeonpun.projectsolace.hullmods.ps_solacecore,,,graphics/hullmods/ps_solace_core.png
 Missile Fiend,ps_missilesfiend,,,Project Solace,,,,,TRUE,,0,0,0,0,pigeonpun.projectsolace.hullmods.ps_missilefiend,,,graphics/hullmods/ps_missilefiend.png
 Incense Manufactured,ps_incensemanufactured,,,Project Solace,,,,,TRUE,,0,0,0,0,pigeonpun.projectsolace.hullmods.ps_incensemanufactured,,,graphics/hullmods/ps_incense_manufactured.png
-Beam Consonance,ps_beamconsonance,,,Enmity Strafer,,,,,TRUE,,0,0,0,0,pigeonpun.projectsolace.hullmods.ps_beamconsonance,,,graphics/hullmods/coherer.png
+Beam Consonance,ps_beamconsonance,,,Enmity Strafer,,,,,TRUE,,0,0,0,0,pigeonpun.projectsolace.hullmods.ps_beamconsonance,,,graphics/hullmods/ps_beamconsonance.png

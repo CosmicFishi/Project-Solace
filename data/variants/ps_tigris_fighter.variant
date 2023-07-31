@@ -14,8 +14,8 @@
       "mode": "LINKED",
       "weapons": {
         "WS0001": "pulselaser",
-        "WS0003": "irpulse_fighter",
-        "WS0004": "irpulse_fighter"
+        "WS0003": "swarmer_fighter",
+        "WS0004": "swarmer_fighter"
       }
     },
     {

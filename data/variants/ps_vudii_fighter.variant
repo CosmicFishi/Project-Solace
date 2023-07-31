@@ -15,22 +15,24 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "taclaser",
-        "WS0002": "miningblaster",
-        "WS0003": "miningblaster",
-        "WS0004": "swarmer_fighter",
-        "WS0005": "swarmer_fighter"
+        "WS0001": "miningblaster"
       }
     },
     {
       "autofire": false,
       "mode": "LINKED",
-      "weapons": {}
+      "weapons": {
+        "WS0002": "taclaser",
+        "WS0003": "taclaser"
+      }
     },
     {
       "autofire": false,
       "mode": "LINKED",
-      "weapons": {}
+      "weapons": {
+        "WS0004": "swarmer_fighter",
+        "WS0005": "swarmer_fighter"
+      }
     }
   ],
   "modules": [],
