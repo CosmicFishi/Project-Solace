@@ -9,6 +9,11 @@ Tragopo Hyper Cannon,ps_tragopo,2,0.4,7000,800,,450,150,10,25,24,12,0.5,6,ENERGY
 Carthami Cannon,ps_carthami,1,,8000,900,,400,,20,10,25,,,,HIGH_EXPLOSIVE,420,,0.2,2,3,0.4,0,8,2,5,,900,,,120,,,,"ps_weapon_bp, he18, merc",,Project Solace,,Anti Armor,,,,,,,,,,2
 Porri Pod,ps_porri,1,,1200,1500,,700,250,15,10,10,15,,,ENERGY,0,,0,5,3,0.1,0,0,0,,,600,50,20,400,,,"STRIKE, DO_NOT_AIM, CONSERVE_5","ps_weapon_bp, missile13, rare_bp, merc",,Project Solace,,General,Medium,Good,,,,,,,TRUE,3
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#SPECIAL ONES,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Acris Lance,ps_acris,3,0.2,100000,1200,2000,,,0,7,35,,,,ENERGY,,2000,0.2,1,1,8,,,,,10000,,,,,,,FIRE_WHEN_INEFFICIENT,"ps_special_weapon, no_drop_salvage",,Boundless,,Suppression,,,,,,,,,,6
+Anaxyr Fast Swarmer,ps_anaxyr,3,0.3,150000,1600,,200,,5,30,30,40,1,10,FRAGMENTATION,0,,0,5,10,0.2,0,0,0,0,,500,200,12,60,,,"ANTI_FTR, DO_NOT_AIM, DO_NOT_CONSERVE","ps_special_weapon, no_drop_salvage",,Boundless,,Swarm,Fast,Excellent,,,,,,,,7
+Daemeli Focused Railgun,ps_daemeli,2,0.5,60000,1000,,500,100,0,7,20,,,,ENERGY,650,,0.2,1.5,1,,,,,,,1500,,,,,,STRIKE,"ps_special_weapon, no_drop_salvage",,,,General,,,,,,,,,,8
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 # BUILT IN,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,ps_destruenslauncher,,,,1500,,50,200,,,,,0,,KINETIC,0,,0,1,6,0.1,15,50,20,5,,500,200,10,200,,,SYSTEM,,,,,,,,,,,,,,,4
 Proteolytic Focus Beam,ps_proteolyticbeam,1,,,900,2000,,,0,5,,,,,FRAGMENTATION,,850,0.5,2,,,,,,,10000,,,,,,,SYSTEM,,,,,Finisher,,,,,"Hit on shield/hull/armor trigger EMP arc dealing %s Energy damage equal to the original hit. Deal additional %s Energy damage equal to the original hit base on target's flux level, max out at %s flux level.",20% | 20% | 80%,,,,5
