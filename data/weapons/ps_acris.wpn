@@ -18,23 +18,34 @@
   "hitGlowRadius": 0,
   "turretOffsets": [
     10,
-    0
+    0,
+    29,
+    -8,
+    29,
+    8
   ],
   "turretAngleOffsets": [
+    0,
+    0,
     0
   ],
   "hardpointOffsets": [
     10,
-    0
+    0,
+    29,
+    -8,
+    29,
+    8
   ],
   "hardpointAngleOffsets": [
+    0,
+    0,
     0
   ],
-  "beamFireOnlyOnFullCharge": false,
   "fringeColor": [
-    39,
-    245,
-    175,
+    255,
+    255,
+    40,
     255
   ],
   "coreColor": [
@@ -54,5 +65,5 @@
     MISSILE_FF,
     MISSILE_NO_FF
   ],
-  "fireSoundTwo": "tachyon_lance_fire"
+  "fireSoundTwo": "ps_acris_fire"
 }

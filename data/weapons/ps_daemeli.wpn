@@ -48,6 +48,7 @@
       255,
       255,
       255
-    ]
-  }
+    ],
+  },
+  "fireSoundTwo": "ps_daemeli_fire"
 }

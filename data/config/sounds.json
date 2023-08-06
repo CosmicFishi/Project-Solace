@@ -41,6 +41,17 @@
     {"file": "sounds/weapons/ps_proteolyticbeam_emp_impact.ogg", "pitch": 1.2, "volume": 1},
     {"file": "sounds/weapons/ps_proteolyticbeam_emp_impact.ogg", "pitch": 1.25, "volume": 1},
     {"file": "sounds/weapons/ps_proteolyticbeam_emp_impact.ogg", "pitch": 1.3, "volume": 1}
+  ],
+  "ps_daemeli_fire": [
+    {"file": "sounds/weapons/ps_daemeli_fire.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_daemeli_fire.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_daemeli_fire.ogg", "pitch": 1, "volume": 1},
+    {"file": "sounds/weapons/ps_daemeli_fire.ogg", "pitch": 1.1, "volume": 1}
+  ],
+  "ps_acris_fire": [
+    {"file": "sounds/weapons/ps_acris_fire.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_acris_fire.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_acris_fire.ogg", "pitch": 1, "volume": 1},
   ]
 }
 
