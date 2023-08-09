@@ -65,5 +65,7 @@
     MISSILE_FF,
     MISSILE_NO_FF
   ],
-  "fireSoundTwo": "ps_acris_fire"
+  "fireSoundTwo": "ps_acris_fire",
+  "beamEffect":"pigeonpun.projectsolace.weapons.ps_acriseffects",
+
 }

@@ -76,5 +76,6 @@
       100
     ]
   },
-  "fireSoundTwo": "swarmer_fire"
+  "fireSoundTwo": "swarmer_fire",
+  "everyFrameEffect":"pigeonpun.projectsolace.weapons.ps_daemelieffects",
 }
