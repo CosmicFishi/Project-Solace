@@ -67,5 +67,6 @@
   ],
   "fireSoundTwo": "ps_acris_fire",
   "beamEffect":"pigeonpun.projectsolace.weapons.ps_acriseffects",
+  "everyFrameEffect":"pigeonpun.projectsolace.weapons.ps_acriseffects",
 
 }

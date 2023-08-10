@@ -16,4 +16,4 @@ Daemeli Focused Railgun,ps_daemeli,2,0.5,60000,1000,,500,100,0,7,20,,,,ENERGY,65
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 # BUILT IN,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,ps_destruenslauncher,,,,1500,,50,200,,,,,0,,KINETIC,0,,0,1,6,0.1,15,50,20,5,,500,200,10,200,,,SYSTEM,,,,,,,,,,,,,,,4
-Proteolytic Focus Beam,ps_proteolyticbeam,1,,,900,2000,,,0,5,,,,,FRAGMENTATION,,850,0.5,2,,,,,,,10000,,,,,,,SYSTEM,,,,,Finisher,,,,,"Hit on shield/hull/armor trigger EMP arc dealing %s Energy damage equal to the original hit. Deal additional %s Energy damage equal to the original hit base on target's flux level, max out at %s flux level.",20% | 20% | 80%,,,,5
+Proteolytic Focus Beam,ps_proteolyticbeam,1,,,1000,2000,,,0,5,,,,,FRAGMENTATION,,850,0.5,2,,,,,,,10000,,,,,,,SYSTEM,,,,,Finisher,,,,,"Hit on shield/hull/armor trigger EMP arc dealing %s Energy damage equal to the original hit. Deal additional %s Energy damage equal to the original hit base on target's flux level, max out at %s flux level.",20% | 20% | 80%,,,,5

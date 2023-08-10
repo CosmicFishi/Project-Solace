@@ -7,3 +7,5 @@ ps_carthami_trail2,ps_carthami_shot,base_trail_smoke,10,0.1,0.1,0.2,15,5,"[255,1
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ps_daemeli_trail1,ps_daemeli_shot,base_trail_zap,10,0.1,0.1,0.2,15,5,"[99,127,254]","[136,100,254]",0.7,-128,-256,0,0,0,TRUE,FALSE,TRUE,70,30,0.15,0,50,50,TRUE,FALSE
 ps_daemeli_trail1,ps_daemeli_shot,base_trail_weave,10,0.1,0.2,0.2,20,2,"[152,100,255]","[100,255,252]",0.9,300,500,20,0,0,TRUE,FALSE,TRUE,100,50,0,0,100,50,TRUE,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
+ps_anaxyr_msl_trail1,ps_anaxyr_msl,base_trail_weave,5,0.15,0.3,0.1,8,2,"[65,39,255]","[40,180,255]",0.8,-128,-256,-50,1,0,TRUE,FALSE,TRUE,70,20,0.1,0,20,50,TRUE,FALSE

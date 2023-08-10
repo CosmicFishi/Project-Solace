@@ -31,10 +31,11 @@ import java.util.Map;
 
 public class ps_beamconsonance extends BaseHullMod {
 
-    //increase damage by certain amount
+    //increase damage by certain amount, reduce range
     //convert all energy or ballistic projectile weapons to pd, reducing base range that is above 500 units by 50%
     //Shield on enable EMP sparking to random 3 missiles
     private static final float DAMAGE_BEAM_BONUS = 20f;
+    private static final float RANGE_BEAM_REDUCE = 30f;
     private static final float RANGE_BASE_PROJECTILE_START_REDUCE = 500f;
     private static final float RANGE_BASE_PROJECTILE_REDUCE_BY_MULT = 0.5f;
     private static final float EMP_SPARK_COUNT = 3;
@@ -140,21 +141,26 @@ public class ps_beamconsonance extends BaseHullMod {
 
         //bonus
         tooltip.addSectionHeading("Effects", Alignment.MID, opad);
-        label = tooltip.addPara("+ Increase beam weapon damage by: %s.", opad, h,
+        label = tooltip.addPara("- Increase beam weapon damage by: %s.", opad, h,
                 "" + Math.round(DAMAGE_BEAM_BONUS) + "%");
         label.setHighlight("" + Math.round(DAMAGE_BEAM_BONUS) + "%");
         label.setHighlightColors(good);
 
-        label = tooltip.addPara("+ Convert projectile energy or ballistic weapon to point defend, if they are above %s. reduce base range by %s", opad, h,
+        label = tooltip.addPara("- Reduce beam weapon range by: %s.", opad, h,
+                "" + Math.round(RANGE_BEAM_REDUCE) + "%");
+        label.setHighlight("" + Math.round(RANGE_BEAM_REDUCE) + "%");
+        label.setHighlightColors(bad);
+
+        label = tooltip.addPara("- Convert projectile energy or ballistic weapon to point defend, if they are above %s. reduce base range by %s", opad, h,
                 "" + Math.round(RANGE_BASE_PROJECTILE_START_REDUCE) + "u", "" + Math.round(RANGE_BASE_PROJECTILE_REDUCE_BY_MULT * 100) + "%");
         label.setHighlight("" + Math.round(RANGE_BASE_PROJECTILE_START_REDUCE) + "u", "" + Math.round(RANGE_BASE_PROJECTILE_REDUCE_BY_MULT * 100) + "%");
         label.setHighlightColors(bad, bad);
 
-        label = tooltip.addPara("+ EMP will periodically discharge when shield is up, dealing %s fragmentation damage to missiles", opad, h,
+        label = tooltip.addPara("- EMP will periodically discharge when shield is up, dealing %s fragmentation damage to missiles", opad, h,
                 "" + Math.round(EMP_DAMAGE_FRIGATE) + "/" + Math.round(EMP_DAMAGE_DESTROYER) + "/" + Math.round(EMP_DAMAGE_CRUISER) + "/" + Math.round(EMP_DAMAGE_CAPITAL) + ""
             );
         label.setHighlight("" + Math.round(EMP_DAMAGE_FRIGATE) + "/" + Math.round(EMP_DAMAGE_DESTROYER) + "/" + Math.round(EMP_DAMAGE_CRUISER) + "/" + Math.round(EMP_DAMAGE_CAPITAL) + "");
-        label.setHighlightColors(h);
+        label.setHighlightColors(good);
 
         tooltip.addSectionHeading("Interactions with other modifiers", Alignment.MID, opad);
         tooltip.addPara("Since the base range is increased, this modifier"
@@ -163,6 +169,7 @@ public class ps_beamconsonance extends BaseHullMod {
 
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
         stats.getBeamWeaponDamageMult().modifyPercent(id, DAMAGE_BEAM_BONUS);
+        stats.getBeamWeaponRangeBonus().modifyMult(id, (100 - RANGE_BEAM_REDUCE) / 100);
     }
 
     @Override
