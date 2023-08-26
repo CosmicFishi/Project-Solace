@@ -9,11 +9,13 @@ import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.impl.campaign.ids.Ranks;
 import com.fs.starfarer.api.impl.campaign.ids.Strings;
+import com.fs.starfarer.api.impl.campaign.rulecmd.AddRemoveCommodity;
 import com.fs.starfarer.api.impl.campaign.rulecmd.BaseCommandPlugin;
 import com.fs.starfarer.api.impl.campaign.rulecmd.FireBest;
 import com.fs.starfarer.api.loading.WeaponSpecAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.api.util.MutableValue;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 import pigeonpun.projectsolace.com.ps_misc;
 
@@ -192,7 +194,10 @@ public class ps_specialweapons extends BaseCommandPlugin {
         }
 //        setWeaponsStock(memory, newStockInventory, false);
         setWeaponsStock(market.getMemoryWithoutUpdate(), stockInventory, false);
-        playerCargo.getCredits().set(playerCargo.getCredits().get() - purchaseCost);
+//        playerCargo.getCredits().set(playerCargo.getCredits().get() - purchaseCost);
+        MutableValue credits = Global.getSector().getPlayerFleet().getCargo().getCredits();
+        AddRemoveCommodity.addCreditsLossText((int)purchaseCost, dialog.getTextPanel());
+        credits.subtract(purchaseCost);
     }
     protected boolean checkIfCanSell() {
         if (person == null) return false;

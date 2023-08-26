@@ -1,5 +1,10 @@
 {
-  "SolaceEnmityAlliance": true,
+  "ps_solaceEnmityAlliance": true,
+  "ps_solaceDefend": true,
+  "ps_solaceDefendTimeoutPeriod": 45, # faction won't accumulate defend points for this many days at start
+  "ps_pointsRequiredForDefendFleet": 27000,    # bigger number = longer delay between sending defend fleets,
+  "ps_defendPointEconomyMult": 0.5, # multiplier for defend point gains from economic assets
+
   "designTypeColors":{
     "Project Solace":[230,40,240,255],
     "Boundless": [141,53,121,255]

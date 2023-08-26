@@ -87,7 +87,10 @@ public class ps_gen implements SectorGeneratorPlugin {
         new ps_ayubia().generate(sector);
 
         SharedData.getData().getPersonBountyEventData().addParticipatingFaction("projectsolace");
-        createSolaceEnmityAlliance(sector);
+
+        if(nexerelinEnabled) {
+            createSolaceEnmityAlliance(sector);
+        }
 
         //vanilla factions
         ps.setRelationship(Factions.LUDDIC_CHURCH, -0.1f);
@@ -120,7 +123,7 @@ public class ps_gen implements SectorGeneratorPlugin {
         FactionAPI solace = sector.getFaction(solace_ID);
         FactionAPI enmity = sector.getFaction(enmity_ID);
 
-        if(Global.getSettings().getBoolean("SolaceEnmityAlliance")) {
+        if(Global.getSettings().getBoolean("ps_solaceEnmityAlliance")) {
             Alliance alliance = AllianceManager.createAlliance(enmity_ID, solace_ID, AllianceManager.getBestAlignment(enmity_ID, solace_ID));
             alliance.setName(Global.getSettings().getString("ps_projectsolace", "ps_enmitysolacealliance"));
             alliance.addPermaMember(solace_ID);

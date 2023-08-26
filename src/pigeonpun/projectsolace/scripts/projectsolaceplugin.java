@@ -6,6 +6,7 @@ import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.campaign.Faction;
 import exerelin.campaign.SectorManager;
+import pigeonpun.projectsolace.campaign.ps_defendpatrolfleetmanager;
 import pigeonpun.projectsolace.world.ps_gen;
 
 public class projectsolaceplugin extends BaseModPlugin {
@@ -32,13 +33,22 @@ public class projectsolaceplugin extends BaseModPlugin {
     public static boolean tyradorExists = false;
     public static boolean dmeExists = false;
     public static boolean arkgneisisExists = false;
+    public static boolean nexerelinEnabled = false;
     public static final String enmity_ID = "enmity";
     public static final String solace_ID = "projectsolace";
+    public static float ps_solaceDefendTimeoutPeriod = 90;
+    public static float ps_defendPointEconomyMult = 0.5f;
+    public static float ps_pointsRequiredForDefendFleet = 27000f;
+    public static boolean ps_solaceDefend = true;
     @Override
     public void onApplicationLoad() throws Exception {
         super.onApplicationLoad();
 
         isExerelin = Global.getSettings().getModManager().isModEnabled("nexerelin");
+        ps_solaceDefendTimeoutPeriod = Global.getSettings().getFloat("ps_solaceDefendTimeoutPeriod");
+        ps_defendPointEconomyMult = Global.getSettings().getFloat("ps_defendPointEconomyMult");
+        ps_pointsRequiredForDefendFleet = Global.getSettings().getFloat("ps_pointsRequiredForDefendFleet");
+        ps_solaceDefend = Global.getSettings().getBoolean("ps_solaceDefend");
         hasUnderworld = Global.getSettings().getModManager().isModEnabled("underworld");
         hasDynaSector = Global.getSettings().getModManager().isModEnabled("dynasector");
 
@@ -57,7 +67,7 @@ public class projectsolaceplugin extends BaseModPlugin {
         tyradorExists = Global.getSettings().getModManager().isModEnabled("TS_Coalition");
         dmeExists = Global.getSettings().getModManager().isModEnabled("istl_dam");
         scalarTechExists = Global.getSettings().getModManager().isModEnabled("tahlan_scalartech");
-
+        nexerelinEnabled = Global.getSettings().getModManager().isModEnabled("nexerelin");
 
         // Test that the .jar is loaded and working, using the most obnoxious way possible.
         //throw new RuntimeException("Template mod loaded! Remove this crash in TemplateModPlugin.");
@@ -68,10 +78,9 @@ public class projectsolaceplugin extends BaseModPlugin {
         super.onNewGame();
 
         // The code below requires that Nexerelin is added as a library (not a dependency, it's only needed to compile the mod).
-        boolean isNexerelinEnabled = Global.getSettings().getModManager().isModEnabled("nexerelin");
-
-        if (!isNexerelinEnabled || SectorManager.getManager().isCorvusMode()) {
+        if (!nexerelinEnabled || SectorManager.getManager().isCorvusMode()) {
                     new ps_gen().generate(Global.getSector());
+                    addScripts();
 //             Add code that creates a new star system (will only run if Nexerelin's Random (corvus) mode is disabled).
         }
     }
@@ -81,6 +90,10 @@ public class projectsolaceplugin extends BaseModPlugin {
         Global.getSector().addTransientListener(new allianceListener());
     }
 
+    public static void addScripts() {
+        SectorAPI sector = Global.getSector();
+        sector.addScript(ps_defendpatrolfleetmanager.create());
+    }
     private static class allianceListener extends BaseCampaignEventListener {
 
         public allianceListener() {
