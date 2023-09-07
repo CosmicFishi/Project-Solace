@@ -29,6 +29,21 @@
 		"contrailCampaignColor":[219,234,234,255],
 		#"glowAlternateColor":[255,2,20,235],
 		"type":"SMOKE"
+	},
+	"VAGRANTSEER_ENGINE":{
+		"engineColor":[231,169,255,255],
+		"contrailWidthAddedFractionAtEnd":-3,
+		"contrailParticleSizeMult":1,
+		"contrailMinSeg":2,
+		"contrailParticleDuration":1,
+		"contrailParticleFinalSizeMult":1,
+		"contrailWidthMult":1,
+		"contrailMaxSpeedMult":1,
+		"contrailAngularVelocityMult":0,
+		"contrailColor":[231,96,255,55],
+		"contrailCampaignColor":[231,96,255,255],
+		#"glowAlternateColor":[255,2,20,235],
+		"type":"SMOKE"
 	}
 }
 
