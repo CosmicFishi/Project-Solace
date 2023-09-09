@@ -40,6 +40,7 @@ public class projectsolaceplugin extends BaseModPlugin {
     public static float ps_defendPointEconomyMult = 0.5f;
     public static float ps_pointsRequiredForDefendFleet = 27000f;
     public static boolean ps_solaceDefend = true;
+    public static boolean ps_vagrantseerGenerateSalvage = true;
     @Override
     public void onApplicationLoad() throws Exception {
         super.onApplicationLoad();
@@ -49,6 +50,7 @@ public class projectsolaceplugin extends BaseModPlugin {
         ps_defendPointEconomyMult = Global.getSettings().getFloat("ps_defendPointEconomyMult");
         ps_pointsRequiredForDefendFleet = Global.getSettings().getFloat("ps_pointsRequiredForDefendFleet");
         ps_solaceDefend = Global.getSettings().getBoolean("ps_solaceDefend");
+        ps_vagrantseerGenerateSalvage = Global.getSettings().getBoolean("ps_vagrantseerGenerateSalvage");
         hasUnderworld = Global.getSettings().getModManager().isModEnabled("underworld");
         hasDynaSector = Global.getSettings().getModManager().isModEnabled("dynasector");
 
