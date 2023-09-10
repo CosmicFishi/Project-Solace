@@ -85,17 +85,17 @@
 		"dHullOverlayHeavy":"graphics/damage/dmod_overlay_hightech_heavy.png",
 	},
 	"VAGRANTSEER":{
-		"hyperspaceJitterColor":[231,96,255,200],
-		"baseCampaignExplosionColor":[231,96,255,255],
+		"hyperspaceJitterColor":[255,194,255, 200],
+		"baseCampaignExplosionColor":[255,194,255, 255],
 		"baseCombatExplosionColor":[100,165,255,255], # smooth flash
 		"combatExplosionNonFlashColorOverride":[100,165,255,255], # the more billowy explosion
-		"fighterRepairFlickerColor":[231,96,255,255],
-		"fighterChipIconColor":[231,96,255,255],
-		"weaponDisabledExplosionColor":[231,96,255,255],
+		"fighterRepairFlickerColor":[255,194,255, 255],
+		"fighterChipIconColor":[255,194,255, 255],
+		"weaponDisabledExplosionColor":[255,194,255, 255],
 		"shieldRingColor":[255,255,255,255],
-		"shieldInnerColor":[231,96,255,255],
+		"shieldInnerColor":[255,194,255, 255],
 		"fluxVentCoreColor":[255,255,255,255],
-		"fluxVentFringeColor":[231,96,255,255],
+		"fluxVentFringeColor":[255,194,255, 255],
 		"engineLoopSet":"engine_loop", 					# id of entry in sounds.json
 		"engineAccelerateSet":"engine_accelerate",		# id of entry in sounds.json
 		"empLoopSet":"emp_loop",						# id of entry in sounds.json

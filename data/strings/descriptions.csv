@@ -36,6 +36,9 @@ However, the ship can't perform well on its own since the ship loadout is quite 
 ps_aurantia,SHIP,"When it comes to long range support, the aurantia class is the perfect ship that comes to mind for Solace’s officers. With one large missile mount strapped to the front of the ship, the Aurantia class utilized its fighters as the main source of damage and its ship system to do burst bombing drive by to nearby enemy. The Auratia class can be the key ship to disable the target for an easy kill or strike down heavily armored enemies. 
 However, due to it being a carrier, the ship is limited by its firepower and that can be quite a big downfall when the fighters are out.",,,,
 ps_merkeri,SHIP,"Despite being a carrier cruiser, the Merkeri ship class can pack quite the heavy punch while maneuvering around the battlefield. Handling a large mount built right at the center of the hull,  the ship class can be fitted into many roles, from long range bombardment using bombers to close line brawler. With that in mind, the Merkeri lacks the specialization that many have so it can be challenging to fit up.",,,,
+ps_alitha,SHIP,"“May day, may day, this is the captain of the #$S ##$#$# speaking. We are requesting help immediately as we suffered heavy losses after the last engagement with an unknown #$%### in a neutron system. Our engines were taken ## #$#%... the entity's large magnetic-like w##pons and our supplies won’t #$$#....#$## longer. There was signs of sentient lifeform aboard the ship as our bio-detector retu#$####........” - Unknown captain, log recovered from salvage.
+
+The log turned static.",,,,
 ,,,,,,
 #capitals,,,,,,
 ps_camiguin,SHIP,"“One of a kind”, that is the nickname of the Camiguin capital ship. As the first generation of Solace’s capital ship, the Camiguin class ‘armament can rival any opponent facing it with four large mounts. Despite its size, the ship can maneuver easily on the battlefield, plus having two large missiles, this capital can quickly finish the enemy before facing another one.",,,,
@@ -45,6 +48,7 @@ Receiving the blessing from the Solace crystal, Nadhmor now becomes even deadlie
 ps_albertine,SHIP,"A rather unique looking capital ship is what others say about the Albertine battlecarrier when they first see them. Without a doubt, this is the Solace’s fleet base of operation for the one that leads the squadron. Packed with more than enough fighter bay to support the frontline combined with the ship’s two large hybrid mounts, the Albertine carrier can act as a frontline support tank and simultaneously send out fighters deep into the enemy line. It is a fearsome foe to deal with and should be the number one priority when fighting. 
 However, with its encumbersome body, the ship can be quite slow to maneuver and with its fighter on refit, the ship can be an easy target for larger foes.",,,,
 ps_ravus,SHIP,"The proud of Enmity or as some may refer, the Champion of shredding, those are titles that have been given to the Ravus battle carrier class. Having two built in particle shredders, the ship can easily pierce through the heavy armor layers and deliver the killing blow in an instant. Combine that with its fighters, the Ravus class is the anchor that finishes the enemy while holding the  engagement line between Enmity and those who oppose them.",,,,
+ps_sarpedon,SHIP,"“How come such mistakes happened, HOW COME THE SU#JE#T ESCAPED A####? …Sigh, deploy the #$#$##. Clean this #$## $#.Time is not in our favor right no##% aaaaaAAAAAAAAA####%##.............” - Former Tritachyon Executive, leaked messages.",,unknow,,
 ,,,,,,
 #Ship Systems,,,,,,
 ps_swiftrush,SHIP_SYSTEM,"Increase engine power, pushing the ship forward or backward for a short duration. Turning will be disabled during system activation.",,,,
@@ -62,6 +66,9 @@ ps_tragopo,WEAPON,"A fast but powerful firing cannon focused on burst firing com
 ps_carthami,WEAPON,"To deal with bulky armored enemies, Carthami cannon was developed to break through any layers of armor that the opponent has no matter the thickness. Combined with its three burst firing, the cannon is a fearsome solution to many ships that dare to stand before it",,,,
 ps_porri,WEAPON,"A medium range missile designed for burst damage delivery while having some EMP damage to disable any electric devices in the impact area. Even though the weapon has a large size magazine, the damage type is energy therefore it won’t do well against bulky opponents.",,,,
 ps_proteolyticbeam,WEAPON,"As one of Enmity biggest breakthroughs when it comes to fabricating armament, our scientists have discovered a way to condense down particles into a continuous beam that can pierce through any layers of armor or to almost instantly remove a ship from existence.",,,,
+ps_acris,WEAPON,,,,,
+ps_anaxyr,WEAPON,,,,,
+ps_daemeli,WEAPON,,,,,
 ,,,,,,
 #Planets,,,,,,
 ,,,,,,

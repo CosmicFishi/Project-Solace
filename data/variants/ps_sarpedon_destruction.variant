@@ -1,0 +1,72 @@
+{
+  "variantId": "ps_sarpedon_destruction",
+  "hullId": "ps_sarpedon",
+  "displayName": "Destruction",
+  "goalVariant": true,
+  "fluxCapacitors": 10,
+  "fluxVents": 38,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "targetingunit",
+    "advancedoptics"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002": "hurricane",
+        "WS0003": "tachyonlance",
+        "WS0005": "flak",
+        "WS0006": "tachyonlance",
+        "WS0007": "vulcan",
+        "WS0008": "gravitonbeam",
+        "WS0009": "gravitonbeam",
+        "WS0010": "gravitonbeam",
+        "WS0011": "lrpdlaser"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0004": "squall"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0012": "lrpdlaser",
+        "WS0013": "lrpdlaser",
+        "WS0014": "lrpdlaser",
+        "WS0015": "lrpdlaser",
+        "WS0016": "lrpdlaser",
+        "WS0017": "lrpdlaser"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

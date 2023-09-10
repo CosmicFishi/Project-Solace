@@ -15,6 +15,7 @@ import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.magiclib.util.MagicCampaign;
 import pigeonpun.projectsolace.scripts.projectsolaceplugin;
 
 import java.util.HashSet;
@@ -28,7 +29,7 @@ public class ps_salvagesplacer implements SectorGeneratorPlugin {
     private WeightedRandomPicker<String> hullPicker = new WeightedRandomPicker<>();
     static {
         STAR_TYPES.add("star_neutron");
-        VAGRANT_HULLS_SALVAGE.add("");
+        VAGRANT_HULLS_SALVAGE.add("ps_alitha_relic");
     }
     @Override
     public void generate(SectorAPI sector) {
@@ -53,13 +54,13 @@ public class ps_salvagesplacer implements SectorGeneratorPlugin {
                 log.log(Level.WARN, "somehow picked null for the ship hull, skipping");
                 continue;
             }
-            // place the hull
-            DerelictShipEntityPlugin.DerelictShipData derelictData = new DerelictShipEntityPlugin.DerelictShipData(new ShipRecoverySpecial.PerShipData(hull, ShipRecoverySpecial.ShipCondition.PRISTINE), false);
-            SectorEntityToken ship = BaseThemeGenerator.addSalvageEntity(system, Entities.WRECK, Factions.REMNANTS, derelictData);
-            ship.setFaction("neutral");
-            ship.setDiscoverable(true);
-            // always put these pretty close to the star rather than possibly scattered way out in the system
-            ship.setCircularOrbit(system.getStar(), Misc.random.nextFloat() * 360, system.getStar().getRadius() * 3f, 70);
+            MagicCampaign.createDerelict(
+                    hull,
+                    ShipRecoverySpecial.ShipCondition.BATTERED,
+                    true,
+                    -1,
+                    true,
+                    system.getStar(), Misc.random.nextFloat() * 360, system.getStar().getRadius() * 3f, 70f);
             log.log(Level.INFO, "Project Solace: spawned " + hull + " in " + system.getName());
         }
     }

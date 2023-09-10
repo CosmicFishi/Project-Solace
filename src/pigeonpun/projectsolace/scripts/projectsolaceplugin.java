@@ -4,10 +4,13 @@ import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
+import com.fs.starfarer.api.impl.campaign.shared.SharedData;
 import com.fs.starfarer.campaign.Faction;
 import exerelin.campaign.SectorManager;
 import pigeonpun.projectsolace.campaign.ps_defendpatrolfleetmanager;
 import pigeonpun.projectsolace.world.ps_gen;
+import pigeonpun.projectsolace.world.ps_salvagesplacer;
+import pigeonpun.projectsolace.world.ps_vagrantseergen;
 
 public class projectsolaceplugin extends BaseModPlugin {
 
@@ -78,10 +81,9 @@ public class projectsolaceplugin extends BaseModPlugin {
     @Override
     public void onNewGame() {
         super.onNewGame();
-
+        new ps_gen().generate(Global.getSector());
         // The code below requires that Nexerelin is added as a library (not a dependency, it's only needed to compile the mod).
         if (!nexerelinEnabled || SectorManager.getManager().isCorvusMode()) {
-                    new ps_gen().generate(Global.getSector());
                     addScripts();
 //             Add code that creates a new star system (will only run if Nexerelin's Random (corvus) mode is disabled).
         }
@@ -89,9 +91,22 @@ public class projectsolaceplugin extends BaseModPlugin {
 
     @Override
     public void onGameLoad(boolean newGame) {
+        boolean hasProjectSolace = SharedData.getData().getPersonBountyEventData().getParticipatingFactions().contains("projectsolace");
+        if (!hasProjectSolace) {
+            new ps_gen().generate(Global.getSector());
+            new ps_vagrantseergen().generate(Global.getSector());
+            if (ps_vagrantseerGenerateSalvage && Global.getSector().getMemoryWithoutUpdate().contains("$ps_vagrantseerSalvage_Generated"))
+                new ps_salvagesplacer().generate(Global.getSector());
+        }
         Global.getSector().addTransientListener(new allianceListener());
     }
-
+    @Override
+    public void onNewGameAfterProcGen() {
+        if(ps_vagrantseerGenerateSalvage) {
+            new ps_salvagesplacer().generate(Global.getSector());
+            new ps_vagrantseergen().generate(Global.getSector());
+        }
+    }
     public static void addScripts() {
         SectorAPI sector = Global.getSector();
         sector.addScript(ps_defendpatrolfleetmanager.create());

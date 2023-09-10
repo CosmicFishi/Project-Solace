@@ -11,6 +11,9 @@
   "shieldCenter": [0, 0],
   "shieldRadius": 173,
   "viewOffset": 0,
+  "builtInMods": [
+    "eccm"
+  ],
   "weaponSlots": [
     {
       "id": "WS0001",
