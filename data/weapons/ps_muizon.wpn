@@ -1,14 +1,14 @@
 {
-  "id": "ps_daemeli",
+  "id": "ps_muizon",
   "specClass": "projectile",
-  "projectileSpecId": "ps_daemeli_shot",
+  "projectileSpecId": "ps_muizon_shot",
   "type": "ENERGY",
-  "size": "MEDIUM",
+  "size": "LARGE",
   "displayArcRadius": 450,
-  "turretSprite": "graphics/weapons/ps_daemeli_turret_base.png",
-  "turretGlowSprite": "graphics/weapons/ps_daemeli_turret_glow.png",
-  "hardpointSprite": "graphics/weapons/ps_daemeli_hardpoint_base.png",
-  "hardpointGlowSprite": "graphics/weapons/ps_daemeli_hardpoint_glow.png",
+  "turretSprite": "",
+  "turretGlowSprite": "",
+  "hardpointSprite": "",
+  "hardpointGlowSprite": "graphics/weapons/ps_muizon_hardpoint_glow.png",
   "glowColor": [
     100,
     200,
@@ -20,7 +20,7 @@
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    11,
+    0,
     0
   ],
   "turretAngleOffsets": [
@@ -51,5 +51,5 @@
     ],
   },
   "fireSoundTwo": "ps_daemeli_fire",
-  #"everyFrameEffect":"pigeonpun.projectsolace.weapons.ps_anaxyreffects",
+  "everyFrameEffect":"pigeonpun.projectsolace.weapons.ps_muizoneffects",
 }
