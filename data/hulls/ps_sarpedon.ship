@@ -15,6 +15,9 @@
     "advancedshieldemitter",
     "auxiliarythrusters"
   ],
+  "builtInWeapons": {
+    "WS0001": "ps_roseae"
+  },
   "weaponSlots": [
     {
       "id": "WS0001",

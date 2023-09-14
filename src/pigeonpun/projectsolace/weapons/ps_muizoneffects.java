@@ -1,23 +1,42 @@
 package pigeonpun.projectsolace.weapons;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.loading.WeaponSlotAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.lwjgl.util.vector.Vector2f;
+import pigeonpun.projectsolace.world.ps_salvagesplacer;
 
 import java.awt.*;
 import java.util.Objects;
 
 public class ps_muizoneffects implements EveryFrameWeaponEffectPlugin {
+    public static final Logger log = Global.getLogger(ps_muizoneffects.class);
     private static final String MUIZON_ID = "ps_muizon";
     private static final IntervalUtil empTimer = new IntervalUtil(0.05f, 0.15f);
+    private float currentChargeLevel = 0;
+    private boolean isChargingUp = false;
+    private boolean isChargingDown = false;
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
         ShipAPI ship = weapon.getShip();
         WeightedRandomPicker<Vector2f> empEndPointPicker = new WeightedRandomPicker<>();
         empTimer.advance(amount);
-        if(weapon.getChargeLevel() < 1 && weapon.isFiring() && empTimer.intervalElapsed()) {
+        if(weapon.isFiring()) {
+            if(currentChargeLevel < weapon.getChargeLevel()) {
+                isChargingUp = true;
+                isChargingDown = false;
+            } else if(currentChargeLevel > weapon.getChargeLevel()) {
+                isChargingUp = false;
+                isChargingDown = true;
+            }
+            currentChargeLevel = weapon.getChargeLevel();
+        }
+
+        if(isChargingUp && empTimer.intervalElapsed()) {
             for(WeaponAPI w: ship.getAllWeapons()) {
                 if(!Objects.equals(w.getId(), MUIZON_ID)) {
                     empEndPointPicker.add(w.getLocation(), 4);

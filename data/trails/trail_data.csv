@@ -10,5 +10,8 @@ ps_daemeli_trail1,ps_daemeli_shot,base_trail_weave,10,0.1,0.2,0.2,20,2,"[152,100
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ps_anaxyr_msl_trail1,ps_anaxyr_msl,base_trail_weave,5,0.15,0.3,0.1,8,2,"[65,39,255]","[40,180,255]",0.8,-128,-256,-50,1,0,TRUE,FALSE,TRUE,70,20,0.1,0,20,50,TRUE,FALSE
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
-ps_muizon_shot_trail1,ps_muizon_shot,base_trail_smooth,6,0.1,0.1,0.2,8,4,"[255,66,198]","[103,0,168]",1,-128,-256,0,0,1,TRUE,FALSE,TRUE,100,20,0.05,0,60,60,TRUE,FALSE
-ps_muizon_shot_trail2,ps_muizon_shot,base_trail_zap,10,0.1,0.1,0.5,12,2,"[245,153,39]","[255,155,0]",0.7,-128,-256,5,0,0,TRUE,FALSE,TRUE,70,30,0,0,20,50,TRUE,FALSE
+ps_muizon_shot_trail1,ps_muizon_shot,base_trail_smooth,6,0.1,0.1,0.2,20,4,"[255,66,198]","[103,0,168]",1,-128,-256,0,0,1,TRUE,FALSE,TRUE,100,20,0.05,0,60,60,TRUE,FALSE
+ps_muizon_shot_trail2,ps_muizon_shot,base_trail_zap,10,0.1,0.1,0.5,30,8,"[245,153,39]","[255,155,0]",0.7,-128,-256,5,0,0,TRUE,FALSE,TRUE,70,30,0,0,20,50,TRUE,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
+ps_roseae_shot_trail1,ps_roseae_shot,base_trail_smooth,5,0.15,0.3,0.1,40,16,"[0,210,33]","[42,217,207]",1,-128,-256,0,0,0,TRUE,FALSE,TRUE,70,20,0,0,110,70,TRUE,FALSE
+ps_roseae_shot_trail2,ps_roseae_shot,base_trail_zap,10,0.1,0.1,0.5,60,12,"[255,200,0]","[255,100,0]",0.8,-128,-256,12,0,0,TRUE,FALSE,TRUE,120,30,0,0,70,50,TRUE,FALSE
