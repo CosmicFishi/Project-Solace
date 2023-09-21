@@ -10,9 +10,9 @@
   "hardpointSprite": "",
   "hardpointGlowSprite": "graphics/weapons/ps_muizon_hardpoint_glow.png",
   "glowColor": [
-    100,
-    200,
-    255,
+    245,
+    40,
+    84,
     255
   ],
   "visualRecoil": 5,
@@ -37,19 +37,20 @@
   "animationType": "GLOW_AND_FLASH",
   "autocharge": true,
   "muzzleFlashSpec": {
-    "length": 33,
-    "spread": 15,
+    "length": 50,
+    "spread": 25,
     "particleSizeMin": 10,
-    "particleSizeRange": 12,
-    "particleDuration": 0.12,
-    "particleCount": 17,
+    "particleSizeRange": 20,
+    "particleDuration": 1.2,
+    "particleCount": 30,
     "particleColor": [
-      255,
-      255,
-      255,
+      219,
+      204,
+      225,
       255
     ],
   },
-  "fireSoundTwo": "ps_daemeli_fire",
+  "fireSoundTwo": "ps_muizon_fire",
+  "fireSoundOne": "ps_muizon_charging",
   "everyFrameEffect":"pigeonpun.projectsolace.weapons.ps_muizoneffects",
 }

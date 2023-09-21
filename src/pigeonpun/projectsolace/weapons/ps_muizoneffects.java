@@ -2,6 +2,7 @@ package pigeonpun.projectsolace.weapons;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.api.combat.listeners.ApplyDamageResultAPI;
 import com.fs.starfarer.api.loading.WeaponSlotAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
@@ -13,7 +14,7 @@ import pigeonpun.projectsolace.world.ps_salvagesplacer;
 import java.awt.*;
 import java.util.Objects;
 
-public class ps_muizoneffects implements EveryFrameWeaponEffectPlugin {
+public class ps_muizoneffects implements EveryFrameWeaponEffectPlugin{
     public static final Logger log = Global.getLogger(ps_muizoneffects.class);
     private static final String MUIZON_ID = "ps_muizon";
     private static final IntervalUtil empTimer = new IntervalUtil(0.05f, 0.15f);
@@ -35,7 +36,6 @@ public class ps_muizoneffects implements EveryFrameWeaponEffectPlugin {
             }
             currentChargeLevel = weapon.getChargeLevel();
         }
-
         if(isChargingUp && empTimer.intervalElapsed()) {
             for(WeaponAPI w: ship.getAllWeapons()) {
                 if(!Objects.equals(w.getId(), MUIZON_ID)) {
