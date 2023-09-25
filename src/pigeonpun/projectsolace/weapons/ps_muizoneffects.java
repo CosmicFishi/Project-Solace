@@ -9,22 +9,26 @@ import com.fs.starfarer.api.util.WeightedRandomPicker;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.lwjgl.util.vector.Vector2f;
+import pigeonpun.projectsolace.com.ps_vsguidedprojectilescript;
 import pigeonpun.projectsolace.world.ps_salvagesplacer;
 
 import java.awt.*;
 import java.util.Objects;
 
-public class ps_muizoneffects implements EveryFrameWeaponEffectPlugin{
+public class ps_muizoneffects implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin{
     public static final Logger log = Global.getLogger(ps_muizoneffects.class);
     private static final String MUIZON_ID = "ps_muizon";
     private static final IntervalUtil empTimer = new IntervalUtil(0.05f, 0.15f);
     private float currentChargeLevel = 0;
     private boolean isChargingUp = false;
     private boolean isChargingDown = false;
+    private DamagingProjectileAPI projectile;
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
         ShipAPI ship = weapon.getShip();
         WeightedRandomPicker<Vector2f> empEndPointPicker = new WeightedRandomPicker<>();
+        //guided
+
         empTimer.advance(amount);
         if(weapon.isFiring()) {
             if(currentChargeLevel < weapon.getChargeLevel()) {
@@ -60,5 +64,11 @@ public class ps_muizoneffects implements EveryFrameWeaponEffectPlugin{
                     new Color(255, 255, 255, 255)
             );
         }
+    }
+
+    @Override
+    public void onFire(DamagingProjectileAPI projectile, WeaponAPI weapon, CombatEngineAPI engine) {
+        ShipAPI ship = weapon.getShip();
+        engine.addPlugin(new ps_vsguidedprojectilescript(projectile, ship.getShipTarget()));
     }
 }

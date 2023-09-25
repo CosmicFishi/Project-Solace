@@ -2,6 +2,7 @@
 	"id":"ps_muizon_shot",
 	"specClass":"projectile",
 	#"onHitEffect":"com.fs.starfarer.api.impl.combat.IonCannonOnHitEffect",
+	"onFireEffect": "pigeonpun.projectsolace.weapons.ps_muizoneffects",
 	"spawnType":"BALLISTIC_AS_BEAM",
 	"collisionClass":"RAY",
 	"collisionClassByFighter":"RAY_FIGHTER",
