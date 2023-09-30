@@ -1,0 +1,19 @@
+{
+	"id":"ps_vergebending",
+	"type":"STAT_MOD",
+	"aiType":"WEAPON_BOOST",
+	
+	"statsScript":"pigeonpun.projectsolace.shipsystems.ps_vergebendingstats",
+	
+	#"weaponGlowColor":[255,200,0,155],
+    "weaponTypes":[BALLISTIC, ENERGY],
+    "runScriptWhileIdle":true, # unapply() never gets called
+
+    "useSound":"system_ammo_feeder",
+    "fadeActivationSoundOnChargedown":true,
+    "outOfUsesSound":"gun_out_of_ammo",
+}
+
+
+
+

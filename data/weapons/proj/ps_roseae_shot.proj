@@ -1,7 +1,7 @@
 {
 	"id":"ps_roseae_shot",
 	"specClass":"projectile",
-	#"onHitEffect":"com.fs.starfarer.api.impl.combat.IonCannonOnHitEffect",
+	"onHitEffect":"pigeonpun.projectsolace.weapons.ps_roseaeeffects",
 	"onFireEffect": "pigeonpun.projectsolace.weapons.ps_roseaeeffects",
 	"spawnType":"BALLISTIC_AS_BEAM",
 	"collisionClass":"RAY",
@@ -13,5 +13,8 @@
 	"coreColor":[225,225,255,200],
 	"textureType":"ROUGH",  # only needed for BEAM spawnType
 	"textureScrollSpeed":-256.0,
-	"pixelsPerTexel":1.0
+	"pixelsPerTexel":1.0,
+	"passThroughMissiles":true,
+    "passThroughFighters":true,
+    "passThroughFightersOnlyWhenDestroyed":true,
 }

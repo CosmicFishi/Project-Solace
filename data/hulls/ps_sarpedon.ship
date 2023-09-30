@@ -16,7 +16,10 @@
     "auxiliarythrusters"
   ],
   "builtInWeapons": {
-    "WS0001": "ps_roseae"
+    "WS0001": "ps_roseae",
+    "WS0018": "ps_smoke_launcher",
+    "WS0020": "ps_smoke_launcher",
+    "WS0022": "ps_smoke_launcher"
   },
   "weaponSlots": [
     {
@@ -171,6 +174,33 @@
       "arc": 220,
       "angle": 166,
       "locations": [-140, 93]
+    },
+    {
+      "id": "WS0018",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 90,
+      "locations": [45.5, 65]
+    },
+    {
+      "id": "WS0020",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [116, -28.5]
+    },
+    {
+      "id": "WS0022",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -90,
+      "locations": [-82.5, -129]
     }
   ],
   "engineSlots": [
