@@ -7,7 +7,7 @@
 	
 	#"weaponGlowColor":[255,200,0,155],
     "weaponTypes":[BALLISTIC, ENERGY],
-    "runScriptWhileIdle":true, # unapply() never gets called
+    #"runScriptWhileIdle":true, # unapply() never gets called
 
     "useSound":"system_ammo_feeder",
     "fadeActivationSoundOnChargedown":true,

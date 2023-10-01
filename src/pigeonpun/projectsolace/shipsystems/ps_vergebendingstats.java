@@ -73,26 +73,33 @@ public class ps_vergebendingstats extends BaseShipSystemScript {
             effectLevel *= effectLevel;
 
             ship.setJitterUnder(this, new Color(52, 226, 79, 255), jitterLevel, 5, 0f, 7f + jitterRangeBonus);
-            //unmodify when out of active state
-            if(state.equals(State.OUT)) {
-                stats.getEnergyWeaponFluxCostMod().unmodify(id);
-                stats.getEnergyWeaponDamageMult().modifyMult(id, WEAPON_DAMAGE_BONUS_MULT);
-                stats.getBallisticWeaponDamageMult().modifyMult(id, WEAPON_DAMAGE_BONUS_MULT);
-            }
-            if(state.equals(State.COOLDOWN) || state.equals(State.IDLE)) {
-                fireOnce = false;
-            }
+//            //unmodify when out of active state
+//            if(state.equals(State.OUT)) {
+//                stats.getEnergyWeaponFluxCostMod().unmodify(id);
+//                stats.getEnergyWeaponDamageMult().unmodify(id);
+//                stats.getBallisticWeaponDamageMult().unmodify(id);
+//            }
+//            if(state.equals(State.COOLDOWN) || state.equals(State.IDLE)) {
+//                fireOnce = false;
+//            }
         }
     }
-    //dont apply cuz runScriptWhileIdle is true
-    public void unapply(MutableShipStatsAPI stats, String id) {}
+    public void unapply(MutableShipStatsAPI stats, String id) {
+        stats.getEnergyWeaponFluxCostMod().unmodify(id);
+        stats.getEnergyWeaponDamageMult().unmodify(id);
+        stats.getBallisticWeaponDamageMult().unmodify(id);
+        fireOnce = false;
+    }
 
     public StatusData getStatusData(int index, State state, float effectLevel) {
         if (index == 0) {
             return new StatusData("Overclocking weapon", false);
         }
         if (index == 1) {
-            return new StatusData("Increasing time dilation", false);
+            return new StatusData("Increasing weapon damage by " + WEAPON_DAMAGE_BONUS_MULT * 100 + "%", false);
+        }
+        if (index == 2) {
+            return new StatusData("Reduce weapon flux by " + FLUX_REDUCTION_PERCENTAGE + "%", false);
         }
         return null;
     }
