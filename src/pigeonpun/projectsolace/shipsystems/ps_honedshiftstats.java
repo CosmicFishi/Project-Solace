@@ -17,7 +17,7 @@ public class ps_honedshiftstats extends BaseShipSystemScript {
     private static final Color fromColor = new Color(175, 245, 253, 255);
     private static final Color toColor = new Color(251, 32, 32, 255);
     private static final float SHIP_TIME_DAL_BONUS_MULT = 2f;
-    private static final float FLUX_REDUCTION_PERCENTAGE = 40f;
+    private static final float FLUX_REDUCTION_PERCENTAGE = 20f;
     private static final float ROF_BONUS_MULT = 4f;
     private static final String BUILT_IN_W_ID = "ps_muizon";
     private static IntervalUtil spanwAfterImgs = new IntervalUtil(0.5f, 0.5f);

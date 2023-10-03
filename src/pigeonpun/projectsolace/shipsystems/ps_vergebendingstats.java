@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class ps_vergebendingstats extends BaseShipSystemScript {
     private static final float WEAPON_DAMAGE_BONUS_MULT = 2f;
-    private static final float FLUX_REDUCTION_PERCENTAGE = 20f;
+    private static final float FLUX_INCREASE_MULT = 1.2f;
     private static final String BUILT_IN_W_ID = "ps_roseae";
     private static final String BUILT_IN_SMOKE_ID = "ps_smoke_launcher";
     private boolean fireOnce = false;
@@ -26,10 +26,10 @@ public class ps_vergebendingstats extends BaseShipSystemScript {
         if(ship != null) {
             //active -> buff -> fire
             if(state.equals(State.ACTIVE)) {
-                if(ship.getShield() != null) {
-                    ship.getShield().toggleOff();
-                }
-                stats.getEnergyWeaponFluxCostMod().modifyMult(id, (100f - FLUX_REDUCTION_PERCENTAGE) /100);
+//                if(ship.getShield() != null) {
+//                    ship.getShield().toggleOff();
+//                }
+                stats.getEnergyWeaponFluxCostMod().modifyMult(id, FLUX_INCREASE_MULT);
                 stats.getEnergyWeaponDamageMult().modifyMult(id, WEAPON_DAMAGE_BONUS_MULT);
                 stats.getBallisticWeaponDamageMult().modifyMult(id, WEAPON_DAMAGE_BONUS_MULT);
 
@@ -99,7 +99,7 @@ public class ps_vergebendingstats extends BaseShipSystemScript {
             return new StatusData("Increasing weapon damage by " + WEAPON_DAMAGE_BONUS_MULT * 100 + "%", false);
         }
         if (index == 2) {
-            return new StatusData("Reduce weapon flux by " + FLUX_REDUCTION_PERCENTAGE + "%", false);
+            return new StatusData("Increasing energy weapon flux by " + FLUX_INCREASE_MULT * 100 + "%", true);
         }
         return null;
     }
