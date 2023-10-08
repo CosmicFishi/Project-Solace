@@ -13,7 +13,7 @@ import java.awt.*;
 import java.util.Objects;
 
 public class ps_vergebendingstats extends BaseShipSystemScript {
-    private static final float WEAPON_DAMAGE_BONUS_MULT = 2f;
+//    private static final float WEAPON_DAMAGE_BONUS_MULT = 2f;
     private static final float FLUX_INCREASE_MULT = 1.2f;
     private static final String BUILT_IN_W_ID = "ps_roseae";
     private static final String BUILT_IN_SMOKE_ID = "ps_smoke_launcher";
@@ -30,8 +30,9 @@ public class ps_vergebendingstats extends BaseShipSystemScript {
 //                    ship.getShield().toggleOff();
 //                }
                 stats.getEnergyWeaponFluxCostMod().modifyMult(id, FLUX_INCREASE_MULT);
-                stats.getEnergyWeaponDamageMult().modifyMult(id, WEAPON_DAMAGE_BONUS_MULT);
-                stats.getBallisticWeaponDamageMult().modifyMult(id, WEAPON_DAMAGE_BONUS_MULT);
+                stats.getBallisticWeaponFluxCostMod().modifyMult(id, FLUX_INCREASE_MULT);
+//                stats.getEnergyWeaponDamageMult().modifyMult(id, WEAPON_DAMAGE_BONUS_MULT);
+//                stats.getBallisticWeaponDamageMult().modifyMult(id, WEAPON_DAMAGE_BONUS_MULT);
 
                 for (WeaponAPI w : ship.getAllWeapons()) {
                     if (w.getSlot().isSystemSlot()) continue;
@@ -41,15 +42,15 @@ public class ps_vergebendingstats extends BaseShipSystemScript {
                         }
                     }
                     if (state.equals(State.ACTIVE)) {
+                        if(!Objects.equals(w.getId(), BUILT_IN_W_ID)) continue;
                         //refire built in
                         if(!fireOnce) {
-                            w.setRefireDelay(w.getSpec().getChargeTime());
-                            if (Objects.equals(w.getId(), BUILT_IN_W_ID)) {
-                                w.setForceFireOneFrame(true);
-                                fireOnce = true;
-                                break;
-                            }
+                            //w.setRefireDelay(0);
+                            w.ensureClonedSpec();
+                            w.setRemainingCooldownTo(0);
+                            fireOnce = true;
                         }
+                        w.setForceFireOneFrame(true);
                     }
                 }
             }
@@ -86,8 +87,9 @@ public class ps_vergebendingstats extends BaseShipSystemScript {
     }
     public void unapply(MutableShipStatsAPI stats, String id) {
         stats.getEnergyWeaponFluxCostMod().unmodify(id);
-        stats.getEnergyWeaponDamageMult().unmodify(id);
-        stats.getBallisticWeaponDamageMult().unmodify(id);
+        stats.getBallisticWeaponFluxCostMod().unmodify(id);
+//        stats.getEnergyWeaponDamageMult().unmodify(id);
+//        stats.getBallisticWeaponDamageMult().unmodify(id);
         fireOnce = false;
     }
 
@@ -95,11 +97,11 @@ public class ps_vergebendingstats extends BaseShipSystemScript {
         if (index == 0) {
             return new StatusData("Overclocking weapon", false);
         }
+//        if (index == 1) {
+//            return new StatusData("Increasing ballistic/energy damage by " + Math.round(WEAPON_DAMAGE_BONUS_MULT * 100) + "%", false);
+//        }
         if (index == 1) {
-            return new StatusData("Increasing weapon damage by " + WEAPON_DAMAGE_BONUS_MULT * 100 + "%", false);
-        }
-        if (index == 2) {
-            return new StatusData("Increasing energy weapon flux by " + FLUX_INCREASE_MULT * 100 + "%", true);
+            return new StatusData("Increasing ballistic/energy flux by " + Math.round(FLUX_INCREASE_MULT * 100) + "%", true);
         }
         return null;
     }

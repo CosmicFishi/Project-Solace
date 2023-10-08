@@ -80,7 +80,7 @@ public class ps_honedshiftstats extends BaseShipSystemScript {
             return new StatusData("Reducing weapon flux cost by " + FLUX_REDUCTION_PERCENTAGE + "%", false);
         }
         if (index == 2) {
-            return new StatusData("Increasing ROF by " + ROF_BONUS_MULT * 100 + "%", false);
+            return new StatusData("Increasing RoF by " + Math.round(ROF_BONUS_MULT * 100) + "%", false);
         }
         if (index == 3) {
             return new StatusData("Increasing time dilation", false);
