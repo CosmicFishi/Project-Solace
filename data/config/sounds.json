@@ -49,9 +49,9 @@
     {"file": "sounds/weapons/ps_daemeli_fire.ogg", "pitch": 1.1, "volume": 1}
   ],
   "ps_acris_fire": [
-    {"file": "sounds/weapons/ps_acris_fire.ogg", "pitch": 0.9, "volume": 1},
-    {"file": "sounds/weapons/ps_acris_fire.ogg", "pitch": 0.95, "volume": 1},
-    {"file": "sounds/weapons/ps_acris_fire.ogg", "pitch": 1, "volume": 1},
+    {"file": "sounds/weapons/ps_acris_fire.ogg", "pitch": 0.9, "volume": 1.2},
+    {"file": "sounds/weapons/ps_acris_fire.ogg", "pitch": 0.95, "volume": 1.2},
+    {"file": "sounds/weapons/ps_acris_fire.ogg", "pitch": 1, "volume": 1.2},
   ],
   "ps_muizon_charging": [
     {"file": "sounds/weapons/ps_muizon_charging.ogg", "pitch": 0.9, "volume": 1},
