@@ -111,7 +111,7 @@ public class ps_beamconsonance extends BaseHullMod {
                                 0,
                                 3000,
                                 null,
-                                1,
+                                MathUtils.getRandomNumberInRange(1,3),
                                 ps_misc.ENMITY_SHIELD_EMP_FRINGE,
                                 ps_misc.ENMITY_SHIELD_EMP_CORE);
                         Global.getSoundPlayer().playSound("ps_emp_shout", 1f, 1f, spawnEMPPoint, new Vector2f(0, 0));

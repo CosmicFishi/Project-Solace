@@ -76,6 +76,12 @@
     {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 1, "volume": 1},
     {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 1.05, "volume": 1},
     {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 1.1, "volume": 1}
+  ],
+  "ps_punctatus_fire": [
+    {"file": "sounds/weapons/ps_punctatus_fire.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_punctatus_fire.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_punctatus_fire.ogg", "pitch": 1, "volume": 1},
+    {"file": "sounds/weapons/ps_punctatus_fire.ogg", "pitch": 1.05, "volume": 1}
   ]
 }
 

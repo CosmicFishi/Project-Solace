@@ -80,7 +80,6 @@ public class ps_incensemanufactured extends BaseHullMod {
     private final float UP_STANDSTILL_DURATION = 5f; //x second
 
     //Credit to PureTilt cuz I took reference from VIC
-    //todo: description + hullmod sprite (may be some particle with a fire like object in the center)
     public void advanceInCombat(ShipAPI ship, float amount) {
         CombatEngineAPI engine = Global.getCombatEngine();
         if (engine.isPaused()) {

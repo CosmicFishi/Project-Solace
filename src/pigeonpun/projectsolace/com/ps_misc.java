@@ -8,8 +8,8 @@ import java.util.List;
 
 public class ps_misc {
     public static final Color PROJECT_SOLACE = new Color(230,40,240,255);
-    public static final Color PROJECT_SOLACE_JITTER = new Color(230,40,240,25);
-    public static final Color PROJECT_SOLACE_JITTER_UNDER = new Color(230,40,240,45);
+    public static final Color PROJECT_SOLACE_JITTER = new Color(248,40,240,25);
+    public static final Color PROJECT_SOLACE_JITTER_UNDER = new Color(145,255,214,245);
     public static final Color PROJECT_SOLACE_LIGHT = new Color(230,200,240,255);
 
     public static final Color PROJECT_SOLACE_NEBULA_COLOR_1 = new Color(255,0,255,255);
@@ -35,5 +35,6 @@ public class ps_misc {
         ENMITY_SPECIAL_WEAPONS_LIST.add("ps_acris");
         ENMITY_SPECIAL_WEAPONS_LIST.add("ps_anaxyr");
         ENMITY_SPECIAL_WEAPONS_LIST.add("ps_daemeli");
+        ENMITY_SPECIAL_WEAPONS_LIST.add("ps_punctatus");
     }
 }
