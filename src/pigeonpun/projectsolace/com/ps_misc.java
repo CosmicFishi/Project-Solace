@@ -37,4 +37,54 @@ public class ps_misc {
         ENMITY_SPECIAL_WEAPONS_LIST.add("ps_daemeli");
         ENMITY_SPECIAL_WEAPONS_LIST.add("ps_punctatus");
     }
+
+    public static final List<String> SOLACE_SHIPS_LINEUP = new ArrayList<>();
+    static {
+        //FRIGATE
+        SOLACE_SHIPS_LINEUP.add("ps_salawesi");
+        SOLACE_SHIPS_LINEUP.add("ps_taliabu");
+        SOLACE_SHIPS_LINEUP.add("ps_tanimbar");
+        //DESTROYER
+        SOLACE_SHIPS_LINEUP.add("ps_morepork");
+        SOLACE_SHIPS_LINEUP.add("ps_ashy");
+        SOLACE_SHIPS_LINEUP.add("ps_papuan");
+        //CRUISER
+        SOLACE_SHIPS_LINEUP.add("ps_barking");
+        SOLACE_SHIPS_LINEUP.add("ps_rufous");
+        SOLACE_SHIPS_LINEUP.add("ps_javanica");
+        SOLACE_SHIPS_LINEUP.add("ps_aurantia");
+        //CAPTIAL
+        SOLACE_SHIPS_LINEUP.add("ps_camiguin");
+        SOLACE_SHIPS_LINEUP.add("ps_nadhmor");
+        SOLACE_SHIPS_LINEUP.add("ps_albertine");
+    }
+    public static final List<String> SOLACE_WEAPONS_LINEUP = new ArrayList<>();
+    static {
+        SOLACE_WEAPONS_LINEUP.add("ps_tragopo");
+        SOLACE_WEAPONS_LINEUP.add("ps_carthami");
+        SOLACE_WEAPONS_LINEUP.add("ps_porri");
+    }
+    public static final List<String> ENMITY_SHIPS_LINEUP = new ArrayList<>();
+    static {
+        //FRIGATE
+        ENMITY_SHIPS_LINEUP.add("ps_laevis");
+        //DESTROYER
+        ENMITY_SHIPS_LINEUP.add("ps_pricei");
+        //CRUISER
+        ENMITY_SHIPS_LINEUP.add("ps_merkeri");
+        //CAPTIAL
+        ENMITY_SHIPS_LINEUP.add("ps_ravus");
+    }
+    public static final List<String> ENMITY_WEAPONS_LINEUP = new ArrayList<>();
+    static {
+        //ENMITY_WEAPONS_LINEUP.add("");
+    }
+    public static final List<String> ENMITY_FIGHTER_LINEUP = new ArrayList<>();
+    static {
+        ENMITY_FIGHTER_LINEUP.add("ps_riveti");
+        ENMITY_FIGHTER_LINEUP.add("ps_dumerili");
+        ENMITY_FIGHTER_LINEUP.add("ps_vudii");
+        ENMITY_FIGHTER_LINEUP.add("ps_viridis");
+        ENMITY_FIGHTER_LINEUP.add("ps_tigris");
+    }
 }

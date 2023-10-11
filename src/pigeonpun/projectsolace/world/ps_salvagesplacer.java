@@ -36,7 +36,7 @@ public class ps_salvagesplacer implements SectorGeneratorPlugin {
         hullPicker.addAll(VAGRANT_HULLS_SALVAGE);
         if(!projectsolaceplugin.ps_vagrantseerGenerateSalvage) return;
 
-        Global.getSector().getMemoryWithoutUpdate().set("$ps_vagrantseerSalvage_Generated", true);
+        Global.getSector().getMemoryWithoutUpdate().set(projectsolaceplugin.ps_vagrantseerSalvage_Generated, true);
         WeightedRandomPicker<StarSystemAPI> systemPicker = getSpawnSystems(sector);
 
         for (int i = 0; i < VAGRANT_HULLS_SALVAGE.toArray().length; i++) {

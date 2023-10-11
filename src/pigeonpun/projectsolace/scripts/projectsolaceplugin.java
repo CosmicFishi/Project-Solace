@@ -8,6 +8,7 @@ import com.fs.starfarer.api.impl.campaign.shared.SharedData;
 import com.fs.starfarer.campaign.Faction;
 import exerelin.campaign.SectorManager;
 import pigeonpun.projectsolace.campaign.ps_defendpatrolfleetmanager;
+import pigeonpun.projectsolace.campaign.ps_sodalityfleetadjustment;
 import pigeonpun.projectsolace.world.ps_gen;
 import pigeonpun.projectsolace.world.ps_salvagesplacer;
 import pigeonpun.projectsolace.world.ps_vagrantseergen;
@@ -44,6 +45,10 @@ public class projectsolaceplugin extends BaseModPlugin {
     public static float ps_pointsRequiredForDefendFleet = 27000f;
     public static boolean ps_solaceDefend = true;
     public static boolean ps_vagrantseerGenerateSalvage = true;
+    public static final String ps_vagrantseerSalvage_Generated = "$ps_vagrantseerSalvage_Generated";
+    public static boolean ps_sodalityFleetAdjustmentActive = true;
+    public static final String ps_sodalityFleetAdjusted = "$ps_sodalityFleetAdjusted";
+    public static boolean ps_hardmodeSodalityActive = false;
     @Override
     public void onApplicationLoad() throws Exception {
         super.onApplicationLoad();
@@ -54,6 +59,9 @@ public class projectsolaceplugin extends BaseModPlugin {
         ps_pointsRequiredForDefendFleet = Global.getSettings().getFloat("ps_pointsRequiredForDefendFleet");
         ps_solaceDefend = Global.getSettings().getBoolean("ps_solaceDefend");
         ps_vagrantseerGenerateSalvage = Global.getSettings().getBoolean("ps_vagrantseerGenerateSalvage");
+        ps_sodalityFleetAdjustmentActive = Global.getSettings().getBoolean("ps_sodalityFleetAdjustmentActive");
+        ps_hardmodeSodalityActive = Global.getSettings().getBoolean("ps_hardmodeSodalityActive");
+
         hasUnderworld = Global.getSettings().getModManager().isModEnabled("underworld");
         hasDynaSector = Global.getSettings().getModManager().isModEnabled("dynasector");
 
@@ -95,7 +103,7 @@ public class projectsolaceplugin extends BaseModPlugin {
         if (!hasProjectSolace) {
             new ps_gen().generate(Global.getSector());
             new ps_vagrantseergen().generate(Global.getSector());
-            if (ps_vagrantseerGenerateSalvage && Global.getSector().getMemoryWithoutUpdate().contains("$ps_vagrantseerSalvage_Generated"))
+            if (ps_vagrantseerGenerateSalvage && Global.getSector().getMemoryWithoutUpdate().contains(ps_vagrantseerSalvage_Generated))
                 new ps_salvagesplacer().generate(Global.getSector());
         }
         Global.getSector().addTransientListener(new allianceListener());
@@ -110,6 +118,7 @@ public class projectsolaceplugin extends BaseModPlugin {
     public static void addScripts() {
         SectorAPI sector = Global.getSector();
         sector.addScript(ps_defendpatrolfleetmanager.create());
+        sector.getListenerManager().addListener(new ps_sodalityfleetadjustment());
     }
     private static class allianceListener extends BaseCampaignEventListener {
 
