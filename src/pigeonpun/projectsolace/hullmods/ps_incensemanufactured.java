@@ -304,16 +304,18 @@ public class ps_incensemanufactured extends BaseHullMod {
                         damageToCapital = UP_BONUS_DAMAGE_CAPITAL;
                         break;
                 }
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_shield_down", "", "Shield", "Disabled", true);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp_emit", "graphics/icons/hullsys/emp_emitter", "Discharging EMP", "", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_rof", "graphics/icons/hullsys/ammo_feeder.png", "RoF bonus", "+" + String.valueOf(UP_ROF_BONUS * 100) + "%", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_weapon_flux", "", "Weapon flux reduction", String.valueOf(UP_WEAPON_FLUX_BONUS * 100) + "%", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp", "", "EMP damage taken reduction", String.valueOf(UP_EMP_NEGATE_BONUS * 100) + "%", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cruiser_dmg", "", "Cruiser damage bonus", "+" + String.valueOf(damageToCruiser * 100) + "%", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cap_dmg", "", "Capital damage bonus", "+" + String.valueOf(damageToCapital * 100) + "%", false);
-                if(ship.getWing() != null) {
-                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_increase", "", "Fighter losses rate", "+" + String.valueOf(100 - UP_FIGHTER_RATE_INCREASE_MODIFIER) + "%", false);
-                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_decrease", "", "Fighter recover rate", "+" + String.valueOf(UP_FIGHTER_RATE_INCREASE_MODIFIER) + "%", false);
+                if(ship.getCaptain().isPlayer()) {
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_shield_down", "", "Shield", "Disabled", true);
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp_emit", "graphics/icons/hullsys/emp_emitter", "Discharging EMP", "", false);
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_rof", "graphics/icons/hullsys/ammo_feeder.png", "RoF bonus", "+" + String.valueOf(Math.round(UP_ROF_BONUS * 100)) + "%", false);
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_weapon_flux", "", "Weapon flux reduction", String.valueOf(Math.round(UP_WEAPON_FLUX_BONUS * 100)) + "%", false);
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp", "", "EMP damage taken reduction", String.valueOf(Math.round(UP_EMP_NEGATE_BONUS * 100)) + "%", false);
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cruiser_dmg", "", "Cruiser damage bonus", "+" + String.valueOf(Math.round(damageToCruiser * 100)) + "%", false);
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cap_dmg", "", "Capital damage bonus", "+" + String.valueOf(Math.round(damageToCapital * 100)) + "%", false);
+                    if(ship.getWing() != null) {
+                        Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_increase", "", "Fighter losses rate", "+" + String.valueOf(Math.round(100 - UP_FIGHTER_RATE_INCREASE_MODIFIER)) + "%", false);
+                        Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_decrease", "", "Fighter recover rate", "+" + String.valueOf(Math.round(UP_FIGHTER_RATE_INCREASE_MODIFIER)) + "%", false);
+                    }
                 }
 
                 //Ship FX + EMP when go out of stand still
