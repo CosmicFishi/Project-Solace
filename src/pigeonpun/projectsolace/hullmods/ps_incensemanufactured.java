@@ -99,6 +99,7 @@ public class ps_incensemanufactured extends BaseHullMod {
         boolean up_standstill_activated = false;
         boolean up_standstill_bonus_removed = false;
         float ps_spawnjitter_timer = 0;
+        boolean up_activated_checkpoint = false;
 //        boolean up_standstill_popup = false;
 
         Map<String, Object> customCombatData = Global.getCombatEngine().getCustomData();
@@ -116,6 +117,8 @@ public class ps_incensemanufactured extends BaseHullMod {
             up_standstill_bonus_removed = (boolean) customCombatData.get("up_standstill_bonus_removed" + id);
         if (customCombatData.get("ps_spawnjitter_timer" + id) instanceof Float)
             ps_spawnjitter_timer = (float) customCombatData.get("ps_spawnjitter_timer" + id);
+        if (customCombatData.get("up_activated_checkpoint" + id) instanceof Float)
+            up_activated_checkpoint = (boolean) customCombatData.get("up_activated_checkpoint" + id);
 //        if (customCombatData.get("up_standstill_popup" + id) instanceof Float)
 //            up_standstill_popup = (boolean) customCombatData.get("up_standstill_popup" + id);
 
@@ -182,7 +185,12 @@ public class ps_incensemanufactured extends BaseHullMod {
         // emp will start sparking around the ship hitting any missile or fighter,
         // repair armor to certain amount of original
         // deal 50/40/30/20% more damage to cruiser and capital depend on ship class.
-        if(ship.getHitpoints() < ship.getMaxHitpoints() * UP_HITPOINTS_START) {
+
+        //prevent reactivation upon hull restoration beyond certain threshold
+        if(ship.getHitpoints() < ship.getMaxHitpoints() * UP_HITPOINTS_START && !up_activated_checkpoint) {
+            up_activated_checkpoint = true;
+        }
+        if(up_activated_checkpoint) {
             //DISABLE Shield
             if(ship.getShield() != null) ship.getShield().toggleOff();
             ////////////////
@@ -241,7 +249,9 @@ public class ps_incensemanufactured extends BaseHullMod {
 //                        Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
 //                        Global.getCombatEngine().getTimeMult().modifyMult(id, 1f/(1f+standstillTimer));
 //                    }
-                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
+                    if(Global.getCombatEngine().getPlayerShip().equals(ship)) {
+                        Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
+                    }
                     for(WeaponAPI weapon: ship.getAllWeapons()) {
                         weapon.disable();
                     }
@@ -267,11 +277,11 @@ public class ps_incensemanufactured extends BaseHullMod {
                 }
                 customCombatData.put("ps_standstilltimer" + id, standstillTimer);
             }
+            //////////////////////////
+            //Finish standstill
+            //Move to berserk state
+            //////////////////////////
             if(up_standstill_activated) {
-                //////////////////////////
-                //Finish standstill
-                //Move to berserk state
-                //////////////////////////
                 ps_spawnjitter_timer += amount;
                 if(ps_spawnjitter_timer > spawnJitterTimerFrom && ps_spawnjitter_timer < spawnJitterTimerTo) {
                     ship.setJitter(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 2f, 2, 7, 15f);
@@ -304,7 +314,7 @@ public class ps_incensemanufactured extends BaseHullMod {
                         damageToCapital = UP_BONUS_DAMAGE_CAPITAL;
                         break;
                 }
-                if(ship.getCaptain().isPlayer()) {
+                if(Global.getCombatEngine().getPlayerShip().equals(ship)) {
                     Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_shield_down", "", "Shield", "Disabled", true);
                     Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp_emit", "graphics/icons/hullsys/emp_emitter", "Discharging EMP", "", false);
                     Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_rof", "graphics/icons/hullsys/ammo_feeder.png", "RoF bonus", "+" + String.valueOf(Math.round(UP_ROF_BONUS * 100)) + "%", false);
@@ -321,6 +331,7 @@ public class ps_incensemanufactured extends BaseHullMod {
                 //Ship FX + EMP when go out of stand still
                 spawnEMPStartUP.advance(amount);
                 float spawnEMPCountPerTime = 2;
+                //spawn EMP that hit missiles
                 for(int i = 0; i < spawnEMPCountPerTime; i++) {
                     if(spawnEMPStartUP.intervalElapsed()) {
                         SimpleEntity fromEntity = new SimpleEntity(MathUtils.getRandomPointInCircle(
@@ -454,6 +465,7 @@ public class ps_incensemanufactured extends BaseHullMod {
         customCombatData.put("up_standstill_activated" + id, up_standstill_activated);
         customCombatData.put("up_standstill_bonus_removed" + id, up_standstill_bonus_removed);
         customCombatData.put("ps_spawnjitter_timer" + id, ps_spawnjitter_timer);
+        customCombatData.put("up_activated_checkpoint" + id, up_activated_checkpoint);
 //        customCombatData.put("up_standstill_popup" + id, up_standstill_popup);
     }
 
