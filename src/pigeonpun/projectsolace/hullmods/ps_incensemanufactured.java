@@ -249,7 +249,7 @@ public class ps_incensemanufactured extends BaseHullMod {
 //                        Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
 //                        Global.getCombatEngine().getTimeMult().modifyMult(id, 1f/(1f+standstillTimer));
 //                    }
-                    if(Global.getCombatEngine().getPlayerShip().equals(ship)) {
+                    if (ship == Global.getCombatEngine().getPlayerShip()) {
                         Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
                     }
                     for(WeaponAPI weapon: ship.getAllWeapons()) {
@@ -314,7 +314,7 @@ public class ps_incensemanufactured extends BaseHullMod {
                         damageToCapital = UP_BONUS_DAMAGE_CAPITAL;
                         break;
                 }
-                if(Global.getCombatEngine().getPlayerShip().equals(ship)) {
+                if (ship == Global.getCombatEngine().getPlayerShip()) {
                     Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_shield_down", "", "Shield", "Disabled", true);
                     Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp_emit", "graphics/icons/hullsys/emp_emitter", "Discharging EMP", "", false);
                     Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_rof", "graphics/icons/hullsys/ammo_feeder.png", "RoF bonus", "+" + String.valueOf(Math.round(UP_ROF_BONUS * 100)) + "%", false);
