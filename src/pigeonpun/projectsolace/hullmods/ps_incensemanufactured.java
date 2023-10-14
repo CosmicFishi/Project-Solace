@@ -13,6 +13,7 @@ import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
+import org.apache.log4j.Logger;
 import org.magiclib.util.MagicLensFlare;
 import org.magiclib.util.MagicUI;
 import org.json.JSONArray;
@@ -29,7 +30,7 @@ import java.util.*;
 import java.util.List;
 
 public class ps_incensemanufactured extends BaseHullMod {
-
+    public static Logger log = Global.getLogger(ps_incensemanufactured.class);
     private static final String INCENSE_TEXT = "Incense";
     private static final float INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION = 1f;
     //private static final float INCENSE_LEVEL_BONUS_FROM_DISSIPATION = 0.05f;
@@ -78,9 +79,9 @@ public class ps_incensemanufactured extends BaseHullMod {
     private static final float UP_FIGHTER_RATE_DECREASE_MODIFIER = 30f;
     private static final float UP_FIGHTER_RATE_INCREASE_MODIFIER = 50f;
     private final float UP_STANDSTILL_DURATION = 5f; //x second
+    private static final String UP_STATE_MANIPULATOR_ID = "up_state_manipulator";
 
     //Credit to PureTilt cuz I took reference from VIC
-    //todo: description + hullmod sprite (may be some particle with a fire like object in the center)
     public void advanceInCombat(ShipAPI ship, float amount) {
         CombatEngineAPI engine = Global.getCombatEngine();
         if (engine.isPaused()) {
@@ -94,12 +95,8 @@ public class ps_incensemanufactured extends BaseHullMod {
         /////////////////
         float incenseLevel = 0f;
         float incenseCap = getIncenseCap(ship);
-
-        boolean up_activate_bonus = false;
-        boolean up_standstill_activated = false;
-        boolean up_standstill_bonus_removed = false;
         float ps_spawnjitter_timer = 0;
-//        boolean up_standstill_popup = false;
+        ps_upStateManipulator upStateManipulator = new ps_upStateManipulator();
 
         Map<String, Object> customCombatData = Global.getCombatEngine().getCustomData();
         String id = ship.getId();
@@ -108,16 +105,10 @@ public class ps_incensemanufactured extends BaseHullMod {
 
         if (customCombatData.get("ps_incenselevel" + id) instanceof Float)
             incenseLevel = (float) customCombatData.get("ps_incenselevel" + id);
-        if (customCombatData.get("up_activate_bonus" + id) instanceof Boolean)
-            up_activate_bonus = (boolean) customCombatData.get("up_activate_bonus" + id);
-        if (customCombatData.get("up_standstill_activated" + id) instanceof Boolean)
-            up_standstill_activated = (boolean) customCombatData.get("up_standstill_activated" + id);
-        if (customCombatData.get("up_standstill_bonus_removed" + id) instanceof Boolean)
-            up_standstill_bonus_removed = (boolean) customCombatData.get("up_standstill_bonus_removed" + id);
         if (customCombatData.get("ps_spawnjitter_timer" + id) instanceof Float)
             ps_spawnjitter_timer = (float) customCombatData.get("ps_spawnjitter_timer" + id);
-//        if (customCombatData.get("up_standstill_popup" + id) instanceof Float)
-//            up_standstill_popup = (boolean) customCombatData.get("up_standstill_popup" + id);
+        if (customCombatData.get(UP_STATE_MANIPULATOR_ID + id) instanceof ps_upStateManipulator)
+            upStateManipulator = (ps_upStateManipulator) customCombatData.get(UP_STATE_MANIPULATOR_ID + id);
 
         float incenseRegen = getIncenseRegen(ship);
         if(incenseLevel < incenseCap) {
@@ -166,14 +157,9 @@ public class ps_incensemanufactured extends BaseHullMod {
             );
         }
 
-//        Global.getCombatEngine().addFloatingText(ship.getLocation(), String.valueOf((Math.round((incenseLevel/incenseCap * 15) + 240))), 60, Color.WHITE, ship, 0.25f, 0.25f);
-
         MathUtils.clamp(incenseLevel, 0, incenseCap);
         customCombatData.put("ps_incenselevel" + id, incenseLevel);
 
-        if(ship.getVariant().hasHullMod("do_not_back_off") && !up_activate_bonus) {
-            ship.getVariant().removeMod("do_not_back_off");
-        }
 
         //UNSOLIDIFIED PROCEDURE (UP)
         // lower shield,
@@ -182,279 +168,240 @@ public class ps_incensemanufactured extends BaseHullMod {
         // emp will start sparking around the ship hitting any missile or fighter,
         // repair armor to certain amount of original
         // deal 50/40/30/20% more damage to cruiser and capital depend on ship class.
-        if(ship.getHitpoints() < ship.getMaxHitpoints() * UP_HITPOINTS_START) {
+
+        //prevent reactivation upon hull restoration beyond certain threshold
+        if(ship.getHitpoints() < ship.getMaxHitpoints() * UP_HITPOINTS_START && upStateManipulator.getCurrentState() == ps_UPState.UP_NORMAL) {
+            upStateManipulator.changeToStandStill(true);
+        }
+        if(upStateManipulator.getCurrentState() == ps_UPState.UP_STANDTILL) {
             //DISABLE Shield
             if(ship.getShield() != null) ship.getShield().toggleOff();
-            ////////////////
-            //standstill
-            ////////////////
-            if(!up_standstill_activated) {
-                float standstillTimer = 0f;
-                if (customCombatData.get("ps_standstilltimer" + id) instanceof Float)
-                    standstillTimer = (float) customCombatData.get("ps_standstilltimer" + id);
-                standstillTimer += amount;
-//                if(!up_standstill_popup) {
-//                    Global.getCombatEngine().addFloatingText(ship.getLocation(), "Charging...", 60, ps_misc.PROJECT_SOLACE_LIGHT, ship, 0.25f, 0.25f);
-//                    up_standstill_popup = true;
-//                }
+            //stand still duration
+            upStateManipulator.updateStandStillTimer(amount);
+            float standstillTimer = upStateManipulator.getStandStillTimer();
+            if(standstillTimer < UP_STANDSTILL_DURATION) {
+                stats.getAcceleration().modifyPercent(id, 0.0f);
+                stats.getDeceleration().modifyPercent(id, 0.0f);
+                stats.getHullDamageTakenMult().modifyMult(id, 0.0f);
+                stats.getArmorDamageTakenMult().modifyMult(id, 0.0f);
 
-                if(standstillTimer < UP_STANDSTILL_DURATION) {
-                    stats.getAcceleration().modifyPercent(id, 0.0f);
-                    stats.getDeceleration().modifyPercent(id, 0.0f);
-                    stats.getHullDamageTakenMult().modifyMult(id, 0.0f);
-                    stats.getArmorDamageTakenMult().modifyMult(id, 0.0f);
-
-                    //repair armor
-                    ArmorGridAPI grid = ship.getArmorGrid();
-                    float armorToRepair = 0f;
-                    switch (ship.getHullSize()) {
-                        case FRIGATE:
-                            armorToRepair = UP_ARMOR_REPAIR_FRIGATE;
-                            break;
-                        case DESTROYER:
-                            armorToRepair = UP_ARMOR_REPAIR_DESTROYER;
-                            break;
-                        case CRUISER:
-                            armorToRepair = UP_ARMOR_REPAIR_CRUISER;
-                            break;
-                        case CAPITAL_SHIP:
-                            armorToRepair = UP_ARMOR_REPAIR_CAPITAL;
-                            break;
-                    }
-                    int gridHeight = grid.getGrid()[0].length;
-                    int gridWidth = grid.getGrid().length;
-
-                    for (int x = 0; x < gridWidth; x++) {
-                        for (int y = 0; y < gridHeight; y++) {
-                            float armorhp = grid.getArmorValue(x,y);
-                            float maxHPRepair = grid.getMaxArmorInCell() * armorToRepair;
-
-                            //float toadd = 5; // amount you want to add per-cell
-                            if(armorhp < maxHPRepair) {
-                                grid.setArmorValue(x,y, armorhp + (maxHPRepair * amount));
-                            }
-                            //grid.setArmorValue(x,y, Math.min(maxHPRepair, armorhp + toadd));
-                            //grid.setArmorValue(x,y, maxHP * UP_ARMOR_REPAIR);
-                        }
-                    }
-//                    if (ship == Global.getCombatEngine().getPlayerShip()) {
-//                        Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
-//                        Global.getCombatEngine().getTimeMult().modifyMult(id, 1f/(1f+standstillTimer));
-//                    }
+                //repair armor
+                ps_repairArmor(amount, ship);
+                if (ship == Global.getCombatEngine().getPlayerShip()) {
                     Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_standstill", "graphics/icons/hullsys/temporal_shell.png", "Unsolidified Procedure charging...", Math.round(UP_STANDSTILL_DURATION - standstillTimer) + "s", false);
-                    for(WeaponAPI weapon: ship.getAllWeapons()) {
-                        weapon.disable();
-                    }
-                    //FX
-                    ship.setJitterUnder(this, ps_misc.PROJECT_SOLACE_UP_STANDSTILL, standstillTimer/UP_STANDSTILL_DURATION, 25, 0f, 7f + (standstillTimer/UP_STANDSTILL_DURATION * 10f));
-                    ship.setCircularJitter(true);
-                    Global.getSoundPlayer().playLoop("ps_up_charging", ship, 1f, MathUtils.clamp(standstillTimer, 0, 1), ship.getLocation(), new Vector2f(0, 0));
-                } else {
-                    if(!up_standstill_bonus_removed) {
-                        stats.getAcceleration().unmodify(id);
-                        stats.getDeceleration().unmodify(id);
-                        stats.getHullDamageTakenMult().unmodify(id);
-                        stats.getArmorDamageTakenMult().unmodify(id);
-                        Global.getCombatEngine().getTimeMult().unmodify(id);
-                        up_standstill_activated = true;
-                        for(WeaponAPI weapon: ship.getAllWeapons()) {
-                            weapon.repair();
-                        }
-//                        Global.getCombatEngine().addFloatingText(ship.getLocation(), up_standstill_bonus_removed + "...", 60, ps_misc.PROJECT_SOLACE_LIGHT, ship, 0.25f, 0.25f);
-                        Global.getSoundPlayer().playSound("ps_up_activate", 1, 1f, ship.getLocation(), new Vector2f(0, 0));
-                        up_standstill_bonus_removed = true;
-                    }
                 }
-                customCombatData.put("ps_standstilltimer" + id, standstillTimer);
+                for(WeaponAPI weapon: ship.getAllWeapons()) {
+                    weapon.disable();
+                }
+                //FX
+                ship.setJitterUnder(this, ps_misc.PROJECT_SOLACE_UP_STANDSTILL, standstillTimer/UP_STANDSTILL_DURATION, 25, 0f, 7f + (standstillTimer/UP_STANDSTILL_DURATION * 10f));
+                ship.setCircularJitter(true);
+                Global.getSoundPlayer().playLoop("ps_up_charging", ship, 1f, MathUtils.clamp(standstillTimer, 0, 1), ship.getLocation(), new Vector2f(0, 0));
             }
-            if(up_standstill_activated) {
-                //////////////////////////
-                //Finish standstill
-                //Move to berserk state
-                //////////////////////////
-                ps_spawnjitter_timer += amount;
-                if(ps_spawnjitter_timer > spawnJitterTimerFrom && ps_spawnjitter_timer < spawnJitterTimerTo) {
-                    ship.setJitter(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 2f, 2, 7, 15f);
-                } else {
-                    if(ps_spawnjitter_timer > (spawnJitterTimerTo + spawnJitterTimerWait)) {
-                        ps_spawnjitter_timer = 0;
-                    }
+            if(standstillTimer > UP_STANDSTILL_DURATION) {
+                upStateManipulator.changeToBerserk(true);
+            }
+        }
+        if(upStateManipulator.getCurrentState() == ps_UPState.UP_BERSERK) {
+            //DISABLE Shield
+            if(ship.getShield() != null) ship.getShield().toggleOff();
+            //Reset invincibility, undo stand still stuffs
+            stats.getAcceleration().unmodify(id);
+            stats.getDeceleration().unmodify(id);
+            stats.getHullDamageTakenMult().unmodify(id);
+            stats.getArmorDamageTakenMult().unmodify(id);
+            Global.getCombatEngine().getTimeMult().unmodify(id);
+            for(WeaponAPI weapon: ship.getAllWeapons()) {
+                weapon.repair();
+            }
+            //play sound because WOOOOOOOOOOOOOOOO
+            if(!upStateManipulator.isSoundActivated()) {
+                Global.getSoundPlayer().playSound("ps_up_activate", 1, 1f, ship.getLocation(), new Vector2f(0, 0));
+                upStateManipulator.setSoundActivatedTrue();
+            }
+            //Do fx because i like it
+            ps_spawnjitter_timer += amount;
+            if(ps_spawnjitter_timer > spawnJitterTimerFrom && ps_spawnjitter_timer < spawnJitterTimerTo) {
+                ship.setJitter(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 2f, 2, 7, 15f);
+            } else {
+                if(ps_spawnjitter_timer > (spawnJitterTimerTo + spawnJitterTimerWait)) {
+                    ps_spawnjitter_timer = 0;
                 }
-//                ship.setJitter(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 1f, 1, 7, 15f);
-                ship.getEngineController().getFlameColorShifter().shift(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 0.2f, 1f, 1f);
+            }
+            ship.getEngineController().getFlameColorShifter().shift(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 0.2f, 1f, 1f);
 
-                //damage boost
-                float damageToCruiser = 0f;
-                float damageToCapital = 0f;
-                switch (ship.getHullSize()) {
-                    case FRIGATE:
-                        damageToCruiser = UP_BONUS_DAMAGE_FRIGATE;
-                        damageToCapital = UP_BONUS_DAMAGE_FRIGATE;
-                        break;
-                    case DESTROYER:
-                        damageToCruiser = UP_BONUS_DAMAGE_DESTROYER;
-                        damageToCapital = UP_BONUS_DAMAGE_DESTROYER;
-                        break;
-                    case CRUISER:
-                        damageToCruiser = UP_BONUS_DAMAGE_CRUISER;
-                        damageToCapital = UP_BONUS_DAMAGE_CRUISER;
-                        break;
-                    case CAPITAL_SHIP:
-                        damageToCruiser = UP_BONUS_DAMAGE_CAPITAL;
-                        damageToCapital = UP_BONUS_DAMAGE_CAPITAL;
-                        break;
+            //damage boost
+            float damageToCruiser = 0f;
+            float damageToCapital = 0f;
+            switch (ship.getHullSize()) {
+                case FRIGATE:
+                    damageToCruiser = UP_BONUS_DAMAGE_FRIGATE;
+                    damageToCapital = UP_BONUS_DAMAGE_FRIGATE;
+                    break;
+                case DESTROYER:
+                    damageToCruiser = UP_BONUS_DAMAGE_DESTROYER;
+                    damageToCapital = UP_BONUS_DAMAGE_DESTROYER;
+                    break;
+                case CRUISER:
+                    damageToCruiser = UP_BONUS_DAMAGE_CRUISER;
+                    damageToCapital = UP_BONUS_DAMAGE_CRUISER;
+                    break;
+                case CAPITAL_SHIP:
+                    damageToCruiser = UP_BONUS_DAMAGE_CAPITAL;
+                    damageToCapital = UP_BONUS_DAMAGE_CAPITAL;
+                    break;
+            }
+
+            stats.getBallisticRoFMult().modifyMult(id, UP_ROF_BONUS);
+            stats.getBallisticWeaponFluxCostMod().modifyMult(id, UP_WEAPON_FLUX_BONUS);
+            stats.getEnergyRoFMult().modifyMult(id, UP_ROF_BONUS);
+            stats.getEnergyWeaponFluxCostMod().modifyMult(id, UP_WEAPON_FLUX_BONUS);
+            stats.getEmpDamageTakenMult().modifyMult(id, UP_EMP_NEGATE_BONUS);
+
+            //fighter bonus
+            if(ship.getWing() != null) {
+                stats.getDynamic().getStat(Stats.REPLACEMENT_RATE_DECREASE_MULT).modifyMult(id, 1f - UP_FIGHTER_RATE_DECREASE_MODIFIER / 100f);
+                stats.getDynamic().getStat(Stats.REPLACEMENT_RATE_INCREASE_MULT).modifyPercent(id, UP_FIGHTER_RATE_INCREASE_MODIFIER);
+            }
+
+            //damage boost
+            stats.getDamageToCruisers().modifyMult(id, 1f+ damageToCruiser);
+            stats.getDamageToCapital().modifyMult(id, 1f + damageToCapital);
+            //refill missiles
+            for (WeaponAPI weapon : ship.getAllWeapons()) {
+                if(weapon.getDamage().isMissile()) {
+                    weapon.setAmmo(weapon.getMaxAmmo());
                 }
+            }
+//            stats.getCombatEngineRepairTimeMult().modifyMult(id, 2f);
+            if(ship.getCaptain().getPersonalityAPI().getId() != Personalities.RECKLESS) {
+                ship.getCaptain().setPersonality(Personalities.RECKLESS);
+            }
+            if(!ship.getVariant().hasHullMod("do_not_back_off")) {
+                ship.getVariant().addMod("do_not_back_off");
+            }
+
+            if (ship == Global.getCombatEngine().getPlayerShip()) {
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_shield_down", "", "Shield", "Disabled", true);
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp_emit", "graphics/icons/hullsys/emp_emitter", "Discharging EMP", "", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_rof", "graphics/icons/hullsys/ammo_feeder.png", "RoF bonus", "+" + String.valueOf(UP_ROF_BONUS * 100) + "%", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_weapon_flux", "", "Weapon flux reduction", String.valueOf(UP_WEAPON_FLUX_BONUS * 100) + "%", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp", "", "EMP damage taken reduction", String.valueOf(UP_EMP_NEGATE_BONUS * 100) + "%", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cruiser_dmg", "", "Cruiser damage bonus", "+" + String.valueOf(damageToCruiser * 100) + "%", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cap_dmg", "", "Capital damage bonus", "+" + String.valueOf(damageToCapital * 100) + "%", false);
+                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_rof", "graphics/icons/hullsys/ammo_feeder.png", "RoF bonus", "+" + String.valueOf(Math.round(UP_ROF_BONUS * 100)) + "%", false);
+                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_weapon_flux", "graphics/icons/hullsys/ammo_feeder.png", "Weapon flux reduction", String.valueOf(Math.round(UP_WEAPON_FLUX_BONUS * 100)) + "%", false);
+                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp", "graphics/icons/hullsys/ammo_feeder.png", "EMP damage taken reduction", String.valueOf(Math.round(UP_EMP_NEGATE_BONUS * 100)) + "%", false);
+                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cruiser_dmg", "graphics/icons/hullsys/ammo_feeder.png", "Cruiser damage bonus", "+" + String.valueOf(Math.round(damageToCruiser * 100)) + "%", false);
+                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cap_dmg", "graphics/icons/hullsys/ammo_feeder.png", "Capital damage bonus", "+" + String.valueOf(Math.round(damageToCapital * 100)) + "%", false);
                 if(ship.getWing() != null) {
-                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_increase", "", "Fighter losses rate", "+" + String.valueOf(100 - UP_FIGHTER_RATE_INCREASE_MODIFIER) + "%", false);
-                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_decrease", "", "Fighter recover rate", "+" + String.valueOf(UP_FIGHTER_RATE_INCREASE_MODIFIER) + "%", false);
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_increase", "", "Fighter losses rate", "+" + String.valueOf(Math.round(100 - UP_FIGHTER_RATE_INCREASE_MODIFIER)) + "%", false);
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_decrease", "", "Fighter recover rate", "+" + String.valueOf(Math.round(UP_FIGHTER_RATE_INCREASE_MODIFIER)) + "%", false);
                 }
+            }
 
-                //Ship FX + EMP when go out of stand still
-                spawnEMPStartUP.advance(amount);
-                float spawnEMPCountPerTime = 2;
-                for(int i = 0; i < spawnEMPCountPerTime; i++) {
-                    if(spawnEMPStartUP.intervalElapsed()) {
-                        SimpleEntity fromEntity = new SimpleEntity(MathUtils.getRandomPointInCircle(
-                                ship.getLocation(),
-                                ship.getCollisionRadius()
-                        ));
-                        SimpleEntity toEntity = new SimpleEntity(MathUtils.getRandomPointInCircle(
-                                ship.getLocation(),
-                                ship.getCollisionRadius()
-                        ));
-                        List<CombatEntityAPI> targetNearby = CombatUtils.getEntitiesWithinRange(ship.getLocation(), EMP_RANGE);
-                        HashSet<CombatEntityAPI> listTargets = new HashSet<>();
-                        for (CombatEntityAPI entity: targetNearby) {
-                            if(entity instanceof MissileAPI || entity instanceof FighterWingAPI) {
-                                //projectile is on player team => damage enemy
-                                //projectile is from enemy => damage player + allies ships
-                                if(ship.getOwner() != entity.getOwner()) {
-                                    listTargets.add(entity);
-                                }
+            //Ship FX + EMP when go out of stand still
+            spawnEMPStartUP.advance(amount);
+            float spawnEMPCountPerTime = 2;
+            //spawn EMP that hit missiles
+            for(int i = 0; i < spawnEMPCountPerTime; i++) {
+                if(spawnEMPStartUP.intervalElapsed()) {
+                    SimpleEntity fromEntity = new SimpleEntity(MathUtils.getRandomPointInCircle(
+                            ship.getLocation(),
+                            ship.getCollisionRadius()
+                    ));
+                    SimpleEntity toEntity = new SimpleEntity(MathUtils.getRandomPointInCircle(
+                            ship.getLocation(),
+                            ship.getCollisionRadius()
+                    ));
+                    List<CombatEntityAPI> targetNearby = CombatUtils.getEntitiesWithinRange(ship.getLocation(), EMP_RANGE);
+                    HashSet<CombatEntityAPI> listTargets = new HashSet<>();
+                    for (CombatEntityAPI entity: targetNearby) {
+                        if(entity instanceof MissileAPI || entity instanceof FighterWingAPI) {
+                            //projectile is on player team => damage enemy
+                            //projectile is from enemy => damage player + allies ships
+                            if(ship.getOwner() != entity.getOwner()) {
+                                listTargets.add(entity);
                             }
-                        }
-                        if(!listTargets.isEmpty()) {
-                            for (CombatEntityAPI entity: new ArrayList<>(listTargets)) {
-                                engine.spawnEmpArc(
-                                        ship,
-                                        fromEntity.getLocation(),
-                                        fromEntity,
-                                        entity,
-                                        DamageType.ENERGY,
-                                        EMP_DAMAGE,
-                                        0,
-                                        10000,
-                                        null,
-                                        MathUtils.getRandomNumberInRange(5f,10f),
-                                        EMP_COLOR,
-                                        new Color(255, 255,255, 255)
-                                );
-                                if(entity.isExpired() || entity.getHitpoints() < 0) {
-                                    listTargets.remove(entity);
-                                }
-                            }
-                        } else {
-                            Global.getCombatEngine().spawnEmpArcVisual(fromEntity.getLocation(),
-                                    fromEntity,
-                                    toEntity.getLocation(),
-                                    toEntity,
-                                    2,
-                                    new Color(255, 102, 0, 100),
-                                    new Color(255, 101, 21, 255)
-                            );
                         }
                     }
-                }
-
-                ////////////////////
-                //FX EMP + flares
-                ////////////////////
-                spawnFlaresInterval.advance(amount);
-                if(spawnFlaresInterval.intervalElapsed()) {
-                    Vector2f spawnLocation = MathUtils.getRandomPointInCircle(
-                            ship.getLocation(),
-                            ship.getCollisionRadius() * 1.2f
-                    );
-                    SimpleEntity simpleE = new SimpleEntity(spawnLocation);
-                    MagicLensFlare.createSharpFlare(
-                            Global.getCombatEngine(),
-                            ship,
-                            spawnLocation,
-                            incenseLevel/incenseCap * 4,
-                            300,
-                            0,
-                            ps_misc.PROJECT_SOLACE_LIGHT,
-                            new Color(200,200,255)
-                    );
-                    Global.getCombatEngine().addSwirlyNebulaParticle(
-                            spawnLocation,
-                            new Vector2f(0, 0),
-                            incenseLevel/incenseCap * 70f,
-                            1f,0.1f,0.2f,
-                            0.9f,
-                            ps_misc.PROJECT_SOLACE,
-                            true
-                    );
-                    spawnEMPInterval.advance(amount);
-                    if(spawnEMPInterval.intervalElapsed()) {
-                        float angle = (float) (Math.random() * 360);
-                        Vector2f endArcPoint = MathUtils.getPointOnCircumference(spawnLocation, 50f, angle);
-
-                        engine.spawnEmpArcVisual(
-                                spawnLocation,
-                                ship,
-                                endArcPoint,
-                                new SimpleEntity(endArcPoint),
-                                MathUtils.getRandomNumberInRange(5f,10f),
-                                EMP_COLOR,
-                                new Color(255, 255,255, 255)
+                    if(!listTargets.isEmpty()) {
+                        for (CombatEntityAPI entity: new ArrayList<>(listTargets)) {
+                            engine.spawnEmpArc(
+                                    ship,
+                                    fromEntity.getLocation(),
+                                    fromEntity,
+                                    entity,
+                                    DamageType.ENERGY,
+                                    EMP_DAMAGE,
+                                    0,
+                                    10000,
+                                    null,
+                                    MathUtils.getRandomNumberInRange(5f,10f),
+                                    EMP_COLOR,
+                                    new Color(255, 255,255, 255)
+                            );
+                            if(entity.isExpired() || entity.getHitpoints() < 0) {
+                                listTargets.remove(entity);
+                            }
+                        }
+                    } else {
+                        Global.getCombatEngine().spawnEmpArcVisual(fromEntity.getLocation(),
+                                fromEntity,
+                                toEntity.getLocation(),
+                                toEntity,
+                                2,
+                                new Color(255, 102, 0, 100),
+                                new Color(255, 101, 21, 255)
                         );
                     }
                 }
+            }
 
-                if(!up_activate_bonus) {
-                    stats.getBallisticRoFMult().modifyMult(id, UP_ROF_BONUS);
-                    stats.getBallisticWeaponFluxCostMod().modifyMult(id, UP_WEAPON_FLUX_BONUS);
-                    stats.getEnergyRoFMult().modifyMult(id, UP_ROF_BONUS);
-                    stats.getEnergyWeaponFluxCostMod().modifyMult(id, UP_WEAPON_FLUX_BONUS);
-                    stats.getEmpDamageTakenMult().modifyMult(id, UP_EMP_NEGATE_BONUS);
+            ////////////////////
+            //FX EMP + flares
+            ////////////////////
+            spawnFlaresInterval.advance(amount);
+            if(spawnFlaresInterval.intervalElapsed()) {
+                Vector2f spawnLocation = MathUtils.getRandomPointInCircle(
+                        ship.getLocation(),
+                        ship.getCollisionRadius() * 1.2f
+                );
+                SimpleEntity simpleE = new SimpleEntity(spawnLocation);
+                MagicLensFlare.createSharpFlare(
+                        Global.getCombatEngine(),
+                        ship,
+                        spawnLocation,
+                        incenseLevel/incenseCap * 4,
+                        300,
+                        0,
+                        ps_misc.PROJECT_SOLACE_LIGHT,
+                        new Color(200,200,255)
+                );
+                Global.getCombatEngine().addSwirlyNebulaParticle(
+                        spawnLocation,
+                        new Vector2f(0, 0),
+                        incenseLevel/incenseCap * 70f,
+                        1f,0.1f,0.2f,
+                        0.9f,
+                        ps_misc.PROJECT_SOLACE,
+                        true
+                );
+                spawnEMPInterval.advance(amount);
+                if(spawnEMPInterval.intervalElapsed()) {
+                    float angle = (float) (Math.random() * 360);
+                    Vector2f endArcPoint = MathUtils.getPointOnCircumference(spawnLocation, 50f, angle);
 
-                    //fighter bonus
-                    if(ship.getWing() != null) {
-                        stats.getDynamic().getStat(Stats.REPLACEMENT_RATE_DECREASE_MULT).modifyMult(id, 1f - UP_FIGHTER_RATE_DECREASE_MODIFIER / 100f);
-                        stats.getDynamic().getStat(Stats.REPLACEMENT_RATE_INCREASE_MULT).modifyPercent(id, UP_FIGHTER_RATE_INCREASE_MODIFIER);
-                    }
-
-                    //damage boost
-                    stats.getDamageToCruisers().modifyMult(id, 1f+ damageToCruiser);
-                    stats.getDamageToCapital().modifyMult(id, 1f + damageToCapital);
-                    //refill missiles
-                    for (WeaponAPI weapon : ship.getAllWeapons()) {
-                        if(weapon.getDamage().isMissile()) {
-                            weapon.setAmmo(weapon.getMaxAmmo());
-                        }
-                    }
-                    stats.getCombatEngineRepairTimeMult().modifyMult(id, 1f);
-                    ship.getCaptain().setPersonality(Personalities.RECKLESS);
-                    ship.getVariant().addMod("do_not_back_off");
-                    up_activate_bonus = true;
+                    engine.spawnEmpArcVisual(
+                            spawnLocation,
+                            ship,
+                            endArcPoint,
+                            new SimpleEntity(endArcPoint),
+                            MathUtils.getRandomNumberInRange(5f,10f),
+                            EMP_COLOR,
+                            new Color(255, 255,255, 255)
+                    );
                 }
             }
         }
-        customCombatData.put("up_activate_bonus" + id, up_activate_bonus);
-        customCombatData.put("up_standstill_activated" + id, up_standstill_activated);
-        customCombatData.put("up_standstill_bonus_removed" + id, up_standstill_bonus_removed);
         customCombatData.put("ps_spawnjitter_timer" + id, ps_spawnjitter_timer);
-//        customCombatData.put("up_standstill_popup" + id, up_standstill_popup);
+        customCombatData.put(UP_STATE_MANIPULATOR_ID + id, upStateManipulator);
     }
-
     private float getIncenseCap(ShipAPI ship) {
         if(ship != null) {
             float incenseCap =
@@ -495,6 +442,41 @@ public class ps_incensemanufactured extends BaseHullMod {
             return regen;
         }
         return 0f;
+    }
+    //todo: move this to ps_misc
+    private void ps_repairArmor(float amount, ShipAPI ship) {
+        ArmorGridAPI grid = ship.getArmorGrid();
+        float armorToRepair = 0f;
+        switch (ship.getHullSize()) {
+            case FRIGATE:
+                armorToRepair = UP_ARMOR_REPAIR_FRIGATE;
+                break;
+            case DESTROYER:
+                armorToRepair = UP_ARMOR_REPAIR_DESTROYER;
+                break;
+            case CRUISER:
+                armorToRepair = UP_ARMOR_REPAIR_CRUISER;
+                break;
+            case CAPITAL_SHIP:
+                armorToRepair = UP_ARMOR_REPAIR_CAPITAL;
+                break;
+        }
+        int gridHeight = grid.getGrid()[0].length;
+        int gridWidth = grid.getGrid().length;
+
+        for (int x = 0; x < gridWidth; x++) {
+            for (int y = 0; y < gridHeight; y++) {
+                float armorhp = grid.getArmorValue(x,y);
+                float maxHPRepair = grid.getMaxArmorInCell() * armorToRepair;
+
+                //float toadd = 5; // amount you want to add per-cell
+                if(armorhp < maxHPRepair) {
+                    grid.setArmorValue(x,y, armorhp + (maxHPRepair * amount));
+                }
+                //grid.setArmorValue(x,y, Math.min(maxHPRepair, armorhp + toadd));
+                //grid.setArmorValue(x,y, maxHP * UP_ARMOR_REPAIR);
+            }
+        }
     }
     @Override
     public boolean shouldAddDescriptionToTooltip(ShipAPI.HullSize hullSize, ShipAPI ship, boolean isForModSpec) {
@@ -557,7 +539,7 @@ public class ps_incensemanufactured extends BaseHullMod {
         //Unsolidified Procedure
         tooltip.addSectionHeading("Special", Alignment.MID, opad);
 
-        label = tooltip.addPara("If the ship hull fall below %s, activate %s - \"let the killing begins\"", opad, h,
+        label = tooltip.addPara("If the ship hull fall below %s, activate %s - \"let the killing begins\" (Once activated, the effect is permanent regardless of your hull percentage)", opad, h,
                 "" + Math.round(UP_HITPOINTS_START * 100) + "%", "Unsolidified Procedure (UP)");
         label.setHighlight("" + Math.round(UP_HITPOINTS_START * 100) + "%", "Unsolidified Procedure (UP)");
         label.setHighlightColors(bad, ps_misc.PROJECT_SOLACE_LIGHT);
@@ -626,6 +608,40 @@ public class ps_incensemanufactured extends BaseHullMod {
             MathUtils.clamp(incenseLevel, 0, incenseCap);
             customCombatData.put("ps_incenselevel" + id, incenseLevel);
             return null;
+        }
+    }
+
+    enum ps_UPState {
+        UP_NORMAL,
+        UP_STANDTILL,
+        UP_BERSERK
+    }
+    public class ps_upStateManipulator {
+        private ps_UPState currentState = ps_UPState.UP_NORMAL;
+        private boolean soundActivated = false;
+        private float standStillTimer = 0;
+        public void changeToStandStill(boolean debug) {
+            if(debug) log.warn("======= CHANGING TO STAND STILL ========");
+            currentState = ps_UPState.UP_STANDTILL;
+        }
+        public void changeToBerserk(boolean debug) {
+            if(debug) log.warn("======= CHANGING TO BERSERK ========");
+            currentState = ps_UPState.UP_BERSERK;
+        }
+        public ps_UPState getCurrentState() {
+            return currentState;
+        }
+        public void updateStandStillTimer(float amount) {
+            standStillTimer += amount;
+        }
+        public float getStandStillTimer() {
+            return standStillTimer;
+        }
+        public boolean isSoundActivated() {
+            return soundActivated;
+        }
+        public void setSoundActivatedTrue() {
+            soundActivated = true;
         }
     }
 }
