@@ -1,7 +1,6 @@
 {
-    "playableFaction":true,
+    "playableFaction":false,
     "corvusCompatible":true,
-	"ngcTooltip":"Peace be with you when Project Solace on your side",
     "rebelFleetSuffix":"Rebels",
     
 	"asteroidMiningFleetName":"Mining Fleet",
@@ -13,25 +12,25 @@
 	"suppressionFleetName":"Pacifier Group",
 
 	"noSyncRelations":false,
-	"noStartingContact":false,
+	"noStartingContact":true,
     "marketSpawnWeight":1,
 	"invasionFleetSizeMod":0.1,
-	"responseFleetSizeMod":0.2,
+	"responseFleetSizeMod":0.3,
 	"invasionPointMult":1,
 	"vengeanceFleetSizeMult":1.5, #no bullying
-	"factionIdForHqResponse":"projectsolace",
+	"factionIdForHqResponse":"enmity",
 	"freeMarket":true,
-	"specialForcesMaxFleets":4,
-	"specialForcesPointMult":1.5,
-	"specialForcesSizeMult":2,
+	"specialForcesMaxFleets":6,
+	"specialForcesPointMult":1.3,
+	"specialForcesSizeMult":1.2,
 	"stabilizeCommodities":["supplies"],
-    "invasionOnlyRetake": true,                      #Get back what belong to us
+    "invasionOnlyRetake": false,
 
-    "vengeanceLevelNames":["Assassination", "Carnage", "Extermination"],
-    "vengeanceFleetNames":["Zealots", "Slayers", "Crusade"],
-    "vengeanceFleetNamesSingle":["Zealots", "Slayer", "a Crusade Fleet"],
+    "vengeanceLevelNames":["Strike", "Neutralize", "Removal"],
+    "vengeanceFleetNames":["Huntsman", "Slayers", "Executioner"],
+    "vengeanceFleetNamesSingle":["a Huntsman", "a Slayer", "an Execution Fleet"],
 	
-	"morality":"good",
+	"morality":"neutral",
 	
     "startRelationships":{ 
 	    # Vanilla Factions		 
@@ -67,11 +66,11 @@
         "technocratic":1,
         "hierarchial":0,
         "militarist":1.0,
-        "diplomatic":1.0,
-        "ideological":0.25,
+        "diplomatic":0.8,
+        "ideological":0.5,
     },
 	
-	"diplomacyTraits":["stalwart", "lowprofile", "helps_allies", "temperamental"],
+	"diplomacyTraits":["stalwart", "lowprofile", "helps_allies", "devious", "likes-ai"],
 	
     "groundBattleSettings":{
 		"attackMult":0.5,
@@ -83,19 +82,11 @@
     "colonyExpeditionChance":0.4,	# baseline expansion behaviour
     "colonyTargetValuator":"exerelin.campaign.colony.IndustrialColonyTargetValuator",
 
-    "startShipsSolo":[
-		["ps_tanimbar_attack"],
-	],
+    #"startShipsSolo":[],
 
-    "startShipsCombatSmall":[
-        ["ps_salawesi_attack", "ps_taliabu_attack", "ps_ashy_attack"],
-        ["ps_salawesi_attack", "ps_taliabu_defend", "ps_morepork_attack"],
-    ],
+    #"startShipsCombatSmall":[],
 
-	"startShipsCombatLarge":[
-        ["ps_javanica_attack", "ps_morepork_attack", "ps_ashy_defend", "ps_tanimbar_attack"],
-        ["ps_rufous_attack", "ps_ashy_defend", "ps_taliabu_attack", "ps_salawesi_attack"],
-    ],
+	#"startShipsCombatLarge":[],
 	
     #"startShipsCarrierSmall":[],
 
@@ -109,22 +100,25 @@
 
     #"startShipsGrandFleet":[],
 	
-    "startSpecialItems":[[["ps_hulls_t1_bp", ""]],[["ps_weapons_t1_bp", ""]]],
+    #"startSpecialItems":[[],[]],
     
     "defenceStations":[
-        {"ids":["orbitalstation_mid", "battlestation_mid", "starfortress_mid"]},
+        {"ids":["orbitalstation_high", "battlestation_high", "starfortress_high"]},
     ],
     
     "industrySeeds":[
 		{"id":"militarybase", "mult":1.5},
-        {"id":"orbitalworks", "mult":1},
-        {"id":"farming", "mult":1},
-        {"id":"fuelprod", "mult":0.1},
+        {"id":"orbitalworks", "mult":1.5},
+        {"id":"fuelprod", "mult":0.3},
         {"id":"lightindustry", "mult":0.1},
     ],
     
     "bonusSeeds":[
         {"id":"population_upsize", "count":1},
         {"id":"nanoforge_corrupted", "count":1},
+        {"id":"aiCore_station", "count":2, "mult":0.2},
+        {"id":"aiCore_military", "mult":1.4},
+        {"id":"aiCore_heavyindustry", "count":1},
+        {"id":"aiCore_any", "mult":1.5},
     ],
 }

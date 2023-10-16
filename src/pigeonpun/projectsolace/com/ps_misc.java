@@ -81,10 +81,10 @@ public class ps_misc {
     }
     public static final List<String> ENMITY_FIGHTER_LINEUP = new ArrayList<>();
     static {
-        ENMITY_FIGHTER_LINEUP.add("ps_riveti");
-        ENMITY_FIGHTER_LINEUP.add("ps_dumerili");
-        ENMITY_FIGHTER_LINEUP.add("ps_vudii");
-        ENMITY_FIGHTER_LINEUP.add("ps_viridis");
-        ENMITY_FIGHTER_LINEUP.add("ps_tigris");
+        ENMITY_FIGHTER_LINEUP.add("ps_riveti_wing");
+        ENMITY_FIGHTER_LINEUP.add("ps_dumerili_wing");
+        ENMITY_FIGHTER_LINEUP.add("ps_vudii_wing");
+        ENMITY_FIGHTER_LINEUP.add("ps_viridis_wing");
+        ENMITY_FIGHTER_LINEUP.add("ps_tigris_wing");
     }
 }

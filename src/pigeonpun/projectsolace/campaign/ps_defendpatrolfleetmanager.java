@@ -45,6 +45,7 @@ import static pigeonpun.projectsolace.scripts.projectsolaceplugin.*;
  * The relevant code paths start in {@code advance()}, so look there.
  */
 public class ps_defendpatrolfleetmanager extends BaseCampaignEventListener implements EveryFrameScript {
+    public static final String PS_DEFENDPATROLFLEETMANAGER_ACTIVED_IN_SAVE = "$ps_defendpatrolfleetmanager_actived_in_save";
     public static final String MANAGER_MAP_KEY = "ps_defendpatrolfleetmanager";
     public static final String MEMORY_KEY_POINTS_LAST_TICK = "$ps_defendPatrolPointsLastTick";
     public static final float DEFENCE_ESTIMATION_MULT = 0.75f;
@@ -447,10 +448,13 @@ public class ps_defendpatrolfleetmanager extends BaseCampaignEventListener imple
     public static ps_defendpatrolfleetmanager create()
     {
         ps_defendpatrolfleetmanager manager = getManager();
+        log.info("Registered Solace Defend/Patrol manager");
         if (manager != null)
             return manager;
 
         Map<String, Object> data = Global.getSector().getPersistentData();
+        //save compatibility
+        Global.getSector().getMemoryWithoutUpdate().set(PS_DEFENDPATROLFLEETMANAGER_ACTIVED_IN_SAVE, true);
         manager = new ps_defendpatrolfleetmanager();
         data.put(MANAGER_MAP_KEY, manager);
         return manager;

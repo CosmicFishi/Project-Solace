@@ -89,22 +89,30 @@ public class projectsolaceplugin extends BaseModPlugin {
     @Override
     public void onNewGame() {
         super.onNewGame();
-        new ps_gen().generate(Global.getSector());
-        // The code below requires that Nexerelin is added as a library (not a dependency, it's only needed to compile the mod).
         if (!nexerelinEnabled || SectorManager.getManager().isCorvusMode()) {
-                    addScripts();
+            new ps_gen().generate(Global.getSector());
 //             Add code that creates a new star system (will only run if Nexerelin's Random (corvus) mode is disabled).
+        }
+        if(nexerelinEnabled) {
+            addScripts();
         }
     }
 
     @Override
     public void onGameLoad(boolean newGame) {
         boolean hasProjectSolace = SharedData.getData().getPersonBountyEventData().getParticipatingFactions().contains("projectsolace");
+        SectorAPI sector = Global.getSector();
         if (!hasProjectSolace) {
             new ps_gen().generate(Global.getSector());
             new ps_vagrantseergen().generate(Global.getSector());
             if (ps_vagrantseerGenerateSalvage && Global.getSector().getMemoryWithoutUpdate().contains(ps_vagrantseerSalvage_Generated))
                 new ps_salvagesplacer().generate(Global.getSector());
+            if(!Global.getSector().getMemoryWithoutUpdate().contains(ps_sodalityfleetadjustment.PS_SODALITYFLEETADJUSTMENT_ACTIVED_IN_SAVE)) {
+                sector.getListenerManager().addListener(new ps_sodalityfleetadjustment());
+            }
+            if(!Global.getSector().getMemoryWithoutUpdate().contains(ps_defendpatrolfleetmanager.PS_DEFENDPATROLFLEETMANAGER_ACTIVED_IN_SAVE)) {
+                sector.addScript(ps_defendpatrolfleetmanager.create());
+            }
         }
         Global.getSector().addTransientListener(new allianceListener());
     }
