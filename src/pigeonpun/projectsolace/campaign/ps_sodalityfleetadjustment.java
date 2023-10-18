@@ -20,6 +20,7 @@ import java.util.List;
 public class ps_sodalityfleetadjustment implements InvasionListener, ColonyDecivListener {
     public static final String PS_SODALITYFLEETADJUSTMENT_ACTIVED_IN_SAVE = "$ps_sodalityfleetadjustment_active_in_save";
     public static Logger log = Global.getLogger(ps_sodalityfleetadjustment.class);
+    public static float LEARNED_HULL_FREQUENCY = 0.2f;
     public ps_sodalityfleetadjustment() {
         //save compatibility
         log.info("Registered Solace fleet adjustment listener");
@@ -30,45 +31,57 @@ public class ps_sodalityfleetadjustment implements InvasionListener, ColonyDeciv
         //check if setting is enabled
         if(!projectsolaceplugin.ps_sodalityFleetAdjustmentActive) return;
         //check if sodality already active
-        if(Global.getSector().getMemoryWithoutUpdate().contains(projectsolaceplugin.ps_sodalityFleetAdjusted)) return;
+        if(Global.getSector().getMemoryWithoutUpdate().contains(projectsolaceplugin.ps_sodalityFleetAdjusted)) {
+            if((Global.getSector().getMemoryWithoutUpdate().get(projectsolaceplugin.ps_sodalityFleetAdjusted)) == true) {
+                log.info("Sodality adjusted");
+                return;
+            }
+        }
         //check if one of the faction is still alive
         if((ps_util.checkFactionAlive(projectsolaceplugin.enmity_ID) && !ps_util.checkFactionAlive(projectsolaceplugin.solace_ID)) || (ps_util.checkFactionAlive(projectsolaceplugin.solace_ID) && !ps_util.checkFactionAlive(projectsolaceplugin.enmity_ID))) {
-            log.info("Changing Solace+Enmity fleet composition");
-            FactionAPI enmity = Global.getSector().getFaction(projectsolaceplugin.enmity_ID);
-            FactionAPI solace = Global.getSector().getFaction(projectsolaceplugin.solace_ID);
-            //Intel informing
-            ps_sodalityfleetadjustmentintel sodalityIntel = new ps_sodalityfleetadjustmentintel();
-            Global.getSector().getIntelManager().addIntel(sodalityIntel);
-            Global.getSector().addScript(sodalityIntel);
-            //add toys to Enmity
-            for(String id :ps_misc.SOLACE_SHIPS_LINEUP) {
-                enmity.getKnownShips().add(id);
-            }
-            for(String id :ps_misc.SOLACE_WEAPONS_LINEUP) {
-                enmity.getKnownWeapons().add(id);
-            }
-            if(projectsolaceplugin.ps_hardmodeSodalityActive) {
-                for(String id :ps_misc.ENMITY_SPECIAL_WEAPONS_LIST) {
-                    enmity.getKnownWeapons().add(id);
-                }
-            }
-            //Solace turn to get more juice
-            for(String id :ps_misc.ENMITY_SHIPS_LINEUP) {
-                solace.getKnownShips().add(id);
-            }
-            for(String id :ps_misc.ENMITY_WEAPONS_LINEUP) {
-                solace.getKnownWeapons().add(id);
-            }
-            for(String id :ps_misc.ENMITY_FIGHTER_LINEUP) {
-                solace.getKnownFighters().add(id);
-            }
-            if(projectsolaceplugin.ps_hardmodeSodalityActive) {
-                for(String id :ps_misc.ENMITY_SPECIAL_WEAPONS_LIST) {
-                    solace.getKnownWeapons().add(id);
-                }
-            }
-            Global.getSector().getMemoryWithoutUpdate().set(projectsolaceplugin.ps_sodalityFleetAdjusted, true);
+            activateEffects();
         }
+    }
+    protected void activateEffects() {
+        log.info("Changing Solace+Enmity fleet composition");
+        FactionAPI enmity = Global.getSector().getFaction(projectsolaceplugin.enmity_ID);
+        FactionAPI solace = Global.getSector().getFaction(projectsolaceplugin.solace_ID);
+        //Intel informing
+        ps_sodalityfleetadjustmentintel sodalityIntel = new ps_sodalityfleetadjustmentintel();
+        Global.getSector().getIntelManager().addIntel(sodalityIntel);
+        Global.getSector().addScript(sodalityIntel);
+        //add toys to Enmity
+        for(String id :ps_misc.SOLACE_SHIPS_LINEUP) {
+            enmity.addKnownShip(id, false);
+            enmity.addUseWhenImportingShip(id);
+            enmity.getHullFrequency().put(id, LEARNED_HULL_FREQUENCY);
+        }
+        for(String id :ps_misc.SOLACE_WEAPONS_LINEUP) {
+            enmity.addKnownWeapon(id, false);
+        }
+        if(projectsolaceplugin.ps_hardmodeSodalityActive) {
+            for(String id :ps_misc.ENMITY_SPECIAL_WEAPONS_LIST) {
+                enmity.addKnownWeapon(id, false);
+            }
+        }
+        //Solace turn to get more juice
+        for(String id :ps_misc.ENMITY_SHIPS_LINEUP) {
+            solace.addKnownShip(id, false);
+            enmity.addUseWhenImportingShip(id);
+            enmity.getHullFrequency().put(id, LEARNED_HULL_FREQUENCY);
+        }
+        for(String id :ps_misc.ENMITY_WEAPONS_LINEUP) {
+            solace.addKnownWeapon(id, false);
+        }
+        for(String id :ps_misc.ENMITY_FIGHTER_LINEUP) {
+            solace.addKnownFighter(id, false);
+        }
+        if(projectsolaceplugin.ps_hardmodeSodalityActive) {
+            for(String id :ps_misc.ENMITY_SPECIAL_WEAPONS_LIST) {
+                solace.addKnownWeapon(id, false);
+            }
+        }
+        Global.getSector().getMemoryWithoutUpdate().set(projectsolaceplugin.ps_sodalityFleetAdjusted, true);
     }
     @Override
     public void reportInvadeLoot(InteractionDialogAPI dialog, MarketAPI market, Nex_MarketCMD.TempDataInvasion actionData, CargoAPI cargo) {

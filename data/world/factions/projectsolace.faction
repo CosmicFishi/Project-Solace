@@ -66,7 +66,7 @@
 
     # listing ships here will make the faction mostly use them even if other hulls become available
     "priorityShips":{
-        "tags":["ps_ship_bp"],
+        "tags":[],
         "hulls":[
         ],
     },
