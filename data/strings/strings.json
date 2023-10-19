@@ -1,5 +1,23 @@
 {
   "ps_projectsolace": {
-    "ps_enmitysolacealliance": "Sodality Federation"
+    "ps_enmitysolacealliance": "Sodality Federation",
+  },
+  "ps_lunasettings": {
+    "header_defend": "Solace's Defend Intel",
+    "header_others": "Others",
+    "name_ps_solaceDefend": "Solace Defend Intel",
+    "tooltip_ps_solaceDefend": "Enable Solace to send out defend intel to friendly factions.",
+    "name_ps_solaceDefendTimeoutPeriod": "Defend Intel Timeout",
+    "tooltip_ps_solaceDefendTimeoutPeriod": "Day from the game till Solace can send out a new defensive intel to the same faction.",
+    "name_ps_defendPointEconomyMult": "Defend Intel Economy Point",
+    "tooltip_ps_defendPointEconomyMult": "Multiplier for defend point gains from economic assets.",
+    "name_ps_pointsRequiredForDefendFleet": "Defend Intel Point Require",
+    "tooltip_ps_pointsRequiredForDefendFleet": "Increase to make defend intel less frequent or decrease to make them more frequent.",
+    "name_ps_vagrantseerGenerateSalvage": "Vagrant Seer",
+    "tooltip_ps_vagrantseerGenerateSalvage": "Generate Vagrant Seer encounters and salvages",
+    "name_ps_sodalityFleetAdjustmentActive": "Solace and Enmity Adjustment",
+    "tooltip_ps_sodalityFleetAdjustmentActive": "Enable Solace and Enmity to knows each other hulls, fighters and weapons upon one of the two faction elimination.",
+    "name_ps_hardmodeSodalityActive": "Sodality Hard Mode",
+    "tooltip_ps_hardmodeSodalityActive": "Enable Solace and Enmity to knows Boundless weapons upon one of the two faction elimination. (only have effect if Solace and Enmity Adjustment is active)"
   }
 }

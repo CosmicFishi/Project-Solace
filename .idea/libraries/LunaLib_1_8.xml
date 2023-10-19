@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="LunaLib-1.8">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../LunaLib-1.8.2/jars/LunaLib.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

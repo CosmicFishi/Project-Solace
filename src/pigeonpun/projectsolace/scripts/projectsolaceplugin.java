@@ -9,6 +9,7 @@ import com.fs.starfarer.campaign.Faction;
 import exerelin.campaign.SectorManager;
 import pigeonpun.projectsolace.campaign.ps_defendpatrolfleetmanager;
 import pigeonpun.projectsolace.campaign.ps_sodalityfleetadjustment;
+import pigeonpun.projectsolace.com.lunaconfighelper;
 import pigeonpun.projectsolace.world.ps_gen;
 import pigeonpun.projectsolace.world.ps_salvagesplacer;
 import pigeonpun.projectsolace.world.ps_vagrantseergen;
@@ -49,11 +50,14 @@ public class projectsolaceplugin extends BaseModPlugin {
     public static boolean ps_sodalityFleetAdjustmentActive = true;
     public static final String ps_sodalityFleetAdjusted = "$ps_sodalityFleetAdjusted";
     public static boolean ps_hardmodeSodalityActive = false;
+    public static boolean ps_lunalibEnabled = false;
     @Override
     public void onApplicationLoad() throws Exception {
         super.onApplicationLoad();
 
         isExerelin = Global.getSettings().getModManager().isModEnabled("nexerelin");
+        ps_lunalibEnabled = Global.getSettings().getModManager().isModEnabled("lunalib");
+
         ps_solaceDefendTimeoutPeriod = Global.getSettings().getFloat("ps_solaceDefendTimeoutPeriod");
         ps_defendPointEconomyMult = Global.getSettings().getFloat("ps_defendPointEconomyMult");
         ps_pointsRequiredForDefendFleet = Global.getSettings().getFloat("ps_pointsRequiredForDefendFleet");
@@ -62,25 +66,29 @@ public class projectsolaceplugin extends BaseModPlugin {
         ps_sodalityFleetAdjustmentActive = Global.getSettings().getBoolean("ps_sodalityFleetAdjustmentActive");
         ps_hardmodeSodalityActive = Global.getSettings().getBoolean("ps_hardmodeSodalityActive");
 
-        hasUnderworld = Global.getSettings().getModManager().isModEnabled("underworld");
-        hasDynaSector = Global.getSettings().getModManager().isModEnabled("dynasector");
+        if(ps_lunalibEnabled) {
+            lunaconfighelper.initLunaConfig();
+        }
 
-        borkenExists = Global.getSettings().getModManager().isModEnabled("fob");
-        iceExists = Global.getSettings().getModManager().isModEnabled("nbj_ice");
-        imperiumExists = Global.getSettings().getModManager().isModEnabled("Imperium");
-        templarsExists = Global.getSettings().getModManager().isModEnabled("Templars");
-        blackrockExists = Global.getSettings().getModManager().isModEnabled("blackrock_driveyards");
-        exigencyExists = Global.getSettings().getModManager().isModEnabled("exigency");
-        shadowyardsExists = Global.getSettings().getModManager().isModEnabled("shadow_ships");
-        junkPiratesExists = Global.getSettings().getModManager().isModEnabled("junk_pirates_release");
-        scyExists = Global.getSettings().getModManager().isModEnabled("SCY");
-        tiandongExists = Global.getSettings().getModManager().isModEnabled("THI");
-        diableExists = Global.getSettings().getModManager().isModEnabled("diableavionics");
-        oraExists = Global.getSettings().getModManager().isModEnabled("ORA");
-        tyradorExists = Global.getSettings().getModManager().isModEnabled("TS_Coalition");
-        dmeExists = Global.getSettings().getModManager().isModEnabled("istl_dam");
-        scalarTechExists = Global.getSettings().getModManager().isModEnabled("tahlan_scalartech");
-        nexerelinEnabled = Global.getSettings().getModManager().isModEnabled("nexerelin");
+//        hasUnderworld = Global.getSettings().getModManager().isModEnabled("underworld");
+//        hasDynaSector = Global.getSettings().getModManager().isModEnabled("dynasector");
+//
+//        borkenExists = Global.getSettings().getModManager().isModEnabled("fob");
+//        iceExists = Global.getSettings().getModManager().isModEnabled("nbj_ice");
+//        imperiumExists = Global.getSettings().getModManager().isModEnabled("Imperium");
+//        templarsExists = Global.getSettings().getModManager().isModEnabled("Templars");
+//        blackrockExists = Global.getSettings().getModManager().isModEnabled("blackrock_driveyards");
+//        exigencyExists = Global.getSettings().getModManager().isModEnabled("exigency");
+//        shadowyardsExists = Global.getSettings().getModManager().isModEnabled("shadow_ships");
+//        junkPiratesExists = Global.getSettings().getModManager().isModEnabled("junk_pirates_release");
+//        scyExists = Global.getSettings().getModManager().isModEnabled("SCY");
+//        tiandongExists = Global.getSettings().getModManager().isModEnabled("THI");
+//        diableExists = Global.getSettings().getModManager().isModEnabled("diableavionics");
+//        oraExists = Global.getSettings().getModManager().isModEnabled("ORA");
+//        tyradorExists = Global.getSettings().getModManager().isModEnabled("TS_Coalition");
+//        dmeExists = Global.getSettings().getModManager().isModEnabled("istl_dam");
+//        scalarTechExists = Global.getSettings().getModManager().isModEnabled("tahlan_scalartech");
+//        nexerelinEnabled = Global.getSettings().getModManager().isModEnabled("nexerelin");
 
         // Test that the .jar is loaded and working, using the most obnoxious way possible.
         //throw new RuntimeException("Template mod loaded! Remove this crash in TemplateModPlugin.");
@@ -96,10 +104,16 @@ public class projectsolaceplugin extends BaseModPlugin {
         if(nexerelinEnabled) {
             addScripts();
         }
+        if(ps_lunalibEnabled) {
+            lunaconfighelper.tryLoadLunaConfig();
+        }
     }
 
     @Override
     public void onGameLoad(boolean newGame) {
+        if(ps_lunalibEnabled) {
+            lunaconfighelper.tryLoadLunaConfig();
+        }
         boolean hasProjectSolace = SharedData.getData().getPersonBountyEventData().getParticipatingFactions().contains("projectsolace");
         SectorAPI sector = Global.getSector();
         if (!hasProjectSolace) {
