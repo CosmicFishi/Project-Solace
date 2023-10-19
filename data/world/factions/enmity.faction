@@ -145,16 +145,16 @@
     },
 
     "factionDoctrine":{
-        "warships":3,
-        "carriers":4,
+        "warships":5,
+        "carriers":2,
         "phaseShips":1,
 
         "officerQuality":2,
         "shipQuality":1,
         "numShips":4,
 
-        "shipSize":4,
-        "aggression":2,
+        "shipSize":5,
+        "aggression":3,
 
         "combatFreighterProbability":0,     				# instead of some portion of the freighters in a fleet
         "combatFreighterCombatUseFraction":0,  				# as part of the normal combat lineup
