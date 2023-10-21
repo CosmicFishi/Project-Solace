@@ -76,6 +76,12 @@ public class ps_boundlessbarrier extends BaseHullMod {
         LabelAPI label = tooltip.addPara("With great power comes great responsibility. Discovery of these boundless entities have given scientists quite the bewilderment as the material it is made from is far more technology advanced than anything currently available in the Sector. Despite the limit of our understanding of such tech, scientists and engineers still managed to equip and operate said entities safely onto our current confined hull. But it comes with hefty prices.", opad, h, "");
 
         tooltip.addSectionHeading("Details", Alignment.MID, opad);
+
+        label = tooltip.addPara("+ Boundless weapons point per size: %s/%s/%s.", opad, h,
+                "" + Math.round(BOUNDLESS_SMALL_POINT), "" + Math.round(BOUNDLESS_MEDIUM_POINT), "" + Math.round(BOUNDLESS_LARGE_POINT));
+        label.setHighlight("" + Math.round(BOUNDLESS_SMALL_POINT), "" + Math.round(BOUNDLESS_MEDIUM_POINT), "" + Math.round(BOUNDLESS_LARGE_POINT));
+        label.setHighlightColors(h, h, h);
+
         label = tooltip.addPara("+ Boundless weapons max point: %s/%s/%s/%s.", opad, h,
                 "" + Math.round(BOUNDLESS_FRIGATE_SOFT_CAP), Math.round(BOUNDLESS_DESTROYER_SOFT_CAP) + "", Math.round(BOUNDLESS_CRUISER_SOFT_CAP) + "", Math.round(BOUNDLESS_CAPITAL_SOFT_CAP) + "");
         label.setHighlight("" + Math.round(BOUNDLESS_FRIGATE_SOFT_CAP), Math.round(BOUNDLESS_DESTROYER_SOFT_CAP) + "", Math.round(BOUNDLESS_CRUISER_SOFT_CAP) + "", Math.round(BOUNDLESS_CAPITAL_SOFT_CAP) + "");
