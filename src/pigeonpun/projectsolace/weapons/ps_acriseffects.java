@@ -24,7 +24,7 @@ public class ps_acriseffects implements BeamEffectPlugin, EveryFrameWeaponEffect
 
         CombatEntityAPI target = beam.getDamageTarget();
 
-        if (target instanceof ShipAPI && beam.getBrightness() >= 1f) {
+        if (target instanceof ShipAPI && !((ShipAPI) target).isStation() && beam.getBrightness() >= 1f) {
             ShipAPI ship = (ShipAPI) target;
             float dur = FLAMEOUT_DURATION;
             Vector2f point = beam.getRayEndPrevFrame();
@@ -32,8 +32,10 @@ public class ps_acriseffects implements BeamEffectPlugin, EveryFrameWeaponEffect
             float modifiedBeamRange = beam.getWeapon().getRange();
             float specBeamRange = beam.getWeapon().getSpec().getMaxRange();
             //check if hit armor or hull
-            if(CollisionUtils.isPointWithinBounds(point, ship)) {
-                dur = dur * (modifiedBeamRange / specBeamRange);
+            if(CollisionUtils.isPointWithinBounds(point, ship) && ship.getEngineController() != null) {
+                if(modifiedBeamRange > specBeamRange) {
+                    dur = dur * (modifiedBeamRange / specBeamRange);
+                }
                 engine.addLayeredRenderingPlugin(new acrisFlameOutPlugin(ship, dur));
             }
         }
@@ -74,7 +76,7 @@ public class ps_acriseffects implements BeamEffectPlugin, EveryFrameWeaponEffect
             if (!target.isAlive())
                 return;
             currentDuration += amount;
-            target.setJitter("ps_acrisFlameOut", new Color(207, 208, 30, 255), 1f, 4, 1f, 15);
+            target.setJitter("ps_acrisFlameOut", new Color(207, 208, 30, 155), 1f, 4, 1f, 15);
             if(currentDuration > flameOutDuration) {
                 target.getMutableStats().getCombatEngineRepairTimeMult().modifyMult(BUFF_ID, repairMult);
                 if(!target.getEngineController().isFlamedOut()) {
