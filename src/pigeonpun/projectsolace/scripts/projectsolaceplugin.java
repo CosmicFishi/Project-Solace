@@ -2,7 +2,11 @@ package pigeonpun.projectsolace.scripts;
 
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.PluginPick;
 import com.fs.starfarer.api.campaign.*;
+import com.fs.starfarer.api.combat.MissileAIPlugin;
+import com.fs.starfarer.api.combat.MissileAPI;
+import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.shared.SharedData;
 import com.fs.starfarer.campaign.Faction;
@@ -10,6 +14,8 @@ import exerelin.campaign.SectorManager;
 import pigeonpun.projectsolace.campaign.ps_defendpatrolfleetmanager;
 import pigeonpun.projectsolace.campaign.ps_sodalityfleetadjustment;
 import pigeonpun.projectsolace.com.lunaconfighelper;
+import pigeonpun.projectsolace.com.ps_misc;
+import pigeonpun.projectsolace.weapons.ai.ps_anaxyr_ai;
 import pigeonpun.projectsolace.world.ps_gen;
 import pigeonpun.projectsolace.world.ps_salvagesplacer;
 import pigeonpun.projectsolace.world.ps_vagrantseergen;
@@ -92,6 +98,16 @@ public class projectsolaceplugin extends BaseModPlugin {
 
         // Test that the .jar is loaded and working, using the most obnoxious way possible.
         //throw new RuntimeException("Template mod loaded! Remove this crash in TemplateModPlugin.");
+    }
+
+    @Override
+    public PluginPick<MissileAIPlugin> pickMissileAI(MissileAPI missile, ShipAPI launchingShip) {
+        switch (missile.getProjectileSpecId()) {
+            case ps_misc.ANAXYR_MSL_ID:
+                return new PluginPick<MissileAIPlugin>(new ps_anaxyr_ai(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            default:
+                return null;
+        }
     }
 
     @Override

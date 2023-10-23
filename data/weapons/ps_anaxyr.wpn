@@ -4,7 +4,7 @@
   "projectileSpecId": "ps_anaxyr_msl",
   "type": "MISSILE",
   "size": "LARGE",
-  "everyFrameEffect": "pigeonpun.projectsolace.weapons.ps_daemelieffects",
+  "everyFrameEffect": "pigeonpun.projectsolace.weapons.ps_anaxyreffects",
   "displayArcRadius": 500,
   "turretSprite": "graphics/weapons/ps_anaxyr_turret_base.png",
   "hardpointSprite": "graphics/weapons/ps_anaxyr_hardpoint_base.png",

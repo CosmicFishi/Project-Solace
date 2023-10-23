@@ -9,12 +9,13 @@
 	"collisionClass":"MISSILE_NO_FF",
 	"explosionColor":[100,100,255,255],  # purely visual, will get a white additively blended core on top of this color
 	"explosionRadius":150, # purely visual
+	"onFireEffect": "pigeonpun.projectsolace.weapons.ps_anaxyreffects",
 #	"engineSpec":{"turnAcc":140,
 #				  "turnRate":35,
 #				  "acc":1000,
 #				  "dec":500},
-	"engineSpec":{"turnAcc":210,
-				  "turnRate":70,
+	"engineSpec":{"turnAcc":1400,
+				  "turnRate":150,
 				  "acc":1000,
 				  "dec":500},
 	"engineSlots":[{"id":"ES1",
@@ -30,7 +31,9 @@
 						"contrailMaxSpeedMult":0.5f,
 						"contrailAngularVelocityMult":0.5f,
 						"contrailColor":[97,119,160,155],
-						"type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
+						"glowSizeMult":1.5,
+                        "glowAlternateColor":[0,61,175,255],
+                        "type":"GLOW" # GLOW or SMOKE; additive or regular blend modemode
 					},
 				    "width":7.0,
 				    "length":20.0,

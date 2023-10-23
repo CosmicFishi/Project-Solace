@@ -31,6 +31,7 @@ public class ps_misc {
         PROJECT_SOLACE_NEBULA_COLORs.add(PROJECT_SOLACE_NEBULA_COLOR_3);
     }
     public static final String SOLACE_CORE_DECORATIVE_MOUNT_ID = "ps_core_crystal";
+    public static final String ANAXYR_MSL_ID = "ps_anaxyr_msl";
     public static final List<String> ENMITY_SPECIAL_WEAPONS_LIST = new ArrayList<>();
     static {
         ENMITY_SPECIAL_WEAPONS_LIST.add("ps_acris");
