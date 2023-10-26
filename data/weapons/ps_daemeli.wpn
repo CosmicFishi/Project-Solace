@@ -51,5 +51,5 @@
     ],
   },
   "fireSoundTwo": "ps_daemeli_fire",
-  #"everyFrameEffect":"pigeonpun.projectsolace.weapons.ps_anaxyreffects",
+  "everyFrameEffect":"pigeonpun.projectsolace.weapons.ps_daemelieffects",
 }

@@ -42,7 +42,7 @@ public class ps_anaxyreffects implements EveryFrameWeaponEffectPlugin, OnFireEff
         ShipAPI ship = weapon.getShip();
         MissileAPI missile = (MissileAPI) projectile;
         this.missile = missile;
-        if(ship.getFluxLevel() > ANAXYR_FLUX_LEVEL_REQUIRE) {
+        if(checkIfActive(ship)) {
             ps_anaxyrMissileVisualPlugin missileVisualPlugin = new ps_anaxyrMissileVisualPlugin(missile);
             engine.addPlugin(missileVisualPlugin);
         }
@@ -56,7 +56,7 @@ public class ps_anaxyreffects implements EveryFrameWeaponEffectPlugin, OnFireEff
         @Override
         public String modifyDamageDealt(Object param, CombatEntityAPI target, DamageAPI damage, Vector2f point, boolean shieldHit) {
             //check if missile
-            if(ship.getFluxLevel() < ANAXYR_FLUX_LEVEL_REQUIRE) {
+            if(checkIfActive(ship)) {
                 return null;
             }
             if(param instanceof MissileAPI && ((MissileAPI) param).getProjectileSpecId() != null) {
@@ -77,5 +77,14 @@ public class ps_anaxyreffects implements EveryFrameWeaponEffectPlugin, OnFireEff
         public void advance(float amount, List<InputEventAPI> events) {
             missile.getEngineController().fadeToOtherColor(this, AGGRESSIVE_COLOR, AGGRESSIVE_TRAIL_COLOR, 1,1);
         }
+    }
+    protected boolean checkIfActive(ShipAPI ship) {
+        if(ship.getFluxLevel() < ANAXYR_FLUX_LEVEL_REQUIRE) {
+            return true;
+        }
+        if(ship.getSystem().isActive()) {
+            return true;
+        }
+        return false;
     }
 }
