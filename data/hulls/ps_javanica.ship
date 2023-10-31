@@ -18,9 +18,19 @@
   "builtInWeapons": {
     "BTM_ARMOR_LEFT": "ps_javanica_armor_btm_left",
     "BTM_ARMOR_RIGHT": "ps_javanica_armor_btm_right",
-    "ps_crystal": "ps_core_crystal"
+    "ps_crystal": "ps_core_crystal",
+    "ps_glitch": "ps_glitch"
   },
   "weaponSlots": [
+    {
+      "id": "ps_glitch",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [24, 0]
+    },
     {
       "id": "WS0001",
       "size": "LARGE",

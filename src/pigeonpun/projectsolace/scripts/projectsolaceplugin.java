@@ -57,6 +57,8 @@ public class projectsolaceplugin extends BaseModPlugin {
     public static final String ps_sodalityFleetAdjusted = "$ps_sodalityFleetAdjusted";
     public static boolean ps_hardmodeSodalityActive = false;
     public static boolean ps_lunalibEnabled = false;
+    public static boolean ps_epilepsy = true;
+    public static float ps_glitchAlphaMult = 0.65f;
     @Override
     public void onApplicationLoad() throws Exception {
         super.onApplicationLoad();
@@ -71,6 +73,8 @@ public class projectsolaceplugin extends BaseModPlugin {
         ps_vagrantseerGenerateSalvage = Global.getSettings().getBoolean("ps_vagrantseerGenerateSalvage");
         ps_sodalityFleetAdjustmentActive = Global.getSettings().getBoolean("ps_sodalityFleetAdjustmentActive");
         ps_hardmodeSodalityActive = Global.getSettings().getBoolean("ps_hardmodeSodalityActive");
+        ps_epilepsy = Global.getSettings().getBoolean("ps_epilepsy");
+        ps_glitchAlphaMult = Global.getSettings().getFloat("ps_glitchAlphaMult");
 
         if(ps_lunalibEnabled) {
             lunaconfighelper.initLunaConfig();

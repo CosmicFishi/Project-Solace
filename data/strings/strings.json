@@ -18,6 +18,10 @@
     "name_ps_sodalityFleetAdjustmentActive": "Solace and Enmity Adjustment",
     "tooltip_ps_sodalityFleetAdjustmentActive": "Enable Solace and Enmity to knows each other hulls, fighters and weapons upon one of the two faction elimination.",
     "name_ps_hardmodeSodalityActive": "Sodality Hard Mode",
-    "tooltip_ps_hardmodeSodalityActive": "Enable Solace and Enmity to knows Boundless weapons upon one of the two faction elimination. (only have effect if Solace and Enmity Adjustment is active)"
+    "tooltip_ps_hardmodeSodalityActive": "Enable Solace and Enmity to knows Boundless weapons upon one of the two faction elimination. (only have effect if Solace and Enmity Adjustment is active)",
+    "name_ps_epilepsy": "Epilepsy UP",
+    "tooltip_ps_epilepsy": "Why not turn this one :)",
+    "name_ps_glitchAlphaMult": "UP Glitch Alpha Multiplier",
+    "tooltip_ps_glitchAlphaMult": "Multiplier for UP glitch effect. The lower the number, the more transparent the glitch gets"
   }
 }

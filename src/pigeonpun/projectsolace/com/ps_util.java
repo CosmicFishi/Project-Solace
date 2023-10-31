@@ -12,13 +12,16 @@ import pigeonpun.projectsolace.campaign.ps_sodalityfleetadjustment;
 
 import java.awt.*;
 import java.nio.FloatBuffer;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glPushClientAttrib;
 
 public class ps_util {
     public static Logger log = Global.getLogger(ps_util.class);
+    private static final Random rng = new Random();
     public static boolean checkFactionAlive(String factionId) {
         log.info("Checking " + factionId + " is dead: " + Misc.getFactionMarkets(factionId).isEmpty());
         if(Misc.getFactionMarkets(factionId).isEmpty()) {

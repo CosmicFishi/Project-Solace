@@ -20,9 +20,19 @@
     "ps_sooty_wing"
   ],
   "builtInWeapons": {
-    "ps_crystal": "ps_core_crystal"
+    "ps_crystal": "ps_core_crystal",
+    "ps_glitch": "ps_glitch"
   },
   "weaponSlots": [
+    {
+      "id": "ps_glitch",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-12, 0]
+    },
     {
       "id": "WS0001",
       "size": "MEDIUM",

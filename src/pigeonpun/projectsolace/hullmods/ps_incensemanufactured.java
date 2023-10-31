@@ -23,6 +23,7 @@ import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lazywizard.lazylib.combat.entities.SimpleEntity;
 import org.lwjgl.util.vector.Vector2f;
+import pigeonpun.projectsolace.com.ps_incensespriterenderer;
 import pigeonpun.projectsolace.com.ps_misc;
 
 import java.awt.*;
@@ -57,9 +58,9 @@ public class ps_incensemanufactured extends BaseHullMod {
     private final IntervalUtil spawnFlaresInterval = new IntervalUtil(0.5f, 1f);
     private final IntervalUtil spawnEMPInterval = new IntervalUtil(0.1f, 0.2f);
     private final IntervalUtil spawnEMPStartUP = new IntervalUtil(0.2f, 0.8f);
-    private final float spawnJitterTimerFrom = 0.2f;
-    private final float spawnJitterTimerTo = 0.5f;
-    private final float spawnJitterTimerWait = 0.1f;
+//    private final float spawnJitterTimerFrom = 0.2f;
+//    private final float spawnJitterTimerTo = 0.5f;
+//    private final float spawnJitterTimerWait = 0.1f;
     //UP = Unsolidified Procedure
     private final float UP_HITPOINTS_START = 0.6f;
     private final float UP_ROF_BONUS = 2.5f;
@@ -215,19 +216,22 @@ public class ps_incensemanufactured extends BaseHullMod {
                 weapon.repair();
             }
             //play sound because WOOOOOOOOOOOOOOOO
-            if(!upStateManipulator.isSoundActivated()) {
+            if(!upStateManipulator.isBeserkActivated()) {
                 Global.getSoundPlayer().playSound("ps_up_activate", 1, 1f, ship.getLocation(), new Vector2f(0, 0));
-                upStateManipulator.setSoundActivatedTrue();
+                upStateManipulator.setBeserkActivatedTrue();
+                //berserk fx
+                engine.addLayeredRenderingPlugin(new ps_incensespriterenderer(ship));
             }
-            //Do fx because i like it
+            //Do fx because i like it - moved to ^
+            //fx timer here still need to advance so the render plugin works
             ps_spawnjitter_timer += amount;
-            if(ps_spawnjitter_timer > spawnJitterTimerFrom && ps_spawnjitter_timer < spawnJitterTimerTo) {
-                ship.setJitter(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 2f, 2, 7, 15f);
-            } else {
-                if(ps_spawnjitter_timer > (spawnJitterTimerTo + spawnJitterTimerWait)) {
-                    ps_spawnjitter_timer = 0;
-                }
-            }
+//            if(ps_spawnjitter_timer > spawnJitterTimerFrom && ps_spawnjitter_timer < spawnJitterTimerTo) {
+//                ship.setJitter(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 2f, 2, 7, 15f);
+//            } else {
+//                if(ps_spawnjitter_timer > (spawnJitterTimerTo + spawnJitterTimerWait)) {
+//                    ps_spawnjitter_timer = 0;
+//                }
+//            }
             ship.getEngineController().getFlameColorShifter().shift(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 0.2f, 1f, 1f);
 
             //damage boost
@@ -618,7 +622,7 @@ public class ps_incensemanufactured extends BaseHullMod {
     }
     public class ps_upStateManipulator {
         private ps_UPState currentState = ps_UPState.UP_NORMAL;
-        private boolean soundActivated = false;
+        private boolean beserkActivated = false;
         private float standStillTimer = 0;
         public void changeToStandStill(boolean debug) {
             if(debug) log.warn("======= CHANGING TO STAND STILL ========");
@@ -637,11 +641,11 @@ public class ps_incensemanufactured extends BaseHullMod {
         public float getStandStillTimer() {
             return standStillTimer;
         }
-        public boolean isSoundActivated() {
-            return soundActivated;
+        public boolean isBeserkActivated() {
+            return beserkActivated;
         }
-        public void setSoundActivatedTrue() {
-            soundActivated = true;
+        public void setBeserkActivatedTrue() {
+            beserkActivated = true;
         }
     }
 }

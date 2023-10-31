@@ -24,6 +24,8 @@ public class lunaconfighelper implements LunaSettingsListener {
         addSetting("ps_pointsRequiredForDefendFleet", "int", null, Math.round(projectsolaceplugin.ps_pointsRequiredForDefendFleet), 2000, 100000);
 
         addHeader("others", null);
+        addSetting("ps_epilepsy", "boolean", null, projectsolaceplugin.ps_epilepsy);
+        addSetting("ps_glitchAlphaMult", "float", null, projectsolaceplugin.ps_glitchAlphaMult, 0, 1);
         addSetting("ps_vagrantseerGenerateSalvage", "boolean", null, projectsolaceplugin.ps_vagrantseerGenerateSalvage);
         addSetting("ps_sodalityFleetAdjustmentActive", "boolean", null, projectsolaceplugin.ps_sodalityFleetAdjustmentActive);
         addSetting("ps_hardmodeSodalityActive", "boolean", null, projectsolaceplugin.ps_hardmodeSodalityActive);
@@ -51,6 +53,7 @@ public class lunaconfighelper implements LunaSettingsListener {
         projectsolaceplugin.ps_sodalityFleetAdjustmentActive = (boolean)loadSetting("ps_sodalityFleetAdjustmentActive", "boolean");
         projectsolaceplugin.ps_vagrantseerGenerateSalvage = (boolean)loadSetting("ps_vagrantseerGenerateSalvage", "boolean");
         projectsolaceplugin.ps_hardmodeSodalityActive = (boolean)loadSetting("ps_hardmodeSodalityActive", "boolean");
+        projectsolaceplugin.ps_epilepsy = (boolean)loadSetting("ps_epilepsy", "boolean");
     }
 
     public static Object loadSetting(String var, String type) {

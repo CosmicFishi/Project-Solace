@@ -17,9 +17,19 @@
     "ps_incensemanufactured"
   ],
   "builtInWeapons": {
-    "ps_crystal": "ps_core_crystal"
+    "ps_crystal": "ps_core_crystal",
+    "ps_glitch": "ps_glitch"
   },
   "weaponSlots": [
+    {
+      "id": "ps_glitch",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-19, 0]
+    },
     {
       "id": "WS0001",
       "size": "LARGE",
