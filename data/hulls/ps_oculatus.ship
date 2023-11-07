@@ -1,0 +1,190 @@
+{
+  "hullName": "Oculatus",
+  "hullId": "ps_oculatus",
+  "hullSize": "CRUISER",
+  "spriteName": "graphics/ships/bygonedame/ps_oculatus.png",
+  "style": "BYGONEDAME",
+  "height": 236,
+  "width": 202,
+  "center": [100.5, 104],
+  "collisionRadius": 175.5,
+  "shieldCenter": [14, 0.5],
+  "shieldRadius": 143,
+  "viewOffset": 0,
+  "builtInMods": [
+    "phasefield",
+    "delicate"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 70,
+      "angle": 0,
+      "locations": [-6, 35.5]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 70,
+      "angle": -0,
+      "locations": [-6, -35.5]
+    },
+    {
+      "id": "WS0003",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 70,
+      "angle": -54.5,
+      "locations": [-33, -37.5]
+    },
+    {
+      "id": "WS0004",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 70,
+      "angle": 54.5,
+      "locations": [-33, 37.5]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": 21.5,
+      "locations": [80, 32.5]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": -21.5,
+      "locations": [80, -32.5]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 210,
+      "angle": 109,
+      "locations": [15, 62.5]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 210,
+      "angle": -109,
+      "locations": [15, -62.5]
+    },
+    {
+      "id": "WS0009",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 70,
+      "angle": -149.5,
+      "locations": [-40, -15.5]
+    },
+    {
+      "id": "WS0010",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 70,
+      "angle": 149.5,
+      "locations": [-40, 15.5]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-53, -50.5],
+      "length": 70,
+      "width": 25,
+      "angle": -145,
+      "contrailSize": 30,
+      "style": "BYGONEDAME_ENGINE"
+    },
+    {
+      "location": [-53, 50.5],
+      "length": 70,
+      "width": 25,
+      "angle": 145,
+      "contrailSize": 30,
+      "style": "BYGONEDAME_ENGINE"
+    },
+    {
+      "location": [-78, 12.5],
+      "length": 60,
+      "width": 20,
+      "angle": -174,
+      "contrailSize": 30,
+      "style": "BYGONEDAME_ENGINE"
+    },
+    {
+      "location": [-78, -12.5],
+      "length": 60,
+      "width": 20,
+      "angle": 174,
+      "contrailSize": 30,
+      "style": "BYGONEDAME_ENGINE"
+    },
+    {
+      "location": [-82, -0],
+      "length": 100,
+      "width": 30,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "BYGONEDAME_ENGINE"
+    }
+  ],
+  "bounds": [
+    -101.5, -2,
+    -95, -16,
+    -64, -38,
+    -64, -48.5,
+    -54, -61.5,
+    -45, -61.5,
+    -33, -100,
+    -5, -97,
+    0.5, -88.5,
+    31, -71.5,
+    37.5, -73,
+    77, -51,
+    77.5, -47.5,
+    91, -40,
+    106.5, -40,
+    123, -29.5,
+    126.5, -13,
+    121, -7,
+    121, 7,
+    126.5, 13,
+    123, 29.5,
+    106.5, 40,
+    91, 40,
+    77.5, 47.5,
+    77, 51,
+    37.5, 73,
+    31, 71.5,
+    0.5, 88.5,
+    -5, 97,
+    -33, 100,
+    -45, 61.5,
+    -54, 61.5,
+    -64, 48.5,
+    -64, 38,
+    -95, 16,
+    -101.5, 2
+  ]
+}

@@ -42,6 +42,11 @@ public class ps_incensespriterenderer extends BaseCombatLayeredRenderingPlugin {
     }
 
     @Override
+    public boolean isExpired() {
+        return ship.isExpired() || !ship.isAlive();
+    }
+
+    @Override
     public EnumSet<CombatEngineLayers> getActiveLayers() {
         return EnumSet.of(CombatEngineLayers.ABOVE_SHIPS_LAYER);
     }

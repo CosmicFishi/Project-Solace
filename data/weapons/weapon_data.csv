@@ -23,3 +23,4 @@ Punctatus Beacher,ps_punctatus,3,0.3,35000,900,,400,,10,20,15,,,,HIGH_EXPLOSIVE,
 Proteolytic Focus Beam,ps_proteolyticbeam,1,,,1000,2000,,,0,5,,,,,FRAGMENTATION,,850,0.5,2,,,,,,,10000,,,,,,,SYSTEM,no_drop_salvage,,,,Finisher,,,,,"Hit on shield/hull/armor trigger EMP arc dealing %s Energy damage equal to the original hit. Deal additional %s Energy damage equal to the original hit base on target's flux level, max out at %s flux level.",20% | 20% | 80%,,,,5
 Muizon Specialized Railgun,ps_muizon,,,,900,,2500,1500,,,,,0,,ENERGY,3200,,0.5,5.6,1,,0,1,1,10,,800,,,,,,"STRIKE, SYSTEM",no_drop_salvage,,,,Strike,,,,,,,,,,9
 Roseae Obliterator,ps_roseae,,,,1000,,3000,,,,,,,,HIGH_EXPLOSIVE,3800,,0.8,7.2,1,,0,1,1,10,,900,,,,,,"STRIKE, SYSTEM",no_drop_salvage,,,,Strike,,,,,,,,,,10
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
