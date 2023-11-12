@@ -28,12 +28,12 @@ public class ps_ringrenderer extends BaseCombatLayeredRenderingPlugin {
 
     @Override
     public float getRenderRadius() {
-        return 1000000f;
+        return 10000f;
     }
 
     @Override
     public EnumSet<CombatEngineLayers> getActiveLayers() {
-        return EnumSet.of(CombatEngineLayers.BELOW_SHIPS_LAYER);
+        return EnumSet.of(CombatEngineLayers.ABOVE_SHIPS_LAYER);
     }
 
     @Override

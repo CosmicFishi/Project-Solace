@@ -7,6 +7,7 @@ import com.fs.starfarer.api.impl.combat.MineStrikeStatsAIInfoProvider;
 import com.fs.starfarer.api.input.InputEventAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
+import org.apache.log4j.Logger;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 import pigeonpun.projectsolace.com.ps_ringrenderer;
@@ -15,6 +16,7 @@ import java.awt.*;
 import java.util.List;
 
 public class ps_warpingminestats extends BaseShipSystemScript implements MineStrikeStatsAIInfoProvider {
+    public Logger log = Global.getLogger(ps_warpingminestats.class);
     protected static float MINE_RANGE = 1000f;
     public static final float MIN_SPAWN_DIST = 75f;
     public static final float MIN_SPAWN_DIST_FRIGATE = 110f;
@@ -123,6 +125,7 @@ public class ps_warpingminestats extends BaseShipSystemScript implements MineStr
 //			mine.getDamage().setMultiplier(mine.getDamage().getMultiplier() * extraDamageMult);
         }
         //render circle
+//        log.warn("Applying renderer");
         Global.getCombatEngine().addLayeredRenderingPlugin(new ps_ringrenderer(mine, mine.getMineExplosionRange(), RING_COLOR_MINE));
 
         float fadeInTime = 0.5f;
@@ -175,6 +178,7 @@ public class ps_warpingminestats extends BaseShipSystemScript implements MineStr
                 }
 
                 if (!Global.getCombatEngine().isEntityInPlay(mine)) {
+//                    log.warn("removing missile plugin");
                     Global.getCombatEngine().removePlugin(this);
                 }
             }

@@ -287,7 +287,7 @@ public class ps_incensemanufactured extends BaseHullMod {
 
             if (ship == Global.getCombatEngine().getPlayerShip()) {
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_shield_down", "", "Shield", "Disabled", true);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp_emit", "graphics/icons/hullsys/emp_emitter", "Discharging EMP", "", false);
+                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp_emit", "graphics/icons/hullsys/emp_emitter.png", "Discharging EMP", "", false);
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_rof", "graphics/icons/hullsys/ammo_feeder.png", "RoF bonus", "+" + String.valueOf(Math.round(UP_ROF_BONUS * 100)) + "%", false);
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_weapon_flux", "graphics/icons/hullsys/ammo_feeder.png", "Weapon flux reduction", String.valueOf(Math.round(UP_WEAPON_FLUX_BONUS * 100)) + "%", false);
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp", "graphics/icons/hullsys/ammo_feeder.png", "EMP damage taken reduction", String.valueOf(Math.round(UP_EMP_NEGATE_BONUS * 100)) + "%", false);
