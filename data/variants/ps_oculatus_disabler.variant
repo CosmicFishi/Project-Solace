@@ -1,0 +1,51 @@
+{
+  "variantId": "ps_oculatus_disabler",
+  "hullId": "ps_oculatus",
+  "displayName": "Disabler",
+  "goalVariant": true,
+  "fluxCapacitors": 33,
+  "fluxVents": 16,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "targetingunit",
+    "auxiliarythrusters",
+    "blast_doors"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "ionpulser",
+        "WS0002": "ionpulser"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0003": "harpoonpod",
+        "WS0004": "harpoonpod"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0005": "reaper",
+        "WS0006": "reaper"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0007": "sabot",
+        "WS0008": "sabot"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

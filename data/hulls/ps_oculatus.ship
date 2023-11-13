@@ -14,7 +14,8 @@
   "builtInMods": [
     "phasefield",
     "delicate",
-    "ps_lastkin"
+    "ps_lastkin",
+    "phase_anchor"
   ],
   "weaponSlots": [
     {
