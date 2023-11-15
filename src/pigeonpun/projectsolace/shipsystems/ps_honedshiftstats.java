@@ -48,6 +48,7 @@ public class ps_honedshiftstats extends BaseShipSystemScript {
                 if (w.getSlot().isSystemSlot()) continue;
                 if (state == State.ACTIVE) {
                     if (Objects.equals(w.getId(), BUILT_IN_W_ID)) {
+                        w.repair();
                         w.setForceFireOneFrame(true);
                     } else {
                         w.setForceNoFireOneFrame(true);

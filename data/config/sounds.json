@@ -66,16 +66,16 @@
     {"file": "sounds/weapons/ps_muizon_fire.ogg", "pitch": 1.1, "volume": 1}
   ],
   "ps_roseae_charging": [
-    {"file": "sounds/weapons/ps_roseae_charging.ogg", "pitch": 0.9, "volume": 1},
-    {"file": "sounds/weapons/ps_roseae_charging.ogg", "pitch": 0.95, "volume": 1},
-    {"file": "sounds/weapons/ps_roseae_charging.ogg", "pitch": 1, "volume": 1},
+    {"file": "sounds/weapons/ps_roseae_charging.ogg", "pitch": 0.9, "volume": 0.85},
+    {"file": "sounds/weapons/ps_roseae_charging.ogg", "pitch": 0.95, "volume": 0.85},
+    {"file": "sounds/weapons/ps_roseae_charging.ogg", "pitch": 1, "volume": 0.85},
   ],
   "ps_roseae_fire": [
-    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 0.9, "volume": 1},
-    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 0.95, "volume": 1},
-    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 1, "volume": 1},
-    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 1.05, "volume": 1},
-    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 1.1, "volume": 1}
+    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 0.9, "volume": 1.15},
+    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 0.95, "volume": 1.15},
+    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 1, "volume": 1.15},
+    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 1.05, "volume": 1.15},
+    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 1.1, "volume": 1.15}
   ],
   "ps_punctatus_fire": [
     {"file": "sounds/weapons/ps_punctatus_fire.ogg", "pitch": 0.9, "volume": 1},
