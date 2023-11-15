@@ -52,7 +52,9 @@ public class projectsolaceplugin extends BaseModPlugin {
     public static float ps_pointsRequiredForDefendFleet = 27000f;
     public static boolean ps_solaceDefend = true;
     public static boolean ps_vagrantseerGenerateSalvage = true;
+    public static boolean ps_bygonedameGenerateSalvage = true;
     public static final String ps_vagrantseerSalvage_Generated = "$ps_vagrantseerSalvage_Generated";
+    public static final String ps_bygonedameSalvage_Generated = "$ps_bygonedameSalvage_Generated";
     public static boolean ps_sodalityFleetAdjustmentActive = true;
     public static final String ps_sodalityFleetAdjusted = "$ps_sodalityFleetAdjusted";
     public static boolean ps_hardmodeSodalityActive = false;
@@ -71,6 +73,7 @@ public class projectsolaceplugin extends BaseModPlugin {
         ps_pointsRequiredForDefendFleet = Global.getSettings().getFloat("ps_pointsRequiredForDefendFleet");
         ps_solaceDefend = Global.getSettings().getBoolean("ps_solaceDefend");
         ps_vagrantseerGenerateSalvage = Global.getSettings().getBoolean("ps_vagrantseerGenerateSalvage");
+        ps_bygonedameGenerateSalvage = Global.getSettings().getBoolean("ps_bygonedameGenerateSalvage");
         ps_sodalityFleetAdjustmentActive = Global.getSettings().getBoolean("ps_sodalityFleetAdjustmentActive");
         ps_hardmodeSodalityActive = Global.getSettings().getBoolean("ps_hardmodeSodalityActive");
         ps_epilepsy = Global.getSettings().getBoolean("ps_epilepsy");
@@ -139,7 +142,7 @@ public class projectsolaceplugin extends BaseModPlugin {
         if (!hasProjectSolace) {
             new ps_gen().generate(Global.getSector());
             new ps_vagrantseergen().generate(Global.getSector());
-            if (ps_vagrantseerGenerateSalvage && Global.getSector().getMemoryWithoutUpdate().contains(ps_vagrantseerSalvage_Generated))
+            if (!Global.getSector().getMemoryWithoutUpdate().contains(ps_vagrantseerSalvage_Generated) || !Global.getSector().getMemoryWithoutUpdate().contains(ps_bygonedameSalvage_Generated))
                 new ps_salvagesplacer().generate(Global.getSector());
             if(!Global.getSector().getMemoryWithoutUpdate().contains(ps_sodalityfleetadjustment.PS_SODALITYFLEETADJUSTMENT_ACTIVED_IN_SAVE)) {
                 sector.getListenerManager().addListener(new ps_sodalityfleetadjustment());

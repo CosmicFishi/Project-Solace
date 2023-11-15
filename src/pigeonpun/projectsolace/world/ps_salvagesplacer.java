@@ -23,27 +23,40 @@ import java.util.Set;
 
 //modified from ApexRelicPlacer, credit to theDragn
 public class ps_salvagesplacer implements SectorGeneratorPlugin {
-    private static final Set<String> STAR_TYPES = new HashSet<>();
+    private static final Set<String> VAGRANT_STAR_TYPES = new HashSet<>();
     private static final Set<String> VAGRANT_HULLS_SALVAGE = new HashSet<>();
+    private static final Set<String> BYGONEDAME_STAR_TYPES = new HashSet<>();
+    private static final Set<String> BYGONEDAME_HULLS_SALVAGE = new HashSet<>();
     public static final Logger log = Global.getLogger(ps_salvagesplacer.class);
-    private WeightedRandomPicker<String> hullPicker = new WeightedRandomPicker<>();
     static {
-        STAR_TYPES.add("star_neutron");
+        VAGRANT_STAR_TYPES.add("star_neutron");
         VAGRANT_HULLS_SALVAGE.add("ps_alitha_relic");
+
+        BYGONEDAME_STAR_TYPES.add("star_red_giant");
+        BYGONEDAME_HULLS_SALVAGE.add("ps_oculatus_attack");
     }
     @Override
     public void generate(SectorAPI sector) {
-        hullPicker.addAll(VAGRANT_HULLS_SALVAGE);
-        if(!projectsolaceplugin.ps_vagrantseerGenerateSalvage) return;
+        if(projectsolaceplugin.ps_vagrantseerGenerateSalvage && !Global.getSector().getMemoryWithoutUpdate().contains(projectsolaceplugin.ps_vagrantseerSalvage_Generated)) {
+            Global.getSector().getMemoryWithoutUpdate().set(projectsolaceplugin.ps_vagrantseerSalvage_Generated, true);
+            placeHulls(sector, VAGRANT_HULLS_SALVAGE, ShipRecoverySpecial.ShipCondition.BATTERED, VAGRANT_STAR_TYPES, "Vagrant Seer");
+        };
+        if(projectsolaceplugin.ps_bygonedameGenerateSalvage && !Global.getSector().getMemoryWithoutUpdate().contains(projectsolaceplugin.ps_bygonedameSalvage_Generated)) {
+            Global.getSector().getMemoryWithoutUpdate().set(projectsolaceplugin.ps_bygonedameSalvage_Generated, true);
+            placeHulls(sector, BYGONEDAME_HULLS_SALVAGE, ShipRecoverySpecial.ShipCondition.BATTERED, BYGONEDAME_STAR_TYPES, "Bygone Dame");
+        }
+    }
 
-        Global.getSector().getMemoryWithoutUpdate().set(projectsolaceplugin.ps_vagrantseerSalvage_Generated, true);
-        WeightedRandomPicker<StarSystemAPI> systemPicker = getSpawnSystems(sector);
+    public void placeHulls(SectorAPI sector, Set<String> hulls, ShipRecoverySpecial.ShipCondition shipCondition, Set<String> startTypes, String msg) {
+        WeightedRandomPicker<String> hullPicker = new WeightedRandomPicker<>();
+        hullPicker.addAll(hulls);
+        WeightedRandomPicker<StarSystemAPI> systemPicker = getSpawnSystems(sector, startTypes);
 
-        for (int i = 0; i < VAGRANT_HULLS_SALVAGE.toArray().length; i++) {
+        for (int i = 0; i < hulls.toArray().length; i++) {
             StarSystemAPI system = systemPicker.pick();
             if (system == null)
             {
-                log.log(Level.WARN, "Project Solace: Failed to find a valid system to spawn Vagrant Seer hull, aborting.");
+                log.log(Level.WARN, "Project Solace: Failed to find a valid system to spawn " + msg +" hull, aborting.");
                 return;
             }
             // pick the hull and remove it from the list
@@ -56,7 +69,7 @@ public class ps_salvagesplacer implements SectorGeneratorPlugin {
             }
             MagicCampaign.createDerelict(
                     hull,
-                    ShipRecoverySpecial.ShipCondition.BATTERED,
+                    shipCondition,
                     true,
                     -1,
                     true,
@@ -65,7 +78,7 @@ public class ps_salvagesplacer implements SectorGeneratorPlugin {
         }
     }
 
-    public static WeightedRandomPicker<StarSystemAPI> getSpawnSystems(SectorAPI sector)
+    public static WeightedRandomPicker<StarSystemAPI> getSpawnSystems(SectorAPI sector, Set<String> starTypes)
     {
         WeightedRandomPicker<StarSystemAPI> picker = new WeightedRandomPicker<>();
         for (StarSystemAPI system : sector.getStarSystems())
@@ -73,7 +86,7 @@ public class ps_salvagesplacer implements SectorGeneratorPlugin {
             // system has star, system only has one star, system has the right star, system isn't inhabited
             if (system.getType() == StarSystemGenerator.StarSystemType.SINGLE
                     && system.getStar() != null
-                    && STAR_TYPES.contains(system.getStar().getTypeId())
+                    && starTypes.contains(system.getStar().getTypeId())
                     && system.isProcgen())
             {
                 picker.add(system);

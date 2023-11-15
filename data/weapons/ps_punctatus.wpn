@@ -26,4 +26,5 @@
 					   "particleColor":[255,240,165,200]},	
 	"projectileSpecId":"ps_punctatus_shot",  # projectile that will be fired
 	"fireSoundTwo":"ps_punctatus_fire",
+    "everyFrameEffect":"pigeonpun.projectsolace.weapons.ps_punctatuseffects",
 }

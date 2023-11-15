@@ -151,14 +151,14 @@ public class ps_lastkin extends BaseHullMod {
         Color bad = Misc.getNegativeHighlightColor();
         Color good = Misc.getPositiveHighlightColor();
 
-        LabelAPI label = tooltip.addPara("Description here", opad, h, "");
+        LabelAPI label = tooltip.addPara("May your will mend you back into this existence as the last extant Dame", opad, h, "");
 
         tooltip.addSectionHeading("Effects", Alignment.MID, opad);
 
         label = tooltip.addPara("When ship is phased, have a brief duration of boosted manoeuvrability and max speed", opad, h,"");
 
-        label = tooltip.addPara("An aura circles the ship, any missiles enter the zone will have its velocity reduced by %s", opad, h,"" + VELOCITY_REDUCED + "%");
-        label.setHighlight("" + VELOCITY_REDUCED + "%");
+        label = tooltip.addPara("An aura circles the ship, any missiles enter the zone will have its velocity reduced by %s. The effect is stackable with its ship system", opad, h,"" + Math.round(VELOCITY_REDUCED) + "%");
+        label.setHighlight("" + Math.round(VELOCITY_REDUCED) + "%");
         label.setHighlightColors(good);
     }
 }

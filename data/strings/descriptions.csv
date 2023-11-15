@@ -39,6 +39,7 @@ ps_merkeri,SHIP,"Despite being a carrier cruiser, the Merkeri ship class can pac
 ps_alitha,SHIP,"“May day, may day, this is the captain of the #$S ##$#$# speaking. We are requesting help immediately as we suffered heavy losses after the last engagement with an unknown #$%### in a neutron system. Our engines were taken ## #$#%... the entity's large magnetic-like w##pons and our supplies won’t #$$#....#$## longer. There was signs of sentient lifeform aboard the ship as our bio-detector retu#$####........” - Unknown captain, log recovered from salvage.
 
 The log turned static.",,,,
+ps_oculatus,SHIP,"Biometric scanner indicates high chance of phase cloak tech used on the cruiser but it didn’t explain the abnormal electric field surrounding the ship. Further inspection with the boarding team inside the ship displays significant technology advancement compared to the current Sector tech level, which further establishes that the ship indeed comes from a time before now.",,,,
 ,,,,,,
 #capitals,,,,,,
 ps_camiguin,SHIP,"“One of a kind”, that is the nickname of the Camiguin capital ship. As the first generation of Solace’s capital ship, the Camiguin class ‘armament can rival any opponent facing it with four large mounts. Despite its size, the ship can maneuver easily on the battlefield, plus having two large missiles, this capital can quickly finish the enemy before facing another one.",,,,
@@ -62,6 +63,7 @@ ps_vigorrush,SHIP_SYSTEM,"Fuel the ship with vigor, increase time flow on the sh
 ps_bulwarkboost,SHIP_SYSTEM,"Harden the outer armor layers, disable shield, increase ship’s max speed by 60% and reduce armor damage by 80%.",,,,
 ps_honedshift,SHIP_SYSTEM,"Increasing time dilation, all weapons beside built-in weapons are disabled, massively boost RoF and reduce weapon flux by 20%. Force fire built-in weapons for the entire duration.",,,,
 ps_vergebending,SHIP_SYSTEM,"Bending limit, reset cooldown and force fire built-in weapon. Ballistic/Energy weapons flux usage is also increased by 120% for the entire duration.",,,,
+ps_warpingmine,SHIP_SYSTEM,"Teleports a heavy phase mine to the target area. The mine will slowly track nearby enemy ships, slowing any missiles in a certain radius and explodes a few seconds after its proximity trigger is activated. Can be used while phased. ",,,,
 ,,,,,,
 #Weapons,,,,,,
 ps_tragopo,WEAPON,"A fast but powerful firing cannon focused on burst firing combined with a medium range, it can easily break through heavily shielded or thick armored enemies. However, due to the nature of burst firing, the gun’s flux efficiency isn’t that great compared to other similar burst fire guns.",,,,
