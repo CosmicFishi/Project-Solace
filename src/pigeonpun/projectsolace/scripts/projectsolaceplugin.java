@@ -11,6 +11,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.shared.SharedData;
 import com.fs.starfarer.campaign.Faction;
 import exerelin.campaign.SectorManager;
+import org.apache.log4j.Logger;
 import pigeonpun.projectsolace.campaign.ps_defendpatrolfleetmanager;
 import pigeonpun.projectsolace.campaign.ps_sodalityfleetadjustment;
 import pigeonpun.projectsolace.com.lunaconfighelper;
@@ -21,7 +22,7 @@ import pigeonpun.projectsolace.world.ps_salvagesplacer;
 import pigeonpun.projectsolace.world.ps_vagrantseergen;
 
 public class projectsolaceplugin extends BaseModPlugin {
-
+    static Logger log = Global.getLogger(projectsolaceplugin.class);
     public static boolean blackrockExists = false;
     public static boolean borkenExists = false;
     public static boolean checkMemory = false;
@@ -33,7 +34,6 @@ public class projectsolaceplugin extends BaseModPlugin {
     public static boolean hasUnderworld = false;
     public static boolean iceExists = false;
     public static boolean imperiumExists = false;
-    public static boolean isExerelin = false;
     public static boolean junkPiratesExists = false;
     public static boolean oraExists = false;
     public static boolean scalarTechExists = false;
@@ -65,7 +65,7 @@ public class projectsolaceplugin extends BaseModPlugin {
     public void onApplicationLoad() throws Exception {
         super.onApplicationLoad();
 
-        isExerelin = Global.getSettings().getModManager().isModEnabled("nexerelin");
+        nexerelinEnabled = Global.getSettings().getModManager().isModEnabled("nexerelin");
         ps_lunalibEnabled = Global.getSettings().getModManager().isModEnabled("lunalib");
 
         ps_solaceDefendTimeoutPeriod = Global.getSettings().getFloat("ps_solaceDefendTimeoutPeriod");
@@ -171,7 +171,7 @@ public class projectsolaceplugin extends BaseModPlugin {
             super(false);
         }
 
-
+        //todo: this need to change for each relationship change and have to adjust relationship upon deciv/destroy one of the two faction
         @Override
         public void reportPlayerReputationChange(String faction, float delta) {
             super.reportPlayerReputationChange(faction, delta);

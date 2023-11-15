@@ -8,6 +8,9 @@ import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.api.util.WeightedRandomPicker;
+import org.lazywizard.lazylib.MathUtils;
+import org.lwjgl.util.vector.Vector2f;
 import pigeonpun.projectsolace.com.ps_misc;
 
 import java.awt.*;
@@ -33,7 +36,7 @@ public class ps_boundlessbarrier extends BaseHullMod {
     private static final float BOUNDLESS_DP_MULT_PER_POINT = 1f; //percentage
 //    private static final float BOUNDLESS_MAIN_PERCENTAGE_PER_POINT_OVERCAP = 2f; //percentage
 //    private static final float BOUNDLESS_CR_PERCENTAGE_PER_POINT_OVERCAP = 0.5f; //percentage
-
+    private static final IntervalUtil EMP_SPARK_TIMER = new IntervalUtil(2.5f, 3.5f);
     @Override
     public void advanceInCombat(ShipAPI ship, float amount) {
         CombatEngineAPI engine = Global.getCombatEngine();
@@ -42,7 +45,47 @@ public class ps_boundlessbarrier extends BaseHullMod {
         }
         if (!ship.isAlive()) {
             return;
-
+        }
+        WeightedRandomPicker<Vector2f> randomPointPicker = new WeightedRandomPicker<>();
+        //Important: it updates the ship location for the bounds
+        ship.getExactBounds().update(ship.getLocation(), ship.getFacing());
+        for (BoundsAPI.SegmentAPI s: ship.getExactBounds().getSegments()) {
+            //Global.getCombatEngine().addFloatingText( s.getP1() ,  ".", 60, ps_misc.PROJECT_SOLACE_LIGHT, ship, 0.25f, 0.25f);
+            if(!randomPointPicker.getItems().contains(s.getP1())) {
+                randomPointPicker.add(s.getP1());
+            }
+        }
+        if(!randomPointPicker.isEmpty()) {
+            EMP_SPARK_TIMER.advance(Global.getCombatEngine().getElapsedInLastFrame());
+            if(EMP_SPARK_TIMER.intervalElapsed()) {
+                Global.getCombatEngine().spawnEmpArcVisual(
+                        randomPointPicker.pick(),
+                        ship,
+                        randomPointPicker.pick(),
+                        ship,
+                        MathUtils.getRandomNumberInRange(5f,10f),
+                        new Color(141,53,121,255),
+                        new Color(255, 255,255, 255)
+                );
+                Global.getCombatEngine().spawnEmpArcVisual(
+                        randomPointPicker.pick(),
+                        ship,
+                        randomPointPicker.pick(),
+                        ship,
+                        MathUtils.getRandomNumberInRange(5f,10f),
+                        new Color(141,53,121,255),
+                        new Color(255, 255,255, 255)
+                );
+                Global.getCombatEngine().spawnEmpArcVisual(
+                        randomPointPicker.pick(),
+                        ship,
+                        randomPointPicker.pick(),
+                        ship,
+                        MathUtils.getRandomNumberInRange(5f,10f),
+                        new Color(141,53,121,255),
+                        new Color(255, 255,255, 255)
+                );
+            }
         }
     }
 

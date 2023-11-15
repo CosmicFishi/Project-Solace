@@ -21,9 +21,16 @@
     "crest":"graphics/factions/pscrest.png",
 	
     "shipNamePrefix":"SoA",
-
+    "shipNameSources":{
+		"GREEK":1,
+		"GENERAL":2,
+		"SPACE":2,
+		"KNIGHTS":1,
+	},
     "names":{
         "modern":1,
+        "world":2,
+        "future":1,
     },
 
     # variantOverrides restricts hulls to listed variants and adjusts their probability

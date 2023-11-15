@@ -12,11 +12,11 @@ Carthami Cannon,ps_carthami,1,,8000,900,,400,,20,10,25,,,,HIGH_EXPLOSIVE,420,,0.
 Porri Pod,ps_porri,1,,1200,1500,,700,250,15,10,10,15,,,ENERGY,0,,0,5,3,0.1,0,0,0,,,600,50,20,400,,,"STRIKE, DO_NOT_AIM, CONSERVE_5","ps_weapon_bp, missile13, rare_bp, merc",,Project Solace,,General,Medium,Good,,,,,,,TRUE,3
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #SPECIAL ONES,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Acris Lance,ps_acris,3,0.2,75000,1200,5000,,,0,7,30,,,,FRAGMENTATION,,2500,0.2,1,1,8,,,,,10000,,,,,,,"FIRE_WHEN_INEFFICIENT, USE_LESS_VS_SHIELDS","ps_special_weapon, no_sell",,Boundless,,Finisher/Disabler,,,,,"Hit on armor or hull %s make the engines (if there are any) flame out for a short duration. 
+Acris Lance,ps_acris,3,0.2,75000,1200,5000,,,0,7,30,,,,FRAGMENTATION,,2500,0.2,1,1,8,,,,,10000,,,,,,,"FIRE_WHEN_INEFFICIENT, USE_LESS_VS_SHIELDS","ps_special_weapon, no_sell, energy24, beam21, LR",,Boundless,,Finisher/Disabler,,,,,"Hit on armor or hull %s make the engines (if there are any) flame out for a short duration. 
 Increasing beam range will increase flame out duration. (Decreasing will have no effect on flame out duration)",instantly,,,,6
-Anaxyr Fast Swarmer,ps_anaxyr,3,0.3,90000,2500,,150,100,5,30,28,60,2,20,KINETIC,0,,0,5,20,0.05,0,1,1,0,,500,200,12,60,,,"DO_NOT_AIM, DO_NOT_CONSERVE","ps_special_weapon, no_sell",,Boundless,,Swarm,Fast,Excellent,,,"When the ship current flux level pass %s or ship system is active, the missiles will deal %s damage instead.",50% | HE,,,,7
-Daemeli Focused Railgun,ps_daemeli,2,0.5,25000,1000,,500,200,0,7,14,,,,ENERGY,650,,0.2,1.2,1,,,,,,,1500,,,,,,STRIKE,"ps_special_weapon, no_sell",,Boundless,,General,,,,,,,,,,8
-Punctatus Beacher,ps_punctatus,3,0.3,35000,900,,400,,10,20,15,,,,HIGH_EXPLOSIVE,500,,0,3.2,2,0.2,0,5,1,10,,800,,,40,,,,"ps_special_weapon, no_sell",,Boundless,,Anti Armor,,,,,,,,,,9
+Anaxyr Fast Swarmer,ps_anaxyr,3,0.3,90000,2500,,150,100,5,30,28,60,2,20,KINETIC,0,,0,5,20,0.05,0,1,1,0,,500,200,12,60,,,"DO_NOT_AIM, DO_NOT_CONSERVE","ps_special_weapon, no_sell, utility20, missile21, strike16",,Boundless,,Swarm,Fast,Excellent,,,"When the ship current flux level pass %s or ship system is active, the missiles will deal %s damage instead.",50% | HE,,,,7
+Daemeli Focused Railgun,ps_daemeli,2,0.5,25000,1000,,500,200,0,7,14,,,,ENERGY,650,,0.2,1.2,1,,,,,,,1500,,,,,,,"ps_special_weapon, no_sell, energy19",,Boundless,,General,,,,,Instantly flameout missile when entering projectile aura,,,,,8
+Punctatus Beacher,ps_punctatus,3,0.3,35000,900,,400,,10,20,15,,,,HIGH_EXPLOSIVE,500,,0,3.2,2,0.2,0,5,1,10,,800,,,40,,,,"ps_special_weapon, no_sell, he20, LR",,Boundless,,Anti Armor,,,,,,,,,,9
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #SYSTEM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Warping Minelayer,ps_warpingmine_launcher,0,,200000,1000,,2000,,25,30,12,30,,,HIGH_EXPLOSIVE,0,,0,3,1,,0,0,0,0,,50,50,20,500,,,SYSTEM,,,,,,,,,,,,,,,11

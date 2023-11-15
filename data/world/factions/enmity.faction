@@ -21,9 +21,16 @@
     "crest":"graphics/factions/psenmitycrest.png",
 	
     "shipNamePrefix":"EnS",
-
+    "shipNameSources":{
+		"GREEK":1,
+		"GENERAL":1,
+		"SPACE":2,
+		"KNIGHTS":2,
+	},
     "names":{
-        "modern":1,
+        "modern":2,
+        "world":1,
+        "future":1,
     },
 
     # variantOverrides restricts hulls to listed variants and adjusts their probability

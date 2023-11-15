@@ -11,7 +11,7 @@
   "ps_hardmodeSodalityActive": false, # Boundless weapons now appears in fleets after Sodality adjustment have been made,
 
   "ps_epilepsy": true, #Epilepsy glitch effect
-  "ps_glitchAlphaMult": 0.65, #Multiplier for Solace UP glitch effect. The lower the number, the more transparent the glitch gets
+  "ps_glitchAlphaMult": 0.85, #Multiplier for Solace UP glitch effect. The lower the number, the more transparent the glitch gets
 
   "designTypeColors":{
     "Project Solace":[230,40,240,255],

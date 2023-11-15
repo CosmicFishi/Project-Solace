@@ -20,10 +20,11 @@ import java.util.List;
 public class ps_sodalityfleetadjustment implements InvasionListener, ColonyDecivListener {
     public static final String PS_SODALITYFLEETADJUSTMENT_ACTIVED_IN_SAVE = "$ps_sodalityfleetadjustment_active_in_save";
     public static Logger log = Global.getLogger(ps_sodalityfleetadjustment.class);
-    public static float LEARNED_HULL_FREQUENCY = 0.2f;
+    public static float LEARNED_HULL_FREQUENCY = 0.5f;
+    public static float RANDOM_AUTOFIT_CHANCE = 0.8f;
     public ps_sodalityfleetadjustment() {
         //save compatibility
-        log.info("Registered Solace fleet adjustment listener");
+//        log.info("Registered Solace fleet adjustment listener");
         Global.getSector().getMemoryWithoutUpdate().set(PS_SODALITYFLEETADJUSTMENT_ACTIVED_IN_SAVE, true);
     }
 
@@ -64,11 +65,12 @@ public class ps_sodalityfleetadjustment implements InvasionListener, ColonyDeciv
                 enmity.addKnownWeapon(id, false);
             }
         }
+        enmity.getDoctrine().setAutofitRandomizeProbability(RANDOM_AUTOFIT_CHANCE);
         //Solace turn to get more juice
         for(String id :ps_misc.ENMITY_SHIPS_LINEUP) {
             solace.addKnownShip(id, false);
-            enmity.addUseWhenImportingShip(id);
-            enmity.getHullFrequency().put(id, LEARNED_HULL_FREQUENCY);
+            solace.addUseWhenImportingShip(id);
+            solace.getHullFrequency().put(id, LEARNED_HULL_FREQUENCY);
         }
         for(String id :ps_misc.ENMITY_WEAPONS_LINEUP) {
             solace.addKnownWeapon(id, false);
@@ -81,6 +83,7 @@ public class ps_sodalityfleetadjustment implements InvasionListener, ColonyDeciv
                 solace.addKnownWeapon(id, false);
             }
         }
+        solace.getDoctrine().setAutofitRandomizeProbability(RANDOM_AUTOFIT_CHANCE);
         Global.getSector().getMemoryWithoutUpdate().set(projectsolaceplugin.ps_sodalityFleetAdjusted, true);
     }
     @Override
