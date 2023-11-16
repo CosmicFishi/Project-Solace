@@ -1,0 +1,21 @@
+{
+	# note: pirates will never have a diplomacy event with non-pirates unless pirate invasions are enabled in main config
+	# List of events
+	
+	# note that chance of positive event is normalized between all positive events involved
+	# likewise for negative event
+	# so negative events will still happen even if positive events have huge chance values
+	"events":[
+		{
+			"name":"Hostilities toward ally",
+			"stage":"hostilities_toward_ally",
+			"random":false,
+			"repLimit":"vengeful",
+			"minRepChange":-0.3,
+			"maxRepChange":-0.2,
+			"invert":false,
+			"chance":0,	# only occurs when DiplomacyManager calls it directly
+			"desc":"$TheFaction criticize hostilities from $theOtherFaction toward allies!"
+		}
+	]
+}

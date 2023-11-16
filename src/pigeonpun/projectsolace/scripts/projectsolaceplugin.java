@@ -4,6 +4,7 @@ import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.PluginPick;
 import com.fs.starfarer.api.campaign.*;
+import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.MissileAIPlugin;
 import com.fs.starfarer.api.combat.MissileAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
@@ -171,7 +172,6 @@ public class projectsolaceplugin extends BaseModPlugin {
             super(false);
         }
 
-        //todo: this need to change for each relationship change and have to adjust relationship upon deciv/destroy one of the two faction
         @Override
         public void reportPlayerReputationChange(String faction, float delta) {
             super.reportPlayerReputationChange(faction, delta);

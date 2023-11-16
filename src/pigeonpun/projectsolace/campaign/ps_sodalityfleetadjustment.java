@@ -5,9 +5,10 @@ import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.listeners.ColonyDecivListener;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.Nex_MarketCMD;
-import exerelin.campaign.ColonyManager;
-import exerelin.campaign.InvasionRound;
-import exerelin.campaign.SectorManager;
+import exerelin.campaign.*;
+import exerelin.campaign.alliances.Alliance;
+import exerelin.campaign.intel.groundbattle.GroundBattleCampaignListener;
+import exerelin.campaign.intel.groundbattle.GroundBattleIntel;
 import exerelin.utilities.InvasionListener;
 import org.apache.log4j.Logger;
 import pigeonpun.projectsolace.campaign.intel.ps_sodalityfleetadjustmentintel;
@@ -17,7 +18,7 @@ import pigeonpun.projectsolace.scripts.projectsolaceplugin;
 
 import java.util.List;
 
-public class ps_sodalityfleetadjustment implements InvasionListener, ColonyDecivListener {
+public class ps_sodalityfleetadjustment implements InvasionListener, ColonyDecivListener, GroundBattleCampaignListener {
     public static final String PS_SODALITYFLEETADJUSTMENT_ACTIVED_IN_SAVE = "$ps_sodalityfleetadjustment_active_in_save";
     public static Logger log = Global.getLogger(ps_sodalityfleetadjustment.class);
     public static float LEARNED_HULL_FREQUENCY = 0.5f;
@@ -39,7 +40,7 @@ public class ps_sodalityfleetadjustment implements InvasionListener, ColonyDeciv
             }
         }
         //check if one of the faction is still alive
-        if((ps_util.checkFactionAlive(projectsolaceplugin.enmity_ID) && !ps_util.checkFactionAlive(projectsolaceplugin.solace_ID)) || (ps_util.checkFactionAlive(projectsolaceplugin.solace_ID) && !ps_util.checkFactionAlive(projectsolaceplugin.enmity_ID))) {
+        if(getRemainingFaction().equals(projectsolaceplugin.solace_ID) || getRemainingFaction().equals(projectsolaceplugin.enmity_ID)) {
             activateEffects();
         }
     }
@@ -86,6 +87,39 @@ public class ps_sodalityfleetadjustment implements InvasionListener, ColonyDeciv
         solace.getDoctrine().setAutofitRandomizeProbability(RANDOM_AUTOFIT_CHANCE);
         Global.getSector().getMemoryWithoutUpdate().set(projectsolaceplugin.ps_sodalityFleetAdjusted, true);
     }
+    public void checkIfAdjustRelationship(FactionAPI attackedFaction, FactionAPI attackerFaction) {
+        FactionAPI enmity = Global.getSector().getFaction(projectsolaceplugin.enmity_ID);
+        FactionAPI solace = Global.getSector().getFaction(projectsolaceplugin.solace_ID);
+
+        Alliance alliance = AllianceManager.getFactionAlliance(enmity.getId());
+        if(alliance.getMembersCopy().contains(attackedFaction.getId())) {
+            adjustFactionRelationship(attackedFaction, attackerFaction);
+        }
+    }
+    protected void adjustFactionRelationship(FactionAPI attackedFaction, FactionAPI attackerFaction) {
+        log.info("solace/enmity changing relationship for attacker: " + attackerFaction.getDisplayName());
+        FactionAPI enmity = Global.getSector().getFaction(projectsolaceplugin.enmity_ID);
+        FactionAPI solace = Global.getSector().getFaction(projectsolaceplugin.solace_ID);
+        if(!attackedFaction.getId().equals(projectsolaceplugin.enmity_ID)) {
+            DiplomacyManager.createDiplomacyEventV2(enmity, attackerFaction, "hostilities_toward_ally", null);
+        }
+        if(!attackedFaction.getId().equals(projectsolaceplugin.solace_ID)) {
+            DiplomacyManager.createDiplomacyEventV2(solace, attackerFaction, "hostilities_toward_ally", null);
+        }
+    }
+    /**
+     * @return Faction ID of the surviving faction
+     * Can be "" of none survived or both survived
+     */
+    public static String getRemainingFaction() {
+        if(ps_util.checkFactionAlive(projectsolaceplugin.enmity_ID) && !ps_util.checkFactionAlive(projectsolaceplugin.solace_ID)) {
+            return projectsolaceplugin.enmity_ID;
+        }
+        if(ps_util.checkFactionAlive(projectsolaceplugin.solace_ID) && !ps_util.checkFactionAlive(projectsolaceplugin.enmity_ID)) {
+            return projectsolaceplugin.solace_ID;
+        }
+        return "";
+    }
     @Override
     public void reportInvadeLoot(InteractionDialogAPI dialog, MarketAPI market, Nex_MarketCMD.TempDataInvasion actionData, CargoAPI cargo) {
 
@@ -98,11 +132,14 @@ public class ps_sodalityfleetadjustment implements InvasionListener, ColonyDeciv
 
     @Override
     public void reportInvasionFinished(CampaignFleetAPI fleet, FactionAPI attackerFaction, MarketAPI market, float numRounds, boolean success) {
+//        log.info("Invasion finished, attacker: " + attackerFaction.getDisplayName());
         checkIfApplyEffects();
+//        checkIfAdjustRelationship(market, attackerFaction);
     }
 
     @Override
     public void reportMarketTransfered(MarketAPI market, FactionAPI newOwner, FactionAPI oldOwner, boolean playerInvolved, boolean isCapture, List<String> factionsToNotify, float repChangeStrength) {
+//        log.info("transfered market " + market.getName());
         checkIfApplyEffects();
     }
 
@@ -114,5 +151,27 @@ public class ps_sodalityfleetadjustment implements InvasionListener, ColonyDeciv
     @Override
     public void reportColonyDecivilized(MarketAPI market, boolean fullyDestroyed) {
         checkIfApplyEffects();
+    }
+
+    @Override
+    public void reportBattleStarted(GroundBattleIntel battle) {
+
+    }
+
+    @Override
+    public void reportBattleBeforeTurn(GroundBattleIntel battle, int turn) {
+
+    }
+
+    @Override
+    public void reportBattleAfterTurn(GroundBattleIntel battle, int turn) {
+
+    }
+
+    @Override
+    public void reportBattleEnded(GroundBattleIntel battle) {
+//        log.info("Groundbattle ended, attacker " + battle.getSide(true).getFaction().getDisplayName());
+        checkIfApplyEffects();
+        checkIfAdjustRelationship(battle.getSide(false).getFaction(), battle.getSide(true).getFaction());
     }
 }
