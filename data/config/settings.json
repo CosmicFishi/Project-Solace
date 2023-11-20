@@ -57,7 +57,8 @@
 
     },
     "fx":{
-      "ps_ring_core": "graphics/fx/ps_ring_core.png"
+      "ps_ring_core": "graphics/fx/ps_ring_core.png",
+      "ps_ring_smooth": "graphics/fx/ps_ring_smooth.png"
     },
     "illustrations":{
 

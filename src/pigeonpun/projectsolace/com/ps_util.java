@@ -104,4 +104,21 @@ public class ps_util {
         glDisable(GL_TEXTURE_2D);
         glDisable(GL_BLEND);
     }
+    /**
+     * credits to Lyravega
+     * @param color to work with
+     * @param ra red adjustment
+     * @param ga green adjustment
+     * @param ba blue adjustment
+     * @return adjusted colour
+     */
+    public static final Color adjustColour(Color color, Integer ra, Integer ga, Integer ba) {
+        return color != null ? new Color(
+                ra != null ? Math.min(Math.max(color.getRed()+ra, 0), 255) : color.getRed(),
+                ga != null ? Math.min(Math.max(color.getGreen()+ga, 0), 255) : color.getGreen(),
+                ba != null ? Math.min(Math.max(color.getBlue()+ba, 0), 255) : color.getBlue(),
+                color.getAlpha()
+        ) : Color.WHITE;
+    }
+//
 }
