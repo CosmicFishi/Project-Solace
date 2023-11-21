@@ -76,14 +76,14 @@ public class ps_punctatuseffects implements EveryFrameWeaponEffectPlugin, OnHitE
                     ringSprite,
                     this.hitLocation,
                     new Vector2f(0, 0),
-                    new Vector2f( 60f, 60f), new Vector2f(600,600),
+                    new Vector2f( 160f, 160f), new Vector2f(600,600),
                     MathUtils.getRandomNumberInRange(0,360),
                     0.2f,
                     new Color(122,94,124,255),
                     true,
                     0f,
                     0f,
-                    0.6f
+                    0.7f
                     );
             engine.addNebulaSmoothParticle(
                     this.hitLocation,
@@ -92,7 +92,7 @@ public class ps_punctatuseffects implements EveryFrameWeaponEffectPlugin, OnHitE
                     30f,
                     0.2f,
                     0.8f,
-                    2f,
+                    0.4f,
                     new Color(179, 138, 159, 255)
             );
             engine.addNebulaSmoothParticle(
@@ -102,11 +102,11 @@ public class ps_punctatuseffects implements EveryFrameWeaponEffectPlugin, OnHitE
                     30f,
                     0.2f,
                     0.8f,
-                    2f,
+                    0.7f,
                     new Color(105, 18, 114, 255)
             );
             DamagingExplosionSpec explosion = new DamagingExplosionSpec(
-                    0.5f,
+                    0.3f,
                     CRATER_RADIUS,
                     125,
                     CRATER_DAMAGE,
@@ -122,6 +122,13 @@ public class ps_punctatuseffects implements EveryFrameWeaponEffectPlugin, OnHitE
             );
             explosion.setDamageType(DamageType.HIGH_EXPLOSIVE);
             engine.spawnDamagingExplosion(explosion, projectile.getSource(), this.hitLocation);
+            Global.getSoundPlayer().playSound(
+                    "ps_punctatus_quake",
+                    MathUtils.getRandomNumberInRange(0.9f, 1f),
+                    MathUtils.getRandomNumberInRange(0.9f, 1f),
+                    hitLocation,
+                    new Vector2f()
+                    );
         }
         @Override
         public float getRenderRadius() {

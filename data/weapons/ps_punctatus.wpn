@@ -10,7 +10,7 @@
 	"hardpointGunSprite":"graphics/weapons/ps_punctatus_hardpoint_recoil.png",
     "hardpointGlowSprite": "graphics/weapons/ps_punctatus_hardpoint_glow.png",
 	"visualRecoil":7.0,  # the gun sprites are only used if this is non-0
-	#"renderHints":[RENDER_BARREL_BELOW],
+	"renderHints":[RENDER_BARREL_BELOW],
 	"turretOffsets":[16, 0],
 	"turretAngleOffsets":[0],
 	"hardpointOffsets":[26, 0],

@@ -83,6 +83,12 @@
     {"file": "sounds/weapons/ps_punctatus_fire.ogg", "pitch": 1, "volume": 1},
     {"file": "sounds/weapons/ps_punctatus_fire.ogg", "pitch": 1.05, "volume": 1}
   ],
+  "ps_punctatus_quake": [
+    {"file": "sounds/weapons/ps_punctatus_quake.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_punctatus_quake.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_punctatus_quake.ogg", "pitch": 1, "volume": 1},
+    {"file": "sounds/weapons/ps_punctatus_quake.ogg", "pitch": 1.05, "volume": 1}
+  ],
   "ps_daemeli_disruption": [
     {"file": "sounds/weapons/ps_daemeli_disruption.ogg", "pitch": 0.8, "volume": 1},
     {"file": "sounds/weapons/ps_daemeli_disruption.ogg", "pitch": 0.9, "volume": 1},
