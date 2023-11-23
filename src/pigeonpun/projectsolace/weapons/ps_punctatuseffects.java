@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Map;
 
 //When hit, spawn a hex mark on the hit location, constantly applying damage for whatever in its range for a certain duration
-//the lower the hull top speed is, the faster the projectile speed will be
 public class ps_punctatuseffects implements EveryFrameWeaponEffectPlugin, OnHitEffectPlugin {
     Logger log = Global.getLogger(ps_punctatuseffects.class);
     boolean runOnce = false;
