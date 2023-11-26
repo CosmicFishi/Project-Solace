@@ -38,6 +38,7 @@ public class ps_misc {
         ENMITY_SPECIAL_WEAPONS_LIST.add("ps_anaxyr");
         ENMITY_SPECIAL_WEAPONS_LIST.add("ps_daemeli");
         ENMITY_SPECIAL_WEAPONS_LIST.add("ps_punctatus");
+        ENMITY_SPECIAL_WEAPONS_LIST.add("ps_hemiophrys");
     }
 
     public static final List<String> SOLACE_SHIPS_LINEUP = new ArrayList<>();

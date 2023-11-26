@@ -57,8 +57,9 @@
 
     },
     "fx":{
-      "ps_ring_core": "graphics/fx/ps_ring_core.png",
-      "ps_ring_smooth": "graphics/fx/ps_ring_smooth.png"
+      "ps_ring_core": "graphics/fx/ps_ring_core.png", #from base game
+      "ps_ring_smooth": "graphics/fx/ps_ring_smooth.png", #from base game
+      "ps_star": "graphics/fx/ps_star.png" #from base game
     },
     "illustrations":{
 

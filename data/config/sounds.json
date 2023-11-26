@@ -99,6 +99,11 @@
     {"file": "sounds/weapons/ps_hemiophrys_fire.ogg", "pitch": 0.9, "volume": 1},
     {"file": "sounds/weapons/ps_hemiophrys_fire.ogg", "pitch": 0.95, "volume": 1},
     {"file": "sounds/weapons/ps_hemiophrys_fire.ogg", "pitch": 1, "volume": 1}
+  ],
+  "ps_arenico_fire": [
+    {"file": "sounds/weapons/ps_arenico_fire.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_arenico_fire.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_arenico_fire.ogg", "pitch": 1, "volume": 1}
   ]
 }
 

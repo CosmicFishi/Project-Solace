@@ -1,0 +1,19 @@
+{
+	"id":"ps_arenico_shot",
+	"specClass":"projectile",
+	"onFireEffect":"pigeonpun.projectsolace.weapons.ps_arenicoeffects",
+	"spawnType":"BALLISTIC_AS_BEAM",
+	"collisionClass":"RAY",
+	"collisionClassByFighter":"RAY_FIGHTER",
+	"length":20.0,
+	"width": 10.0,
+	"fadeTime":0.25,
+	"fringeColor":[161,255,25,255],
+	"coreColor":[225,225,255,100],
+	"textureType":"ROUGH",  # only needed for BEAM spawnType
+	"textureScrollSpeed":-256.0,
+	"pixelsPerTexel":1.0,
+	"passThroughMissiles":true,
+    "passThroughFighters":true,
+    "passThroughFightersOnlyWhenDestroyed":true,
+}

@@ -76,7 +76,7 @@ public class ps_acriseffects implements BeamEffectPlugin, EveryFrameWeaponEffect
             if (!target.isAlive())
                 return;
             currentDuration += amount;
-            target.setJitter("ps_acrisFlameOut", new Color(207, 208, 30, 155), 1f, 4, 1f, 15);
+            target.setJitter("ps_acrisFlameOut", new Color(207, 208, 30, 55), 1f, 4, 1f, 15);
             if(currentDuration > flameOutDuration) {
                 target.getMutableStats().getCombatEngineRepairTimeMult().modifyMult(BUFF_ID, repairMult);
                 if(!target.getEngineController().isFlamedOut()) {

@@ -48,7 +48,7 @@ public class ps_specialweapons extends BaseCommandPlugin {
     public static final String STOCK_ARRAY_KEY = "$ps_specialWeaponsStock";
     public static final String TOTAL_PURCHASE_COST_KEY = "$ps_totalPurchaseCost";
     public static final String PURCHASE_INVENTORY_KEY = "$ps_purchaseInventory";
-    private static final int PURCHASE_TAX = 80;
+    private static final int PURCHASE_TAX = 50;
 
     @Override
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {

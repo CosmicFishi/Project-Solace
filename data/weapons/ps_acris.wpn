@@ -44,7 +44,7 @@
     255,
     255
   ],
-  "width": 16,
+  "width": 24,
   "textureType": ROUGH,
   "textureScrollSpeed": 292,
   "pixelsPerTexel": 5,
