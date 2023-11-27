@@ -17,8 +17,10 @@ import java.util.List;
 
 public class ps_arenicoeffects implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
     public final Logger log = Global.getLogger(ps_arenicoeffects.class);
-    public static final Color CHANGE_TO_COLOR = new Color(161, 25,25, 255);
+    public static final Color CHANGE_TO_COLOR = new Color(161, 165,25, 255);
     public static final Color OG_COLOR = new Color(161,255,25,255);
+    public static final Color CHANGE_TO_COLOR_2 = new Color(161, 65,25, 255);
+    public static final Color OG_COLOR_2 = new Color(161,255,25,255);
     public final IntervalUtil succProjectilesTimer = new IntervalUtil(2f,4f);
     public final float SUCC_PROJ_COUNT = 3;
     public final float SUCC_CONVERT_PER_PROJ = 1;
@@ -77,6 +79,7 @@ public class ps_arenicoeffects implements EveryFrameWeaponEffectPlugin, OnFireEf
     public class ps_arenicoProjectileRenderPlugin extends BaseCombatLayeredRenderingPlugin {
         public DamagingProjectileAPI proj;
         public Color colorToChange;
+        public Color colorToChange2;
         public float uniqueId;
         public ps_arenicoProjectileRenderPlugin(DamagingProjectileAPI projectile) {
             this.proj = projectile;
@@ -88,12 +91,18 @@ public class ps_arenicoeffects implements EveryFrameWeaponEffectPlugin, OnFireEf
                     CHANGE_TO_COLOR,
                     progression
             );
+            this.colorToChange2 = Misc.interpolateColor(
+                    OG_COLOR_2,
+                    CHANGE_TO_COLOR_2,
+                    progression
+            );
             this.uniqueId = MagicTrailPlugin.getUniqueID();
         }
         @Override
         public void render(CombatEngineLayers layer, ViewportAPI viewport) {
             if (Global.getCombatEngine().isPaused()) return;
             SpriteAPI sprite = Global.getSettings().getSprite("fx", "base_trail_smooth");
+            SpriteAPI sprite2 = Global.getSettings().getSprite("fx", "base_trail_fuzzy");
             MagicTrailPlugin.addTrailMemberSimple(
                     this.proj,
                     this.uniqueId,
@@ -107,9 +116,25 @@ public class ps_arenicoeffects implements EveryFrameWeaponEffectPlugin, OnFireEf
                     0.8f,
                     0f,
                     0f,
-                    0.15f,
+                    0.2f,
                     true
                 );
+            MagicTrailPlugin.addTrailMemberSimple(
+                    this.proj,
+                    this.uniqueId,
+                    sprite2,
+                    this.proj.getLocation(),
+                    0f,
+                    Misc.getAngleInDegrees(new Vector2f(proj.getVelocity())),
+                    this.proj.getProjectileSpec().getWidth(),
+                    2f,
+                    colorToChange2,
+                    0.8f,
+                    0.2f,
+                    0f,
+                    0.5f,
+                    true
+            );
         }
 
         @Override

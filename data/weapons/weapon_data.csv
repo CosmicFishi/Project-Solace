@@ -18,7 +18,7 @@ Anaxyr Fast Swarmer,ps_anaxyr,3,0.3,300000,2500,,150,100,5,30,28,60,2,20,KINETIC
 Daemeli Focused Railgun,ps_daemeli,2,0.5,200000,1000,,500,200,0,7,14,,,,ENERGY,650,,0.2,1.2,1,,,,,,,1500,,,100,,,,"ps_special_weapon, no_sell, energy19",,Boundless,,General,,,,,Instantly flameout missile when entering projectile aura.,,,,,8
 Punctatus Beacher,ps_punctatus,3,0.3,240000,900,,500,,10,20,15,,,,HIGH_EXPLOSIVE,550,,0,3.2,1,,0,5,1,10,,800,,,60,,,,"ps_special_weapon, no_sell, he20, LR",,Boundless,,Anti Armor,,,,,"On hit, creating a quake crater periodically dealing %s damage to foes within a certain radius for a certain duration.",200 HE,,,,9
 Hemiophrys Pure Beam,ps_hemiophrys,3,0.2,310000,1100,600,,,0,10,24,,,,KINETIC,,500,0.1,0.1,,,,,,,,7500,,,,,,,"ps_special_weapon, no_sell, beam23, LR",,Boundless,,General,,,,,"On hit, recover a small portion of the damage deal as hull regeneration.",,,,,12
-Arenico Ultra Canon,ps_arenico,2,0.5,210000,700,,130,,0,24,12,60,5,5,ENERGY,110,,0,0.05,1,,0,1,1,0,,1000,,,30,,,"STRIKE, USE_VS_FRIGATES","ps_special_weapon, no_sell, energy15, kenetic13, he14, SR",,Boundless,,Pressure,,,,,,,,,,13
+Arenico Ultra Canon,ps_arenico,2,0.5,210000,700,,130,,0,24,12,60,5,5,ENERGY,110,,0,0.1,1,,0,1,1,0,,1000,,,30,,,"STRIKE, USE_VS_FRIGATES","ps_special_weapon, no_sell, energy15, kenetic13, he14, SR",,Boundless,,Pressure,,,,,"Every %s-%s, consume nearby enemy projectiles to reload the weapon.",2s | 4s,,,,13
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #SYSTEM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Warping Minelayer,ps_warpingmine_launcher,0,,200000,1000,,2000,,25,30,12,30,,,HIGH_EXPLOSIVE,0,,0,3,1,,0,0,0,0,,50,50,20,500,,,SYSTEM,,,,,,,,,,,,,,,11

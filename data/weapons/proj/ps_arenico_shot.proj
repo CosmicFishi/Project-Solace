@@ -5,7 +5,7 @@
 	"spawnType":"BALLISTIC_AS_BEAM",
 	"collisionClass":"RAY",
 	"collisionClassByFighter":"RAY_FIGHTER",
-	"length":20.0,
+	"length":50.0,
 	"width": 10.0,
 	"fadeTime":0.25,
 	"fringeColor":[161,255,25,255],
