@@ -40,6 +40,7 @@ public class ps_misc {
         ENMITY_SPECIAL_WEAPONS_LIST.add("ps_punctatus");
         ENMITY_SPECIAL_WEAPONS_LIST.add("ps_hemiophrys");
         ENMITY_SPECIAL_WEAPONS_LIST.add("ps_arenico");
+        ENMITY_SPECIAL_WEAPONS_LIST.add("ps_alvarius");
     }
 
     public static final List<String> SOLACE_SHIPS_LINEUP = new ArrayList<>();

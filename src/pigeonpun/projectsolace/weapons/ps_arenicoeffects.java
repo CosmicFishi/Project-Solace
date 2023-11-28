@@ -12,6 +12,7 @@ import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 import org.magiclib.plugins.MagicTrailPlugin;
+import pigeonpun.projectsolace.com.ps_boundlesseffect;
 
 import java.awt.*;
 import java.util.EnumSet;
@@ -30,9 +31,17 @@ public class ps_arenicoeffects implements EveryFrameWeaponEffectPlugin, OnFireEf
     public final float SUCC_CONVERT_PER_PROJ = 1;
     public final float SUCC_CONVERT_PER_HITPOINT = 100f;
     public final float SUCC_RADIUS = 300f;
+    private boolean runOnce = false;
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
         if(Global.getCombatEngine().isPaused()) return;
+
+        if(!runOnce){
+            runOnce=true;
+            if(!weapon.getSlot().isBuiltIn()){
+                ps_boundlesseffect.checkIfNeedAdding(weapon.getShip().getVariant());
+            }
+        }
 
         if(!succStartFx) {
             succProjectilesTimer.advance(amount);

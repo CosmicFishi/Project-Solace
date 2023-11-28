@@ -109,6 +109,11 @@
     {"file": "sounds/weapons/ps_arenico_succ.ogg", "pitch": 0.9, "volume": 1},
     {"file": "sounds/weapons/ps_arenico_succ.ogg", "pitch": 0.95, "volume": 1},
     {"file": "sounds/weapons/ps_arenico_succ.ogg", "pitch": 1, "volume": 1}
+  ],
+  "ps_alvarius_fire": [
+    {"file": "sounds/weapons/ps_alvarius_fire.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_alvarius_fire.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_alvarius_fire.ogg", "pitch": 1, "volume": 1}
   ]
 }
 

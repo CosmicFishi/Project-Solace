@@ -91,7 +91,7 @@ public class ps_sciencemarketplugin extends BaseSubmarketPlugin {
         WeightedRandomPicker<String> factionPicker = new WeightedRandomPicker<String>(itemGenRandom);
         factionPicker.add(pickerFactionId);
 
-        List<String> hiddenWeapons = ps_misc.ENMITY_SPECIAL_WEAPONS_LIST;
+//        List<String> hiddenWeapons = ps_misc.ENMITY_SPECIAL_WEAPONS_LIST;
 
         for (int i = 0; i < factionPicker.getItems().size(); i++) {
             String factionId = factionPicker.getItems().get(i);
@@ -117,14 +117,14 @@ public class ps_sciencemarketplugin extends BaseSubmarketPlugin {
                 picker.add(spec, p);
             }
 
-            for (String id : hiddenWeapons) {
-                WeaponSpecAPI spec = Global.getSettings().getWeaponSpec(id);
-                if (spec.getTier() > maxTier) continue;
-
-                float p = 1f; //
-                p *= w;
-                picker.add(spec, p);
-            }
+//            for (String id : hiddenWeapons) {
+//                WeaponSpecAPI spec = Global.getSettings().getWeaponSpec(id);
+//                if (spec.getTier() > maxTier) continue;
+//
+//                float p = 1f; //
+//                p *= w;
+//                picker.add(spec, p);
+//            }
         }
 
         int num = min + itemGenRandom.nextInt(max - min + 1);

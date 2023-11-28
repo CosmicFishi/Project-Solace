@@ -43,8 +43,8 @@ public class ps_specialweapons extends BaseCommandPlugin {
     protected float valueMult;
     protected float repMult;
     public static final float STOCK_KEEP_DAYS = 30;
-    public static final int STOCK_COUNT_MIN = 7;
-    public static final int STOCK_COUNT_MAX = 10;
+    public static final int STOCK_COUNT_MIN = 3;
+    public static final int STOCK_COUNT_MAX = 7;
     public static final String STOCK_ARRAY_KEY = "$ps_specialWeaponsStock";
     public static final String TOTAL_PURCHASE_COST_KEY = "$ps_totalPurchaseCost";
     public static final String PURCHASE_INVENTORY_KEY = "$ps_purchaseInventory";
@@ -248,7 +248,7 @@ public class ps_specialweapons extends BaseCommandPlugin {
                 case MEDIUM: count = 2; break;
                 case SMALL: count = 3; break;
             }
-            count = count + random.nextInt(count + 2) - random.nextInt(count + 1);
+            count = random.nextInt(count + 2);
             if (count < 1) count = 1;
 
             WeaponPurchaseInfo weaponPurchaseInfo = new WeaponPurchaseInfo(spec.getWeaponId(), count, spec.getWeaponName(), (int) spec.getBaseValue());
