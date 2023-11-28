@@ -104,6 +104,11 @@
     {"file": "sounds/weapons/ps_arenico_fire.ogg", "pitch": 0.9, "volume": 1},
     {"file": "sounds/weapons/ps_arenico_fire.ogg", "pitch": 0.95, "volume": 1},
     {"file": "sounds/weapons/ps_arenico_fire.ogg", "pitch": 1, "volume": 1}
+  ],
+  "ps_arenico_succ": [
+    {"file": "sounds/weapons/ps_arenico_succ.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_arenico_succ.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_arenico_succ.ogg", "pitch": 1, "volume": 1}
   ]
 }
 

@@ -7,6 +7,8 @@ import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 import org.apache.log4j.Logger;
+import org.lazywizard.lazylib.MathUtils;
+import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 import org.magiclib.plugins.MagicTrailPlugin;
@@ -21,52 +23,83 @@ public class ps_arenicoeffects implements EveryFrameWeaponEffectPlugin, OnFireEf
     public static final Color OG_COLOR = new Color(161,255,25,255);
     public static final Color CHANGE_TO_COLOR_2 = new Color(161, 65,25, 255);
     public static final Color OG_COLOR_2 = new Color(161,255,25,255);
-    public final IntervalUtil succProjectilesTimer = new IntervalUtil(2f,4f);
+    public final IntervalUtil succProjectilesTimer = new IntervalUtil(1.8f,3.8f);
+    public final IntervalUtil succDelayFxTimer = new IntervalUtil(0.2f,0.2f);
+    public boolean succStartFx = false;
     public final float SUCC_PROJ_COUNT = 3;
     public final float SUCC_CONVERT_PER_PROJ = 1;
     public final float SUCC_CONVERT_PER_HITPOINT = 100f;
     public final float SUCC_RADIUS = 300f;
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
-        succProjectilesTimer.advance(amount);
-        if(succProjectilesTimer.intervalElapsed()) {
-            List<DamagingProjectileAPI> listMissiles = CombatUtils.getProjectilesWithinRange(weapon.getLocation(), SUCC_RADIUS);
-            WeightedRandomPicker<DamagingProjectileAPI> succableList = new WeightedRandomPicker<>();
-            float totalAmmoSucc = 0;
-            for (DamagingProjectileAPI proj: listMissiles) {
-                if(!proj.isFading() && !proj.isExpired() && proj.getOwner() == 1) {
+        if(Global.getCombatEngine().isPaused()) return;
+
+        if(!succStartFx) {
+            succProjectilesTimer.advance(amount);
+            if(succProjectilesTimer.intervalElapsed()) {
+                succStartFx = true;
+            }
+        }
+        if(succStartFx) {
+            //spam fx
+            doFx(weapon);
+            //do funny succ
+            succDelayFxTimer.advance(amount);
+            if(succDelayFxTimer.intervalElapsed()) {
+                succStartFx = false;
+                doTheFunny(weapon);
+            }
+        }
+    }
+    public void doFx(WeaponAPI weapon) {
+        Vector2f spawnHitParticlePoint = MathUtils.getPointOnCircumference(
+                weapon.getLocation(),
+                MathUtils.getRandomNumberInRange(10f, 50f),
+                MathUtils.getRandomNumberInRange(0, 360)
+        );
+        Global.getCombatEngine().addSmoothParticle(spawnHitParticlePoint, (Vector2f) VectorUtils.getDirectionalVector(spawnHitParticlePoint, weapon.getLocation()).scale(45f), 10f, 1f, 1f, new Color(255,255,89,255));
+    }
+    public void doTheFunny(WeaponAPI weapon) {
+        CombatEngineAPI engine = Global.getCombatEngine();
+        List<CombatEntityAPI> list = CombatUtils.getEntitiesWithinRange(weapon.getLocation(), SUCC_RADIUS);
+        WeightedRandomPicker<CombatEntityAPI> succableList = new WeightedRandomPicker<>();
+        float totalAmmoSucc = 0;
+        for (CombatEntityAPI proj: list) {
+            if(proj.getOwner() == 1) {
+                if(!proj.isExpired() && (proj instanceof DamagingProjectileAPI || proj instanceof MissileAPI)) {
                     succableList.add(proj);
                 }
             }
-            if(!succableList.isEmpty()) {
-                for (int i =0; i < SUCC_PROJ_COUNT; i++) {
-                    DamagingProjectileAPI proj = succableList.pick();
-                    //count the ammo
-                    totalAmmoSucc += SUCC_CONVERT_PER_PROJ;
-                    if(proj.getMaxHitpoints() > 0) {
-                        totalAmmoSucc += Math.round(proj.getMaxHitpoints() / SUCC_CONVERT_PER_HITPOINT);
-                    }
-                    //remove proj
-                    Global.getCombatEngine().removeObject(proj);
-                    //do fx :D
-                    engine.spawnEmpArcVisual(
-                            weapon.getLocation(),
-                            weapon.getShip(),
-                            proj.getLocation(),
-                            null,
-                            4f,
-                            Color.red,
-                            new Color(255,255,255,255)
-                    );
+        }
+        if(!succableList.isEmpty()) {
+            for (int i =0; i < SUCC_PROJ_COUNT; i++) {
+                CombatEntityAPI proj = succableList.pick();
+                //count the ammo
+                totalAmmoSucc += SUCC_CONVERT_PER_PROJ;
+                if(proj.getMaxHitpoints() > 0) {
+                    totalAmmoSucc += Math.round(proj.getMaxHitpoints() / SUCC_CONVERT_PER_HITPOINT);
                 }
-                //add ammo for weapon
-                if(weapon.getAmmo() < weapon.getMaxAmmo()) {
-                    int ammoToAdd = (int) (weapon.getAmmo() + totalAmmoSucc);
-                    if(ammoToAdd > weapon.getMaxAmmo()) {
-                        ammoToAdd = weapon.getMaxAmmo();
-                    }
-                    weapon.setAmmo(ammoToAdd);
+                //remove proj
+                Global.getCombatEngine().removeObject(proj);
+                //do fx :D
+                engine.spawnEmpArcVisual(
+                        weapon.getLocation(),
+                        weapon.getShip(),
+                        proj.getLocation(),
+                        null,
+                        4f,
+                        Color.red,
+                        new Color(255,255,255,255)
+                );
+            }
+            //add ammo for weapon
+            if(weapon.getAmmo() < weapon.getMaxAmmo()) {
+                int ammoToAdd = (int) (weapon.getAmmo() + totalAmmoSucc);
+                if(ammoToAdd > weapon.getMaxAmmo()) {
+                    ammoToAdd = weapon.getMaxAmmo();
                 }
+                weapon.setAmmo(ammoToAdd);
+                Global.getSoundPlayer().playSound("ps_arenico_succ", MathUtils.getRandomNumberInRange(0.9f,1f), 0.9f, weapon.getLocation(), new Vector2f());
             }
         }
     }
