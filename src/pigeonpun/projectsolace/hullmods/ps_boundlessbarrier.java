@@ -26,14 +26,14 @@ public class ps_boundlessbarrier extends BaseHullMod {
             BOUNDLESS_LARGE_POINT = 4,
             BOUNDLESS_MEDIUM_POINT = 2,
             BOUNDLESS_SMALL_POINT = 1;
-    public static final float
-            BOUNDLESS_CAPITAL_SOFT_CAP = 12,
-            BOUNDLESS_CRUISER_SOFT_CAP = 9,
-            BOUNDLESS_DESTROYER_SOFT_CAP = 6,
-            BOUNDLESS_FRIGATE_SOFT_CAP = 3;
-    private static final float BOUNDLESS_MAIN_PERCENTAGE_PER_POINT = 2F; //percentage
+//    public static final float
+//            BOUNDLESS_CAPITAL_SOFT_CAP = 12,
+//            BOUNDLESS_CRUISER_SOFT_CAP = 9,
+//            BOUNDLESS_DESTROYER_SOFT_CAP = 6,
+//            BOUNDLESS_FRIGATE_SOFT_CAP = 3;
+    private static final float BOUNDLESS_MAIN_PERCENTAGE_PER_POINT = 5F; //percentage
     private static final float BOUNDLESS_CR_PERCENTAGE_PER_POINT = 0.5f; //percentage
-    private static final float BOUNDLESS_DP_MULT_PER_POINT = 1f; //percentage
+    private static final float BOUNDLESS_DP_MULT_PER_POINT = 1f;
 //    private static final float BOUNDLESS_MAIN_PERCENTAGE_PER_POINT_OVERCAP = 2f; //percentage
 //    private static final float BOUNDLESS_CR_PERCENTAGE_PER_POINT_OVERCAP = 0.5f; //percentage
     private static final IntervalUtil EMP_SPARK_TIMER = new IntervalUtil(2.5f, 3.5f);
@@ -140,7 +140,7 @@ public class ps_boundlessbarrier extends BaseHullMod {
         label = tooltip.addPara("+ Current Boundless weapons point: %s.", opad, h,
                 "" + Math.round(boundlessWeaponPoints));
         label.setHighlight("" + Math.round(boundlessWeaponPoints));
-        label.setHighlightColors(boundlessWeaponPoints > getBoundlessWeaponCap(ship.getVariant())? bad: good);
+        label.setHighlightColors(good);
 
         tooltip.addSectionHeading("Effects", Alignment.MID, opad);
         label = tooltip.addPara("Increase maintenance cost by %s per point, current increase: %s", opad, h,"" + Math.round(BOUNDLESS_MAIN_PERCENTAGE_PER_POINT) + "%", "" + Math.round(maintCost) + "%");
@@ -151,8 +151,8 @@ public class ps_boundlessbarrier extends BaseHullMod {
 //        label.setHighlight("" + Math.round(BOUNDLESS_MAIN_PERCENTAGE_PER_POINT_OVERCAP) + "%", "" + Math.round(BOUNDLESS_CR_PERCENTAGE_PER_POINT_OVERCAP) + "%");
 //        label.setHighlightColors(bad, bad);
 
-        label = tooltip.addPara("Reduce CR by %s per point, current reduction: %s", opad, h,"" + Math.round(BOUNDLESS_CR_PERCENTAGE_PER_POINT) + "%", "" + Math.round(CRCost) + "%");
-        label.setHighlight("" + Math.round(BOUNDLESS_CR_PERCENTAGE_PER_POINT) + "%", "" + Math.round(CRCost) + "%");
+        label = tooltip.addPara("Reduce CR by %s per point, current reduction: %s", opad, h,"" + (BOUNDLESS_CR_PERCENTAGE_PER_POINT) + "%", "" + Math.round(CRCost) + "%");
+        label.setHighlight("" + (BOUNDLESS_CR_PERCENTAGE_PER_POINT) + "%", "" + Math.round(CRCost) + "%");
         label.setHighlightColors(bad, bad);
 
         label = tooltip.addPara("Increase DP by %s per point, current increase: %s", opad, h,"" + Math.round(BOUNDLESS_DP_MULT_PER_POINT) + "", "" + Math.round(DPCost));
@@ -195,21 +195,21 @@ public class ps_boundlessbarrier extends BaseHullMod {
         }
         return 0;
     }
-    private float getBoundlessWeaponCap(ShipVariantAPI variant) {
-        if(variant.getHullSize() == ShipAPI.HullSize.CAPITAL_SHIP) {
-            return BOUNDLESS_CAPITAL_SOFT_CAP;
-        }
-        if(variant.getHullSize() == ShipAPI.HullSize.CRUISER) {
-            return BOUNDLESS_CRUISER_SOFT_CAP;
-        }
-        if(variant.getHullSize() == ShipAPI.HullSize.DESTROYER) {
-            return BOUNDLESS_DESTROYER_SOFT_CAP;
-        }
-        if(variant.getHullSize() == ShipAPI.HullSize.FRIGATE) {
-            return BOUNDLESS_FRIGATE_SOFT_CAP;
-        }
-        return 0;
-    }
+//    private float getBoundlessWeaponCap(ShipVariantAPI variant) {
+//        if(variant.getHullSize() == ShipAPI.HullSize.CAPITAL_SHIP) {
+//            return BOUNDLESS_CAPITAL_SOFT_CAP;
+//        }
+//        if(variant.getHullSize() == ShipAPI.HullSize.CRUISER) {
+//            return BOUNDLESS_CRUISER_SOFT_CAP;
+//        }
+//        if(variant.getHullSize() == ShipAPI.HullSize.DESTROYER) {
+//            return BOUNDLESS_DESTROYER_SOFT_CAP;
+//        }
+//        if(variant.getHullSize() == ShipAPI.HullSize.FRIGATE) {
+//            return BOUNDLESS_FRIGATE_SOFT_CAP;
+//        }
+//        return 0;
+//    }
 //    private int calcBoundlessWeaponPoint(ShipAPI ship) {
 //        if(ship != null) {
 //            int totalPoint = 0;

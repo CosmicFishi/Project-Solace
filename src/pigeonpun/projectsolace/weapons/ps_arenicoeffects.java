@@ -30,7 +30,7 @@ public class ps_arenicoeffects implements EveryFrameWeaponEffectPlugin, OnFireEf
     public final float SUCC_PROJ_COUNT = 3;
     public final float SUCC_CONVERT_PER_PROJ = 1;
     public final float SUCC_CONVERT_PER_HITPOINT = 100f;
-    public final float SUCC_RADIUS = 300f;
+    public final float SUCC_RADIUS = 500f;
     private boolean runOnce = false;
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
