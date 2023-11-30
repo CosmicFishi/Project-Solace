@@ -48,7 +48,7 @@ public class ps_ayubia {
                 180f,
                 2000f,
                 100f);
-        //Elia Vouvon.setCustomDescriptionId("vic_phlegethon"); //reference descriptions.csv
+        Kearsarge.setCustomDescriptionId("ps_kearsarge"); //reference descriptions.csv
 
         MarketAPI Kearsarge_market = ps_gen.addMarketplace(
                 "enmity",
@@ -110,7 +110,7 @@ public class ps_ayubia {
                 100f,
                 3000f,
                 150f);
-        //Elia Vouvon.setCustomDescriptionId("vic_phlegethon"); //reference descriptions.csv
+        Bowditch.setCustomDescriptionId("ps_bowditch"); //reference descriptions.csv
 
         MarketAPI Bowditch_market = ps_gen.addMarketplace(
                 "enmity",
@@ -167,7 +167,7 @@ public class ps_ayubia {
                 120f,
                 5300f,
                 250f);
-        //Elia Vouvon.setCustomDescriptionId("vic_phlegethon"); //reference descriptions.csv
+        Malleus.setCustomDescriptionId("ps_malleus"); //reference descriptions.csv
         system.addRingBand(Malleus, "misc", "rings_dust0", 256f, 1, Color.gray, 600f, 300f, 100);
 
         MarketAPI Malleus_market = ps_gen.addMarketplace(
