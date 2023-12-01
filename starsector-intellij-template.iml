@@ -14,5 +14,6 @@
     <orderEntry type="library" name="ExerelinCore" level="project" />
     <orderEntry type="library" name="javadoc" level="project" />
     <orderEntry type="library" name="LazyLib" level="project" />
+    <orderEntry type="library" name="LunaLib-1.8" level="project" />
   </component>
 </module>

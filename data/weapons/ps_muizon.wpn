@@ -1,0 +1,56 @@
+{
+  "id": "ps_muizon",
+  "specClass": "projectile",
+  "projectileSpecId": "ps_muizon_shot",
+  "type": "ENERGY",
+  "size": "LARGE",
+  "displayArcRadius": 450,
+  "turretSprite": "",
+  "turretGlowSprite": "",
+  "hardpointSprite": "",
+  "hardpointGlowSprite": "graphics/weapons/ps_muizon_hardpoint_glow.png",
+  "glowColor": [
+    245,
+    40,
+    84,
+    255
+  ],
+  "visualRecoil": 5,
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
+  "turretOffsets": [
+    0,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    0,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "ALTERNATING",
+  "animationType": "GLOW_AND_FLASH",
+  "autocharge": true,
+  "muzzleFlashSpec": {
+    "length": 50,
+    "spread": 25,
+    "particleSizeMin": 10,
+    "particleSizeRange": 20,
+    "particleDuration": 1.2,
+    "particleCount": 30,
+    "particleColor": [
+      219,
+      204,
+      225,
+      255
+    ],
+  },
+  "fireSoundTwo": "ps_muizon_fire",
+  "fireSoundOne": "ps_muizon_charging",
+  "everyFrameEffect":"pigeonpun.projectsolace.weapons.ps_muizoneffects",
+}

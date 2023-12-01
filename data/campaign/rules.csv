@@ -1,1 +1,19 @@
 id,trigger,conditions,script,text,options,notes
+"#RULESET_NAME Project Solace",,,,,,
+,,,,,,
+# Conversations,,,,,,
+ps_buySpecialWeapons,PopulateOptions,"$faction.id == enmity
+$isPerson
+$market.id == ps_planet_kearsarge_market
+ps_specialweapons checkIfCanSell","FireBest ps_disableBuySpecialWeaponIfNeeded",,"10:ps_startBuySpecialWeapons:""I'd like to buy some of those rare armaments""",
+ps_disableBuySpecialWeapons,ps_disableBuySpecialWeaponIfNeeded,"!$faction.friendlyToPlayer","SetTooltip ps_startBuySpecialWeapons ""You need to be friendly to Enmity in order to open transaction""
+SetEnabled ps_startBuySpecialWeapons false",,,
+ps_startBuySpecialWeapons,DialogOptionSelected,"$option == ps_startBuySpecialWeapons","ps_specialweapons selectWeapons",,,
+ps_purchaseSpecialWeapons,ps_purchaseSpecialWeapons,,"ps_specialweapons purchaseWeapons","""Lets do a summary of the purchase""","1:ps_confirmPurchaseSpecialWeapons:""Confirm purchasing""
+10:ps_startBuySpecialWeapons:""Rethink about the purchase...""",
+ps_confirmPurchaseSpecialWeapons,DialogOptionSelected,"$option == ps_confirmPurchaseSpecialWeapons","ps_specialweapons confirmPurchaseWeapons
+FireAll PopulateOptions","""It is a pleasure doing business with you""
+
+$PersonRank $personLastName thanks you and the conversation moves on to other matters.",,
+"#END Conversations",,,,,,
+

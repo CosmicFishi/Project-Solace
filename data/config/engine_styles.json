@@ -15,6 +15,50 @@
 		#"glowAlternateColor":[255,2,20,235],
 		"type":"SMOKE"
 	},
-
+	"EnS_ENGINE":{
+		"engineColor":[219,234,234,255],
+		"contrailWidthAddedFractionAtEnd":-3,
+		"contrailParticleSizeMult":1.2,
+		"contrailMinSeg":7,
+		"contrailParticleDuration":2,
+		"contrailParticleFinalSizeMult":3,
+		"contrailWidthMult":1,
+		"contrailMaxSpeedMult":1,
+		"contrailAngularVelocityMult":0,
+		"contrailColor":[142,205,199,55],
+		"contrailCampaignColor":[219,234,234,255],
+		#"glowAlternateColor":[255,2,20,235],
+		"type":"SMOKE"
+	},
+	"VAGRANTSEER_ENGINE":{
+		"engineColor":[231,169,255,255],
+		"contrailWidthAddedFractionAtEnd":-3,
+		"contrailParticleSizeMult":1,
+		"contrailMinSeg":2,
+		"contrailParticleDuration":1,
+		"contrailParticleFinalSizeMult":1,
+		"contrailWidthMult":1,
+		"contrailMaxSpeedMult":1,
+		"contrailAngularVelocityMult":0,
+		"contrailColor":[231,96,255,55],
+		"contrailCampaignColor":[231,96,255,255],
+		#"glowAlternateColor":[255,2,20,235],
+		"type":"SMOKE"
+	},
+	"BYGONEDAME_ENGINE":{
+		"engineColor":[188,255,213,255],
+		"contrailWidthAddedFractionAtEnd":-3,
+		"contrailParticleSizeMult":0.5,
+		"contrailMinSeg":2,
+		"contrailParticleDuration":1,
+		"contrailParticleFinalSizeMult":1,
+		"contrailWidthMult":0.2,
+		"contrailMaxSpeedMult":1,
+		"contrailAngularVelocityMult":0,
+		"contrailColor":[144,172,155,55],
+		"contrailCampaignColor":[144,172,155,255],
+		#"glowAlternateColor":[255,2,20,235],
+		"type":"SMOKE"
+	}
 }
 

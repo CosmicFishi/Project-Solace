@@ -1,0 +1,20 @@
+{
+	"id":"ps_muizon_shot",
+	"specClass":"projectile",
+	#"onHitEffect":"com.fs.starfarer.api.impl.combat.IonCannonOnHitEffect",
+	"onFireEffect": "pigeonpun.projectsolace.weapons.ps_muizoneffects",
+	"spawnType":"BALLISTIC_AS_BEAM",
+	"collisionClass":"RAY",
+	"collisionClassByFighter":"RAY_FIGHTER",
+	"length": 90.0,
+	"width": 40.0,
+	"fadeTime":0.35,
+	"fringeColor":[245,40,84,255],
+	"coreColor":[225,225,255,200],
+	"textureType":"ROUGH",  # only needed for BEAM spawnType
+	"textureScrollSpeed":-256.0,
+	"pixelsPerTexel":1.0,
+	"passThroughMissiles":true,
+    "passThroughFighters":true,
+    "passThroughFightersOnlyWhenDestroyed":true,
+}

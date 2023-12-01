@@ -27,6 +27,93 @@
   "ps_up_charging": [
     {"file": "sounds/hullmods/ps_up_charging.ogg", "pitch": 0.9, "volume": 1},
     {"file": "sounds/hullmods/ps_up_charging.ogg", "pitch": 0.95, "volume": 1}
+  ],
+  "ps_emp_shout": [
+    {"file": "sounds/hullmods/ps_emp_shout.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/hullmods/ps_emp_shout.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/hullmods/ps_emp_shout.ogg", "pitch": 1, "volume": 1},
+    {"file": "sounds/hullmods/ps_emp_shout.ogg", "pitch": 1.05, "volume": 1},
+    {"file": "sounds/hullmods/ps_emp_shout.ogg", "pitch": 1.1, "volume": 1}
+  ],
+  "ps_proteolyticbeam_emp_impact": [
+    {"file": "sounds/weapons/ps_proteolyticbeam_emp_impact.ogg", "pitch": 1.1, "volume": 1},
+    {"file": "sounds/weapons/ps_proteolyticbeam_emp_impact.ogg", "pitch": 1.15, "volume": 1},
+    {"file": "sounds/weapons/ps_proteolyticbeam_emp_impact.ogg", "pitch": 1.2, "volume": 1},
+    {"file": "sounds/weapons/ps_proteolyticbeam_emp_impact.ogg", "pitch": 1.25, "volume": 1},
+    {"file": "sounds/weapons/ps_proteolyticbeam_emp_impact.ogg", "pitch": 1.3, "volume": 1}
+  ],
+  "ps_daemeli_fire": [
+    {"file": "sounds/weapons/ps_daemeli_fire.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_daemeli_fire.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_daemeli_fire.ogg", "pitch": 1, "volume": 1},
+    {"file": "sounds/weapons/ps_daemeli_fire.ogg", "pitch": 1.1, "volume": 1}
+  ],
+  "ps_acris_fire": [
+    {"file": "sounds/weapons/ps_acris_fire.ogg", "pitch": 0.9, "volume": 1.2},
+    {"file": "sounds/weapons/ps_acris_fire.ogg", "pitch": 0.95, "volume": 1.2},
+    {"file": "sounds/weapons/ps_acris_fire.ogg", "pitch": 1, "volume": 1.2},
+  ],
+  "ps_muizon_charging": [
+    {"file": "sounds/weapons/ps_muizon_charging.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_muizon_charging.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_muizon_charging.ogg", "pitch": 1, "volume": 1},
+  ],
+  "ps_muizon_fire": [
+    {"file": "sounds/weapons/ps_muizon_fire.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_muizon_fire.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_muizon_fire.ogg", "pitch": 1, "volume": 1},
+    {"file": "sounds/weapons/ps_muizon_fire.ogg", "pitch": 1.05, "volume": 1},
+    {"file": "sounds/weapons/ps_muizon_fire.ogg", "pitch": 1.1, "volume": 1}
+  ],
+  "ps_roseae_charging": [
+    {"file": "sounds/weapons/ps_roseae_charging.ogg", "pitch": 0.8, "volume": 0.85},
+    {"file": "sounds/weapons/ps_roseae_charging.ogg", "pitch": 0.85, "volume": 0.85},
+    {"file": "sounds/weapons/ps_roseae_charging.ogg", "pitch": 0.9, "volume": 0.85},
+  ],
+  "ps_roseae_fire": [
+    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 0.9, "volume": 1.2},
+    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 0.95, "volume": 1.2},
+    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 1, "volume": 1.2},
+    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 1.05, "volume": 1.2},
+    {"file": "sounds/weapons/ps_roseae_fire.ogg", "pitch": 1.1, "volume": 1.2}
+  ],
+  "ps_punctatus_fire": [
+    {"file": "sounds/weapons/ps_punctatus_fire.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_punctatus_fire.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_punctatus_fire.ogg", "pitch": 1, "volume": 1},
+    {"file": "sounds/weapons/ps_punctatus_fire.ogg", "pitch": 1.05, "volume": 1}
+  ],
+  "ps_punctatus_quake": [
+    {"file": "sounds/weapons/ps_punctatus_quake.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_punctatus_quake.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_punctatus_quake.ogg", "pitch": 1, "volume": 1},
+    {"file": "sounds/weapons/ps_punctatus_quake.ogg", "pitch": 1.05, "volume": 1}
+  ],
+  "ps_daemeli_disruption": [
+    {"file": "sounds/weapons/ps_daemeli_disruption.ogg", "pitch": 0.8, "volume": 1},
+    {"file": "sounds/weapons/ps_daemeli_disruption.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_daemeli_disruption.ogg", "pitch": 1, "volume": 1},
+    {"file": "sounds/weapons/ps_daemeli_disruption.ogg", "pitch": 1.1, "volume": 1}
+  ],
+  "ps_hemiophrys_fire": [
+    {"file": "sounds/weapons/ps_hemiophrys_fire.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_hemiophrys_fire.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_hemiophrys_fire.ogg", "pitch": 1, "volume": 1}
+  ],
+  "ps_arenico_fire": [
+    {"file": "sounds/weapons/ps_arenico_fire.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_arenico_fire.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_arenico_fire.ogg", "pitch": 1, "volume": 1}
+  ],
+  "ps_arenico_succ": [
+    {"file": "sounds/weapons/ps_arenico_succ.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_arenico_succ.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_arenico_succ.ogg", "pitch": 1, "volume": 1}
+  ],
+  "ps_alvarius_fire": [
+    {"file": "sounds/weapons/ps_alvarius_fire.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_alvarius_fire.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_alvarius_fire.ogg", "pitch": 1, "volume": 1}
   ]
 }
 

@@ -11,11 +11,12 @@
     "invasionSupportFleetName":"Support Fleet",
     "defenceFleetName":"Defensive Fleet",
 	"suppressionFleetName":"Pacifier Group",
+
 	"noSyncRelations":false,
-	"noStartingContact":true,
+	"noStartingContact":false,
     "marketSpawnWeight":1,
 	"invasionFleetSizeMod":0.1,
-	"responseFleetSizeMod":0.15,
+	"responseFleetSizeMod":0.2,
 	"invasionPointMult":1,
 	"vengeanceFleetSizeMult":1.5, #no bullying
 	"factionIdForHqResponse":"projectsolace",
@@ -24,6 +25,7 @@
 	"specialForcesPointMult":1.5,
 	"specialForcesSizeMult":2,
 	"stabilizeCommodities":["supplies"],
+    "invasionOnlyRetake": true,                      #Get back what belong to us
 
     "vengeanceLevelNames":["Assassination", "Carnage", "Extermination"],
     "vengeanceFleetNames":["Zealots", "Slayers", "Crusade"],

@@ -3,6 +3,7 @@
 	# for example, no Hyperions or fast beam-based kiting loadouts, or ships with damper field
 	"combatSmallForSmallFleet":{
             "ps_taliabu_attack": 1,
+			"ps_laevis_attack": 1,
 	},
 	"combatSmall":{
 		"ps_taliabu_attack": 5,
@@ -10,13 +11,16 @@
 		"ps_salawesi_attack": 5,
 		"ps_tanimbar_attack": 3,
 		"ps_tanimbar_destroy": 6,
-    },
+		"ps_laevis_attack": 4,
+},
 	"combatMedium":{
 		"ps_morepork_attack": 4,
 		"ps_morepork_destroy": 3,
 		"ps_ashy_defend": 4,
 		"ps_ashy_attack": 4,
 		"ps_ashy_disabler": 3,
+		"ps_pricei_attack": 5,
+		"ps_pricei_defend": 3,
 	},
 	"combatLarge":{
 		"ps_barking_attack": 6,
@@ -29,6 +33,9 @@
 		"ps_javanica_beamer": 7,
 		"ps_aurantia_attack": 8,
 		"ps_aurantia_defend": 6,
+		"ps_merkeri_attack": 8,
+		"ps_merkeri_defend": 5,
+		"ps_merkeri_swarm": 4,
 	},
 	"combatCapital":{
 		"ps_nadhmor_attack": 8,
@@ -38,6 +45,8 @@
 		"ps_camiguin_defend": 3,
 		"ps_albertine_attack": 7,
 		"ps_albertine_defend": 5,
+		"ps_ravus_attack": 6,
+		"ps_ravus_defend": 3,
 	},
 	
 	

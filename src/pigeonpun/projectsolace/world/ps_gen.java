@@ -9,6 +9,11 @@ import com.fs.starfarer.api.campaign.econ.EconomyAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.shared.SharedData;
+import exerelin.campaign.AllianceManager;
+import static pigeonpun.projectsolace.scripts.projectsolaceplugin.*;
+
+import exerelin.campaign.alliances.Alliance;
+import pigeonpun.projectsolace.world.systems.ps_ayubia;
 import pigeonpun.projectsolace.world.systems.ps_chilka;
 
 import java.util.ArrayList;
@@ -75,10 +80,17 @@ public class ps_gen implements SectorGeneratorPlugin {
     public void generate(SectorAPI sector) {
 
         FactionAPI ps = sector.getFaction("projectsolace");
+        FactionAPI enmity = sector.getFaction("enmity");
+
         //Generate your system
         new ps_chilka().generate(sector);
+        new ps_ayubia().generate(sector);
 
         SharedData.getData().getPersonBountyEventData().addParticipatingFaction("projectsolace");
+
+        if(nexerelinEnabled) {
+            createSolaceEnmityAlliance(sector);
+        }
 
         //vanilla factions
         ps.setRelationship(Factions.LUDDIC_CHURCH, -0.1f);
@@ -91,8 +103,33 @@ public class ps_gen implements SectorGeneratorPlugin {
         ps.setRelationship(Factions.LIONS_GUARD, -0.1f);
         ps.setRelationship(Factions.HEGEMONY, 0.1f);
         ps.setRelationship(Factions.REMNANTS, -0.5f);
+        ps.setRelationship("enmity", 1f);
+        enmity.setRelationship(Factions.LUDDIC_CHURCH, -0.1f);
+        enmity.setRelationship(Factions.LUDDIC_PATH, -0.5f);
+        enmity.setRelationship(Factions.TRITACHYON, -1f);
+        enmity.setRelationship(Factions.PERSEAN, -0.2f);
+        enmity.setRelationship(Factions.PIRATES, -0.5f);
+        enmity.setRelationship(Factions.INDEPENDENT, 0.5f);
+        enmity.setRelationship(Factions.DIKTAT, -0.1f);
+        enmity.setRelationship(Factions.LIONS_GUARD, -0.1f);
+        enmity.setRelationship(Factions.HEGEMONY, 0.1f);
+        enmity.setRelationship(Factions.REMNANTS, -0.5f);
         //modded factions
         ps.setRelationship("orks", 1.0f);
 //        ps.setRelationship("scalartech", 0.4f);
+    }
+
+    public void createSolaceEnmityAlliance(SectorAPI sector) {
+        FactionAPI solace = sector.getFaction(solace_ID);
+        FactionAPI enmity = sector.getFaction(enmity_ID);
+
+        if(Global.getSettings().getBoolean("ps_solaceEnmityAlliance")) {
+            Alliance alliance = AllianceManager.createAlliance(enmity_ID, solace_ID, AllianceManager.getBestAlignment(enmity_ID, solace_ID));
+            alliance.setName(Global.getSettings().getString("ps_projectsolace", "ps_enmitysolacealliance"));
+            alliance.addPermaMember(solace_ID);
+            alliance.addPermaMember(enmity_ID);
+        }
+        enmity.setRelationship(solace_ID, 1f);
+        enmity.setRelationship(Factions.PLAYER, Global.getSector().getPlayerFaction().getRelationship(solace_ID));
     }
 }

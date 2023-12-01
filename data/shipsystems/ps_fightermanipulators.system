@@ -1,0 +1,15 @@
+{
+	"id":"ps_fightermanipulators",
+	"type":"STAT_MOD",
+    "aiType":"CUSTOM",
+    "aiScript":"pigeonpun.projectsolace.shipsystems.ai.ps_fightermanipulatorsstats_ai",
+
+    "statsScript":"pigeonpun.projectsolace.shipsystems.ps_fightermanipulatorsstats",
+
+    "useSound":"system_targeting_feed",
+    "outOfUsesSound":"gun_out_of_ammo",
+
+    "aiHints":{
+
+    }
+}

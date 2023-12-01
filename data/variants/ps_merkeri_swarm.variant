@@ -1,0 +1,57 @@
+{
+  "variantId": "ps_merkeri_swarm",
+  "hullId": "ps_merkeri",
+  "displayName": "Swarm",
+  "goalVariant": true,
+  "fluxCapacitors": 0,
+  "fluxVents": 12,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "targetingunit",
+    "expanded_deck_crew"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "pilum_large",
+        "WS0002": "ionbeam",
+        "WS0003": "ionbeam",
+        "WS0005": "taclaser",
+        "WS0006": "lrpdlaser",
+        "WS0007": "lrpdlaser"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0004": "taclaser"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0008": "pdlaser",
+        "WS0009": "pdlaser",
+        "WS0010": "vulcan",
+        "WS0011": "vulcan",
+        "WS0012": "pdlaser"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": [
+    "broadsword_wing",
+    "broadsword_wing",
+    "spark_wing"
+  ]
+}

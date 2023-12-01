@@ -1,10 +1,30 @@
 {
+  "ps_solaceEnmityAlliance": true, # form alliance between Solace and Enmity if enable
+  "ps_solaceDefend": true, # Solace will send out defend fleets if enable
+  "ps_solaceDefendTimeoutPeriod": 45, # faction won't accumulate defend points for this many days at start
+  "ps_pointsRequiredForDefendFleet": 27000,    # bigger number = longer delay between sending defend fleets,
+  "ps_defendPointEconomyMult": 0.5, # multiplier for defend point gains from economic assets,
+
+  "ps_vagrantseerGenerateSalvage": true, #generate Vagrant Seer salvage/fleets,
+  "ps_bygonedameGenerateSalvage": true, #generate Bygone Dame salvage,
+  "ps_sodalityFleetAdjustmentActive": true, # adjust fleets line up for Solace or Enmity when one of the faction got eliminated,
+  "ps_hardmodeSodalityActive": true, # Boundless weapons now appears in fleets after Sodality adjustment have been made,
+
+  "ps_epilepsy": true, #Epilepsy glitch effect
+  "ps_glitchAlphaMult": 0.85, #Multiplier for Solace UP glitch effect. The lower the number, the more transparent the glitch gets
+
   "designTypeColors":{
     "Project Solace":[230,40,240,255],
+    "Boundless": [141,53,121,255],
+    "Vagrant Seer": [255,194,255, 255],
+    "Bygone Dame": [148, 198, 166, 255]
   },
   "plugins":{
 
   },
+  "ruleCommandPackages":[
+    "pigeonpun.projectsolace.campaign.rulecmd"
+  ],
   "graphics":{
     "blueprint_packages":{
 
@@ -12,15 +32,34 @@
     "campaignEntities":{
 
     },
-    "hab_glows":{
-
+    "ships": {
+      "ps_salawesi": "graphics/ships/ps_salawesi.png",
+      "ps_taliabu": "graphics/ships/ps_taliabu.png",
+      "ps_tanimbar": "graphics/ships/ps_tanimbar.png",
+      "ps_laevis": "graphics/ships/enmity/ps_laevis.png",
+      "ps_morepork": "graphics/ships/ps_morepork.png",
+      "ps_ashy": "graphics/ships/ps_ashy.png",
+      "ps_papuan": "graphics/ships/ps_papuan.png",
+      "ps_pricei": "graphics/ships/enmity/ps_pricei.png",
+      "ps_barking": "graphics/ships/ps_barking.png",
+      "ps_rufous": "graphics/ships/ps_rufous.png",
+      "ps_javanica": "graphics/ships/ps_javanica.png",
+      "ps_aurantia": "graphics/ships/ps_aurantia.png",
+      "ps_merkeri": "graphics/ships/enmity/ps_merkeri.png",
+      "ps_alitha": "graphics/ships/vagrantseer/ps_alitha.png",
+      "ps_nadhmor": "graphics/ships/ps_nadhmor.png",
+      "ps_camiguin": "graphics/ships/ps_camiguin.png",
+      "ps_albertine": "graphics/ships/ps_albertine.png",
+      "ps_ravus": "graphics/ships/enmity/ps_ravus.png",
+      "ps_sarpedon": "graphics/ships/vagrantseer/ps_sarpedon.png",
     },
     "systems":{
 
     },
     "fx":{
-
-
+      "ps_ring_core": "graphics/fx/ps_ring_core.png", #from base game
+      "ps_ring_smooth": "graphics/fx/ps_ring_smooth.png", #from base game
+      "ps_star": "graphics/fx/ps_star.png" #from base game
     },
     "illustrations":{
 

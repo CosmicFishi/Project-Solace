@@ -1,0 +1,25 @@
+{
+	"id":"ps_warpingmine",
+	"type":"STAT_MOD",
+	"aiType":"MINE_STRIKE",
+	
+	"statsScript":"pigeonpun.projectsolace.shipsystems.ps_warpingminestats",
+
+	"canUseWhileRightClickSystemOn":true,
+    "runScriptWhileIdle":true, # unapply() never gets called
+
+	"fadeActivationSoundOnChargedown":true,
+	"useSound":"system_interdictor",
+	"outOfUsesSound":"gun_out_of_ammo",
+	
+	"aiHints":{
+		"threatRange":1500,
+		"threatAmount":10,
+		"threatAngle":0,
+		"threatArc":360,
+	}
+}
+
+
+
+

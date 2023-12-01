@@ -1,0 +1,116 @@
+{
+  "hullName": "Vudii",
+  "hullId": "ps_vudii",
+  "hullSize": "FIGHTER",
+  "spriteName": "graphics/ships/fighters/ps_vudii.png",
+  "style": "ENMITY",
+  "height": 40,
+  "width": 50,
+  "center": [25, 20],
+  "collisionRadius": 31.5,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 27.5,
+  "viewOffset": 0,
+  "builtInMods": [
+    "no_weapon_flux"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [13, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [8, 16]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": -0,
+      "locations": [8, -16]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 90,
+      "locations": [0, 23]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": -90,
+      "locations": [0, -23]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "SYSTEM",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [14, 8.5]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "SYSTEM",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": -0,
+      "locations": [14, -8.5]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-3, 10],
+      "length": 45,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "EnS_ENGINE"
+    },
+    {
+      "location": [-3, -10],
+      "length": 45,
+      "width": 10,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "EnS_ENGINE"
+    }
+  ],
+  "bounds": [
+    -16, 2.5,
+    -3, 6,
+    -7, 18,
+    0, 24,
+    9, 19,
+    14.5, 10,
+    14.5, -10,
+    9, -19,
+    0, -24,
+    -7, -18,
+    -3, -6,
+    -16, -2.5
+  ]
+}

@@ -1,0 +1,271 @@
+{
+  "hullName": "Oculatus",
+  "hullId": "ps_oculatus",
+  "hullSize": "CRUISER",
+  "spriteName": "graphics/ships/bygonedame/ps_oculatus.png",
+  "style": "BYGONEDAME",
+  "height": 236,
+  "width": 202,
+  "center": [101, 118],
+  "collisionRadius": 170,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 155,
+  "viewOffset": 0,
+  "builtInMods": [
+    "phasefield",
+    "delicate",
+    "ps_lastkin",
+    "phase_anchor"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 60,
+      "angle": 0,
+      "locations": [-20, 36]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 60,
+      "angle": -0,
+      "locations": [-20, -36]
+    },
+    {
+      "id": "WS0003",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 60,
+      "angle": 45,
+      "locations": [-47, 37]
+    },
+    {
+      "id": "WS0004",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 60,
+      "angle": -45,
+      "locations": [-47, -37]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": 16,
+      "locations": [66, 33]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": -16,
+      "locations": [66, -33]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": 77.5,
+      "locations": [1, 63]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "UNIVERSAL",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": -77.5,
+      "locations": [1, -63]
+    },
+    {
+      "id": "WS0009",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [50, 22]
+    },
+    {
+      "id": "WS0010",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [50, -22]
+    },
+    {
+      "id": "WS0011",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [43, 22]
+    },
+    {
+      "id": "WS0012",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [43, -22]
+    },
+    {
+      "id": "WS0013",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [22, 36]
+    },
+    {
+      "id": "WS0014",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [22, -36]
+    },
+    {
+      "id": "WS0015",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [15, 36]
+    },
+    {
+      "id": "WS0016",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [15, -36]
+    },
+    {
+      "id": "WS0017",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 145,
+      "locations": [-52, 13.5]
+    },
+    {
+      "id": "WS0018",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -145,
+      "locations": [-52, -13.5]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-66, -51],
+      "length": 70,
+      "width": 25,
+      "angle": -145,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "BYGONEDAME_ENGINE"
+    },
+    {
+      "location": [-66, 51],
+      "length": 70,
+      "width": 25,
+      "angle": 145,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "BYGONEDAME_ENGINE"
+    },
+    {
+      "location": [-92, 11],
+      "length": 60,
+      "width": 15,
+      "angle": -175.5,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "BYGONEDAME_ENGINE"
+    },
+    {
+      "location": [-92, -11],
+      "length": 60,
+      "width": 15,
+      "angle": 175.5,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "BYGONEDAME_ENGINE"
+    },
+    {
+      "location": [-105, -0],
+      "length": 110,
+      "width": 30,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "BYGONEDAME_ENGINE"
+    }
+  ],
+  "bounds": [
+    -113.5, -6,
+    -89.5, -32.5,
+    -83, -33,
+    -78.5, -38,
+    -78, -49.5,
+    -68.5, -62,
+    -59, -62,
+    -55, -67.5,
+    -52, -90,
+    -46.5, -100,
+    -17, -96,
+    -13.5, -90,
+    15.5, -72,
+    35, -69,
+    78, -39.5,
+    94.5, -40,
+    110, -29,
+    112, -12,
+    107, -6,
+    107, 6,
+    112, 12,
+    110, 29,
+    94.5, 40,
+    78, 39.5,
+    35, 69,
+    15.5, 72,
+    -13.5, 90,
+    -17, 96,
+    -46.5, 100,
+    -52, 90,
+    -55, 67.5,
+    -59, 62,
+    -68.5, 62,
+    -78, 49.5,
+    -78.5, 38,
+    -83, 33,
+    -89.5, 32.5,
+    -113.5, 6
+  ]
+}

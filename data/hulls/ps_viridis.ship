@@ -1,0 +1,79 @@
+{
+  "hullName": "Viridis",
+  "hullId": "ps_viridis",
+  "hullSize": "FIGHTER",
+  "spriteName": "graphics/ships/fighters/ps_viridis.png",
+  "style": "ENMITY",
+  "height": 40,
+  "width": 40,
+  "center": [20, 20],
+  "collisionRadius": 21,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 17,
+  "viewOffset": 0,
+  "builtInMods": [
+    "no_weapon_flux"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [1, 12]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": -0,
+      "locations": [1, -12]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [9, -0]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-10, 9],
+      "length": 40,
+      "width": 8,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "EnS_ENGINE"
+    },
+    {
+      "location": [-10, -9],
+      "length": 40,
+      "width": 8,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "EnS_ENGINE"
+    }
+  ],
+  "bounds": [
+    -14, 6,
+    -5, 14,
+    1, 14,
+    3.5, 7,
+    11, 6,
+    9, -0,
+    11, -6,
+    3.5, -7,
+    1, -14,
+    -5, -14,
+    -14, -6
+  ]
+}

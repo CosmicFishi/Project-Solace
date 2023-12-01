@@ -51,7 +51,7 @@ public class ps_chilka {
                 180f,
                 3500f,
                 100f);
-        //Elia Vouvon.setCustomDescriptionId("vic_phlegethon"); //reference descriptions.csv
+        Elia_Vouvon.setCustomDescriptionId("ps_eliavouvou");
 
         system.addRingBand(Elia_Vouvon, "misc", "rings_dust0", 256f, 1, Color.gray, 600f, 300, 200);
 
@@ -114,7 +114,7 @@ public class ps_chilka {
                 180f,
                 8000f,
                 400f);
-        //Methuselah.setCustomDescriptionId("vic_phlegethon"); //reference descriptions.csv
+        Methuselah.setCustomDescriptionId("ps_methusalah"); //reference descriptions.csv
 
         system.addRingBand(Methuselah, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 500, 200f);
 
@@ -174,7 +174,7 @@ public class ps_chilka {
                 320f,
                 5000f,
                 300f);
-        //Tjikko.setCustomDescriptionId("vic_phlegethon"); //reference descriptions.csv
+        Tjikko.setCustomDescriptionId("ps_tjikko"); //reference descriptions.csv
         system.addRingBand(Tjikko, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 500, 200f);
         system.addRingBand(Tjikko, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 800, 200f);
         system.addAsteroidBelt(Tjikko, 200, 1000, 100, 250, 400, Terrain.ASTEROID_BELT, "Inner Band");
@@ -235,7 +235,7 @@ public class ps_chilka {
                 300f,
                 3800f,
                 120f);
-        //Tjikko.setCustomDescriptionId("vic_phlegethon"); //reference descriptions.csv
+        Stara_Maslina.setCustomDescriptionId("ps_staramaslina"); //reference descriptions.csv
 
         MarketAPI Stara_Maslina_market = ps_gen.addMarketplace(
                 "projectsolace",

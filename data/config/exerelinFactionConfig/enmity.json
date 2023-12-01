@@ -1,0 +1,124 @@
+{
+    "playableFaction":false,
+    "corvusCompatible":true,
+    "rebelFleetSuffix":"Rebels",
+    
+	"asteroidMiningFleetName":"Mining Fleet",
+    "gasMiningFleetName":"Fueling Fleet",
+    "invasionFleetName":"Invasion Force",
+    "responseFleetName":"Relief Fleet",
+    "invasionSupportFleetName":"Support Fleet",
+    "defenceFleetName":"Defensive Fleet",
+	"suppressionFleetName":"Pacifier Group",
+
+	"noSyncRelations":false,
+	"noStartingContact":true,
+    "marketSpawnWeight":1,
+	"invasionFleetSizeMod":0.1,
+	"responseFleetSizeMod":0.3,
+	"invasionPointMult":1,
+	"vengeanceFleetSizeMult":1.5, #no bullying
+	"factionIdForHqResponse":"enmity",
+	"freeMarket":true,
+	"specialForcesMaxFleets":6,
+	"specialForcesPointMult":1.3,
+	"specialForcesSizeMult":1.2,
+	"stabilizeCommodities":["supplies"],
+    "invasionOnlyRetake": false,
+
+    "vengeanceLevelNames":["Strike", "Neutralize", "Removal"],
+    "vengeanceFleetNames":["Huntsman", "Slayers", "Executioner"],
+    "vengeanceFleetNamesSingle":["a Huntsman", "a Slayer", "an Execution Fleet"],
+	
+	"morality":"neutral",
+	
+    "startRelationships":{ 
+	    # Vanilla Factions		 
+		"hegemony": 0.1,
+		"persean": -0.2,
+		"pirates": -0.5,
+		"sindrian_diktat": -0.1,
+        "lions_guard": -0.1,
+		"independent": 0.5,
+		"tritachyon": -1,
+		"luddic_church": -0.1,
+        "luddic_path": -1,
+        "remnant":-0.5,
+		
+		# Mod factions
+        "orks": 1.0                                      #Helped us, we will forever remember
+
+		},
+
+    "minRelationships":{
+        # Vanilla Factions
+
+        # Mod factions
+        "orks": 0.5                                      #Helped us, we will forever remember
+        },
+    "maxRelationships":{
+		# Vanilla Factions
+		},
+
+	
+    "alignments":{
+		"corporate":-0.5,
+        "technocratic":1,
+        "hierarchial":0,
+        "militarist":1.0,
+        "diplomatic":0.8,
+        "ideological":0.5,
+    },
+	
+	"diplomacyTraits":["stalwart", "lowprofile", "helps_allies", "devious", "likes-ai"],
+	
+    "groundBattleSettings":{
+		"attackMult":0.5,
+		"damageTakenMult":0.9,
+        "moraleDamageTakenMult":1.25, #we just want peace :(
+    },
+	
+    # chance of the faction being picked to send a colony expedition. Default 0 (disabled)
+    "colonyExpeditionChance":0.4,	# baseline expansion behaviour
+    "colonyTargetValuator":"exerelin.campaign.colony.IndustrialColonyTargetValuator",
+
+    #"startShipsSolo":[],
+
+    #"startShipsCombatSmall":[],
+
+	#"startShipsCombatLarge":[],
+	
+    #"startShipsCarrierSmall":[],
+
+    #"startShipsCarrierLarge":[],
+	
+	#"startShipsTradeSmall":[],
+	
+    #"startShipsTradeLarge":[],
+	
+    #"startShipsSuper":[],
+
+    #"startShipsGrandFleet":[],
+	
+    #"startSpecialItems":[[],[]],
+    
+    "defenceStations":[
+        {"ids":["orbitalstation_high", "battlestation_high", "starfortress_high"]},
+    ],
+    
+    "industrySeeds":[
+		{"id":"militarybase", "mult":1.5},
+        {"id":"orbitalworks", "mult":1.5},
+        {"id":"fuelprod", "mult":0.3},
+        {"id":"lightindustry", "mult":0.1},
+    ],
+    
+    "bonusSeeds":[
+        {"id":"population_upsize", "count":1},
+        {"id":"nanoforge_corrupted", "count":1},
+        {"id":"aiCore_station", "count":2, "mult":0.2},
+        {"id":"aiCore_military", "mult":1.4},
+        {"id":"aiCore_heavyindustry", "count":1},
+        {"id":"aiCore_any", "mult":1.5},
+    ],
+}
