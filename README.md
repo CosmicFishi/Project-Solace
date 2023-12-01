@@ -1,25 +1,33 @@
 # Project Solace
 
-v.0.1
+v.0.3
 
 ## Description
-This is a Starsector mod
+This is a Starsector mod :D
 
 ## Bug report / Suggestion
-Dm my discord PigeonPun#6449
+Dm my discord ``PigeonPun``
 
 ## Credits
-
-Alex
-Wisp/Silkie - Mod template <br>
-Tookpok4k3 - Numerous sprite, lore and sound help <br>
-PureTilt - Many scripts <3 <br>
-Pogre: Emotional support <br>
-DR - Random battle script from Ship/weapon pack <br>
-Amazign - Incense bar script help <br>
-RainNanoDesu - Camiguin resprite silhouette <br>
-Big Bee - Albertine silhouette <br>
-Tartiflette - Moving parts script (Scy) - MagicLib <br>
-LazyWizard: LazyLib <br>
-Alex, David, Ivaylo, StianStark: Starsector <br>
-All of Unofficial Starsector discord and you for playing. <br>
+````
+Wisp/Silkie - Mod template 
+Pyrophage - Insane amount of sprite inspiration and support 
+Tookpok4k3 - Numerous sprite, lore and sound support 
+lyravega - Script support 
+Ruddygreat - Script support 
+PureTilt - Many scripts 
+Pogre - Emotional support 
+Amazign - Incense bar script support 
+Hidistine - Script support, Nex integration
+Lukas04 - Script support 
+Sorrydough - Playtesting 
+RainNanoDesu - Camiguin resprite silhouette, playtesting and description support
+Big Bee - Albertine silhouette
+NaraNarman - Lore support 
+Tartiflette - Moving parts script (Scy) - MagicLib 
+DR - Random battle script from Ship/weapon pack
+Nicke353 - Homing projectile script
+LazyWizard - LazyLib 
+Alex, David, Ivaylo, StianStark: Starsector 
+All of Unofficial Starsector discord and you for playing. 
+````
