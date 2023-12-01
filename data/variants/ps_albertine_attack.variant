@@ -3,7 +3,7 @@
   "hullId": "ps_albertine",
   "displayName": "Attack",
   "goalVariant": true,
-  "fluxCapacitors": 36,
+  "fluxCapacitors": 16,
   "fluxVents": 50,
   "quality": 1,
   "permaMods": [],
@@ -70,6 +70,7 @@
     "thunder_wing",
     "broadsword_wing",
     "broadsword_wing",
-    "broadsword_wing"
+    "broadsword_wing",
+    "thunder_wing"
   ]
 }

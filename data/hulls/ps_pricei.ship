@@ -20,7 +20,7 @@
       "size": "MEDIUM",
       "type": "SYNERGY",
       "mount": "HARDPOINT",
-      "arc": 20,
+      "arc": 5,
       "angle": 0,
       "locations": [19, -49]
     },
@@ -29,7 +29,7 @@
       "size": "MEDIUM",
       "type": "SYNERGY",
       "mount": "HARDPOINT",
-      "arc": 20,
+      "arc": 5,
       "angle": -0,
       "locations": [19, 49]
     },

@@ -8,7 +8,7 @@
   "ps_vagrantseerGenerateSalvage": true, #generate Vagrant Seer salvage/fleets,
   "ps_bygonedameGenerateSalvage": true, #generate Bygone Dame salvage,
   "ps_sodalityFleetAdjustmentActive": true, # adjust fleets line up for Solace or Enmity when one of the faction got eliminated,
-  "ps_hardmodeSodalityActive": false, # Boundless weapons now appears in fleets after Sodality adjustment have been made,
+  "ps_hardmodeSodalityActive": true, # Boundless weapons now appears in fleets after Sodality adjustment have been made,
 
   "ps_epilepsy": true, #Epilepsy glitch effect
   "ps_glitchAlphaMult": 0.85, #Multiplier for Solace UP glitch effect. The lower the number, the more transparent the glitch gets

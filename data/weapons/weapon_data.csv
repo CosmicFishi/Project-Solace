@@ -19,7 +19,7 @@ Daemeli Focused Railgun,ps_daemeli,2,0.5,200000,1000,,500,200,0,7,14,,,,ENERGY,6
 Punctatus Beacher,ps_punctatus,3,0.3,240000,900,,500,,10,20,15,,,,HIGH_EXPLOSIVE,550,,0,3.2,1,,0,5,1,10,,800,,,60,,,,"no_sell, he20, LR",,Boundless,,Anti Armor,,,,,"On hit, creating a quake crater periodically dealing %s damage to foes within a certain radius for a certain duration.",200 HE,,,,9
 Hemiophrys Pure Beam,ps_hemiophrys,3,0.2,310000,1100,600,,,0,10,24,,,,KINETIC,,500,0.1,0.1,,,,,,,,7500,,,,,,,"no_sell, beam23, LR",,Boundless,,General,,,,,"On hit, recover a small portion of the damage deal as hull regeneration.",,,,,12
 Arenico Ultra Canon,ps_arenico,2,0.5,210000,700,,130,,0,24,12,60,2,20,ENERGY,110,,0,0.1,1,,0,1,1,0,,1000,,,30,,,"STRIKE, USE_VS_FRIGATES","no_sell, energy15, kenetic13, he14, SR",,Boundless,,Pressure,,,,,"Every %s-%s, consume up to 3 nearby enemy projectiles to reload the weapon. Reload amount base on number and hit point of the projetile consumed.",2s | 4s,,,,13
-Alvarius Averting Gun,ps_alvarius,1,0.8,100000,400,,40,,1,75,5,,,,FRAGMENTATION,2,,0,0.1,2,,0,10,1,10,,800,,,10,,,PD,"no_sell, pd8, SR",,Boundless,,Point Defense,,,,,"Every %s shot fired, spawn a decoy flare to distract nearby missiles.",100,,,,14
+Alvarius Averting Gun,ps_alvarius,1,0.8,140000,400,,40,,1,75,5,,,,FRAGMENTATION,2,,0,0.1,2,,0,10,1,10,,800,,,10,,,PD,"no_sell, pd8, SR",,Boundless,,Point Defense,,,,,"Every %s shot fired, spawn a decoy flare to distract nearby missiles.",100,,,,14
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #SYSTEM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Warping Minelayer,ps_warpingmine_launcher,0,,200000,1000,,2000,,25,30,12,30,,,HIGH_EXPLOSIVE,0,,0,3,1,,0,0,0,0,,50,50,20,500,,,SYSTEM,,,,,,,,,,,,,,,11

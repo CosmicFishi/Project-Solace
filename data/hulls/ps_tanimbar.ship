@@ -38,7 +38,7 @@
       "size": "MEDIUM",
       "type": "COMPOSITE",
       "mount": "TURRET",
-      "arc": 30,
+      "arc": 5,
       "angle": -0,
       "locations": [27, -19]
     },
@@ -47,7 +47,7 @@
       "size": "MEDIUM",
       "type": "HYBRID",
       "mount": "TURRET",
-      "arc": 30,
+      "arc": 5,
       "angle": 0,
       "locations": [27, 19]
     },

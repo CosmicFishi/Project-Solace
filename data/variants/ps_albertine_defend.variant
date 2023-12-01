@@ -3,14 +3,13 @@
   "hullId": "ps_albertine",
   "displayName": "Defend",
   "goalVariant": true,
-  "fluxCapacitors": 13,
+  "fluxCapacitors": 14,
   "fluxVents": 50,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "targetingunit",
-    "expanded_deck_crew",
-    "armoredweapons"
+    "expanded_deck_crew"
   ],
   "weaponGroups": [
     {
@@ -72,6 +71,7 @@
     "hoplon_wing",
     "hoplon_wing",
     "hoplon_wing",
+    "claw_wing",
     "claw_wing"
   ]
 }

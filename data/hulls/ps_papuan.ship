@@ -43,7 +43,7 @@
       "size": "MEDIUM",
       "type": "HYBRID",
       "mount": "TURRET",
-      "arc": 30,
+      "arc": 5,
       "angle": -0,
       "locations": [64, 25]
     },
