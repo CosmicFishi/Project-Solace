@@ -159,6 +159,7 @@ public class ps_defendpatrolfleetmanager extends BaseCampaignEventListener imple
             if (market.isHidden()) continue;
             if (market.hasCondition(Conditions.ABANDONED_STATION)) continue;
             if (market.getPrimaryEntity() instanceof CampaignFleetAPI) continue;
+            if (market.getStarSystem() == null) continue; //the market is in hyperspace -> no star system
 
             float weight = getMarketWeightForDefendTarget(market, null);
             if (!PREFER_MILITARY_FOR_ORIGIN || Misc.isMilitary(market)) {

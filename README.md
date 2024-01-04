@@ -1,6 +1,6 @@
 # Project Solace
 
-v.0.3
+v.0.3.1
 
 ## Description
 This is a Starsector mod :D
