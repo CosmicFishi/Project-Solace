@@ -10,10 +10,13 @@ ps_disableBuySpecialWeapons,ps_disableBuySpecialWeaponIfNeeded,"!$faction.friend
 SetEnabled ps_startBuySpecialWeapons false",,,
 ps_startBuySpecialWeapons,DialogOptionSelected,"$option == ps_startBuySpecialWeapons","ps_specialweapons selectWeapons",,,
 ps_purchaseSpecialWeapons,ps_purchaseSpecialWeapons,,"ps_specialweapons purchaseWeapons","""Lets do a summary of the purchase""","1:ps_confirmPurchaseSpecialWeapons:""Confirm purchasing""
-10:ps_startBuySpecialWeapons:""Rethink about the purchase...""",
+9:ps_startBuySpecialWeapons:""Rethink about the purchase...""
+10:ps_returnToBuySpecialweapon:""Return""
+",
 ps_confirmPurchaseSpecialWeapons,DialogOptionSelected,"$option == ps_confirmPurchaseSpecialWeapons","ps_specialweapons confirmPurchaseWeapons
 FireAll PopulateOptions","""It is a pleasure doing business with you""
 
 $PersonRank $personLastName thanks you and the conversation moves on to other matters.",,
+ps_returnToBuySpecialweapon,DialogOptionSelected,"$option == ps_returnToBuySpecialweapon","FireAll PopulateOptions",,,
 "#END Conversations",,,,,,
 

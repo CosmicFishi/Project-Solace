@@ -162,10 +162,11 @@ public class ps_specialweapons extends BaseCommandPlugin {
         text.addParagraph("Tariffs (" + PURCHASE_TAX + "%): " + Misc.getDGSCredits(totalTax)) ;
         text.highlightFirstInLastPara("" + Misc.getDGSCredits(totalTax), hl);
         text.addParagraph("Total: " + Misc.getDGSCredits(totalPurchaseWithTax));
-        text.highlightFirstInLastPara(Misc.getWithDGS(totalPurchaseWithTax), hl);
+        text.highlightFirstInLastPara("" + Misc.getDGSCredits(totalPurchaseWithTax), hl);
         text.addParagraph("-----------------------------------------------------------------------------");
         memory.set(TOTAL_PURCHASE_COST_KEY, totalPurchaseWithTax, 0);
         if(playerCargo.getCredits().get() < totalPurchaseWithTax) {
+            text.setFontInsignia();
             text.addParagraph("It seems like you current do not have enough to purchase. How about we do some adjustment about your to-buy armament inventory ?");
             dialog.getOptionPanel().setEnabled("ps_confirmPurchaseSpecialWeapons", false);
         } else {
