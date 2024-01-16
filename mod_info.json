@@ -3,7 +3,7 @@
 	"name":"Project Solace", # Displayed to the player
 	"author":"PigeonPun",
     "utility":"false",
-	"version":"0.3.1",
+	"version":"0.3.1a",
 	"description":"A faction lead by scientists from all over the Sector",
     "gameVersion": "0.96a-RC6",
   	"jars":["jars/projectsolace.jar"],
