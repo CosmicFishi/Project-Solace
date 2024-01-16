@@ -81,7 +81,7 @@ public class ps_exaltedshellstats extends BaseShipSystemScript {
             }
 
             ship.getEngineController().fadeToOtherColor(this, ps_misc.PROJECT_SOLACE_LIGHT, new Color(0,0,0,0), 1f, 0.67f);
-            ship.getShield().setRingColor(ps_misc.PROJECT_SOLACE_LIGHT);
+            if(ship.getShield()!= null) ship.getShield().setRingColor(ps_misc.PROJECT_SOLACE_LIGHT);
         }
     }
     public void unapply(MutableShipStatsAPI stats, String id) {
