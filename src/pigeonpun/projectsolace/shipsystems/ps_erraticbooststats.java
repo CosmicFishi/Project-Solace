@@ -15,13 +15,13 @@ public class ps_erraticbooststats extends BaseShipSystemScript {
         CombatEngineAPI engine = Global.getCombatEngine();
 
         if(ship != null) {
-            stats.getTimeMult().modifyPercent(ship.getId(), SHIP_TIME_DAL_BONUS);
+            stats.getTimeMult().modifyPercent(id, SHIP_TIME_DAL_BONUS);
             ship.setJitterUnder(this, ps_misc.ENMITY_JITTER, effectLevel * 0.8f, 1, 2f, 8f);
             if(ship.getAllWings() != null) {
                 for (FighterWingAPI fighterWing: ship.getAllWings()) {
                     for(ShipAPI fighter: fighterWing.getWingMembers()) {
                         fighter.setJitterUnder(fighter, ps_misc.ENMITY_JITTER, effectLevel * 0.8f, 2, 4f, 12f);
-                        stats.getTimeMult().modifyPercent(fighter.getId(), FIGHTER_TIME_DAL_BONUS);
+                        fighter.getMutableStats().getTimeMult().modifyPercent(id, FIGHTER_TIME_DAL_BONUS);
                     }
                 }
             }
@@ -29,11 +29,13 @@ public class ps_erraticbooststats extends BaseShipSystemScript {
     }
     public void unapply(MutableShipStatsAPI stats, String id) {
         ShipAPI ship = (ShipAPI) stats.getEntity();
-        if(ship != null && ship.getAllWings() != null) {
-            stats.getTimeMult().unmodify(ship.getId());
-            for (FighterWingAPI fighterWing: ship.getAllWings()) {
-                for(ShipAPI fighter: fighterWing.getWingMembers()) {
-                    stats.getTimeMult().unmodify(fighter.getId());
+        if(ship != null) {
+            stats.getTimeMult().unmodifyPercent(id);
+            if(ship.getAllWings() != null) {
+                for (FighterWingAPI fighterWing: ship.getAllWings()) {
+                    for(ShipAPI fighter: fighterWing.getWingMembers()) {
+                        fighter.getMutableStats().getTimeMult().unmodifyPercent(id);
+                    }
                 }
             }
         }
@@ -44,7 +46,7 @@ public class ps_erraticbooststats extends BaseShipSystemScript {
             return new StatusData("Overclocking weapon", false);
         }
         if (index == 1) {
-            return new StatusData("Increased fighter damage", false);
+            return new StatusData("Increased ship and fighter time dilation", false);
         }
         return null;
     }
