@@ -7,8 +7,8 @@
     {
         "major":0,
         "minor":3,
-        "patch":1c # Can be a number, character or string (1, 2, a, b, "-RC2", etc)
+        "patch":1d # Can be a number, character or string (1, 2, a, b, "-RC2", etc)
     },
-    "starsectorVersion":"0.95.1a-RC6",
-    "directDownloadURL":"https://github.com/CosmicFishi/Project-Solace/releases/download/v0.3.1c/Project-Solace-v0.3.1c.zip"
+    "starsectorVersion":"0.97a-RC6",
+    "directDownloadURL":"https://github.com/CosmicFishi/Project-Solace/releases/download/v0.3.1d/Project-Solace-v0.3.1d.zip"
 }
