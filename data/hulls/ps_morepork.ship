@@ -9,7 +9,7 @@
   "center": [90, 99],
   "collisionRadius": 164,
   "shieldCenter": [6, -0],
-  "shieldRadius": 134,
+  "shieldRadius": 126,
   "viewOffset": 0,
   "builtInMods": [
     "ps_solacecore",
@@ -34,63 +34,45 @@
       "size": "LARGE",
       "type": "HYBRID",
       "mount": "HARDPOINT",
-      "arc": 0,
+      "arc": 5,
       "angle": 0,
-      "locations": [72, -0]
+      "locations": [64, -0]
     },
     {
       "id": "WS0004",
       "size": "MEDIUM",
-      "type": "MISSILE",
+      "type": "UNIVERSAL",
       "mount": "TURRET",
-      "arc": 60,
-      "angle": -45,
-      "locations": [14, -23]
+      "arc": 130,
+      "angle": -52,
+      "locations": [54, -41]
     },
     {
       "id": "WS0005",
       "size": "MEDIUM",
-      "type": "MISSILE",
+      "type": "UNIVERSAL",
       "mount": "TURRET",
-      "arc": 60,
-      "angle": 45,
-      "locations": [14, 23]
+      "arc": 130,
+      "angle": 52,
+      "locations": [54, 41]
     },
     {
       "id": "WS0006",
       "size": "SMALL",
-      "type": "ENERGY",
+      "type": "UNIVERSAL",
       "mount": "TURRET",
-      "arc": 220,
-      "angle": -77.5,
-      "locations": [57, -26]
+      "arc": 150,
+      "angle": -120,
+      "locations": [21, -46]
     },
     {
       "id": "WS0007",
       "size": "SMALL",
-      "type": "ENERGY",
+      "type": "UNIVERSAL",
       "mount": "TURRET",
-      "arc": 220,
-      "angle": 77.5,
-      "locations": [57, 26]
-    },
-    {
-      "id": "WS0008",
-      "size": "SMALL",
-      "type": "COMPOSITE",
-      "mount": "TURRET",
-      "arc": 140,
-      "angle": -42.5,
-      "locations": [-26, -29]
-    },
-    {
-      "id": "WS0009",
-      "size": "SMALL",
-      "type": "COMPOSITE",
-      "mount": "TURRET",
-      "arc": 140,
-      "angle": 42.5,
-      "locations": [-26, 29]
+      "arc": 150,
+      "angle": 120,
+      "locations": [21, 46]
     },
     {
       "id": "ps_crystal",
@@ -99,7 +81,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 0,
-      "locations": [-16, -0]
+      "locations": [-13, -0]
     },
     {
       "id": "WS0010",
@@ -107,8 +89,8 @@
       "type": "ENERGY",
       "mount": "TURRET",
       "arc": 140,
-      "angle": -147.5,
-      "locations": [-44, -41]
+      "angle": -125.5,
+      "locations": [-46, -11]
     },
     {
       "id": "WS0011",
@@ -116,26 +98,26 @@
       "type": "ENERGY",
       "mount": "TURRET",
       "arc": 140,
-      "angle": 147.5,
-      "locations": [-44, 41]
+      "angle": 125.5,
+      "locations": [-46, 11]
     },
     {
       "id": "WS0002",
       "size": "SMALL",
       "type": "BALLISTIC",
       "mount": "TURRET",
-      "arc": 220,
-      "angle": -48,
-      "locations": [95, -40]
+      "arc": 140,
+      "angle": -28,
+      "locations": [80, -36]
     },
     {
       "id": "WS0003",
       "size": "SMALL",
       "type": "BALLISTIC",
       "mount": "TURRET",
-      "arc": 220,
-      "angle": 48,
-      "locations": [95, 40]
+      "arc": 140,
+      "angle": 28,
+      "locations": [80, 36]
     }
   ],
   "engineSlots": [
@@ -168,35 +150,37 @@
     }
   ],
   "bounds": [
-    -66.5, 5.5,
-    -61.5, 10,
-    -68.5, 35.5,
-    -91.5, 31,
-    -65.5, 84,
-    -14.5, 74.5,
-    -9.5, 65.5,
-    28.5, 63.5,
-    26, 73,
-    58.5, 56.5,
-    58.5, 46,
-    98, 59,
-    118, 26.5,
-    116, 20,
-    74, 27.5,
-    74, -27.5,
-    116, -20,
-    118, -26.5,
-    98, -59,
-    58.5, -46,
-    58.5, -56.5,
-    26, -73,
-    28.5, -63.5,
-    -9.5, -65.5,
-    -14.5, -74.5,
-    -65.5, -84,
-    -91.5, -31,
-    -68.5, -35.5,
-    -61.5, -10,
-    -66.5, -5.5
+    -83, 5.5,
+    -72, 10.5,
+    -80, 29.5,
+    -46, 51,
+    -20.5, 53.5,
+    -8, 73,
+    7, 70.5,
+    31, 81.5,
+    47, 77.5,
+    49.5, 71.5,
+    71.5, 63.5,
+    82.5, 63,
+    111, 39,
+    110, 22,
+    70.5, 26.5,
+    78.5, 16,
+    78.5, -16,
+    70.5, -26.5,
+    110, -22,
+    111, -39,
+    82.5, -63,
+    71.5, -63.5,
+    49.5, -71.5,
+    47, -77.5,
+    31, -81.5,
+    7, -70.5,
+    -8, -73,
+    -20.5, -53.5,
+    -46, -51,
+    -80, -29.5,
+    -72, -10.5,
+    -83, -5.5
   ]
 }

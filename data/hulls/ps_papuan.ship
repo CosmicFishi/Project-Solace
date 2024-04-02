@@ -30,22 +30,13 @@
       "locations": [0, 0]
     },
     {
-      "id": "WS0001",
-      "size": "MEDIUM",
-      "type": "MISSILE",
-      "mount": "HARDPOINT",
-      "arc": 0,
-      "angle": 0,
-      "locations": [64, -25]
-    },
-    {
       "id": "WS0002",
       "size": "MEDIUM",
-      "type": "HYBRID",
-      "mount": "TURRET",
+      "type": "UNIVERSAL",
+      "mount": "HARDPOINT",
       "arc": 5,
       "angle": -0,
-      "locations": [64, 25]
+      "locations": [62, -0]
     },
     {
       "id": "ps_cystal",
@@ -61,9 +52,9 @@
       "size": "SMALL",
       "type": "BALLISTIC",
       "mount": "TURRET",
-      "arc": 240,
-      "angle": -56.5,
-      "locations": [29, -29]
+      "arc": 140,
+      "angle": -12.5,
+      "locations": [36, -24]
     },
     {
       "id": "WS0005",
@@ -79,9 +70,9 @@
       "size": "SMALL",
       "type": "BALLISTIC",
       "mount": "TURRET",
-      "arc": 240,
-      "angle": 56.5,
-      "locations": [29, 29]
+      "arc": 140,
+      "angle": 12.5,
+      "locations": [36, 24]
     },
     {
       "id": "LB 1",
@@ -108,55 +99,97 @@
         -38, -45.5,
         -31.5, -68
       ]
+    },
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 240,
+      "angle": -56.5,
+      "locations": [29, -81]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 240,
+      "angle": 56.5,
+      "locations": [29, 81]
     }
   ],
   "engineSlots": [
     {
-      "location": [-70, -12],
-      "length": 80,
-      "width": 20,
+      "location": [-76, -0],
+      "length": 120,
+      "width": 40,
       "angle": 180,
       "contrailSize": 30,
       "style": "CUSTOM",
       "styleId": "PS_ENGINE"
     },
     {
-      "location": [-70, 12],
+      "location": [-76, 4],
       "length": 80,
       "width": 20,
-      "angle": -180,
+      "angle": 170,
       "contrailSize": 30,
       "style": "CUSTOM",
       "styleId": "PS_ENGINE"
     },
     {
-      "location": [-56, -29],
-      "length": 50,
-      "width": 10,
-      "angle": 180,
-      "contrailSize": 30,
-      "style": "CUSTOM",
-      "styleId": "PS_ENGINE"
-    },
-    {
-      "location": [-56, 29],
-      "length": 50,
-      "width": 10,
-      "angle": -180,
+      "location": [-76, -4],
+      "length": 80,
+      "width": 20,
+      "angle": -170,
       "contrailSize": 30,
       "style": "CUSTOM",
       "styleId": "PS_ENGINE"
     }
   ],
   "bounds": [
-    -18.5, 85,
-    29, 93.5,
-    63, 47.5,
-    57, -0,
-    63, -47.5,
-    37.5, -88.5,
-    -18, -84,
-    -74.5, -0,
-    -41.5, 39
+    -74, 8,
+    -54, 20.5,
+    -47, 34,
+    -14, 41.5,
+    -13, 43.5,
+    -43, 44.5,
+    -43.5, 53,
+    -33.5, 64,
+    -26.5, 80,
+    2, 79,
+    12.5, 95,
+    26.5, 95.5,
+    39.5, 88,
+    45.5, 76.5,
+    58, 73,
+    68, 65,
+    73, 51,
+    73, 35,
+    64.5, 29.5,
+    62.5, 22,
+    66.5, 11,
+    66.5, -11,
+    62.5, -22,
+    64.5, -29.5,
+    73, -35,
+    73, -51,
+    68, -65,
+    58, -73,
+    45.5, -76.5,
+    39.5, -88,
+    26.5, -95.5,
+    12.5, -95,
+    2, -79,
+    -26.5, -80,
+    -33.5, -64,
+    -43.5, -53,
+    -43, -44.5,
+    -13, -43.5,
+    -14, -41.5,
+    -47, -34,
+    -54, -20.5,
+    -74, -8
   ]
 }
