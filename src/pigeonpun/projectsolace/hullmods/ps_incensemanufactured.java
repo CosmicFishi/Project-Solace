@@ -608,7 +608,6 @@ public class ps_incensemanufactured extends BaseHullMod {
                     incenseLevel = 0;
                 }
             }
-
             MathUtils.clamp(incenseLevel, 0, incenseCap);
             customCombatData.put("ps_incenselevel" + id, incenseLevel);
             return null;

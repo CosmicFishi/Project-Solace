@@ -16,7 +16,7 @@
     "ps_incensemanufactured"
   ],
   "builtInWeapons": {
-    "ps_cystal": "ps_core_crystal",
+    "ps_crystal": "ps_core_crystal",
     "ps_glitch": "ps_glitch"
   },
   "weaponSlots": [
@@ -39,7 +39,7 @@
       "locations": [62, -0]
     },
     {
-      "id": "ps_cystal",
+      "id": "ps_crystal",
       "size": "SMALL",
       "type": "DECORATIVE",
       "mount": "TURRET",

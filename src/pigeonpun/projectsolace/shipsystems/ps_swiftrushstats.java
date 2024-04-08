@@ -4,7 +4,7 @@ import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.plugins.ShipSystemStatsScript;
-import data.scripts.util.MagicAnim;
+import org.magiclib.util.MagicAnim;
 import pigeonpun.projectsolace.com.ps_misc;
 
 import java.awt.*;
@@ -24,17 +24,18 @@ public class ps_swiftrushstats extends BaseShipSystemScript {
                 stats.getDeceleration().modifyFlat(id, SPEED_BONUS * effectLevel);
                 //fx
                 float fxEffect = MagicAnim.smoothNormalizeRange(effectLevel, 0, 1);
-                ship.setJitterUnder(
-                        ship,
-                        Color.yellow,
-                        0.5f*fxEffect,
-                        5,
-                        10f*fxEffect,
-                        15f*fxEffect
-                );
                 ship.getEngineController().fadeToOtherColor(this, ps_misc.PROJECT_SOLACE_LIGHT, null, effectLevel, 0.7f);
                 ship.getEngineController().extendFlame(this, 2f * fxEffect, 0.2f, 0.2f);
             }
+        }
+        if(ship != null) {
+            ship.addAfterimage(
+                    new Color(255,255,255,25),
+                    0f,0f,
+                    -ship.getVelocity().x,
+                    -ship.getVelocity().y,
+                    0,0,0f, 0.6f, false, false, false
+            );
         }
     }
     public void unapply(MutableShipStatsAPI stats, String id) {
