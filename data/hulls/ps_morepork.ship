@@ -122,7 +122,7 @@
   ],
   "engineSlots": [
     {
-      "location": [-68, -0],
+      "location": [-83.5, -0],
       "length": 90,
       "width": 25,
       "angle": 180,
@@ -131,7 +131,7 @@
       "styleId": "PS_ENGINE"
     },
     {
-      "location": [-65, 19.5],
+      "location": [-80, 28.5],
       "length": 70,
       "width": 20,
       "angle": 180,
@@ -140,10 +140,64 @@
       "styleId": "PS_ENGINE"
     },
     {
-      "location": [-65, -19.5],
+      "location": [-80, -28.5],
       "length": 70,
       "width": 20,
       "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-73, -15.5],
+      "length": 70,
+      "width": 10,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-73, 15.5],
+      "length": 70,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-18.5, -59],
+      "length": 70,
+      "width": 20,
+      "angle": -160,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-18.5, 59],
+      "length": 70,
+      "width": 20,
+      "angle": 160,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-10, -66.5],
+      "length": 50,
+      "width": 10,
+      "angle": -160,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-10, 66.5],
+      "length": 50,
+      "width": 10,
+      "angle": 160,
       "contrailSize": 30,
       "style": "CUSTOM",
       "styleId": "PS_ENGINE"

@@ -192,6 +192,24 @@
       "contrailSize": 30,
       "style": "CUSTOM",
       "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-62, 84],
+      "length": 60,
+      "width": 30,
+      "angle": 145,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-62, -84],
+      "length": 60,
+      "width": 30,
+      "angle": -145,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
     }
   ],
   "bounds": [

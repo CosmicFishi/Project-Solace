@@ -87,6 +87,24 @@
       "contrailSize": 64,
       "style": "CUSTOM",
       "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-14.5, 54],
+      "length": 64,
+      "width": 24,
+      "angle": 145.5,
+      "contrailSize": 64,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-14.5, -54],
+      "length": 64,
+      "width": 24,
+      "angle": -145.5,
+      "contrailSize": 64,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
     }
   ],
   "bounds": [
