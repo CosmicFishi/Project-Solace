@@ -3,56 +3,55 @@
   "hullId": "ps_camiguin",
   "displayName": "Destruction",
   "goalVariant": true,
-  "fluxCapacitors": 26,
+  "fluxCapacitors": 15,
   "fluxVents": 50,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "targetingunit",
-    "armoredweapons"
+    "advancedoptics"
   ],
   "weaponGroups": [
     {
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "squall"
+        "WS0001": "squall",
+        "WS0002": "cyclone",
+        "WS0004": "tachyonlance",
+        "WS0005": "flak",
+        "WS0006": "flak",
+        "WS0007": "gravitonbeam",
+        "WS0008": "gravitonbeam",
+        "WS0009": "gravitonbeam",
+        "WS0010": "gravitonbeam",
+        "WS0023": "vulcan",
+        "WS0024": "vulcan",
+        "WS0025": "vulcan",
+        "WS0026": "vulcan"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0002": "autopulse"
-      }
+      "weapons": {}
     },
     {
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0003": "tachyonlance",
-        "WS0004": "hephag"
+        "WS0003": "tachyonlance"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0005": "hveldriver",
-        "WS0006": "hveldriver",
-        "WS0007": "heavymauler",
-        "WS0008": "heavymauler"
-      }
+      "weapons": {}
     },
     {
       "autofire": false,
       "mode": "LINKED",
-      "weapons": {
-        "WS0009": "pilum",
-        "WS0010": "pilum",
-        "WS0011": "pilum",
-        "WS0012": "pilum"
-      }
+      "weapons": {}
     },
     {
       "autofire": true,

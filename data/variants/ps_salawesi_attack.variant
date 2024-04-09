@@ -4,7 +4,7 @@
   "displayName": "Attack",
   "goalVariant": true,
   "fluxCapacitors": 0,
-  "fluxVents": 4,
+  "fluxVents": 9,
   "quality": 1,
   "permaMods": [],
   "hullMods": [

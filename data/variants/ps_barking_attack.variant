@@ -4,12 +4,12 @@
   "displayName": "Attack",
   "goalVariant": true,
   "fluxCapacitors": 0,
-  "fluxVents": 11,
+  "fluxVents": 9,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
-    "targetingunit",
-    "armoredweapons"
+    "eccm",
+    "pointdefenseai"
   ],
   "weaponGroups": [
     {
@@ -20,10 +20,14 @@
         "WS0002": "dragon",
         "WS0003": "gazerpod",
         "WS0004": "gazerpod",
-        "WS0008": "sabot",
-        "WS0009": "sabot",
+        "WS0005": "dualflak",
+        "WS0006": "dragon",
+        "WS0007": "dragon",
+        "WS0008": "vulcan",
+        "WS0009": "vulcan",
         "WS0010": "vulcan",
-        "WS0011": "vulcan"
+        "WS0011": "vulcan",
+        "WS0013": "vulcan"
       }
     },
     {
@@ -40,18 +44,13 @@
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0005": "flak",
-        "WS0012": "pdlaser",
-        "WS0013": "pdlaser"
+        "WS0012": "pdlaser"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0006": "heavymauler",
-        "WS0007": "heavymauler"
-      }
+      "weapons": {}
     }
   ],
   "modules": [],

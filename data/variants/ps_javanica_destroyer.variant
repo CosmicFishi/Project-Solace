@@ -4,12 +4,12 @@
   "displayName": "Destroyer",
   "goalVariant": false,
   "fluxCapacitors": 17,
-  "fluxVents": 15,
+  "fluxVents": 25,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "targetingunit",
-    "missleracks"
+    "auxiliarythrusters"
   ],
   "weaponGroups": [
     {
@@ -17,10 +17,11 @@
       "mode": "LINKED",
       "weapons": {
         "WS0001": "hurricane",
-        "WS0002": "gravitonbeam",
-        "WS0003": "gravitonbeam",
-        "WS0004": "pulselaser",
-        "WS0005": "pulselaser"
+        "WS0002": "heavyac",
+        "WS0003": "heavyac",
+        "WS0004": "irautolance",
+        "WS0005": "irautolance",
+        "WS0010": "vulcan"
       }
     },
     {
@@ -38,8 +39,7 @@
       "mode": "LINKED",
       "weapons": {
         "WS0006": "vulcan",
-        "WS0007": "vulcan",
-        "WS0010": "pdlaser"
+        "WS0007": "vulcan"
       }
     },
     {

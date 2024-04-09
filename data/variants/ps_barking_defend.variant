@@ -3,25 +3,27 @@
   "hullId": "ps_barking",
   "displayName": "Defend",
   "goalVariant": true,
-  "fluxCapacitors": 16,
+  "fluxCapacitors": 24,
   "fluxVents": 0,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
-    "targetingunit"
+    "eccm"
   ],
   "weaponGroups": [
     {
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "dragon",
-        "WS0002": "dragon",
-        "WS0003": "dragon",
-        "WS0004": "dragon",
-        "WS0006": "heavyac",
-        "WS0007": "heavyac",
-        "WS0009": "vulcan"
+        "WS0001": "gorgonpod",
+        "WS0002": "gorgonpod",
+        "WS0003": "gorgonpod",
+        "WS0004": "gorgonpod",
+        "WS0006": "typhoon",
+        "WS0007": "typhoon",
+        "WS0009": "vulcan",
+        "WS0012": "vulcan",
+        "WS0013": "vulcan"
       }
     },
     {
@@ -42,9 +44,7 @@
       "weapons": {
         "WS0008": "vulcan",
         "WS0010": "vulcan",
-        "WS0011": "vulcan",
-        "WS0012": "pdlaser",
-        "WS0013": "pdlaser"
+        "WS0011": "vulcan"
       }
     },
     {

@@ -16,7 +16,11 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "squall"
+        "WS0001": "squall",
+        "WS0023": "vulcan",
+        "WS0024": "vulcan",
+        "WS0025": "vulcan",
+        "WS0026": "vulcan"
       }
     },
     {
@@ -48,8 +52,6 @@
       "weapons": {
         "WS0007": "flak",
         "WS0008": "flak",
-        "WS0011": "flak",
-        "WS0012": "flak",
         "WS0013": "vulcan",
         "WS0014": "vulcan",
         "WS0015": "pdlaser",
