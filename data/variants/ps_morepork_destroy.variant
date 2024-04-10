@@ -22,10 +22,7 @@
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0008": "reaper",
-        "WS0009": "reaper"
-      }
+      "weapons": {}
     },
     {
       "autofire": false,

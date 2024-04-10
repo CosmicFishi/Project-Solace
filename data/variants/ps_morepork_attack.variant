@@ -31,10 +31,7 @@
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0008": "sabot",
-        "WS0009": "sabot"
-      }
+      "weapons": {}
     },
     {
       "autofire": true,

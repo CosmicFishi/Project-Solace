@@ -1,9 +1,9 @@
 {
   "variantId": "ps_javanica_beamer",
   "hullId": "ps_javanica",
-  "displayName": "Attack",
-  "goalVariant": false,
-  "fluxCapacitors": 1,
+  "displayName": "Beamer",
+  "goalVariant": true,
+  "fluxCapacitors": 9,
   "fluxVents": 30,
   "quality": 1,
   "permaMods": [],
@@ -17,8 +17,8 @@
       "mode": "LINKED",
       "weapons": {
         "WS0001": "tachyonlance",
-        "WS0002": "hveldriver",
-        "WS0003": "hveldriver",
+        "WS0002": "gravitonbeam",
+        "WS0003": "gravitonbeam",
         "WS0004": "gravitonbeam",
         "WS0005": "gravitonbeam",
         "WS0008": "vulcan",

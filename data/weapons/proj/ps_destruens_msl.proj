@@ -3,8 +3,8 @@
 	"specClass":"missile",	
 	"missileType":"MISSILE",
 	"sprite":"graphics/missiles/ps_destruens_msl.png",
-	"size":[6,12],
-	"center":[3,6],
+	"size":[12,24],
+	"center":[6,12],
 	"collisionRadius": 20,
 	"collisionClass":"MISSILE_NO_FF",
 	"explosionColor":[100,100,255,255],  # purely visual, will get a white additively blended core on top of this color

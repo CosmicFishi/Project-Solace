@@ -25,7 +25,7 @@ Alvarius Averting Gun,ps_alvarius,1,0.8,140000,400,,40,,1,75,5,,,,FRAGMENTATION,
 Warping Minelayer,ps_warpingmine_launcher,0,,200000,1000,,2000,,25,30,12,30,,,HIGH_EXPLOSIVE,0,,0,3,1,,0,0,0,0,,50,50,20,500,,,SYSTEM,,,,,,,,,,,,,,,11
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 # BUILT IN,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,ps_destruenslauncher,,,,1500,,50,200,,,,,0,,KINETIC,0,,0,1,6,0.1,15,50,20,5,,500,200,10,200,,,SYSTEM,no_drop_salvage,,,,,,,,,,,,,,4
+,ps_destruenslauncher,,,,1500,,150,400,,,,,0,,KINETIC,0,,0,1,2,0.1,15,50,20,5,,200,300,40,600,,,SYSTEM,no_drop_salvage,,,,,,,,,,,,,,4
 Proteolytic Focus Beam,ps_proteolyticbeam,1,,,1000,2000,,,0,5,,,,,FRAGMENTATION,,850,0.5,2,,,,,,,10000,,,,,,,SYSTEM,no_drop_salvage,,,,Finisher,,,,,"Hit on shield/hull/armor trigger EMP arc dealing %s Energy damage equal to the original hit. Deal additional %s Energy damage equal to the original hit base on target's flux level, max out at %s flux level.",20% | 20% | 80%,,,,5
 Muizon Specialized Railgun,ps_muizon,,,,900,,2500,1500,,,,,0,,ENERGY,3200,,0.5,5.6,1,,0,1,1,10,,800,,,,,,"STRIKE, SYSTEM",no_drop_salvage,,,,Strike,,,,,,,,,,9
 Roseae Obliterator,ps_roseae,,,,1000,,3000,,,,,,,,HIGH_EXPLOSIVE,3800,,0.8,7.2,1,,0,1,1,10,,900,,,,,,"STRIKE, SYSTEM",no_drop_salvage,,,,Strike,,,,,,,,,,10

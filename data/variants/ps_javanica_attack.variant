@@ -2,7 +2,7 @@
   "variantId": "ps_javanica_attack",
   "hullId": "ps_javanica",
   "displayName": "Attack",
-  "goalVariant": false,
+  "goalVariant": true,
   "fluxCapacitors": 0,
   "fluxVents": 25,
   "quality": 1,

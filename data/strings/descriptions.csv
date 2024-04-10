@@ -64,7 +64,7 @@ ps_swiftrush,SHIP_SYSTEM,"Increase engine power, pushing the ship forward or bac
 ps_hyperframe,SHIP_SYSTEM,"Improve the ship overall performance, time dilation multiply by 5x, discharge EMP hitting any missiles or fighter around the ship once.",,,,
 ps_exaltedshell,SHIP_SYSTEM,Consume 40% of the current flux instantly to boost weapons RoF by 100% and shield eff by 10%. Boost additional 100% RoF and 10% shield eff depend on the flux level before the system is activated. Additonal boost max out at 80% flux.,,,,
 ps_intenseflow,SHIP_SYSTEM,"Boost ship maneuverability, depend on the ship flux level that can boost max speed and acceleration up to 120%. Effect max out at 70% flux.",,,,
-ps_destruenslaunch,SHIP_SYSTEM,"Fires 12 tracking missiles dealing 50 Kinetic damage each. While traveling, missiles discharge EMP bolts destroying any fighters or missiles in a certain radius.",,,,
+ps_destruenslaunch,SHIP_SYSTEM,"Fires 4 tracking LRM dealing 150 Kinetic damage each. While traveling, missiles discharge EMP bolts destroying any fighters or missiles in a certain radius.",,,,
 ps_erraticboost,SHIP_SYSTEM,"Overload the mothership with immense force, increase time dilation on mothership by 10% and ship’s fighters by 20% for a short duration. ",,,,
 ps_fightermanipulators,SHIP_SYSTEM,"Supercharge nearby allies fighters, increase max speed by 30% and RoF by 20% for a short duration.",,,,
 ps_vigorrush,SHIP_SYSTEM,"Fuel the ship with vigor, increase time flow on the ship and fighter damage by 50%",,,,
