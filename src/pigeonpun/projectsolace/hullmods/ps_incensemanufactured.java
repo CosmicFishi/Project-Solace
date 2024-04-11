@@ -14,6 +14,7 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import org.apache.log4j.Logger;
+import org.lazywizard.lazylib.VectorUtils;
 import org.magiclib.util.MagicLensFlare;
 import org.magiclib.util.MagicUI;
 import org.json.JSONArray;
@@ -63,6 +64,10 @@ public class ps_incensemanufactured extends BaseHullMod {
 //    private final float spawnJitterTimerWait = 0.1f;
     //UP = Unsolidified Procedure
     private final float UP_HITPOINTS_START = 0.6f;
+    private final float UP_TIME_MULT = 5f;
+    private final String UP_BERSERK_DURATION_ID = "up_berserk_duration_id";
+    private final float UP_BERSERK_DURATION_MAX = 15f; //in seconds
+    private final float UP_BERSERK_OUT_TIME_MULT = 1.2f;
     private final float UP_ROF_BONUS = 2.5f;
     private final float UP_WEAPON_FLUX_BONUS = 0.6f;
     private final float UP_EMP_NEGATE_BONUS = 0.5f;
@@ -98,6 +103,7 @@ public class ps_incensemanufactured extends BaseHullMod {
         float incenseCap = getIncenseCap(ship);
         float ps_spawnjitter_timer = 0;
         ps_upStateManipulator upStateManipulator = new ps_upStateManipulator();
+        float ps_berserk_duration = 0;
 
         Map<String, Object> customCombatData = Global.getCombatEngine().getCustomData();
         String id = ship.getId();
@@ -110,6 +116,8 @@ public class ps_incensemanufactured extends BaseHullMod {
             ps_spawnjitter_timer = (float) customCombatData.get("ps_spawnjitter_timer" + id);
         if (customCombatData.get(UP_STATE_MANIPULATOR_ID + id) instanceof ps_upStateManipulator)
             upStateManipulator = (ps_upStateManipulator) customCombatData.get(UP_STATE_MANIPULATOR_ID + id);
+        if (customCombatData.get(UP_BERSERK_DURATION_ID + id) instanceof Float)
+            ps_berserk_duration = (Float) customCombatData.get(UP_BERSERK_DURATION_ID + id);
 
         float incenseRegen = getIncenseRegen(ship);
         if(incenseLevel < incenseCap) {
@@ -181,10 +189,10 @@ public class ps_incensemanufactured extends BaseHullMod {
             upStateManipulator.updateStandStillTimer(amount);
             float standstillTimer = upStateManipulator.getStandStillTimer();
             if(standstillTimer < UP_STANDSTILL_DURATION) {
-                stats.getAcceleration().modifyPercent(id, 0.0f);
-                stats.getDeceleration().modifyPercent(id, 0.0f);
-                stats.getHullDamageTakenMult().modifyMult(id, 0.0f);
-                stats.getArmorDamageTakenMult().modifyMult(id, 0.0f);
+                stats.getAcceleration().modifyPercent(id + "UP_STAND_STILL", 0.0f);
+                stats.getDeceleration().modifyPercent(id + "UP_STAND_STILL", 0.0f);
+                stats.getHullDamageTakenMult().modifyMult(id + "UP_STAND_STILL", 0.0f);
+                stats.getArmorDamageTakenMult().modifyMult(id + "UP_STAND_STILL", 0.0f);
 
                 //repair armor
                 ps_repairArmor(amount, ship);
@@ -197,6 +205,12 @@ public class ps_incensemanufactured extends BaseHullMod {
                 //FX
                 ship.setJitterUnder(this, ps_misc.PROJECT_SOLACE_UP_STANDSTILL, standstillTimer/UP_STANDSTILL_DURATION, 25, 0f, 7f + (standstillTimer/UP_STANDSTILL_DURATION * 10f));
                 ship.setCircularJitter(true);
+                Vector2f spawnHitParticlePoint = MathUtils.getPointOnCircumference(
+                        ship.getLocation(),
+                        ship.getCollisionRadius(),
+                        MathUtils.getRandomNumberInRange(0, 360)
+                );
+                engine.addSmoothParticle(spawnHitParticlePoint, (Vector2f) VectorUtils.getDirectionalVector(spawnHitParticlePoint, ship.getLocation()).scale(30f), 7f, 1f, 2f, ps_misc.PROJECT_SOLACE_UP_STANDSTILL);
                 Global.getSoundPlayer().playLoop("ps_up_charging", ship, 1f, MathUtils.clamp(standstillTimer, 0, 1), ship.getLocation(), new Vector2f(0, 0));
             }
             if(standstillTimer > UP_STANDSTILL_DURATION) {
@@ -207,11 +221,10 @@ public class ps_incensemanufactured extends BaseHullMod {
             //DISABLE Shield
             if(ship.getShield() != null) ship.getShield().toggleOff();
             //Reset invincibility, undo stand still stuffs
-            stats.getAcceleration().unmodify(id);
-            stats.getDeceleration().unmodify(id);
-            stats.getHullDamageTakenMult().unmodify(id);
-            stats.getArmorDamageTakenMult().unmodify(id);
-            Global.getCombatEngine().getTimeMult().unmodify(id);
+            stats.getAcceleration().unmodify(id + "UP_STAND_STILL");
+            stats.getDeceleration().unmodify(id + "UP_STAND_STILL");
+            stats.getHullDamageTakenMult().unmodify(id + "UP_STAND_STILL");
+            stats.getArmorDamageTakenMult().unmodify(id + "UP_STAND_STILL");
             for(WeaponAPI weapon: ship.getAllWeapons()) {
                 weapon.repair();
             }
@@ -223,54 +236,38 @@ public class ps_incensemanufactured extends BaseHullMod {
                 engine.addLayeredRenderingPlugin(new ps_incensespriterenderer(ship));
             }
             //Do fx because i like it - moved to ^
-            //fx timer here still need to advance so the render plugin works
             ps_spawnjitter_timer += amount;
-//            if(ps_spawnjitter_timer > spawnJitterTimerFrom && ps_spawnjitter_timer < spawnJitterTimerTo) {
-//                ship.setJitter(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 2f, 2, 7, 15f);
-//            } else {
-//                if(ps_spawnjitter_timer > (spawnJitterTimerTo + spawnJitterTimerWait)) {
-//                    ps_spawnjitter_timer = 0;
-//                }
-//            }
+            ps_berserk_duration += amount;
             ship.getEngineController().getFlameColorShifter().shift(this, ps_misc.PROJECT_SOLACE_UP_ACTIVATION, 0.2f, 1f, 1f);
 
-            //damage boost
-            float damageToCruiser = 0f;
-            float damageToCapital = 0f;
-            switch (ship.getHullSize()) {
-                case FRIGATE:
-                    damageToCruiser = UP_BONUS_DAMAGE_FRIGATE;
-                    damageToCapital = UP_BONUS_DAMAGE_FRIGATE;
-                    break;
-                case DESTROYER:
-                    damageToCruiser = UP_BONUS_DAMAGE_DESTROYER;
-                    damageToCapital = UP_BONUS_DAMAGE_DESTROYER;
-                    break;
-                case CRUISER:
-                    damageToCruiser = UP_BONUS_DAMAGE_CRUISER;
-                    damageToCapital = UP_BONUS_DAMAGE_CRUISER;
-                    break;
-                case CAPITAL_SHIP:
-                    damageToCruiser = UP_BONUS_DAMAGE_CAPITAL;
-                    damageToCapital = UP_BONUS_DAMAGE_CAPITAL;
-                    break;
+            //Time dal
+            if(ps_berserk_duration < this.UP_BERSERK_DURATION_MAX) {
+                stats.getTimeMult().modifyMult(id + UP_BERSERK_DURATION_ID, UP_TIME_MULT);
+                if(ship == Global.getCombatEngine().getPlayerShip()) {
+                    Global.getCombatEngine().getTimeMult().modifyMult(id + "up_berserk_time_dal_mult", 1/UP_TIME_MULT);
+                }
+                ship.addAfterimage(
+                        ps_misc.PROJECT_SOLACE_UP_STANDSTILL,
+                        0f,
+                        0f,
+                        ship.getVelocity().x * -1.1f,
+                        ship.getVelocity().y * -1.1f,
+                        0.5f,
+                        0f,
+                        0f,
+                        1.7f,
+                        false,
+                        false,
+                        false
+                );
+            } else {
+                stats.getTimeMult().unmodifyMult(id + UP_BERSERK_DURATION_ID);
+                stats.getTimeMult().modifyMult(id + "UP_BERSERK_OUT_ID", UP_BERSERK_OUT_TIME_MULT);
+                if(ship == Global.getCombatEngine().getPlayerShip()) {
+                    Global.getCombatEngine().getTimeMult().unmodifyMult(id + "up_berserk_time_dal_mult");
+                    Global.getCombatEngine().getTimeMult().modifyMult(id + "up_berserk_out_time_dal_mult", 1/UP_BERSERK_OUT_TIME_MULT);
+                }
             }
-
-            stats.getBallisticRoFMult().modifyMult(id, UP_ROF_BONUS);
-            stats.getBallisticWeaponFluxCostMod().modifyMult(id, UP_WEAPON_FLUX_BONUS);
-            stats.getEnergyRoFMult().modifyMult(id, UP_ROF_BONUS);
-            stats.getEnergyWeaponFluxCostMod().modifyMult(id, UP_WEAPON_FLUX_BONUS);
-            stats.getEmpDamageTakenMult().modifyMult(id, UP_EMP_NEGATE_BONUS);
-
-            //fighter bonus
-            if(ship.getWing() != null) {
-                stats.getDynamic().getStat(Stats.REPLACEMENT_RATE_DECREASE_MULT).modifyMult(id, 1f - UP_FIGHTER_RATE_DECREASE_MODIFIER / 100f);
-                stats.getDynamic().getStat(Stats.REPLACEMENT_RATE_INCREASE_MULT).modifyPercent(id, UP_FIGHTER_RATE_INCREASE_MODIFIER);
-            }
-
-            //damage boost
-            stats.getDamageToCruisers().modifyMult(id, 1f+ damageToCruiser);
-            stats.getDamageToCapital().modifyMult(id, 1f + damageToCapital);
             //refill missiles
             for (WeaponAPI weapon : ship.getAllWeapons()) {
                 if(weapon.getDamage().isMissile()) {
@@ -286,16 +283,14 @@ public class ps_incensemanufactured extends BaseHullMod {
             }
 
             if (ship == Global.getCombatEngine().getPlayerShip()) {
+//                Global.getCombatEngine().addFloatingText(ship.getLocation(), String.valueOf(ps_berserk_duration), 60, Color.WHITE, ship, 0.25f, 0.25f);
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_shield_down", "", "Shield", "Disabled", true);
                 Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp_emit", "graphics/icons/hullsys/emp_emitter.png", "Discharging EMP", "", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_rof", "graphics/icons/hullsys/ammo_feeder.png", "RoF bonus", "+" + String.valueOf(Math.round(UP_ROF_BONUS * 100)) + "%", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_weapon_flux", "graphics/icons/hullsys/ammo_feeder.png", "Weapon flux reduction", String.valueOf(Math.round(UP_WEAPON_FLUX_BONUS * 100)) + "%", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_emp", "graphics/icons/hullsys/ammo_feeder.png", "EMP damage taken reduction", String.valueOf(Math.round(UP_EMP_NEGATE_BONUS * 100)) + "%", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cruiser_dmg", "graphics/icons/hullsys/ammo_feeder.png", "Cruiser damage bonus", "+" + String.valueOf(Math.round(damageToCruiser * 100)) + "%", false);
-                Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_cap_dmg", "graphics/icons/hullsys/ammo_feeder.png", "Capital damage bonus", "+" + String.valueOf(Math.round(damageToCapital * 100)) + "%", false);
-                if(ship.getWing() != null) {
-                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_increase", "", "Fighter losses rate", "+" + String.valueOf(Math.round(100 - UP_FIGHTER_RATE_INCREASE_MODIFIER)) + "%", false);
-                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_fighter_decrease", "", "Fighter recover rate", "+" + String.valueOf(Math.round(UP_FIGHTER_RATE_INCREASE_MODIFIER)) + "%", false);
+                if(ps_berserk_duration <= this.UP_BERSERK_DURATION_MAX) {
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_time_dal", "graphics/icons/hullsys/temporal_shell.png", "Manipulation time", "" + String.valueOf(Math.round(this.UP_TIME_MULT * 100)) + "%", false);
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_berserk_duration", "", "Time Manipulation Duration", "" + String.valueOf(Math.round(this.UP_BERSERK_DURATION_MAX - ps_berserk_duration)), false);
+                } else {
+                    Global.getCombatEngine().maintainStatusForPlayerShip("ps_up_time_dal", "graphics/icons/hullsys/temporal_shell.png", "Manipulation time", "" + String.valueOf(Math.round(this.UP_BERSERK_OUT_TIME_MULT * 100)) + "%", false);
                 }
             }
 
@@ -405,6 +400,7 @@ public class ps_incensemanufactured extends BaseHullMod {
         }
         customCombatData.put("ps_spawnjitter_timer" + id, ps_spawnjitter_timer);
         customCombatData.put(UP_STATE_MANIPULATOR_ID + id, upStateManipulator);
+        customCombatData.put(UP_BERSERK_DURATION_ID + id, ps_berserk_duration);
     }
     private float getIncenseCap(ShipAPI ship) {
         if(ship != null) {
@@ -547,7 +543,7 @@ public class ps_incensemanufactured extends BaseHullMod {
                 "" + Math.round(UP_HITPOINTS_START * 100) + "%", "Unsolidified Procedure (UP)");
         label.setHighlight("" + Math.round(UP_HITPOINTS_START * 100) + "%", "Unsolidified Procedure (UP)");
         label.setHighlightColors(bad, ps_misc.PROJECT_SOLACE_LIGHT);
-
+        //TODO: CHANGE THIS
         label = tooltip.addPara("%s: %s, %s fire rate, reduce weapon flux by %s, repair armor to %s of the original amount instantly, deal %s more damage to cruiser and capital, refill all missile and EMP sparking around the ship hitting any missiles or fighters. If the ship have fighters, reduces the rate at which the fighter replacement rate decreases due to fighter losses by %s and increases the rate at which it recovers by %s.", opad, h,
                 "UP",
                 "Disable shield",
