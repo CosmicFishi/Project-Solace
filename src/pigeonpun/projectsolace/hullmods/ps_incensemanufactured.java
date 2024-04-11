@@ -68,22 +68,22 @@ public class ps_incensemanufactured extends BaseHullMod {
     private final String UP_BERSERK_DURATION_ID = "up_berserk_duration_id";
     private final float UP_BERSERK_DURATION_MAX = 15f; //in seconds
     private final float UP_BERSERK_OUT_TIME_MULT = 1.2f;
-    private final float UP_ROF_BONUS = 2.5f;
-    private final float UP_WEAPON_FLUX_BONUS = 0.6f;
-    private final float UP_EMP_NEGATE_BONUS = 0.5f;
-    private final float UP_ARMOR_REPAIR = 0.5f;
+//    private final float UP_ROF_BONUS = 2.5f;
+//    private final float UP_WEAPON_FLUX_BONUS = 0.6f;
+//    private final float UP_EMP_NEGATE_BONUS = 0.5f;
+//    private final float UP_ARMOR_REPAIR = 0.5f;
     private final float
             UP_ARMOR_REPAIR_FRIGATE = 1f,
             UP_ARMOR_REPAIR_DESTROYER = 0.8f,
             UP_ARMOR_REPAIR_CRUISER = 0.6f,
             UP_ARMOR_REPAIR_CAPITAL = 0.4f;
-    private static final float
-            UP_BONUS_DAMAGE_FRIGATE = 0.5f,
-            UP_BONUS_DAMAGE_DESTROYER = 0.4f,
-            UP_BONUS_DAMAGE_CRUISER = 0.3f,
-            UP_BONUS_DAMAGE_CAPITAL = 0.2f;
-    private static final float UP_FIGHTER_RATE_DECREASE_MODIFIER = 30f;
-    private static final float UP_FIGHTER_RATE_INCREASE_MODIFIER = 50f;
+//    private static final float
+//            UP_BONUS_DAMAGE_FRIGATE = 0.5f,
+//            UP_BONUS_DAMAGE_DESTROYER = 0.4f,
+//            UP_BONUS_DAMAGE_CRUISER = 0.3f,
+//            UP_BONUS_DAMAGE_CAPITAL = 0.2f;
+//    private static final float UP_FIGHTER_RATE_DECREASE_MODIFIER = 30f;
+//    private static final float UP_FIGHTER_RATE_INCREASE_MODIFIER = 50f;
     private final float UP_STANDSTILL_DURATION = 5f; //x second
     private static final String UP_STATE_MANIPULATOR_ID = "up_state_manipulator";
 
@@ -294,63 +294,63 @@ public class ps_incensemanufactured extends BaseHullMod {
                 }
             }
 
-            //Ship FX + EMP when go out of stand still
-            spawnEMPStartUP.advance(amount);
-            float spawnEMPCountPerTime = 2;
-            //spawn EMP that hit missiles
-            for(int i = 0; i < spawnEMPCountPerTime; i++) {
-                if(spawnEMPStartUP.intervalElapsed()) {
-                    SimpleEntity fromEntity = new SimpleEntity(MathUtils.getRandomPointInCircle(
-                            ship.getLocation(),
-                            ship.getCollisionRadius()
-                    ));
-                    SimpleEntity toEntity = new SimpleEntity(MathUtils.getRandomPointInCircle(
-                            ship.getLocation(),
-                            ship.getCollisionRadius()
-                    ));
-                    List<CombatEntityAPI> targetNearby = CombatUtils.getEntitiesWithinRange(ship.getLocation(), EMP_RANGE);
-                    HashSet<CombatEntityAPI> listTargets = new HashSet<>();
-                    for (CombatEntityAPI entity: targetNearby) {
-                        if(entity instanceof MissileAPI || entity instanceof FighterWingAPI) {
-                            //projectile is on player team => damage enemy
-                            //projectile is from enemy => damage player + allies ships
-                            if(ship.getOwner() != entity.getOwner()) {
-                                listTargets.add(entity);
-                            }
-                        }
-                    }
-                    if(!listTargets.isEmpty()) {
-                        for (CombatEntityAPI entity: new ArrayList<>(listTargets)) {
-                            engine.spawnEmpArc(
-                                    ship,
-                                    fromEntity.getLocation(),
-                                    fromEntity,
-                                    entity,
-                                    DamageType.ENERGY,
-                                    EMP_DAMAGE,
-                                    0,
-                                    10000,
-                                    null,
-                                    MathUtils.getRandomNumberInRange(5f,10f),
-                                    EMP_COLOR,
-                                    new Color(255, 255,255, 255)
-                            );
-                            if(entity.isExpired() || entity.getHitpoints() < 0) {
-                                listTargets.remove(entity);
-                            }
-                        }
-                    } else {
-                        Global.getCombatEngine().spawnEmpArcVisual(fromEntity.getLocation(),
-                                fromEntity,
-                                toEntity.getLocation(),
-                                toEntity,
-                                2,
-                                new Color(255, 102, 0, 100),
-                                new Color(255, 101, 21, 255)
-                        );
-                    }
-                }
-            }
+//            //Ship FX + EMP when go out of stand still
+//            spawnEMPStartUP.advance(amount);
+//            float spawnEMPCountPerTime = 2;
+//            //spawn EMP that hit missiles
+//            for(int i = 0; i < spawnEMPCountPerTime; i++) {
+//                if(spawnEMPStartUP.intervalElapsed()) {
+//                    SimpleEntity fromEntity = new SimpleEntity(MathUtils.getRandomPointInCircle(
+//                            ship.getLocation(),
+//                            ship.getCollisionRadius()
+//                    ));
+//                    SimpleEntity toEntity = new SimpleEntity(MathUtils.getRandomPointInCircle(
+//                            ship.getLocation(),
+//                            ship.getCollisionRadius()
+//                    ));
+//                    List<CombatEntityAPI> targetNearby = CombatUtils.getEntitiesWithinRange(ship.getLocation(), EMP_RANGE);
+//                    HashSet<CombatEntityAPI> listTargets = new HashSet<>();
+//                    for (CombatEntityAPI entity: targetNearby) {
+//                        if(entity instanceof MissileAPI || entity instanceof FighterWingAPI) {
+//                            //projectile is on player team => damage enemy
+//                            //projectile is from enemy => damage player + allies ships
+//                            if(ship.getOwner() != entity.getOwner()) {
+//                                listTargets.add(entity);
+//                            }
+//                        }
+//                    }
+//                    if(!listTargets.isEmpty()) {
+//                        for (CombatEntityAPI entity: new ArrayList<>(listTargets)) {
+//                            engine.spawnEmpArc(
+//                                    ship,
+//                                    fromEntity.getLocation(),
+//                                    fromEntity,
+//                                    entity,
+//                                    DamageType.ENERGY,
+//                                    EMP_DAMAGE,
+//                                    0,
+//                                    10000,
+//                                    null,
+//                                    MathUtils.getRandomNumberInRange(5f,10f),
+//                                    EMP_COLOR,
+//                                    new Color(255, 255,255, 255)
+//                            );
+//                            if(entity.isExpired() || entity.getHitpoints() < 0) {
+//                                listTargets.remove(entity);
+//                            }
+//                        }
+//                    } else {
+//                        Global.getCombatEngine().spawnEmpArcVisual(fromEntity.getLocation(),
+//                                fromEntity,
+//                                toEntity.getLocation(),
+//                                toEntity,
+//                                2,
+//                                new Color(255, 102, 0, 100),
+//                                new Color(255, 101, 21, 255)
+//                        );
+//                    }
+//                }
+//            }
 
             ////////////////////
             //FX EMP + flares
@@ -484,6 +484,11 @@ public class ps_incensemanufactured extends BaseHullMod {
     }
 
     @Override
+    public float getTooltipWidth() {
+        return 412f;
+    }
+
+    @Override
     public void addPostDescriptionSection(TooltipMakerAPI tooltip, ShipAPI.HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
         float pad = 3f;
         float opad = 10f;
@@ -492,7 +497,7 @@ public class ps_incensemanufactured extends BaseHullMod {
         Color good = Misc.getPositiveHighlightColor();
 
         //Incense
-        LabelAPI label = tooltip.addPara("A dust-like matter called Incense found by accident when a small piece of Solace crystal slipped off one of our scientist's hands and shattered on the ground. However, unlike other crystal dust, the area where the crystal shatters seems to be spreading out to fill up certain areas and within those areas, time seems to be moving differently. Further inspection and testing after this incident shows that the matter has some extraordinary quirks", opad, h, "");
+        LabelAPI label = tooltip.addPara("A dust-like matter called Incense found by accident when a small piece of Solace crystal slipped off one of our scientist's hands and shattered on the ground. Further inspection and testing after this incident shows that the matter has some extraordinary quirks", opad, h, "");
 
         //3 effects
         //label = tooltip.addPara("First is the tendency to spread out to a large area, if the area is damaged by a moving projectile, the dust will disburse out then slowly form back to fill it up", opad, h, "");
@@ -504,66 +509,74 @@ public class ps_incensemanufactured extends BaseHullMod {
 
         //incense
         //Time dal
-        label = tooltip.addPara("Incense can be recharged automatically. The higher the Incense level, the higher the ship's time dilation is, max out at %s time dilation at max Incense", opad, h,
+        label = tooltip.addPara("The higher the Incense level, the higher the ship's time dilation is, max out at %s", opad, h,
                 "" + Math.round(TIME_DAL_BONUS) + "%");
-        label.setHighlight("" + Math.round(TIME_DAL_BONUS) + "%");
         label.setHighlightColors(good);
 
-        label = tooltip.addPara("Incense capacitor is %s of the ship flux dissipation plus %s of the ship's flux capacitor. Incense regeneration rate per second is %s for each ship class.", opad, h,
-                "" + Math.round(INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION * 100) + "%",
-                "" + Math.round(INCENSE_BONUS_FROM_CAPACITOR * 100) + "%",
-                Math.round(INCENSE_REGENERATION_BASE_FRIGATE) + "/" + Math.round(INCENSE_REGENERATION_BASE_DESTROYER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CRUISER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CAPITAL) + ""
-        );
-        label.setHighlight("" + Math.round(INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION * 100) + "%",
-                "" + Math.round(INCENSE_BONUS_FROM_CAPACITOR * 100) + "%",
-                Math.round(INCENSE_REGENERATION_BASE_FRIGATE) + "/" + Math.round(INCENSE_REGENERATION_BASE_DESTROYER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CRUISER) + "/" + Math.round(INCENSE_REGENERATION_BASE_CAPITAL) + ""
-        );
-        label.setHighlightColors(good, good, ps_misc.PROJECT_SOLACE_LIGHT, good);
+        float col1W = 250;
+        float lastW = 162;
 
-        label = tooltip.addPara("+ Current Incense capacitor: %s.", opad, h,
-                "" + Math.round(getIncenseCap(ship)));
-        label.setHighlight("" + Math.round(getIncenseCap(ship)));
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT);
+        tooltip.beginTable(Misc.getBasePlayerColor(), Misc.getDarkPlayerColor(), Misc.getBrightPlayerColor(),
+                20f, true, true,
+                new Object [] {"Bonuses", col1W, "Incense Capacity", lastW});
+        tooltip.addRow(
+                Alignment.MID, h, "Ship's dissipation (" + Math.round(INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION * 100) + "%)",
+                Alignment.MID, h, "" + Math.round(ship.getMutableStats().getFluxDissipation().modified * INCENSE_LEVEL_PERCENTAGE_FROM_DISSIPATION)
+        );
+        tooltip.addRow(
+                Alignment.MID, h, "Ship's capacitor (" + Math.round(INCENSE_BONUS_FROM_CAPACITOR * 100) + "%)",
+                Alignment.MID, h, "" + Math.round((ship.getMutableStats().getFluxCapacity().modified * INCENSE_BONUS_FROM_CAPACITOR))
+        );
+        tooltip.addRow(
+                Alignment.MID, good, "Total",
+                Alignment.MID, good, "" + Math.round(getIncenseCap(ship))
+        );
+        tooltip.addTable("", 0, opad);
 
-        label = tooltip.addPara("+ Current Incense regeneration: %s.", opad, h,
-                "" + Math.round(getIncenseRegen(ship)) + "/s");
-        label.setHighlight("" + Math.round(getIncenseRegen(ship)) + "/s");
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT);
+        tooltip.beginTable(Misc.getBasePlayerColor(), Misc.getDarkPlayerColor(), Misc.getBrightPlayerColor(),
+                20f, true, true,
+                new Object [] {"Ship class", col1W, "Incense Regeneration", lastW});
+        tooltip.addRow(
+                Alignment.MID, good, ship.getHullSize().name(),
+                Alignment.MID, good, "" + Math.round(getIncenseRegen(ship)) + "/s"
+        );
+        tooltip.addTable("", 0, opad);
+        tooltip.addSpacer(pad);
 
         //taking damage
-        label = tooltip.addPara("Hits on shield reduce Incense by %s of original damage. Hits on hull or armor reduce Incense by %s of the original damage. If the calculated damage on Incense is smaller than 1, 1 will be applied.", opad, h,
-                "" + Math.round(ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_SHIELD * 100) + "%", "" + Math.round(ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_HULL_ARMOR * 100) + "%");
-        label.setHighlight("" + Math.round(ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_SHIELD * 100) + "%", "" + Math.round(ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_HULL_ARMOR * 100) + "%");
-        label.setHighlightColors(bad, bad);
+        label = tooltip.addPara("Incense recharge automatically but %s. Amount reduce will be based on a percentage of the incoming damage. %s", opad, h,
+                "reduce when taking shield/hull/armor damage", "If the calculated damage on Incense level is smaller than 1, 1 will be applied.");
+        label.setHighlightColors(bad, Misc.getGrayColor());
+        tooltip.beginTable(Misc.getBasePlayerColor(), Misc.getDarkPlayerColor(), Misc.getBrightPlayerColor(),
+                20f, true, true,
+                new Object [] {"Hit On", col1W, "Incoming damage", lastW});
+        tooltip.addRow(
+                Alignment.MID, h, "Shield",
+                Alignment.MID, bad, "" + Math.round(ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_SHIELD * 100) + "%"
+        );
+        tooltip.addRow(
+                Alignment.MID, h, "Armor/Hull",
+                Alignment.MID, bad, "" + Math.round(ENEMY_PROJECTILE_DAMAGE_PERCENTAGE_HULL_ARMOR * 100) + "%"
+        );
+        tooltip.addTable("", 0, opad);
 
         //Unsolidified Procedure
-        tooltip.addSectionHeading("Special", Alignment.MID, opad);
+        tooltip.addSectionHeading("Special: UP", Alignment.MID, opad);
 
-        label = tooltip.addPara("If the ship hull fall below %s, activate %s - \"let the killing begins\" (Once activated, the effect is permanent regardless of your hull percentage)", opad, h,
-                "" + Math.round(UP_HITPOINTS_START * 100) + "%", "Unsolidified Procedure (UP)");
-        label.setHighlight("" + Math.round(UP_HITPOINTS_START * 100) + "%", "Unsolidified Procedure (UP)");
-        label.setHighlightColors(bad, ps_misc.PROJECT_SOLACE_LIGHT);
-        //TODO: CHANGE THIS
-        label = tooltip.addPara("%s: %s, %s fire rate, reduce weapon flux by %s, repair armor to %s of the original amount instantly, deal %s more damage to cruiser and capital, refill all missile and EMP sparking around the ship hitting any missiles or fighters. If the ship have fighters, reduces the rate at which the fighter replacement rate decreases due to fighter losses by %s and increases the rate at which it recovers by %s.", opad, h,
-                "UP",
-                "Disable shield",
-                "" + Math.round(UP_ROF_BONUS * 100) + "%",
-                "" + Math.round(UP_WEAPON_FLUX_BONUS * 100) + "%",
-                "" + Math.round(UP_ARMOR_REPAIR_FRIGATE * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_DESTROYER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CRUISER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CAPITAL * 100) + "%",
-                "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%",
-                "" + Math.round(UP_FIGHTER_RATE_DECREASE_MODIFIER) + "%",
-                "" + Math.round(UP_FIGHTER_RATE_INCREASE_MODIFIER) + "%"
-        );
-        label.setHighlight("UP", "Disable shield",
-                "" + Math.round(UP_ROF_BONUS * 100) + "%",
-                "" + Math.round(UP_WEAPON_FLUX_BONUS * 100) + "%",
-                "" + Math.round(UP_ARMOR_REPAIR_FRIGATE * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_DESTROYER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CRUISER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CAPITAL * 100) + "%",
-                "" + Math.round(UP_BONUS_DAMAGE_FRIGATE * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_DESTROYER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CRUISER * 100) + "%/" + Math.round(UP_BONUS_DAMAGE_CAPITAL * 100) + "%",
-                "" + Math.round(UP_FIGHTER_RATE_DECREASE_MODIFIER) + "%",
-                "" + Math.round(UP_FIGHTER_RATE_INCREASE_MODIFIER) + "%"
-        );
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, bad, good, good, good, good, good, good);
-
+        label = tooltip.addPara("When ship hull fall below %s, activate %s - %s", opad, h,
+                "" + Math.round(UP_HITPOINTS_START * 100) + "%", "Unsolidified Procedure (UP)", "One final stand");
+        label.setHighlightColors(bad, ps_misc.PROJECT_SOLACE_LIGHT, Misc.getGrayColor());
+        label = tooltip.addPara("- Ship's shield is disabled %s.",
+                opad, h, "permanently");
+        label.setHighlightColors(bad);
+        label = tooltip.addPara("- Repair armor to %s and immune to damage for %s before refilling all missiles ammo once and applying %s time dilation for %s.",
+                opad, h, "" + Math.round(UP_ARMOR_REPAIR_FRIGATE * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_DESTROYER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CRUISER * 100) + "%/" + Math.round(UP_ARMOR_REPAIR_CAPITAL * 100) + "%",
+                "" + Math.round(UP_STANDSTILL_DURATION) + "s", "" + Math.round(UP_TIME_MULT * 100) + "%", "" + Math.round(UP_BERSERK_DURATION_MAX) + "s", "" + Math.round(UP_BERSERK_OUT_TIME_MULT * 100) + "%");
+        label.setHighlightColors(good, good, good, good);
+        label = tooltip.addPara("- Time dilation drops drastically after the initial burst and maintain at %s time dilation for the rest of battle.",
+                opad, h, "" + Math.round(UP_BERSERK_OUT_TIME_MULT * 100) + "%");
+        label.setHighlightColors(good);
+        tooltip.addPara("UP can only be activated once per battle.", Misc.getGrayColor(), opad);
     }
 
 //    public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {

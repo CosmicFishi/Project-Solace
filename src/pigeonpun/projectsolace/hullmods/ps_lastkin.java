@@ -104,9 +104,9 @@ public class ps_lastkin extends BaseHullMod {
             }
         }
         for (MissileAPI missile: missilesNearby) {
-            if(missile != null && missile.getOwner() == 1) {
+            if(missile != null && missile.getOwner() != ship.getOwner()) {
                 randomMissilePicker.add(missile);
-                missile.getVelocity().scale((float) (100 - 20) / 100);
+                missile.getVelocity().scale((float) (100 - VELOCITY_REDUCED) / 100);
                 missile.setJitter(this, MISSILE_SLOWDOWN_COLOR, 1, 15, 3f, 10f);
             }
         }
