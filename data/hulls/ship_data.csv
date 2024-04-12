@@ -15,7 +15,7 @@ Laevis,ps_laevis,Carrier Frigate,Enmity Strafer,ps_vigorrush,7,2000,150,3600,312
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #DESTROYER,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Morepork,ps_morepork,Destroyer,Project Solace,highenergyfocus,12,4000,350,7500,8333,500,125,,100,80,60,20,30,350,OMNI,,170,0.4,1,,,30,70,80,50,2,25,9,48000,5,15,300,0.25,12,12,,,,,,,,ps_ship_bp,,0.5,2,3,,3
-Ashy,ps_ashy,Destroyer,Project Solace,ps_intenseflow,9,5000,400,5000,4167,400,100,,90,60,40,50,60,400,FRONT,,270,0.4,0.9,,,40,100,100,60,2,30,9,40000,5,12,360,0.25,10,10,,,,,,,,ps_ship_bp,,0.5,2,3,,4
+Ashy,ps_ashy,Destroyer,Project Solace,ps_condensedblink,9,5000,400,5000,4167,400,100,,90,60,40,50,60,400,FRONT,,270,0.4,0.9,,,40,100,100,60,2,30,9,40000,5,12,360,0.25,11,11,,,,,,,,ps_ship_bp,,0.5,2,3,,4
 Papuan,ps_papuan,Light Carrier,Project Solace,reservewing,10,4250,400,3000,2813,225,80,2,75,50,30,25,25,450,FRONT,,300,0.4,0.8,,,50,150,40,40,2,20,9,52000,5,15,360,0.25,15,15,,,,,,,CARRIER,ps_ship_bp,,0.5,2,3,,9
 Pricei,ps_pricei,Carrier Destroyer,Enmity Strafer,ps_bulwarkboost,10,5000,250,5000,4167,350,80,1,70,60,40,30,60,400,OMNI,,160,0.1,0.65,,,100,300,100,60,2,30,9,45000,5,12,360,0.25,13,13,,,,,,,"CARRIER, COMBAT, NO_AUTO_ESCORT","ps_ship_bp_enmity, rare_bp",,0.5,2,3,,16
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

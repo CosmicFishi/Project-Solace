@@ -73,6 +73,7 @@ ps_honedshift,SHIP_SYSTEM,"Increasing time dilation, all weapons beside built-in
 ps_vergebending,SHIP_SYSTEM,"Bending limit, reset cooldown, repair if disabled and force fire built-in weapon. Ballistic/Energy weapons flux usage is also increased by 120% for the entire duration.",,,,
 ps_warpingmine,SHIP_SYSTEM,"Teleports a heavy phase mine to the target area. The mine will slowly track nearby enemy ships, slowing any missiles in a certain radius and explodes a few seconds after its proximity trigger is activated. Can be used while phased. ",,,,
 ps_cuttingsalvo,SHIP_SYSTEM,Reload one burst for all missiles mounted and force fire them.,,,,
+ps_condensedblink,SHIP_SYSTEM,Short length blink.,,,,
 ,,,,,,
 #Weapons,,,,,,
 ps_tragopo,WEAPON,"A fast but powerful firing cannon focused on burst firing combined with a medium range, it can easily break through heavily shielded or thick armored enemies. However, due to the nature of burst firing, the gun’s flux efficiency isn’t that great compared to other similar burst fire guns.",,,,

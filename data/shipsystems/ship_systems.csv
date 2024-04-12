@@ -12,3 +12,4 @@ Honed Shift,ps_honedshift,,,,,,,,,,0.2,5,0.2,15,,,,,,,,,,,,,
 Verge Bending,ps_vergebending,,,,,,,,,,0.1,2,3,6,,,,,,,,,,,,,
 Warping Mine,ps_warpingmine,,,,,,0.1,,5,0.2,0.25,,0.25,0,,,,,,,,,,,,,
 Cutting Salvo,ps_cuttingsalvo,,,,,,,,,,0,0.25,0.5,14,,,,,,,,,,,,,
+Condensed Blink,ps_condensedblink,,,,,,,,6,0.1,0.1,,0.05,0,,TRUE,,TRUE,,,,,,,,,graphics/icons/hullsys/displacer.png

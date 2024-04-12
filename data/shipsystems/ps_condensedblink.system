@@ -1,0 +1,42 @@
+{
+	"id":"ps_condensedblink",
+	"type":"TELEPORTER",
+	"aiType":"PHASE_TELEPORTER_2",
+
+	#"statsScript":"data.scripts.shipsystems.bt_pather_tele_test",
+
+	#"runScriptWhileIdle":true,
+
+	"jitterUnderColor":[20,114,25,255],
+	"jitterUnderCopies":5,
+	"jitterUnderMinRange":10,
+	"jitterUnderRange":20,
+	"jitterUnderRangeRadiusFraction":0,
+		
+	#"engineGlowColor":[255,100,225,255],
+	#"engineGlowContrailColor":[200,100,200,25],
+	"engineGlowLengthMult":0,
+	"engineGlowWidthMult":0,
+	"engineGlowGlowMult":0,
+	
+	"range":400,
+	"randomRange":0,
+	#"requiresZeroFluxBoost":true,
+	
+	"vulnerableChargeup":true,
+	"vulnerableChargedown":false,
+	"renderCopyDuringTeleport":true,
+	
+	"fadeActivationSoundOnChargedown":false,
+	
+	#"useSound":"system_teleport",
+	#"useSound":"Bt_Holy_Teleporter_Charge",	
+	"outOfUsesSound":"gun_out_of_ammo",
+	
+	
+	"aiHints":{
+		"activeSpeedIncrease":0,
+        "burstMovementPotential":2000,
+        "averageSpeedIncrease":700,
+	}
+}
