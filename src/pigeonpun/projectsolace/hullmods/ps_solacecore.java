@@ -128,10 +128,9 @@ public class ps_solacecore extends BaseHullMod {
         float col1W = 150;
         float lastW = 262;
         //Increase none-beam energy weapon's base range by
-//        label = tooltip.addPara("Increase %s's %s by %s/%s for frigate and destroyer/cruiser and capital.", opad, h,
-//                "projectile energy weapon", "base range" ,"" + Math.round(ENERGY_RANGE_FRIGATE_DESTROYER) + "u",
-//                "" + Math.round(ENERGY_RANGE_CRUISER_CAPITAL) + "u");
-//        label.setHighlightColors(Misc.MOUNT_ENERGY, ps_misc.PROJECT_SOLACE_LIGHT, good, good);
+        label = tooltip.addPara("Increase %s's %s depend on ship size.", opad, h,
+                "projectile energy weapon", "base range");
+        label.setHighlightColors(Misc.MOUNT_ENERGY, good, good, good);
 
         tooltip.beginTable(Misc.getBasePlayerColor(), Misc.getDarkPlayerColor(), Misc.getBrightPlayerColor(),
                 20f, true, true,
@@ -161,10 +160,9 @@ public class ps_solacecore extends BaseHullMod {
 //        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, good, ps_misc.PROJECT_SOLACE_LIGHT);
 
         //Increase flux cost for none-beam energy weapons
-        label = tooltip.addPara("Increase %s for %s by %s.", opad, h,
-                "flux cost", "energy weapons" ,"" + Math.round(ENERGY_FLUX_COST) + "%");
-        label.setHighlight("flux cost", "energy weapons" ,"" + Math.round(ENERGY_FLUX_COST) + "%");
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, Misc.MOUNT_ENERGY, bad);
+        label = tooltip.addPara("Increase flux cost for %s by %s.", opad, h,
+                "energy weapons" ,"" + Math.round(ENERGY_FLUX_COST) + "%");
+        label.setHighlightColors(Misc.MOUNT_ENERGY, bad);
 
         //Decrease fire rate for basllistic weapon by %s
 //        label = tooltip.addPara("Decrease %s for %s by %s", opad, h,
