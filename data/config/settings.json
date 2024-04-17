@@ -2,7 +2,7 @@
   "ps_solaceEnmityAlliance": true, # form alliance between Solace and Enmity if enable
   "ps_solaceDefend": true, # Solace will send out defend fleets if enable
   "ps_solaceDefendTimeoutPeriod": 45, # faction won't accumulate defend points for this many days at start
-  "ps_pointsRequiredForDefendFleet": 27000,    # bigger number = longer delay between sending defend fleets,
+  "ps_pointsRequiredForDefendFleet": 32000,    # bigger number = longer delay between sending defend fleets,
   "ps_defendPointEconomyMult": 0.5, # multiplier for defend point gains from economic assets,
 
   "ps_vagrantseerGenerateSalvage": true, #generate Vagrant Seer salvage/fleets,
