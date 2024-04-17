@@ -94,6 +94,9 @@ public class ps_incensemanufactured extends BaseHullMod {
             return;
         }
         if (!ship.isAlive()) {
+            if(ship == Global.getCombatEngine().getPlayerShip()) {
+                Global.getCombatEngine().getTimeMult().unmodifyMult(ship.getId() + "up_berserk_time_dal_mult");
+            }
             return;
         }
         /////////////////
@@ -210,7 +213,7 @@ public class ps_incensemanufactured extends BaseHullMod {
                         ship.getCollisionRadius(),
                         MathUtils.getRandomNumberInRange(0, 360)
                 );
-                engine.addSmoothParticle(spawnHitParticlePoint, (Vector2f) VectorUtils.getDirectionalVector(spawnHitParticlePoint, ship.getLocation()).scale(30f), 7f, 1f, 2f, ps_misc.PROJECT_SOLACE_UP_STANDSTILL);
+                engine.addSmoothParticle(spawnHitParticlePoint, (Vector2f) VectorUtils.getDirectionalVector(spawnHitParticlePoint, ship.getLocation()).scale(100f), 7f, 1f, 2f, ps_misc.PROJECT_SOLACE_UP_STANDSTILL);
                 Global.getSoundPlayer().playLoop("ps_up_charging", ship, 1f, MathUtils.clamp(standstillTimer, 0, 1), ship.getLocation(), new Vector2f(0, 0));
             }
             if(standstillTimer > UP_STANDSTILL_DURATION) {

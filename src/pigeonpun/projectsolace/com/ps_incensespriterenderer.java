@@ -15,16 +15,14 @@ import pigeonpun.projectsolace.hullmods.ps_incensemanufactured;
 import pigeonpun.projectsolace.scripts.projectsolaceplugin;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.EnumSet;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 public class ps_incensespriterenderer extends BaseCombatLayeredRenderingPlugin {
     private ShipAPI ship;
-    private final float spawnJitterTimerFrom = 0.2f;
-    private final float spawnJitterTimerTo = 0.5f;
-    private final float spawnJitterTimerWait = 0.6f;
+    private final float spawnGlitchTotalDuration = 0.8f;
+    private final float spawnJitterTimerWait = 0.1f;
+    private final float minSpawnGlitchPerSectionChance = 0.4f;
     public Logger log = Global.getLogger(ps_incensespriterenderer.class);
     public ps_incensespriterenderer(ShipAPI ship) {
         this.ship = ship;
@@ -56,21 +54,21 @@ public class ps_incensespriterenderer extends BaseCombatLayeredRenderingPlugin {
         //todo: Change this so the glitvh effect is base on a percentage chance of happening and per section of the glitch sprite have a percentage chance of not showing
         Map<String, Object> customCombatData = Global.getCombatEngine().getCustomData();
         float ps_spawnjitter_timer = 0;
-        List<ps_incenseGlitchData> listGlitches = new ArrayList<>();
+        List<ps_incenseGlitchPerRenderData> listGlitches = new ArrayList<>();
 
         if (customCombatData.get("ps_spawnjitter_timer" + ship.getId()) instanceof Float)
             ps_spawnjitter_timer = (float) customCombatData.get("ps_spawnjitter_timer" + ship.getId());
         if (customCombatData.get(LIST_GLITCH_DATA_ID + ship.getId()) instanceof List
                 && ((List) customCombatData.get(LIST_GLITCH_DATA_ID + ship.getId())).get(0) != null
-                && ((List) customCombatData.get(LIST_GLITCH_DATA_ID + ship.getId())).get(0) instanceof ps_incenseGlitchData
+                && ((List) customCombatData.get(LIST_GLITCH_DATA_ID + ship.getId())).get(0) instanceof ps_incenseGlitchPerRenderData
         ) {
-            listGlitches = (List<ps_incenseGlitchData>) customCombatData.get(LIST_GLITCH_DATA_ID + ship.getId());
+            listGlitches = (List<ps_incenseGlitchPerRenderData>) customCombatData.get(LIST_GLITCH_DATA_ID + ship.getId());
         }
         if(listGlitches.isEmpty()) {
-            listGlitches = new ArrayList<>(createNewListGlitches(ship));
+            listGlitches = new ArrayList<>(createNewListGlitchPerRender(ship, spawnGlitchTotalDuration, -40f, 40f));
         }
         //timer advance is in ps_incensemanufactured.java
-        if(ps_spawnjitter_timer > spawnJitterTimerFrom && ps_spawnjitter_timer < spawnJitterTimerTo) {
+        if(ps_spawnjitter_timer < spawnGlitchTotalDuration) {
             //do glitches
             Vector2f currentShipCenter = null;
             for(WeaponAPI weapon: ship.getAllWeapons()) {
@@ -82,23 +80,30 @@ public class ps_incensespriterenderer extends BaseCombatLayeredRenderingPlugin {
             if(currentShipCenter == null) {
                 log.warn("Can't find Glitch deco on " + ship.getHullSpec().getBaseHullId() + ", not rendering glitch");
             } else {
-                for (ps_incenseGlitchData glitchData: listGlitches) {
-                    renderGlitchFx(ship, currentShipCenter, glitchData.glitchOffsetX, glitchData.glitchOffsetY, glitchData.spriteWidth, glitchData.spriteHeight, glitchData.offsetX ,glitchData.color);
+                for (ps_incenseGlitchPerRenderData renderData: listGlitches) {
+                    if(renderData.delayTillRender > ps_spawnjitter_timer && renderData.renderDuration + renderData.delayTillRender > ps_spawnjitter_timer) {
+                        for (ps_incenseGlitchSectionData glitchData: renderData.listGlitches) {
+                            if(glitchData.spawnGlitchChance > minSpawnGlitchPerSectionChance) {
+                                renderGlitchFx(ship, currentShipCenter, glitchData.glitchOffsetX, glitchData.glitchOffsetY, glitchData.spriteWidth, glitchData.spriteHeight, glitchData.offsetX ,glitchData.color);
+                            }
+                        }
+                    }
 //                    Global.getCombatEngine().addHitParticle(currentShipCenter, Misc.ZERO, 30f, 1f, 5, Color.PINK);
                 }
             }
         } else {
-            if(ps_spawnjitter_timer > (spawnJitterTimerTo + spawnJitterTimerWait)) {
+            if(ps_spawnjitter_timer > (spawnGlitchTotalDuration + spawnJitterTimerWait)) {
                 ps_spawnjitter_timer = 0;
                 //reset glitch data
-                listGlitches = new ArrayList<>(createNewListGlitches(ship));
+                listGlitches = new ArrayList<>(createNewListGlitchPerRender(ship, spawnGlitchTotalDuration, -40f, 40f));
             }
         }
         customCombatData.put(LIST_GLITCH_DATA_ID + ship.getId(), listGlitches);
         customCombatData.put("ps_spawnjitter_timer" + ship.getId(), ps_spawnjitter_timer);
     }
-    public List<ps_incenseGlitchData> createNewListGlitches(ShipAPI ship) {
-        List<ps_incenseGlitchData> newList = new ArrayList<>();
+    public List<ps_incenseGlitchSectionData> createNewListGlitchSections(ShipAPI ship, float minOffsetX, float maxOffsetX) {
+        List<ps_incenseGlitchSectionData> newList = new ArrayList<>();
+        Random rand = new Random();
         int shipGlitchCut = 1;
         if (ship.getHullSize().equals(ShipAPI.HullSize.FRIGATE)){
             shipGlitchCut = FRIGATE_GLITCH_CUT;
@@ -119,41 +124,57 @@ public class ps_incensespriterenderer extends BaseCombatLayeredRenderingPlugin {
             //to get height of each "cut" section
             float regionSelected = (float) 1 / newListSectionCountRed;
             newList.add(
-                    new ps_incenseGlitchData(
+                    new ps_incenseGlitchSectionData(
                             0f,
                             regionSelected * i,
                             1f,
                             regionSelected,
-                            MathUtils.getRandomNumberInRange(-20f, 20f),
-                            Color.red
+                            MathUtils.getRandomNumberInRange(minOffsetX, maxOffsetX),
+                            Color.red,
+                            rand.nextFloat()
                     )
             );
         }
         for (int i = 0; i < newListSectionCountBlue; i++) {
             float regionSelected = (float) 1 / newListSectionCountBlue;
             newList.add(
-                    new ps_incenseGlitchData(
+                    new ps_incenseGlitchSectionData(
                             0f,
                             regionSelected * i,
                             1f,
                             regionSelected,
-                            MathUtils.getRandomNumberInRange(-20f, 20f),
-                            Color.blue
+                            MathUtils.getRandomNumberInRange(minOffsetX, maxOffsetX),
+                            Color.blue,
+                            rand.nextFloat()
                     )
             );
         }
         for (int i = 0; i < newListSectionCountGreen; i++) {
             float regionSelected = (float) 1 / newListSectionCountGreen;
             newList.add(
-                    new ps_incenseGlitchData(
+                    new ps_incenseGlitchSectionData(
                             0f,
                             regionSelected * i,
                             1f,
                             regionSelected,
-                            MathUtils.getRandomNumberInRange(-20f, 20f),
-                            Color.green
+                            MathUtils.getRandomNumberInRange(minOffsetX, maxOffsetX),
+                            Color.green,
+                            rand.nextFloat()
                     )
             );
+        }
+        return newList;
+    }
+    //create list that contain all the data for each render
+    //one render will contain all the glitch section
+    public List<ps_incenseGlitchPerRenderData> createNewListGlitchPerRender(ShipAPI ship, float totalRenderDuration, float minOffsetX, float maxOffsetX) {
+        List<ps_incenseGlitchPerRenderData> newList = new ArrayList<>();
+        Random rand = new Random();
+        int renderCount = MathUtils.getRandomNumberInRange(1, 3);
+        for(int i =0; i<renderCount; i++) {
+            float renderDelay = MathUtils.getRandomNumberInRange(0.0f, totalRenderDuration);
+            float renderDuration = MathUtils.getRandomNumberInRange(0.0f, totalRenderDuration - renderDelay);
+            newList.add(new ps_incenseGlitchPerRenderData(createNewListGlitchSections(ship, minOffsetX, maxOffsetX), renderDelay, renderDuration));
         }
         return newList;
     }
@@ -191,14 +212,25 @@ public class ps_incensespriterenderer extends BaseCombatLayeredRenderingPlugin {
             );
         }
     }
-    public class ps_incenseGlitchData {
+    public class ps_incenseGlitchPerRenderData {
+        public List<ps_incenseGlitchSectionData> listGlitches;
+        public float delayTillRender;
+        public float renderDuration;
+        ps_incenseGlitchPerRenderData(List<ps_incenseGlitchSectionData> listGlitches, float delayTillRender, float renderDuration) {
+            this.listGlitches = listGlitches;
+            this.delayTillRender = delayTillRender;
+            this.renderDuration = renderDuration;
+        }
+    }
+    public class ps_incenseGlitchSectionData {
         public float glitchOffsetX;
         public float glitchOffsetY;
         public float spriteWidth;
         public float spriteHeight;
         public float offsetX;
         public Color color;
-        ps_incenseGlitchData(float glitchOffsetX, float glitchOffsetY, float spriteWidth, float spriteHeight, float offsetX, Color color) {
+        public float spawnGlitchChance = 0;
+        ps_incenseGlitchSectionData(float glitchOffsetX, float glitchOffsetY, float spriteWidth, float spriteHeight, float offsetX, Color color, float spawnGlitchChance) {
             //only needed to run first turn
             this.color = color;
             this.glitchOffsetX = glitchOffsetX;
@@ -206,6 +238,7 @@ public class ps_incensespriterenderer extends BaseCombatLayeredRenderingPlugin {
             this.spriteHeight = spriteHeight;
             this.spriteWidth = spriteWidth;
             this.offsetX = offsetX;
+            this.spawnGlitchChance = spawnGlitchChance;
         }
     }
 }
