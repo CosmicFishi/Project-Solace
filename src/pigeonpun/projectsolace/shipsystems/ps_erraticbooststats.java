@@ -7,8 +7,8 @@ import pigeonpun.projectsolace.com.ps_misc;
 
 public class ps_erraticbooststats extends BaseShipSystemScript {
 
-    private final float FIGHTER_TIME_DAL_BONUS = 20f;
-    private final float SHIP_TIME_DAL_BONUS = 10f;
+    private final float FIGHTER_TIME_DAL_BONUS = 40f;
+    private final float SHIP_TIME_DAL_BONUS = 20f;
 
     public void apply(MutableShipStatsAPI stats, String id, State state, float effectLevel) {
         ShipAPI ship = (ShipAPI) stats.getEntity();
