@@ -114,6 +114,16 @@
     {"file": "sounds/weapons/ps_alvarius_fire.ogg", "pitch": 0.9, "volume": 1},
     {"file": "sounds/weapons/ps_alvarius_fire.ogg", "pitch": 0.95, "volume": 1},
     {"file": "sounds/weapons/ps_alvarius_fire.ogg", "pitch": 1, "volume": 1}
+  ],
+  "ps_syhadren_fire": [
+    {"file": "sounds/weapons/ps_syhadren_fire.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_syhadren_fire.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_syhadren_fire.ogg", "pitch": 1, "volume": 1}
+  ],
+  "ps_syhadren_msl_split": [
+    {"file": "sounds/weapons/ps_syhadren_msl_split.ogg", "pitch": 0.9, "volume": 1},
+    {"file": "sounds/weapons/ps_syhadren_msl_split.ogg", "pitch": 0.95, "volume": 1},
+    {"file": "sounds/weapons/ps_syhadren_msl_split.ogg", "pitch": 1, "volume": 1}
   ]
 }
 

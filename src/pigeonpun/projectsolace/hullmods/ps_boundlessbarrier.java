@@ -119,6 +119,7 @@ public class ps_boundlessbarrier extends BaseHullMod {
         float maintCost = getMaintenanceIncreasePercentage(ship.getVariant());
         float CRCost = getCRReductionPercentage(ship.getVariant());
         float DPCost = getDPIncrease(ship.getVariant());
+        //todo: sort this description
 
         LabelAPI label = tooltip.addPara("With great power comes great responsibility. Discovery of these boundless entities have given scientists quite the bewilderment as the material it is made from is far more technology advanced than anything currently available in the Sector. Despite the limit of our understanding of such tech, scientists and engineers still managed to equip and operate said entities safely onto our current confined hull. But it comes with hefty prices.", opad, h, "");
 

@@ -1,0 +1,46 @@
+{
+  "id": "ps_syhadren",
+  "specClass": "projectile",
+  "projectileSpecId": "ps_syhadren_msl_lg",
+  "type": "MISSILE",
+  "size": "LARGE",
+  "everyFrameEffect": "pigeonpun.projectsolace.weapons.ps_syhadreneffects",
+  "displayArcRadius": 500,
+  "turretSprite": "graphics/weapons/ps_syhadren_turret_base.png",
+  "hardpointSprite": "graphics/weapons/ps_syhadren_hardpoint_base.png",
+  "turretOffsets": [
+    18.5,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    18.5,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "ALTERNATING",
+  "renderHints":[RENDER_LOADED_MISSILES],
+  "animationType": "SMOKE",
+  "smokeSpec": {
+    "particleSizeMin": 10,
+    "particleSizeRange": 16,
+    "cloudParticleCount": 6,
+    "cloudDuration": 1.4,
+    "cloudRadius": 12,
+    "blowbackParticleCount": 3,
+    "blowbackDuration": 0.4,
+    "blowbackLength": 40,
+    "blowbackSpread": 20,
+    "particleColor": [
+      170,
+      160,
+      150,
+      100
+    ]
+  },
+  "fireSoundTwo": "ps_syhadren_fire"
+}
