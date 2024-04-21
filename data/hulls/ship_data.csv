@@ -35,3 +35,6 @@ Albertine,ps_albertine,Battlecarrier,Project Solace,reservewing,28,9000,1350,120
 Ravus,ps_ravus,Heavy Battlecarrier,Enmity Strafer,ps_erraticboost,30,20000,1000,25000,25000,1100,280,3,35,30,20,7,10,3500,OMNI,,200,0.1,0.75,,,700,2000,300,400,15,27,7,550000,3,12,720,0.25,50,50,,,,,,,"CARRIER, COMBAT, NO_AUTO_ESCORT","ps_ship_bp_enmity, rare_bp",,0.4,2,4,,18
 Sarpedon,ps_sarpedon,Altered Battlecruiser,Vagrant Seer,ps_vergebending,32,10500,1200,17000,25000,1300,260,,40,80,50,18,16,3000,OMNI,,360,0.4,0.65,,,5,5,150,300,10,30,6,600000,3,15,600,0.25,60,60,,,,,,,HIDE_IN_CODEX,ps_vagrantseer,,0.5,2,4,,20
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#SPECIAL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Liasis,ps_liasis,Prototype Hybrid Cruiser,Midline,damper,12,6000,750,7000,8000,400,125,,80,70,50,20,25,650,PHASE,phasecloak,,,,0.05,0.05,100,180,120,100,3,33,9,80000,4,12,480,0.25,14,14,,,,,,,,"midline_bp, merc, ind",,0.5,2,3,,400
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
