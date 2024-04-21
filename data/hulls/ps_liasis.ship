@@ -1,0 +1,166 @@
+{
+  "hullName": "Liasis",
+  "hullId": "ps_liasis",
+  "hullSize": "CRUISER",
+  "spriteName": "graphics/ships/liasis/ps_liasis.png",
+  "style": "MIDLINE",
+  "height": 260,
+  "width": 150,
+  "center": [75, 130],
+  "collisionRadius": 150,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 131,
+  "viewOffset": 0,
+  "builtInMods": [
+    "delicate",
+    "phasefield"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 180,
+      "angle": 49.5,
+      "locations": [59, 21]
+    },
+    {
+      "id": "WS0002",
+      "size": "LARGE",
+      "type": "HYBRID",
+      "mount": "HARDPOINT",
+      "arc": 10,
+      "angle": 0,
+      "locations": [99, 21]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 209,
+      "angle": 132,
+      "locations": [-67, 51]
+    },
+    {
+      "id": "WS0004",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 196,
+      "angle": -64,
+      "locations": [-42, -42]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 11,
+      "angle": -90,
+      "locations": [-17, -57]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 10,
+      "angle": -90,
+      "locations": [-5, -57]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 10,
+      "angle": -90,
+      "locations": [7, -57]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 10,
+      "angle": -90,
+      "locations": [19, -57]
+    },
+    {
+      "id": "WS0009",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 9,
+      "angle": 90,
+      "locations": [23, 54]
+    },
+    {
+      "id": "WS0010",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 9,
+      "angle": 90,
+      "locations": [35, 54]
+    },
+    {
+      "id": "WS0011",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 10,
+      "angle": 90,
+      "locations": [49, 55]
+    },
+    {
+      "id": "WS0012",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 10,
+      "angle": 90,
+      "locations": [61, 55]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-91.5, 3.5],
+      "length": 85.5,
+      "width": 24,
+      "angle": 180,
+      "contrailSize": 24,
+      "style": "MIDLINE"
+    },
+    {
+      "location": [-83, -34],
+      "length": 50.5,
+      "width": 16,
+      "angle": 180,
+      "contrailSize": 16,
+      "style": "MIDLINE"
+    }
+  ],
+  "bounds": [
+    110.5, 36,
+    70, 54.5,
+    2, 52.5,
+    -82, 65.5,
+    -89, 46,
+    -109, 32.5,
+    -102.5, 22,
+    -90, 14.5,
+    -91, -5.5,
+    -74, -20.5,
+    -82.5, -59,
+    -27, -65,
+    -20.5, -58,
+    36, -54.5,
+    42, -35.5,
+    68.5, -28,
+    61.5, -4.5,
+    109, 4
+  ]
+}
