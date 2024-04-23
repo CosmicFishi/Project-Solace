@@ -7,6 +7,7 @@ import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 import org.apache.log4j.Logger;
 import org.lwjgl.util.vector.Vector2f;
+import pigeonpun.projectsolace.com.ps_boundlesseffect;
 import pigeonpun.projectsolace.com.ps_vsguidedprojectilescript;
 
 import java.awt.*;
@@ -16,10 +17,17 @@ public class ps_fowleeffects implements EveryFrameWeaponEffectPlugin, OnFireEffe
     public static final Logger log = Global.getLogger(ps_fowleeffects.class);
     protected CombatEntityAPI projectileEntity;
     protected ps_fowleprojectileeffects fowleProjectilePlugin;
+    private boolean runOnce = false;
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
         ShipAPI ship = weapon.getShip();
         if(Global.getCombatEngine().isPaused()) return;
+        if(!runOnce){
+            runOnce=true;
+            if(!weapon.getSlot().isBuiltIn()){
+                ps_boundlesseffect.checkIfNeedAdding(weapon.getShip().getVariant());
+            }
+        }
 
         boolean charging = weapon.getChargeLevel() > 0 && weapon.getCooldownRemaining() <= 0;
         if (charging && projectileEntity == null) {

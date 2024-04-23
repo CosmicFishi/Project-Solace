@@ -16,9 +16,9 @@
 	"dudProbabilityOnFlameout":0,
 	"fizzleOnReachingWeaponRange":true,					 
 	"armingTime":0,
-	"flameoutTime":0.5, # total time from flameout to full fadeout
-	"noEngineGlowTime":0.5, # time spent without the engine glow being rendered
-	"fadeTime":0.5, # fadeout duration			
+	"flameoutTime":0.2, # total time from flameout to full fadeout
+	"noEngineGlowTime":0.2, # time spent without the engine glow being rendered
+	"fadeTime":0.2, # fadeout duration
 	"glowColor":[255,50,50,127],
 	#"glowRadius":125,
 	"glowRadius":0,
