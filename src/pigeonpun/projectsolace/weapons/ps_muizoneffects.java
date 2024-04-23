@@ -27,6 +27,7 @@ public class ps_muizoneffects implements EveryFrameWeaponEffectPlugin, OnFireEff
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
         ShipAPI ship = weapon.getShip();
         WeightedRandomPicker<Vector2f> empEndPointPicker = new WeightedRandomPicker<>();
+        if(Global.getCombatEngine().isPaused()) return;
         //guided
 
         empTimer.advance(amount);

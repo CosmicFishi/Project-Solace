@@ -1,0 +1,38 @@
+{
+  "id": "ps_fowle",
+  "specClass": "projectile",
+  "projectileSpecId": "ps_fowle_shot",
+  "type": "ENERGY",
+  "size": "LARGE",
+  "turretSprite": "graphics/weapons/ps_fowle_turret_base.png",
+  "turretGlowSprite": "graphics/weapons/ps_fowle_turret_glow.png",
+  "hardpointSprite": "graphics/weapons/ps_fowle_hardpoint_base.png",
+  "hardpointGlowSprite": "graphics/weapons/ps_fowle_hardpoint_glow.png",
+  "glowColor": [
+    255,
+    55,
+    55,
+    255
+  ],
+  "turretOffsets": [
+    11,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    0,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "ALTERNATING",
+  "interruptibleBurst":false,
+  "animationType":"GLOW",
+  "autocharge":true,
+  "fireSoundTwo": "ps_fowle_fire",
+  "everyFrameEffect":"pigeonpun.projectsolace.weapons.ps_fowleeffects"
+  #"everyFrameEffect":"com.fs.starfarer.api.impl.combat.RealityDisruptorEffect"
+}

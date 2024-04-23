@@ -51,7 +51,6 @@ public class ps_incensespriterenderer extends BaseCombatLayeredRenderingPlugin {
 
     @Override
     public void render(CombatEngineLayers layer, ViewportAPI viewport) {
-        //todo: Change this so the glitvh effect is base on a percentage chance of happening and per section of the glitch sprite have a percentage chance of not showing
         Map<String, Object> customCombatData = Global.getCombatEngine().getCustomData();
         float ps_spawnjitter_timer = 0;
         List<ps_incenseGlitchPerRenderData> listGlitches = new ArrayList<>();

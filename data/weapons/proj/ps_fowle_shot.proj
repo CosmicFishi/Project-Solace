@@ -1,0 +1,30 @@
+{
+	"id":"ps_fowle_shot",
+	"specClass":"missile",
+	"missileType":"ROCKET",
+	"sprite":"",
+	"size":[10,14],	
+	"center":[5,7],
+	"collisionRadius":30,
+	"collisionClass":"NONE",
+	"explosionColor":[255,100,255,255],  # purely visual, will get a white additively blended core on top of this color
+	"explosionRadius":250, # purely visual
+	"renderTargetIndicator":false, # no target diamond in combat view, not targeted by flares
+	"noCollisionWhileFading":true,
+	"useHitGlowWhenDealingDamage":false, # ? look at this
+	"useHitGlowWhenDestroyed":true, # instead of the default explosion
+	"dudProbabilityOnFlameout":0,
+	"fizzleOnReachingWeaponRange":true,					 
+	"armingTime":0,
+	"flameoutTime":0.5, # total time from flameout to full fadeout
+	"noEngineGlowTime":0.5, # time spent without the engine glow being rendered
+	"fadeTime":0.5, # fadeout duration			
+	"glowColor":[255,50,50,127],
+	#"glowRadius":125,
+	"glowRadius":0,
+	"engineSpec":{"turnAcc":500,
+				  "turnRate":100,
+				  "acc":300,
+				  "dec":300},
+}
+			

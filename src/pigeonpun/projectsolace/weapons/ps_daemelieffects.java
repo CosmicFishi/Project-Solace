@@ -19,7 +19,6 @@ import java.util.Map;
 //briefly overload fighter and flame out missiles in a certain range
 //Overload radius reaches max after projectile have travel certain distance
 //Overload radius scale with weapon max range and have a hard cap
-//todo: custom hullmod which displace informations about Boundless weapons equiped on the ship
 public class ps_daemelieffects implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
     Logger log = Global.getLogger(ps_daemelieffects.class);
     private boolean runOnce = false;
