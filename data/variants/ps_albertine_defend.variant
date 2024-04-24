@@ -3,7 +3,7 @@
   "hullId": "ps_albertine",
   "displayName": "Defend",
   "goalVariant": true,
-  "fluxCapacitors": 14,
+  "fluxCapacitors": 8,
   "fluxVents": 50,
   "quality": 1,
   "permaMods": [],
@@ -16,8 +16,10 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "hellbore",
-        "WS0002": "hellbore"
+        "WS0001": "gigacannon",
+        "WS0002": "gigacannon",
+        "WS0003": "pilum",
+        "WS0004": "pilum"
       }
     },
     {
@@ -28,10 +30,7 @@
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0003": "hveldriver",
-        "WS0004": "hveldriver"
-      }
+      "weapons": {}
     },
     {
       "autofire": false,

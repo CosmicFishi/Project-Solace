@@ -3,13 +3,13 @@
   "hullId": "ps_ashy",
   "displayName": "Disabler",
   "goalVariant": true,
-  "fluxCapacitors": 8,
+  "fluxCapacitors": 11,
   "fluxVents": 20,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
-    "unstable_injector",
-    "eccm"
+    "eccm",
+    "magazines"
   ],
   "weaponGroups": [
     {
@@ -18,6 +18,8 @@
       "weapons": {
         "WS0001": "salamanderpod",
         "WS0002": "salamanderpod",
+        "WS0003": "ionpulser",
+        "WS0004": "ionpulser",
         "WS0005": "heatseeker",
         "WS0006": "heatseeker"
       }
@@ -25,10 +27,7 @@
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0003": "heavyac",
-        "WS0004": "heavyac"
-      }
+      "weapons": {}
     },
     {
       "autofire": false,

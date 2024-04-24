@@ -1,0 +1,113 @@
+0.4:
+=== Supaweapons:
+    - Add Syhadren Pressure Launcher
+    - Add Onca Discharger
+    - AddFowle Silent Emitter
+    - Daemeli: OP 14 -> 18
+    - Anaxyr: OP 28 -> 25
+    - Alvarius: OP 5 -> 4
+    - Quake sounds more explosion like
+=== Exploration content changes:
+    - Oculatus now slow down missiles correctly (ops)
+=== Solace faction changes:
+    - The entire faction got new sprite
+    - Change defense fleet time 27000 -> 32000. Aka, it will take longer for Solace to send defense fleet
+    - Fix up Solace ships weird turrets acting as hardpoints
+    - Barking: ship system change to "Cutting Salvo"
+    - Javanica: Ship system instead of sending multiple small pd missile, instead, sending 4 large slow moving missiles which do PD and kenetic damage.
+    - Tanimbar: change ship system fx
+    Ship systems:
+    - Ashy: Ship system change to "Condensed Blink"
+    - Intense Flow: Active time 2 -> 4 seconds
+    - Swift Rush active time 0.75s -> 1s, fx change
+    UP:
+    - Reworked - "Burst" time dilation for certain duration before slowing town to certain time dilation. EMP arcs completely removed (goodbye T^T).
+    - Glitch fx "improved"  ( º _ º)
+=== Enmity faction changes:
+    - Beam Consonance: Change shield EMP arc to have much shorter range
+    - Erratic Boost: fighter time dilation 20% -> 40%, main ship time dilation 10% -> 20%
+=== Ship stats balancing:
+    Sarpedon:
+    - Max speed 70 -> 40
+    - Max turn rate: 12 -> 18
+    - Fleet pts: 29 -> 32
+    - Shield eff: 0.6 -> 0.65
+    - DP: 48 -> 60
+    - Max burn: 9 -> 6
+    Javanica:
+    - Max speed: 80 -> 65
+    - DP: 23 -> 26
+    Barking:
+    - Max speed: 60 -> 45
+    - DP: 25 -> 23
+    - Shield eff: 0.8 -> 1.0
+    Rufous:
+    - Max speed: 70 -> 75
+    - DP: 27 -> 25
+    Aurantia:
+    - Max speed: 50 -> 60
+    - Max turn rate: 12 -> 18
+    Nadmor:
+    - Flux dissipation: 800 -> 850
+    - Armor: 1100 -> 1000
+    - Shield arc: 120 -> 160
+    Albertine:
+    - Max speed: 25 -> 35
+    Morepork:
+    - Armor: 300 -> 350
+    - Max turn rate: 30 -> 20
+    Ashy:
+    - Max turn acceleration: 30 -> 50
+    - DP increase: 10 -> 11
+    Merkeri:
+    - Max burn: 9 -> 8
+    Camiguin:
+    - Max burn: 8 -> 7
+
+0.3.1d:
+=== Starsector version change
+- Next update will be actual content :P
+
+0.3.1c:
+=== Hot fixes:
+- Ravus ship system being weird, it now works as intended. (Thanks PixelCode)
+=== Addition:
+- Enmity ships mission (I had it hidden the entire time, ops)
+
+0.3.1b:
+=== Hot fixes:
+- Add boundless condition checking for Alvarius (Ops, i forgot. Thanks mrmagolor)
+
+0.3.1a:
+=== Hot fixes:
+- Fix crash from Exalted Shell when the ship doesn't have shield (Thanks BirdWanderer)
+
+0.3.1:
+=== Bug fixes:
+- Bug fix from selecting market in hyperspace cause NPE (Thanks Meelock) (Thanks Meelock)
+- Add option to return to main menu for buying boundless weapon on Enmity market (Thanks Creature)
+
+0.3:
+=== Changes:
+- Solace ships now have glitch effects
+  - Can be toggle and change in settings.json
+- Solace now only retake back faction planet.
+- Albertine class removed built in wing
+- Papuan class hardpoint arc reduced
+- Tanimbar class hardpoint arc reduced
+=== Additions:
+- Lunalib integration
+- Solace now send out defend fleets to friendly factions (the strength is base on the market assembling the fleet) (Require Nexelin)
+- Enmity Strafer faction arries
+  - 4 new ships
+  - 5 new fighters
+  - New market for buying rare weapons
+  - Boundless weapons (details at bottom)
+- Sodality alliance between Solace and Enmity. (Require Nexelin)
+ - Relationship interactions between both of the faction
+ - Sodality adjustment happen when one of the two faction is eliminated
+ - A hard mode (default is on) option which can be toggle.
+- Exploration content (Can also be toggle in settings.json):
+  - Bygone Dame savage.
+  - Vagrant Seer encounter and savage.
+- Boundless weapons (Inspired by Superweapon mod, rest well): Currently, there are 7 of them. They are super weapons. In current version, you can acquire them in two way. Buy or fight

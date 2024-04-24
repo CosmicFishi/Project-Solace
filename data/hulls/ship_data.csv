@@ -10,7 +10,7 @@ Tigris,ps_tigris,,Enmity Strafer,,,250,75,270,,50,0,,200,400,300,150,300,40,FRON
 #FRIGATE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Salawesi,ps_salawesi,Frigate,Project Solace,ps_swiftrush,5,2250,300,2800,2188,200,50,,120,110,90,70,80,300,OMNI,,180,0.3,0.8,,,10,25,50,25,1,25,10,14000,8,10,240,0.25,4,4,,,,,,,,ps_ship_bp,,0.4,2,2,,1
 Taliabu,ps_taliabu,Support Frigate,Project Solace,ps_intenseflow,6,1250,200,2500,2813,225,45,1,180,200,175,90,270,200,OMNI,,160,0.2,0.8,,,10,50,30,20,1,20,11,16000,10,20,180,0.25,8,8,,,,,,,CARRIER,ps_ship_bp,,0.5,2,2,,2
-Tanimbar,ps_tanimbar,Heavy Frigate,Project Solace,ps_hyperframe,7,1800,250,3000,,400,55,1,170,160,140,80,120,200,FRONT,,360,0.3,0.85,,,15,30,40,20,1,20,10,26000,8,20,240,0.25,9,9,,,,,,,"CARRIER, COMBAT","ps_ship_bp, rare_bp",0.75,0.5,2,2,,8
+Tanimbar,ps_tanimbar,Heavy Frigate,Project Solace,ps_hyperframe,7,1800,250,3000,,400,55,1,170,160,140,80,120,200,FRONT,,360,0.3,0.85,,,15,30,40,20,1,20,10,26000,8,20,240,0.25,9,9,,,,,,,"COMBAT, NO_AUTO_ESCORT","ps_ship_bp, rare_bp",0.75,0.5,2,2,,8
 Laevis,ps_laevis,Carrier Frigate,Enmity Strafer,ps_vigorrush,7,2000,150,3600,3125,300,40,1,120,180,120,60,120,250,OMNI,,120,0.1,0.6,,,20,70,40,20,1,20,9,20000,8,10,300,0.25,7,7,,,,,,,"CARRIER, COMBAT","ps_ship_bp_enmity, rare_bp",,0.4,2,2,,15
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #DESTROYER,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
