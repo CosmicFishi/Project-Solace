@@ -45,7 +45,7 @@ public class ps_beamconsonance extends BaseHullMod {
             EMP_DAMAGE_CRUISER = 200f,
             EMP_DAMAGE_CAPITAL = 250f;
     private static final IntervalUtil EMP_TIMER = new IntervalUtil(1f, 1.5f);
-    private static final float EMP_RANGE = 1500f;
+    private static final float EMP_RANGE = 1000f;
     private static final IntervalUtil HIT_PARTICLE_TIMER = new IntervalUtil(0.05f, 0.2f);
     public void advanceInCombat(ShipAPI ship, float amount) {
         CombatEngineAPI engine = Global.getCombatEngine();
@@ -67,7 +67,7 @@ public class ps_beamconsonance extends BaseHullMod {
                         MathUtils.getRandomNumberInRange(ship.getShield().getRadius() + 10f, ship.getShield().getRadius() + 50f),
                         MathUtils.getRandomNumberInRange(startShieldAngle, endShieldAngle)
                 );
-                engine.addSmoothParticle(spawnHitParticlePoint, (Vector2f) VectorUtils.getDirectionalVector(spawnHitParticlePoint, ship.getLocation()).scale(15f), 7f, 1f, 2f, ps_misc.ENMITY_SHIELD_PARTICLE);
+                engine.addSmoothParticle(spawnHitParticlePoint, (Vector2f) VectorUtils.getDirectionalVector(spawnHitParticlePoint, ship.getLocation()).scale(15f), MathUtils.getRandomNumberInRange(7, 15), 1f, 2f, ps_misc.ENMITY_SHIELD_PARTICLE);
             }
             if(EMP_TIMER.intervalElapsed()) {
                 List<MissileAPI> listMissiles = CombatUtils.getMissilesWithinRange(ship.getLocation(), EMP_RANGE);
@@ -111,7 +111,7 @@ public class ps_beamconsonance extends BaseHullMod {
                                 0,
                                 3000,
                                 null,
-                                MathUtils.getRandomNumberInRange(1,3),
+                                MathUtils.getRandomNumberInRange(6,14),
                                 ps_misc.ENMITY_SHIELD_EMP_FRINGE,
                                 ps_misc.ENMITY_SHIELD_EMP_CORE);
                         Global.getSoundPlayer().playSound("ps_emp_shout", 1f, 1f, spawnEMPPoint, new Vector2f(0, 0));

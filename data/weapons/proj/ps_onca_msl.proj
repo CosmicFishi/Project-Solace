@@ -1,0 +1,38 @@
+{
+	"id":"ps_onca_msl",
+	"specClass":"missile",	
+	"missileType":"MISSILE",
+	"sprite":"graphics/missiles/ps_anaxyr_msl.png",
+	"size":[8,10],
+	"center":[4,5],
+	"collisionRadius":16,
+	"collisionClass":"MISSILE_NO_FF",
+	"explosionColor":[228,181,250,255],  # purely visual, will get a white additively blended core on top of this color
+	"explosionRadius":80, # purely visual
+	"onFireEffect": "pigeonpun.projectsolace.weapons.ps_oncaeffects",
+	"engineSpec":{"turnAcc":1400,
+				  "turnRate":150,
+				  "acc":1000,
+				  "dec":500},
+	"engineSlots":[{"id":"ES1",
+					"loc":[-4, 0],
+				    "style":"CUSTOM",
+					"styleSpec":{
+						"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+						"engineColor":[251,181,225,155],
+						"contrailDuration":0.4f,
+						"contrailWidthMult":1,
+						"contrailWidthAddedFractionAtEnd":-1,  # can be negative. makes trail spread out/narrow at the end
+						"contrailMinSeg":5, # min segment length, in pixels
+						"contrailMaxSpeedMult":0.2f,
+						"contrailAngularVelocityMult":0.5f,
+						"contrailColor":[117,103,117,155],
+						"glowSizeMult":1,
+                        "glowAlternateColor":[228,181,250,255],
+                        "type":"GLOW" # GLOW or SMOKE; additive or regular blend modemode
+					},
+				    "width":4.0,
+				    "length":10.0,
+				    "angle":180.0},
+				    ]
+}

@@ -3,7 +3,7 @@
   "hullId": "ps_albertine",
   "displayName": "Attack",
   "goalVariant": true,
-  "fluxCapacitors": 16,
+  "fluxCapacitors": 11,
   "fluxVents": 50,
   "quality": 1,
   "permaMods": [],
@@ -17,7 +17,7 @@
       "mode": "LINKED",
       "weapons": {
         "WS0001": "hephag",
-        "WS0002": "hephag",
+        "WS0002": "gauss",
         "WS0005": "dragon",
         "WS0006": "dragon"
       }

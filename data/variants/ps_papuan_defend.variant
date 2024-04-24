@@ -3,21 +3,22 @@
   "hullId": "ps_papuan",
   "displayName": "Defend",
   "goalVariant": true,
-  "fluxCapacitors": 9,
+  "fluxCapacitors": 8,
   "fluxVents": 0,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "expanded_deck_crew",
-    "targetingunit"
+    "ecm"
   ],
   "weaponGroups": [
     {
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "pilum",
-        "WS0002": "heavymauler"
+        "WS0001": "vulcan",
+        "WS0002": "salamanderpod",
+        "WS0006": "vulcan"
       }
     },
     {

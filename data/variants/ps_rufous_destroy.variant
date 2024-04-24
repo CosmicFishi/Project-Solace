@@ -3,7 +3,7 @@
   "hullId": "ps_rufous",
   "displayName": "Destroy",
   "goalVariant": true,
-  "fluxCapacitors": 8,
+  "fluxCapacitors": 13,
   "fluxVents": 30,
   "quality": 1,
   "permaMods": [],
@@ -16,15 +16,14 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "devastator"
+        "WS0001": "mjolnir",
+        "WS0002": "mjolnir"
       }
     },
     {
       "autofire": false,
       "mode": "LINKED",
-      "weapons": {
-        "WS0002": "plasma"
-      }
+      "weapons": {}
     },
     {
       "autofire": false,

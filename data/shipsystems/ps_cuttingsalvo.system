@@ -1,0 +1,15 @@
+{
+	"id":"ps_cuttingsalvo",
+	"type":"STAT_MOD",
+    "aiType":"CUSTOM",
+    "aiScript":"pigeonpun.projectsolace.shipsystems.ai.ps_cuttingsalvostats_ai",
+
+    "statsScript":"pigeonpun.projectsolace.shipsystems.ps_cuttingsalvostats",
+
+    "useSound":"system_targeting_feed",
+    "outOfUsesSound":"gun_out_of_ammo",
+
+    "aiHints":{
+
+    }
+}

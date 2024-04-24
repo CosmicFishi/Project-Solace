@@ -1,0 +1,39 @@
+{
+  "id": "ps_syhadren_split",
+  "specClass": "projectile",
+  "projectileSpecId": "ps_syhadren_msl_sm",
+  "type": "MISSILE",
+  "size": "MEDIUM",
+  "displayArcRadius": 0,
+  "turretSprite": "",
+  "hardpointSprite": "",
+  "turretOffsets": [
+    0,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    0,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "ALTERNATING",
+  "renderHints":[RENDER_LOADED_MISSILES],
+  "animationType": "SMOKE",
+  "smokeSpec":{"particleSizeMin":12.0,
+  				 "particleSizeRange":12.0,
+  				 "cloudParticleCount":6,
+  				 "cloudDuration":1.5,
+  				 "cloudRadius":10.0,
+  				 "blowbackParticleCount":4,
+  				 "blowbackDuration":0.6,
+  				 "blowbackLength":2.0,
+  				 "blowbackSpread":15.0,
+  				 "particleColor":[100,100,100,200]},
+  },
+  "fireSoundTwo": "ps_syhadren_fire"
+}

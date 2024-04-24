@@ -3,61 +3,63 @@
   "hullId": "ps_camiguin",
   "displayName": "Defense",
   "goalVariant": true,
-  "fluxCapacitors": 22,
+  "fluxCapacitors": 27,
   "fluxVents": 50,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "targetingunit",
-    "armoredweapons"
+    "hardenedshieldemitter"
   ],
   "weaponGroups": [
     {
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "locust"
-      }
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0002": "hurricane"
-      }
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0003": "autopulse",
-        "WS0004": "hephag"
-      }
-    },
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {
+        "WS0001": "locust",
+        "WS0002": "squall",
+        "WS0003": "hellbore",
+        "WS0004": "mjolnir",
         "WS0005": "hveldriver",
         "WS0006": "hveldriver",
-        "WS0007": "ionpulser",
-        "WS0008": "ionpulser"
+        "WS0007": "dualflak",
+        "WS0008": "dualflak",
+        "WS0009": "salamanderpod",
+        "WS0010": "salamanderpod",
+        "WS0017": "heatseeker",
+        "WS0018": "heatseeker",
+        "WS0019": "heatseeker",
+        "WS0020": "heatseeker",
+        "WS0023": "vulcan",
+        "WS0024": "vulcan",
+        "WS0025": "vulcan",
+        "WS0026": "vulcan"
       }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {}
     },
     {
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0009": "sabotpod",
-        "WS0010": "sabotpod"
-      }
-    },
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0011": "flak",
-        "WS0012": "flak",
         "WS0013": "vulcan",
         "WS0014": "vulcan",
         "WS0015": "pdlaser",
@@ -68,12 +70,7 @@
     {
       "autofire": false,
       "mode": "LINKED",
-      "weapons": {
-        "WS0017": "harpoon",
-        "WS0018": "harpoon",
-        "WS0019": "harpoon",
-        "WS0020": "harpoon"
-      }
+      "weapons": {}
     }
   ],
   "modules": [],

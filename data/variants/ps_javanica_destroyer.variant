@@ -2,36 +2,38 @@
   "variantId": "ps_javanica_destroyer",
   "hullId": "ps_javanica",
   "displayName": "Destroyer",
-  "goalVariant": false,
+  "goalVariant": true,
   "fluxCapacitors": 17,
-  "fluxVents": 15,
+  "fluxVents": 25,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "targetingunit",
-    "missleracks"
+    "auxiliarythrusters"
   ],
   "weaponGroups": [
     {
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "hurricane",
-        "WS0002": "gravitonbeam",
-        "WS0003": "gravitonbeam",
-        "WS0004": "pulselaser",
-        "WS0005": "pulselaser"
+        "WS0001": "hurricane"
       }
     },
     {
       "autofire": false,
       "mode": "LINKED",
-      "weapons": {}
+      "weapons": {
+        "WS0002": "heavyac",
+        "WS0003": "heavyac"
+      }
     },
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {}
+      "weapons": {
+        "WS0004": "irautolance",
+        "WS0005": "irautolance"
+      }
     },
     {
       "autofire": true,
@@ -39,7 +41,7 @@
       "weapons": {
         "WS0006": "vulcan",
         "WS0007": "vulcan",
-        "WS0010": "pdlaser"
+        "WS0010": "vulcan"
       }
     },
     {

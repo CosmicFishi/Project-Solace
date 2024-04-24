@@ -29,11 +29,11 @@ public class ps_destruenslaunchereffects implements EveryFrameWeaponEffectPlugin
     private boolean runOnce=false;
     private final String armorLeftID="BTM_ARMOR_LEFT";
     private final String armorRightID="BTM_ARMOR_RIGHT";
-    private final float EMP_RANGE = 100f;
+    private final float EMP_RANGE = 300f;
     private final IntervalUtil EMP_TIMER = new IntervalUtil(0.3f, 2f);
-    private final float EMP_DAMAGE = 200f;
+    private final float EMP_DAMAGE = 150f;
     private final HashSet<DamagingProjectileAPI> projList = new HashSet<>();
-    private final Color EMP_COLOR = new Color(120,255,250,255);
+    private final Color EMP_COLOR = new Color(130,155,250,255);
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
@@ -66,9 +66,9 @@ public class ps_destruenslaunchereffects implements EveryFrameWeaponEffectPlugin
         timer.advance(amount);
         if (timer.intervalElapsed()) {
             systemChargeLevel = SHIP.getSystem().getEffectLevel();
-            float AR_y = ALheight / 2 - MagicAnim.smoothNormalizeRange(systemChargeLevel, 0f, 0.5f) * -11;
-            float AR_x_L = ALwidth / 2 + MagicAnim.smoothNormalizeRange(systemChargeLevel, 0.3f, 0.7f) * -3;
-            float AR_x_R = ALwidth / 2 - MagicAnim.smoothNormalizeRange(systemChargeLevel, 0.3f, 0.7f) * -3;
+            float AR_y = ALheight / 2 - MagicAnim.smoothNormalizeRange(systemChargeLevel, 0f, 0.6f) * 16;
+            float AR_x_L = ALwidth / 2 + MagicAnim.smoothNormalizeRange(systemChargeLevel, 0.6f, 0.9f) * -2;
+            float AR_x_R = ALwidth / 2 - MagicAnim.smoothNormalizeRange(systemChargeLevel, 0.6f, 0.9f) * -2;
             ARMOR_LEFT.setCenter(AR_x_L, AR_y);
             ARMOR_RIGHT.setCenter(AR_x_R, AR_y);
         }

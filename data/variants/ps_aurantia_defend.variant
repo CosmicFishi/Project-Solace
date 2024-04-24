@@ -3,8 +3,8 @@
   "hullId": "ps_aurantia",
   "displayName": "Defend",
   "goalVariant": true,
-  "fluxCapacitors": 25,
-  "fluxVents": 3,
+  "fluxCapacitors": 20,
+  "fluxVents": 0,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
@@ -16,14 +16,18 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "locust"
+        "WS0001": "pilum_large",
+        "WS0002": "vulcan",
+        "WS0004": "hveldriver",
+        "WS0007": "pdlaser",
+        "WS0010": "vulcan",
+        "WS0011": "pdlaser"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0002": "hveldriver",
         "WS0003": "hveldriver"
       }
     },
@@ -31,12 +35,8 @@
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0004": "vulcan",
         "WS0005": "vulcan",
-        "WS0006": "vulcan",
-        "WS0007": "vulcan",
-        "WS0008": "pdlaser",
-        "WS0009": "pdlaser"
+        "WS0006": "vulcan"
       }
     },
     {
@@ -47,7 +47,7 @@
   ],
   "modules": [],
   "wings": [
-    "hoplon_wing",
-    "hoplon_wing"
+    "dagger_wing",
+    "dagger_wing"
   ]
 }

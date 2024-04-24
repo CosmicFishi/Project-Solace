@@ -4,6 +4,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.IntervalUtil;
+import com.fs.starfarer.api.util.WeightedRandomPicker;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lazywizard.lazylib.combat.entities.SimpleEntity;
@@ -24,8 +25,8 @@ public class ps_hyperframestats extends BaseShipSystemScript {
     public static final float TIME_DAL = 5f;
     public static final float EMP_RANGE = 200f;
     public static final float EMP_DAMAGE = 500f;
-    private final IntervalUtil spawnAfterImageInterval = new IntervalUtil(0.02f, 0.02f);
     private boolean ps_hyperframeEMP_activated = false;
+    private static final float EMP_COUNT = 4;
 
     public void apply(MutableShipStatsAPI stats, String id, State state, float effectLevel) {
         ShipAPI ship = (ShipAPI) stats.getEntity();
@@ -42,34 +43,24 @@ public class ps_hyperframestats extends BaseShipSystemScript {
 //                stats.getFluxDissipation().modifyPercent(id, FLUX_DISSIPATION_BONUS);
                 stats.getTimeMult().modifyMult(id, TIME_DAL);
                 //fx
-                spawnAfterImageInterval.advance(Global.getCombatEngine().getElapsedInLastFrame());
-                if(spawnAfterImageInterval.intervalElapsed()) {
-                    ship.addAfterimage(
-                            ps_misc.PROJECT_SOLACE_LIGHT,
-                            0f,
-                            0f,
-                            ship.getVelocity().x * -1.1f,
-                            ship.getVelocity().y * -1.1f,
-                            1,
-                            0f,
-                            0f,
-                            0.3f,
-                            true,
-                            true,
-                            false);
-                }
+                ship.addAfterimage(
+                        new Color(255,0,255,75),
+                        0f,
+                        0f,
+                        ship.getVelocity().x * -1.1f,
+                        ship.getVelocity().y * -1.1f,
+                        1,
+                        0f,
+                        0f,
+                        0.7f,
+                        false,
+                        false,
+                        false
+                );
 
                 if(!ps_hyperframeEMP_activated) {
-                    SimpleEntity fromEntity = new SimpleEntity(MathUtils.getRandomPointInCircle(
-                            ship.getLocation(),
-                            ship.getCollisionRadius()
-                    ));
-                    SimpleEntity toEntity = new SimpleEntity(MathUtils.getRandomPointInCircle(
-                            ship.getLocation(),
-                            ship.getCollisionRadius()
-                    ));
                     List<CombatEntityAPI> targetNearby = CombatUtils.getEntitiesWithinRange(ship.getLocation(), EMP_RANGE);
-                    HashSet<CombatEntityAPI> listTargets = new HashSet<>();
+                    WeightedRandomPicker<CombatEntityAPI> listTargets = new WeightedRandomPicker<>();
                     for (CombatEntityAPI entity: targetNearby) {
                         if(entity instanceof MissileAPI || entity instanceof FighterWingAPI) {
                             if(ship.getOwner() != entity.getOwner()) {
@@ -77,35 +68,49 @@ public class ps_hyperframestats extends BaseShipSystemScript {
                             }
                         }
                     }
-                    if(!listTargets.isEmpty()) {
-                        for (CombatEntityAPI entity: listTargets) {
-                            engine.spawnEmpArc(
+                    WeightedRandomPicker<Vector2f> randomPointPicker = new WeightedRandomPicker<>();
+                    ship.getExactBounds().update(ship.getLocation(), ship.getFacing());
+                    for (BoundsAPI.SegmentAPI s: ship.getExactBounds().getSegments()) {
+                        //Global.getCombatEngine().addFloatingText( s.getP1() ,  ".", 60, ps_misc.PROJECT_SOLACE_LIGHT, ship, 0.25f, 0.25f);
+                        if(!randomPointPicker.getItems().contains(s.getP1())) {
+                            randomPointPicker.add(s.getP1());
+                        }
+                    }
+                    for (int i = 0; i < EMP_COUNT; i++) {
+                        if(!listTargets.isEmpty()) {
+                            CombatEntityAPI entity = listTargets.pick();
+                            if(entity.isExpired() || entity.getHitpoints() < 0) {
+                                listTargets.remove(entity);
+                            } else {
+                                engine.spawnEmpArc(
+                                        ship,
+                                        randomPointPicker.pick(),
+                                        ship,
+                                        entity,
+                                        DamageType.ENERGY,
+                                        EMP_DAMAGE,
+                                        0,
+                                        10000,
+                                        null,
+                                        MathUtils.getRandomNumberInRange(5f,10f),
+                                        ps_misc.PROJECT_SOLACE,
+                                        new Color(255, 255,255, 255)
+                                );
+                            }
+                        } else {
+                            SimpleEntity toEntity = new SimpleEntity(MathUtils.getRandomPointInCircle(
+                                    ship.getLocation(),
+                                    ship.getCollisionRadius()
+                            ));
+                            Global.getCombatEngine().spawnEmpArcVisual(randomPointPicker.pick(),
                                     ship,
-                                    fromEntity.getLocation(),
-                                    fromEntity,
-                                    entity,
-                                    DamageType.ENERGY,
-                                    EMP_DAMAGE,
-                                    0,
-                                    10000,
-                                    null,
-                                    MathUtils.getRandomNumberInRange(5f,10f),
+                                    toEntity.getLocation(),
+                                    toEntity,
+                                    2,
                                     ps_misc.PROJECT_SOLACE,
                                     new Color(255, 255,255, 255)
                             );
-                            if(entity.isExpired() || entity.getHitpoints() < 0) {
-                                listTargets.remove(entity);
-                            }
                         }
-                    } else {
-                        Global.getCombatEngine().spawnEmpArcVisual(fromEntity.getLocation(),
-                                fromEntity,
-                                toEntity.getLocation(),
-                                toEntity,
-                                2,
-                                ps_misc.PROJECT_SOLACE,
-                                new Color(255, 255,255, 255)
-                        );
                     }
                     ps_hyperframeEMP_activated = true;
                 }

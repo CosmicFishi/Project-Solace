@@ -20,7 +20,6 @@ import java.util.Arrays;
 
 public class ps_ayubia {
 
-    //todo: Missing Heg planet
     public void generate(SectorAPI sector) {
         //Bowditch
         //Kearsarge

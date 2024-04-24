@@ -1,0 +1,50 @@
+{
+  "id": "ps_onca",
+  "specClass": "projectile",
+  "projectileSpecId": "ps_onca_msl",
+  "type": "MISSILE",
+  "size": "SMALL",
+  "everyFrameEffect": "pigeonpun.projectsolace.weapons.ps_oncaeffects",
+  "turretSprite": "graphics/weapons/ps_onca_turret_base.png",
+  "hardpointSprite": "graphics/weapons/ps_onca_hardpoint_base.png",
+  "turretOffsets": [
+    4,
+    -5,
+    4,
+    5
+  ],
+  "turretAngleOffsets": [
+    -45,
+    45
+  ],
+  "hardpointOffsets": [
+    4,
+    -5,
+    4,
+    5
+  ],
+  "hardpointAngleOffsets": [
+    -45,
+    45
+  ],
+  "barrelMode": "ALTERNATING",
+  "animationType": "SMOKE",
+  "smokeSpec": {
+    "particleSizeMin": 12,
+    "particleSizeRange": 12,
+    "cloudParticleCount": 6,
+    "cloudDuration": 1,
+    "cloudRadius": 10,
+    "blowbackParticleCount": 10,
+    "blowbackDuration": 2,
+    "blowbackLength": 22,
+    "blowbackSpread": 15,
+    "particleColor": [
+      0,
+      100,
+      100,
+      200
+    ]
+  },
+  "fireSoundTwo": "ps_onca_fire"
+}

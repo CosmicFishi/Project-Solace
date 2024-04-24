@@ -22,7 +22,9 @@ import java.awt.*;
 public class ps_solacecore extends BaseHullMod {
 
     public static float
+            ENERGY_RANGE_FRIGATE_FRIGATE = 100f,
             ENERGY_RANGE_FRIGATE_DESTROYER = 100f,
+            ENERGY_RANGE_CRUISER_CRUISER = 200f,
             ENERGY_RANGE_CRUISER_CAPITAL = 200f;
     public float ENERGY_FLUX_COST = 20f;
 //    public float BALLISTIC_ROF = 40f;
@@ -102,6 +104,11 @@ public class ps_solacecore extends BaseHullMod {
     }
 
     @Override
+    public float getTooltipWidth() {
+        return 412f;
+    }
+
+    @Override
     public void addPostDescriptionSection(TooltipMakerAPI tooltip, HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
         float pad = 3f;
         float opad = 10f;
@@ -112,20 +119,39 @@ public class ps_solacecore extends BaseHullMod {
         //The Solace Core.
         LabelAPI label = tooltip.addPara("The %s core, a crystal-like object which draw flux from the ship to further improve it's performance.", opad, h,
                 "Solace");
-        label.setHighlight("Solace");
         label.setHighlightColors(ps_misc.PROJECT_SOLACE);
         label = tooltip.addPara("However, due to the enormous amount of damage which occurred from an incident involving an experiment with the core, the Solace Association deemed that any act or movement to modify or to tamper with the core will be considered unlawful and therefore, prohibited.", opad);
 
         //bonus
         tooltip.addSectionHeading("Effects", Alignment.MID, opad);
 
+        float col1W = 150;
+        float lastW = 262;
         //Increase none-beam energy weapon's base range by
-        label = tooltip.addPara("Increase %s's %s by %s/%s for frigate and destroyer/cruiser and capital.", opad, h,
-                "projectile energy weapon", "base range" ,"" + Math.round(ENERGY_RANGE_FRIGATE_DESTROYER) + "u",
-                "" + Math.round(ENERGY_RANGE_CRUISER_CAPITAL) + "u");
-        label.setHighlight("projectile energy weapon", "base range" ,"" + Math.round(ENERGY_RANGE_FRIGATE_DESTROYER) + "u",
-                "" + Math.round(ENERGY_RANGE_CRUISER_CAPITAL) + "u");
-        label.setHighlightColors(Misc.MOUNT_ENERGY, ps_misc.PROJECT_SOLACE_LIGHT, good, good);
+        label = tooltip.addPara("Increase %s's %s depend on ship size.", opad, h,
+                "projectile energy weapon", "base range");
+        label.setHighlightColors(Misc.MOUNT_ENERGY, good, good, good);
+
+        tooltip.beginTable(Misc.getBasePlayerColor(), Misc.getDarkPlayerColor(), Misc.getBrightPlayerColor(),
+                20f, true, true,
+                new Object [] {"Ship class", col1W, "Energy weapon Base range increase", lastW});
+        tooltip.addRow(
+                Alignment.MID, ship.getHullSize().equals(HullSize.FRIGATE)? good: Misc.getGrayColor(), HullSize.FRIGATE.name(),
+                Alignment.MID, ship.getHullSize().equals(HullSize.FRIGATE)? good: Misc.getGrayColor(), "" + Math.round(ENERGY_RANGE_FRIGATE_FRIGATE) + "u"
+        );
+        tooltip.addRow(
+                Alignment.MID, ship.getHullSize().equals(HullSize.DESTROYER)? good: Misc.getGrayColor(), HullSize.DESTROYER.name(),
+                Alignment.MID, ship.getHullSize().equals(HullSize.DESTROYER)? good: Misc.getGrayColor(), "" + Math.round(ENERGY_RANGE_FRIGATE_DESTROYER) + "u"
+        );
+        tooltip.addRow(
+                Alignment.MID, ship.getHullSize().equals(HullSize.CRUISER)? good: Misc.getGrayColor(), HullSize.CRUISER.name(),
+                Alignment.MID, ship.getHullSize().equals(HullSize.CRUISER)? good: Misc.getGrayColor(), "" + Math.round(ENERGY_RANGE_CRUISER_CRUISER) + "u"
+        );
+        tooltip.addRow(
+                Alignment.MID, ship.getHullSize().equals(HullSize.CAPITAL_SHIP)? good: Misc.getGrayColor(), HullSize.CAPITAL_SHIP.name(),
+                Alignment.MID, ship.getHullSize().equals(HullSize.CAPITAL_SHIP)? good: Misc.getGrayColor(), "" + Math.round(ENERGY_RANGE_CRUISER_CAPITAL) + "u"
+        );
+        tooltip.addTable("", 0, opad);
 
 //        //Time dilation
 //        label = tooltip.addPara("Increase %s up to %s, proportion to the ship flux, effect max out at %s flux", opad, h,
@@ -134,10 +160,9 @@ public class ps_solacecore extends BaseHullMod {
 //        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, good, ps_misc.PROJECT_SOLACE_LIGHT);
 
         //Increase flux cost for none-beam energy weapons
-        label = tooltip.addPara("Increase %s for %s by %s.", opad, h,
-                "flux cost", "energy weapons" ,"" + Math.round(ENERGY_FLUX_COST) + "%");
-        label.setHighlight("flux cost", "energy weapons" ,"" + Math.round(ENERGY_FLUX_COST) + "%");
-        label.setHighlightColors(ps_misc.PROJECT_SOLACE_LIGHT, Misc.MOUNT_ENERGY, bad);
+        label = tooltip.addPara("Increase flux cost for %s by %s.", opad, h,
+                "energy weapons" ,"" + Math.round(ENERGY_FLUX_COST) + "%");
+        label.setHighlightColors(Misc.MOUNT_ENERGY, bad);
 
         //Decrease fire rate for basllistic weapon by %s
 //        label = tooltip.addPara("Decrease %s for %s by %s", opad, h,

@@ -3,30 +3,29 @@
   "hullId": "ps_ashy",
   "displayName": "Defense",
   "goalVariant": true,
-  "fluxCapacitors": 10,
+  "fluxCapacitors": 0,
   "fluxVents": 10,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
-    "targetingunit",
-    "hardenedshieldemitter"
+    "unstable_injector",
+    "missleracks"
   ],
   "weaponGroups": [
     {
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "pilum",
-        "WS0002": "pilum"
+        "WS0001": "annihilatorpod",
+        "WS0002": "annihilatorpod",
+        "WS0003": "ionbeam",
+        "WS0004": "ionbeam"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
-      "weapons": {
-        "WS0003": "heavymauler",
-        "WS0004": "heavymauler"
-      }
+      "weapons": {}
     },
     {
       "autofire": false,

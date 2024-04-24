@@ -33,6 +33,7 @@ public class ps_intenseflowstats extends BaseShipSystemScript {
                 //fx
                 ship.getEngineController().fadeToOtherColor(this, ps_misc.PROJECT_SOLACE_LIGHT, null, 1f, 1f);
                 ship.getEngineController().extendFlame(this, 0.2f, 0.2f, 0.2f);
+
             }
         }
     }

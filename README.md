@@ -1,6 +1,6 @@
 # Project Solace
 
-v.0.3.1c
+v.0.4.0
 
 ## Description
 This is a Starsector mod :D
@@ -14,6 +14,7 @@ Wisp/Silkie - Mod template
 Pyrophage - Insane amount of sprite inspiration and support 
 Tookpok4k3 - Numerous sprite, lore and sound support 
 lyravega - Script support 
+Pyrophage - Sprite support
 Ruddygreat - Script support 
 PureTilt - Many scripts 
 Pogre - Emotional support 

@@ -5,11 +5,11 @@
   "spriteName": "graphics/ships/ps_taliabu.png",
   "style": "PROJECTSOLACE",
   "height": 120,
-  "width": 100,
-  "center": [50, 59],
-  "collisionRadius": 81,
+  "width": 120,
+  "center": [60, 65],
+  "collisionRadius": 86,
   "shieldCenter": [0, -0],
-  "shieldRadius": 65,
+  "shieldRadius": 70,
   "viewOffset": 0,
   "builtInMods": [
     "ps_solacecore",
@@ -27,7 +27,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 0,
-      "locations": [1, 0]
+      "locations": [-5, -0]
     },
     {
       "id": "WS0002",
@@ -36,7 +36,7 @@
       "mount": "TURRET",
       "arc": 240,
       "angle": -83.5,
-      "locations": [4, -21]
+      "locations": [2, -32]
     },
     {
       "id": "WS0001",
@@ -45,7 +45,7 @@
       "mount": "TURRET",
       "arc": 240,
       "angle": 83.5,
-      "locations": [4, 21]
+      "locations": [2, 32]
     },
     {
       "id": "ps_crystal",
@@ -54,7 +54,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 0,
-      "locations": [-20, -0]
+      "locations": [-0.5, -0]
     },
     {
       "id": "LB 1",
@@ -64,14 +64,14 @@
       "arc": 360,
       "angle": 0,
       "locations": [
-        34, -10,
-        34.5, 10
+        28, 0,
+        28.5, 20
       ]
     }
   ],
   "engineSlots": [
     {
-      "location": [-27.5, 29],
+      "location": [-38, 32],
       "length": 64,
       "width": 24,
       "angle": 180,
@@ -80,32 +80,63 @@
       "styleId": "PS_ENGINE"
     },
     {
-      "location": [-27.5, -29],
+      "location": [-38, -32],
       "length": 64,
       "width": 24,
       "angle": -180,
       "contrailSize": 64,
       "style": "CUSTOM",
       "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-14.5, 54],
+      "length": 64,
+      "width": 24,
+      "angle": 145.5,
+      "contrailSize": 64,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
+    },
+    {
+      "location": [-14.5, -54],
+      "length": 64,
+      "width": 24,
+      "angle": -145.5,
+      "contrailSize": 64,
+      "style": "CUSTOM",
+      "styleId": "PS_ENGINE"
     }
   ],
   "bounds": [
-    -52.5, 2.5,
-    -28, 22,
-    -28.5, 37,
-    10.5, 38,
-    10, 48.5,
-    48, 35,
-    48, 35,
-    37, 17,
-    43.5, 8,
-    43.5, -8,
-    37, -17,
-    47, -36.5,
-    10, -48.5,
-    10.5, -38,
-    -28.5, -37,
-    -28, -22,
-    -52.5, -2.5
+    -54, -7.5,
+    -38.5, -26.5,
+    -38, -37,
+    -29.5, -40,
+    -29.5, -43,
+    -21.5, -49.5,
+    -17.5, -50,
+    -11.5, -57,
+    13, -54.5,
+    34, -42.5,
+    35, -34.5,
+    44.5, -25.5,
+    43, -17,
+    33.5, -14,
+    36, -10,
+    36, 10,
+    33.5, 14,
+    43, 17,
+    44.5, 25.5,
+    35, 34.5,
+    34, 42.5,
+    13, 54.5,
+    -11.5, 57,
+    -17.5, 50,
+    -21.5, 49.5,
+    -29.5, 43,
+    -29.5, 40,
+    -38, 37,
+    -38.5, 26.5,
+    -54, 7.5
   ]
 }

@@ -11,11 +11,17 @@ import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector2f;
+import pigeonpun.projectsolace.com.ps_boundlesseffect;
 import pigeonpun.projectsolace.com.ps_misc;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import static pigeonpun.projectsolace.com.ps_boundlesseffect.calcBoundlessWeaponPoint;
+import static pigeonpun.projectsolace.com.ps_boundlesseffect.calcTotalBoundlessWeaponPoint;
+import static pigeonpun.projectsolace.com.ps_boundlesseffect.getBoundlessEffectData;
 
 public class ps_boundlessbarrier extends BaseHullMod {
 
@@ -26,16 +32,9 @@ public class ps_boundlessbarrier extends BaseHullMod {
             BOUNDLESS_LARGE_POINT = 4,
             BOUNDLESS_MEDIUM_POINT = 2,
             BOUNDLESS_SMALL_POINT = 1;
-//    public static final float
-//            BOUNDLESS_CAPITAL_SOFT_CAP = 12,
-//            BOUNDLESS_CRUISER_SOFT_CAP = 9,
-//            BOUNDLESS_DESTROYER_SOFT_CAP = 6,
-//            BOUNDLESS_FRIGATE_SOFT_CAP = 3;
-    private static final float BOUNDLESS_MAIN_PERCENTAGE_PER_POINT = 5F; //percentage
+    private static final float BOUNDLESS_MAIN_PERCENTAGE_PER_POINT = 4F; //percentage
     private static final float BOUNDLESS_CR_PERCENTAGE_PER_POINT = 0.5f; //percentage
     private static final float BOUNDLESS_DP_MULT_PER_POINT = 1f;
-//    private static final float BOUNDLESS_MAIN_PERCENTAGE_PER_POINT_OVERCAP = 2f; //percentage
-//    private static final float BOUNDLESS_CR_PERCENTAGE_PER_POINT_OVERCAP = 0.5f; //percentage
     private static final IntervalUtil EMP_SPARK_TIMER = new IntervalUtil(2.5f, 3.5f);
     @Override
     public void advanceInCombat(ShipAPI ship, float amount) {
@@ -94,12 +93,12 @@ public class ps_boundlessbarrier extends BaseHullMod {
         ShipVariantAPI variant = stats.getVariant();
 
         if(variant != null) {
-            if(calcBoundlessWeaponPoint(variant) < 1) {
+            if(calcTotalBoundlessWeaponPoint(variant) < 1) {
                 variant.getHullMods().remove(BOUNDLESSBARRIER_ID);
                 return;
             }
             stats.getSuppliesPerMonth().modifyPercent(id, getMaintenanceIncreasePercentage(variant));
-            stats.getPeakCRDuration().modifyMult(id, ((100f - getCRReductionPercentage(variant)) / 100));
+//            stats.getPeakCRDuration().modifyMult(id, ((100f - getCRReductionPercentage(variant)) / 100));
             stats.getDynamic().getMod(Stats.DEPLOYMENT_POINTS_MOD).modifyFlat(id, getDPIncrease(variant));
         }
     }
@@ -108,6 +107,9 @@ public class ps_boundlessbarrier extends BaseHullMod {
     public boolean shouldAddDescriptionToTooltip(ShipAPI.HullSize hullSize, ShipAPI ship, boolean isForModSpec) {
         return false;
     }
+    public float getTooltipWidth() {
+        return 500f;
+    }
     public void addPostDescriptionSection(TooltipMakerAPI tooltip, ShipAPI.HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
         float pad = 3f;
         float opad = 10f;
@@ -115,118 +117,88 @@ public class ps_boundlessbarrier extends BaseHullMod {
         Color bad = Misc.getNegativeHighlightColor();
         Color good = Misc.getHighlightColor();
         Color neutral = Misc.getDarkHighlightColor();
-        int boundlessWeaponPoints = calcBoundlessWeaponPoint(ship.getVariant());
-        float maintCost = getMaintenanceIncreasePercentage(ship.getVariant());
-        float CRCost = getCRReductionPercentage(ship.getVariant());
-        float DPCost = getDPIncrease(ship.getVariant());
+        int totalWeaponPoints = calcTotalBoundlessWeaponPoint(ship.getVariant());
+        float totalMaintCost = getMaintenanceIncreasePercentage(ship.getVariant());
+//        float CRCost = getCRReductionPercentage(ship.getVariant());
+        float totalDPCost = getDPIncrease(ship.getVariant());
+        HashMap<String, ps_boundlesseffect.boundlessEffectData> listEffectData = getBoundlessEffectData(ship.getVariant());
+        float totalWeapons = 0;
+        float col1W = 220;
+        float col2W = 65;
+        float col3W = 50;
+        float coi4W = 50;
+        float col5W = 50;
+        float lastW = 50;
 
-        LabelAPI label = tooltip.addPara("With great power comes great responsibility. Discovery of these boundless entities have given scientists quite the bewilderment as the material it is made from is far more technology advanced than anything currently available in the Sector. Despite the limit of our understanding of such tech, scientists and engineers still managed to equip and operate said entities safely onto our current confined hull. But it comes with hefty prices.", opad, h, "");
-
-        tooltip.addSectionHeading("Details", Alignment.MID, opad);
-
-        label = tooltip.addPara("+ Boundless weapons point per size: %s/%s/%s.", opad, h,
-                "" + Math.round(BOUNDLESS_SMALL_POINT), "" + Math.round(BOUNDLESS_MEDIUM_POINT), "" + Math.round(BOUNDLESS_LARGE_POINT));
-        label.setHighlight("" + Math.round(BOUNDLESS_SMALL_POINT), "" + Math.round(BOUNDLESS_MEDIUM_POINT), "" + Math.round(BOUNDLESS_LARGE_POINT));
-        label.setHighlightColors(good, good, good);
-
-//        label = tooltip.addPara("+ Boundless weapons max point: %s/%s/%s/%s.", opad, h,
-//                "" + Math.round(BOUNDLESS_FRIGATE_SOFT_CAP), Math.round(BOUNDLESS_DESTROYER_SOFT_CAP) + "", Math.round(BOUNDLESS_CRUISER_SOFT_CAP) + "", Math.round(BOUNDLESS_CAPITAL_SOFT_CAP) + "");
-//        label.setHighlight("" + Math.round(BOUNDLESS_FRIGATE_SOFT_CAP), Math.round(BOUNDLESS_DESTROYER_SOFT_CAP) + "", Math.round(BOUNDLESS_CRUISER_SOFT_CAP) + "", Math.round(BOUNDLESS_CAPITAL_SOFT_CAP) + "");
-//        label.setHighlightColors((ship.getHullSize() == ShipAPI.HullSize.FRIGATE) ? good : neutral,
-//                (ship.getHullSize() == ShipAPI.HullSize.DESTROYER) ? good : neutral,
-//                (ship.getHullSize() == ShipAPI.HullSize.CRUISER) ? good : neutral,
-//                (ship.getHullSize() == ShipAPI.HullSize.CAPITAL_SHIP) ? good : neutral);
-
-        label = tooltip.addPara("+ Current Boundless weapons point: %s.", opad, h,
-                "" + Math.round(boundlessWeaponPoints));
-        label.setHighlight("" + Math.round(boundlessWeaponPoints));
-        label.setHighlightColors(good);
+        //. Discovery of these boundless entities have given scientists quite the bewilderment as the material it is made from is far more technology advanced than anything currently available in the Sector. Despite the limit of our understanding of such tech, scientists and engineers still managed to equip and operate said entities safely onto our current confined hull. But it comes with hefty prices.
+        LabelAPI label = tooltip.addPara("With great power comes great responsibility", opad, h, "");
 
         tooltip.addSectionHeading("Effects", Alignment.MID, opad);
-        label = tooltip.addPara("Increase maintenance cost by %s per point, current increase: %s", opad, h,"" + Math.round(BOUNDLESS_MAIN_PERCENTAGE_PER_POINT) + "%", "" + Math.round(maintCost) + "%");
-        label.setHighlight("" + Math.round(BOUNDLESS_MAIN_PERCENTAGE_PER_POINT) + "%", "" + Math.round(maintCost) + "%");
+
+        label = tooltip.addPara("+ Boundless weapons point per size: %s / %s / %s.", opad, h,
+                "" + Math.round(BOUNDLESS_SMALL_POINT), "" + Math.round(BOUNDLESS_MEDIUM_POINT), "" + Math.round(BOUNDLESS_LARGE_POINT));
+        label.setHighlightColors(good, good, good);
+
+        label = tooltip.addPara("- Increase maintenance cost by %s per point.", opad, h,"" + Math.round(BOUNDLESS_MAIN_PERCENTAGE_PER_POINT) + "%", "" + Math.round(totalMaintCost) + "%");
         label.setHighlightColors(bad, bad);
 
-//        label = tooltip.addPara("If Boundless weapon point overcap, increase maintenance cost by %s and reduce CR by %s per point", opad, h,"" + Math.round(BOUNDLESS_MAIN_PERCENTAGE_PER_POINT_OVERCAP) + "%", "" + Math.round(BOUNDLESS_CR_PERCENTAGE_PER_POINT_OVERCAP) + "%");
-//        label.setHighlight("" + Math.round(BOUNDLESS_MAIN_PERCENTAGE_PER_POINT_OVERCAP) + "%", "" + Math.round(BOUNDLESS_CR_PERCENTAGE_PER_POINT_OVERCAP) + "%");
+//        label = tooltip.addPara("- Reduce CR by %s per point", opad, h,"" + (BOUNDLESS_CR_PERCENTAGE_PER_POINT) + "%", "" + Math.round(CRCost) + "%");
 //        label.setHighlightColors(bad, bad);
 
-        label = tooltip.addPara("Reduce CR by %s per point, current reduction: %s", opad, h,"" + (BOUNDLESS_CR_PERCENTAGE_PER_POINT) + "%", "" + Math.round(CRCost) + "%");
-        label.setHighlight("" + (BOUNDLESS_CR_PERCENTAGE_PER_POINT) + "%", "" + Math.round(CRCost) + "%");
+        label = tooltip.addPara("- Increase DP by %s per point.", opad, h,"" + Math.round(BOUNDLESS_DP_MULT_PER_POINT) + "", "" + Math.round(totalDPCost));
         label.setHighlightColors(bad, bad);
 
-        label = tooltip.addPara("Increase DP by %s per point, current increase: %s", opad, h,"" + Math.round(BOUNDLESS_DP_MULT_PER_POINT) + "", "" + Math.round(DPCost));
-        label.setHighlight("" + Math.round(BOUNDLESS_DP_MULT_PER_POINT), "" + Math.round(DPCost));
-        label.setHighlightColors(bad, bad);
-
-//        label = tooltip.addPara("+ Current maintenance increase: %s", opad, h,"" + Math.round(maintCost) + "%");
-//        label.setHighlight("" + Math.round(maintCost) + "%");
-//        label.setHighlightColors(good);
-//
-//        label = tooltip.addPara("+ Current CR reduction: %s", opad, h,"" + Math.round(CRCost) + "%");
-//        label.setHighlight("" + Math.round(CRCost) + "%");
-//        label.setHighlightColors(good);
+        tooltip.addSectionHeading("Details", Alignment.MID, opad);
+        tooltip.beginTable(Misc.getBasePlayerColor(), Misc.getDarkPlayerColor(), Misc.getBrightPlayerColor(),
+                20f, true, true,
+                new Object [] {"Name", col1W, "Size", col2W, "Count", col3W, "Point", coi4W, "Maint", col5W, "DP", lastW});
+        for(Map.Entry<String, ps_boundlesseffect.boundlessEffectData> data: listEffectData.entrySet()) {
+            totalWeapons += data.getValue().getWeaponCount();
+            tooltip.addRow(
+                    Alignment.MID, h.darker(), data.getValue().weapon.getWeaponName(),
+                    Alignment.MID, h.darker(), data.getValue().weapon.getSize().getDisplayName(),
+                    Alignment.MID, h.darker(), data.getValue().getWeaponCount() + "",
+                    Alignment.MID, h.darker(), data.getValue().getWeaponPoint() + "",
+                    Alignment.MID, bad.darker(), Math.round(data.getValue().getWeaponPoint() * BOUNDLESS_MAIN_PERCENTAGE_PER_POINT) + "%",
+                    Alignment.MID, bad.darker(), Math.round(data.getValue().getWeaponPoint() * BOUNDLESS_DP_MULT_PER_POINT) + ""
+            );
+        }
+        tooltip.addRow(
+                Alignment.MID, good, "Total",
+                Alignment.MID, h, "",
+                Alignment.MID, h, Math.round(totalWeapons) + "",
+                Alignment.MID, h, Math.round(totalWeaponPoints) + "",
+                Alignment.MID, bad, Math.round(totalMaintCost) + "%",
+                Alignment.MID, bad, Math.round(totalDPCost) + ""
+        );
+        tooltip.addTable("", 0, opad);
 
     }
     private float getMaintenanceIncreasePercentage(ShipVariantAPI variant) {
         if(variant != null) {
-            float totalMaintCost = 0;
-            float totalWeaponPoint = calcBoundlessWeaponPoint(variant);
-            totalMaintCost = totalWeaponPoint * BOUNDLESS_MAIN_PERCENTAGE_PER_POINT;
-            return totalMaintCost;
+            float totaltotalMaintCost = 0;
+            float totalWeaponPoint = calcTotalBoundlessWeaponPoint(variant);
+            totaltotalMaintCost = totalWeaponPoint * BOUNDLESS_MAIN_PERCENTAGE_PER_POINT;
+            return totaltotalMaintCost;
         }
         return 0;
     }
-    private float getCRReductionPercentage(ShipVariantAPI variant) {
-        if(variant != null) {
-            float totalCRReduction = 0;
-            float totalWeaponPoint = calcBoundlessWeaponPoint(variant);
-            totalCRReduction = totalWeaponPoint * BOUNDLESS_CR_PERCENTAGE_PER_POINT;
-            return totalCRReduction;
-        }
-        return 0;
-    }
+//    private float getCRReductionPercentage(ShipVariantAPI variant) {
+//        if(variant != null) {
+//            float totalCRReduction = 0;
+//            float totalWeaponPoint = calcTotalBoundlessWeaponPoint(variant);
+//            totalCRReduction = totalWeaponPoint * BOUNDLESS_CR_PERCENTAGE_PER_POINT;
+//            return totalCRReduction;
+//        }
+//        return 0;
+//    }
     private float getDPIncrease(ShipVariantAPI variant) {
         if(variant != null) {
             float totalDPIncrease = 0;
-            float totalWeaponPoint = calcBoundlessWeaponPoint(variant);
+            float totalWeaponPoint = calcTotalBoundlessWeaponPoint(variant);
             totalDPIncrease = totalWeaponPoint * BOUNDLESS_DP_MULT_PER_POINT;
             return totalDPIncrease;
         }
         return 0;
     }
-//    private float getBoundlessWeaponCap(ShipVariantAPI variant) {
-//        if(variant.getHullSize() == ShipAPI.HullSize.CAPITAL_SHIP) {
-//            return BOUNDLESS_CAPITAL_SOFT_CAP;
-//        }
-//        if(variant.getHullSize() == ShipAPI.HullSize.CRUISER) {
-//            return BOUNDLESS_CRUISER_SOFT_CAP;
-//        }
-//        if(variant.getHullSize() == ShipAPI.HullSize.DESTROYER) {
-//            return BOUNDLESS_DESTROYER_SOFT_CAP;
-//        }
-//        if(variant.getHullSize() == ShipAPI.HullSize.FRIGATE) {
-//            return BOUNDLESS_FRIGATE_SOFT_CAP;
-//        }
-//        return 0;
-//    }
-//    private int calcBoundlessWeaponPoint(ShipAPI ship) {
-//        if(ship != null) {
-//            int totalPoint = 0;
-//            for(WeaponAPI w: ship.getAllWeapons()) {
-//                if(ps_misc.ENMITY_SPECIAL_WEAPONS_LIST.contains(w.getId())) {
-//                    if(w.getSize() == WeaponAPI.WeaponSize.SMALL) {
-//                        totalPoint += BOUNDLESS_SMALL_POINT;
-//                    } else if (w.getSize() == WeaponAPI.WeaponSize.MEDIUM) {
-//                        totalPoint += BOUNDLESS_MEDIUM_POINT;
-//                    } else if (w.getSize() == WeaponAPI.WeaponSize.LARGE) {
-//                        totalPoint += BOUNDLESS_LARGE_POINT;
-//                    }
-//                }
-//            }
-//            return totalPoint;
-//        }
-//        return 0;
-//    }
-
 }
