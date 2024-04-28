@@ -10,5 +10,5 @@
         "patch":1a # Can be a number, character or string (1, 2, a, b, "-RC2", etc)
     },
     "starsectorVersion":"0.97a-RC6",
-    "directDownloadURL":"https://github.com/CosmicFishi/Project-Solace/releases/download/v0.4.0/Project-Solace-v0.4.1a.zip"
+    "directDownloadURL":"https://github.com/CosmicFishi/Project-Solace/releases/download/v0.4.1a/Project-Solace-v0.4.1a.zip"
 }
