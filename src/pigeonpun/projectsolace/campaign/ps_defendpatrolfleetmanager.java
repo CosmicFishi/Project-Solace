@@ -373,23 +373,25 @@ public class ps_defendpatrolfleetmanager extends BaseCampaignEventListener imple
                 OffensiveFleetIntel intel;
                 MarketAPI target = getTargetMarketForDefendFleet(faction, markets);
                 MarketAPI sourceSolaceDefender = getSourceMarketForFleet(sector.getFaction(solace_ID), null, markets, false);
-                float fp = getWantedFleetSize(solaceFaction, sourceSolaceDefender, 0.15f, false, 1);
-                float organizeTime = InvasionFleetManager.getOrganizeTime(fp);
-                fp *= InvasionFleetManager.getInvasionSizeMult(factionId);
-                fp *= 1;
-                intel = new DefenseFleetIntel(
-                        solaceFaction,
-                        sourceSolaceDefender,
-                        target,
-                        fp,
-                        organizeTime
-                );
-                intel.init();
-                if (intel != null)
-                {
-                    counter -= getInvasionPointCost(intel);
-                    lifetimeDefends++;
-                    spawnCounter.put(factionId, counter);
+                if(sourceSolaceDefender != null) {
+                    float fp = getWantedFleetSize(solaceFaction, sourceSolaceDefender, 0.15f, false, 1);
+                    float organizeTime = InvasionFleetManager.getOrganizeTime(fp);
+                    fp *= InvasionFleetManager.getInvasionSizeMult(factionId);
+                    fp *= 1;
+                    intel = new DefenseFleetIntel(
+                            solaceFaction,
+                            sourceSolaceDefender,
+                            target,
+                            fp,
+                            organizeTime
+                    );
+                    intel.init();
+                    if (intel != null)
+                    {
+                        counter -= getInvasionPointCost(intel);
+                        lifetimeDefends++;
+                        spawnCounter.put(factionId, counter);
+                    }
                 }
             }
 
