@@ -1,3 +1,9 @@
+0.4.2:
+=== Changelog:
+    - Fix crash for defend intel
+0.4.1a:
+=== Changelog:
+    - Fix Ashy bug crash.
 0.4:
 === Supaweapons:
     - Add Syhadren Pressure Launcher
