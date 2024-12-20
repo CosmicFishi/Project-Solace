@@ -431,6 +431,10 @@ public class ps_defendpatrolfleetmanager extends BaseCampaignEventListener imple
             return;
         }
         if(!ps_solaceDefend) return; //disable if needed
+        //Can't find any source for defend fleet <- Solace has no more stronghold
+        if(getSourceMarketForFleet(Global.getSector().getFaction(solace_ID), null, Global.getSector().getEconomy().getMarketsCopy(), false) == null) {
+             return;
+        }
         List<ps_defendpatrolfleetintel> remove = new LinkedList();
         for (ps_defendpatrolfleetintel intel : activeIntel) {
             if (intel.isEnded() || intel.isEnding()) {

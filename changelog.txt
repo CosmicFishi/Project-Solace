@@ -1,3 +1,6 @@
+0.4.2a:
+=== Changelog:
+    - Fix crash for defend intel again
 0.4.2:
 === Changelog:
     - Fix crash for defend intel
