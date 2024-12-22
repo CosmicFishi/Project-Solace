@@ -50,7 +50,7 @@ public class projectsolaceplugin extends BaseModPlugin {
     public static final String solace_ID = "projectsolace";
     public static float ps_solaceDefendTimeoutPeriod = 90;
     public static float ps_defendPointEconomyMult = 0.5f;
-    public static float ps_pointsRequiredForDefendFleet = 27000f;
+    public static float ps_pointsRequiredForDefendFleet = 00f;
     public static boolean ps_solaceDefend = true;
     public static boolean ps_vagrantseerGenerateSalvage = true;
     public static boolean ps_bygonedameGenerateSalvage = true;
